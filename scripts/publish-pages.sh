@@ -2,6 +2,19 @@
 # ============================================================
 #  publish-pages.sh — 把 public/ 部署到 GitHub Pages（gh-pages 分支）
 #
+#  ⚠️ 本脚本是「备用发布通道」，不是默认通道。
+#
+#  默认通道是 .github/workflows/deploy.yml（Pages 源 = "GitHub Actions"），
+#  它与 daily-crawl.yml 构成闭环：抓取 → 导出 public/data → 回写 main
+#  → deploy.yml 因 public/** 变更自动触发部署。**无需人工干预。**
+#
+#  本脚本仅在以下场景使用：
+#    - 你希望 Pages 源设为 "Deploy from a branch"（例如组织策略限制）
+#    - 需要在本地一次性推送产物，而不想等 CI
+#
+#  🚫 两条通道**不可同时启用**：Pages 源只能选一个。若已把源设为
+#  "GitHub Actions"，请不要运行本脚本，否则线上内容会与 CI 产物分叉。
+#
 #  工作方式：
 #    1. npm run build  →  重新导出 public/data/（保证数据最新）
 #    2. 临时 git worktree 检出 gh-pages 分支（不存在则自动创建）

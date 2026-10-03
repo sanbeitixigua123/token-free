@@ -108,16 +108,33 @@
   var btn = document.getElementById('navToggle');
   var header = document.querySelector('.app-header');
   if (!btn || !header) return;
-  btn.addEventListener('click', function () {
-    var open = header.classList.toggle('is-nav-open');
+
+  function sync(open) {
+    header.classList.toggle('is-nav-open', open);
     btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    btn.setAttribute('aria-label', open ? '收起导航' : '展开导航');
+  }
+
+  btn.addEventListener('click', function () {
+    sync(!header.classList.contains('is-nav-open'));
   });
+
   document.querySelectorAll('.nav__link').forEach(function (a) {
-    a.addEventListener('click', function () {
-      header.classList.remove('is-nav-open');
-      btn.setAttribute('aria-expanded', 'false');
-    });
+    a.addEventListener('click', function () { sync(false); });
   });
+
+  // Esc 关闭并把焦点交还开关（与筛选抽屉行为一致）
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && header.classList.contains('is-nav-open')) {
+      sync(false);
+      btn.focus();
+    }
+  });
+
+  // 视口放大到桌面宽度时复位，避免残留 aria-expanded=true
+  var mq = window.matchMedia('(min-width: 900px)');
+  var onMq = function (e) { if (e.matches) sync(false); };
+  mq.addEventListener ? mq.addEventListener('change', onMq) : mq.addListener(onMq);
 })();
 </script>
 
