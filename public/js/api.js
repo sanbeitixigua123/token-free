@@ -24,10 +24,39 @@ const state = {
  * 现在：探测失败时不写死，允许后续调用重试（最多 3 次，指数退避）。
  */
 let probeAttempts = 0;
-/** 探测的并发合并：首屏有两个 render() 入口，会同时调 detectMode()，
- *  若不合并就是两次 /api/stats（实测线上每个页面都发 2 次 404）。 */
+/** 探测的并发合并：首屏可能有多个调用方同时调 detectMode()，
+ *  若不合并就会发出重复探测请求。 */
 let probing = null;
 
+/**
+ * 探测后端可用性。
+ *
+ * 关键：区分「确认无后端」与「探测失败」。
+ * 原实现一旦探测失败就把 mode 永久写成 'static'——若只是后端冷启动慢
+ * 或网络抖动，用户会一直停在只读模式直到刷新页面。
+ * 现在：探测失败时不写死，允许后续调用重试（最多 3 次）。
+ *
+ * ⚠️ 探测路径的选择很关键（踩过两次）：
+ *
+ * 1) 最初用 `/api/stats` —— 但它是**真实数据端点**，首屏 renderHome 也要调它，
+ *    两者叠加导致每个页面发 2 次请求。
+ *
+ * 2) 改用专用的 `/api/ping` —— 解决了叠加问题，但**静态托管上它必然 404**，
+ *    而浏览器对任何 4xx/5xx 都会在 console 打一条 "Failed to load resource"。
+ *    用户在 DevTools 里看到满屏红色 404，会以为站点坏了。这是无法通过
+ *    JS 抑制的（浏览器层面的日志，与 fetch 的 catch 无关）。
+ *
+ * 3) 最终方案：探测一个**两种模式下都存在**的静态文件（/manifest.webmanifest）。
+ *    · 静态站：返回 200 + `application/manifest+json`
+ *    · 本地服务：同样返回该静态文件（server.js 的静态文件服务会命中）
+ *    两者都是 200，**没有 404，控制台干净**。
+ *    再用一个本地服务独有的标记来区分：server.js 会给静态响应加
+ *    `x-served-by: token-free-api` 头（见 server.js 的静态文件分支）。
+ *    有该头 → api 模式；没有 → static 模式。
+ *
+ *    这样既不产生 404 噪音，也不与任何真实数据端点冲突，
+ *    并且探测的是"有没有本地服务"这一真正想回答的问题。
+ */
 export async function detectMode() {
   if (state.cached) return state.mode;
   if (location.protocol === 'file:') { state.mode = 'static'; state.cached = true; return state.mode; }
@@ -39,28 +68,22 @@ export async function detectMode() {
       probeAttempts++;
       const ctrl = new AbortController();
       const timer = setTimeout(() => ctrl.abort(), 2500);
-      // 探测用专用的 /api/ping 而非 /api/stats：
-      // 静态托管上这个请求必然 404，而 404 会被浏览器记进 console.error，
-      // 用户打开 DevTools 就看到一片红色，像是站点坏了。
-      // ping 的响应体几乎为空，探测成本更低，语义也更准确（"探活"而非"取数"）。
-      // 老部署（无 ping 端点）会回 404 → 仍能正确判定为 static，向后兼容。
-      const res = await fetch('/api/ping', {
+      const res = await fetch('manifest.webmanifest', {
         signal: ctrl.signal,
         cache: 'no-store',
       });
       clearTimeout(timer);
+
       if (res.ok) {
-        const ct = res.headers.get('content-type') || '';
-        // 静态托管上 /api/stats 会返回 404 HTML，因此必须校验 content-type
-        if (ct.includes('application/json')) {
-          state.mode = 'api';
-          state.cached = true;
-          return state.mode;
-        }
+        // 本地服务会给静态资源打这个头；纯静态托管（GitHub Pages）不会有。
+        const byApi = res.headers.get('x-served-by') === 'token-free-api';
+        state.mode = byApi ? 'api' : 'static';
+        state.cached = true;
+        return state.mode;
       }
-      // 有响应但不是 JSON API → 确认是静态托管，可缓存结论
+      // 连静态资源都拿不到（例如路径不对）：保守判定为 static，但不缓存，
+      // 允许后续重试 —— 避免把"临时故障"误判成"确定没有后端"。
       state.mode = 'static';
-      state.cached = true;
       return state.mode;
     } catch {
       /* 网络异常 / 超时：不缓存结论，允许重试 */

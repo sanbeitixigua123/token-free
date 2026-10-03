@@ -65,6 +65,14 @@
   </div>
 </header>
 
+<!-- 静态模式提示：由 app.js 的 markStaticMode() 按需显示。
+     刻意放在 <main id="app"> **之外**：main 的 innerHTML 会被每次路由渲染整体替换，
+     放在里面的元素会被立刻冲掉（实测提示条永远不出现）。
+     作为兄弟节点就能跨路由存活。默认隐藏，避免 JS 未执行时闪现。 -->
+<div class="static-hint" id="staticHint" hidden>
+  <span aria-hidden="true">📖</span>&nbsp;当前为<b>静态只读版</b>（GitHub Pages）——筛选与搜索在你的浏览器内完成，抓取日志与审核队列仅在本地运行时可用。
+</div>
+
 <main id="app" class="app-main">
   <div class="page">
     <div class="card card--skeleton skeleton" style="height:120px"></div>

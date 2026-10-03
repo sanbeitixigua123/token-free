@@ -776,6 +776,11 @@ function serveStatic(req, res, url) {
     const headers = {
       'content-type': MIME[ext] || 'application/octet-stream',
       'cache-control': ext === '.html' ? 'no-cache' : 'public, max-age=300',
+      // 标记"由本地服务提供"。前端的能力探测靠这个头区分
+      // 「本地完整版」与「纯静态托管」（见 public/js/api.js 的 detectMode）。
+      // 用响应头而不是探一个不存在的路径，是为了避免 404 污染浏览器控制台
+      // —— 浏览器对任何 4xx 都会打一条 console.error，JS 无法抑制。
+      'x-served-by': 'token-free-api',
     };
     res.writeHead(200, headers);
     fs.createReadStream(filePath).pipe(res);

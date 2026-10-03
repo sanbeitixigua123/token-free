@@ -454,14 +454,18 @@ code, .mono { font-family: var(--mono); font-size: 0.9em; }
 
 /* ---------------- 静态模式顶部提示 ---------------- */
 
-/* 只在 is-static 时出现；由 app.js 的 markStaticMode() 挂到 <html> 上 */
+/* 位于 <main> 之外（见 index.html 的说明），因此需要自己撑出与 .page 一致的左右留白 */
 .static-hint {
   display: flex; align-items: center; gap: 2px; flex-wrap: wrap;
-  margin: 0 0 16px; padding: 9px 14px;
+  max-width: var(--max-width);
+  margin: 14px auto 0;
+  padding: 9px 14px;
   background: var(--brand-light); color: var(--brand-dark);
   border-radius: var(--radius-sm); font-size: 12.5px; line-height: 1.6;
 }
+.static-hint[hidden] { display: none; }
 .static-hint b { font-weight: 750; }
+@media (max-width: 760px) { .static-hint { margin: 10px 14px 0; } }
 
 /* ---------------- 空态 / 骨架 ---------------- */
 

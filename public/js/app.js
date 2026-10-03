@@ -43,25 +43,24 @@ function parseHash() {
 }
 
 /**
- * 静态模式下给页面挂一个全局标记类。
+ * 静态模式下显示只读提示条。
  *
  * 之前只有首页的说明文字里写了"当前为静态只读版"，其它页面（模型库、端点库…）
  * 完全没有提示 —— 用户会困惑为什么"抓取日志""待审"点进去是空的，
  * 也看不到"筛选在浏览器内完成"这个关键信息。
- * 这里统一挂 .is-static，由 CSS 显示一条顶部提示，不必每个页面各写一遍。
+ *
+ * 两个必须注意的点（都踩过）：
+ * 1. 提示条节点在 index.html 里、位于 <main id="app"> **之外**。
+ *    放进 main 内部会被每次路由渲染的 $app.innerHTML = ... 整体替换冲掉。
+ * 2. 必须 await detectMode()：探测是异步的，直接读 getMode() 会拿到
+ *    尚未确定的默认值 'static'，本地服务模式下就会误显示提示条。
  */
-function markStaticMode() {
+async function markStaticMode() {
+  await api.detectMode();
   const isStatic = api.getMode() === 'static';
   document.documentElement.classList.toggle('is-static', isStatic);
-  let el = document.getElementById('staticHint');
-  if (!isStatic) { el?.remove(); return; }
-  if (!el) {
-    el = document.createElement('div');
-    el.id = 'staticHint';
-    el.className = 'static-hint';
-    el.innerHTML = '<span aria-hidden="true">📖</span>&nbsp;当前为<b>静态只读版</b>（GitHub Pages）——筛选与搜索在你的浏览器内完成，抓取日志与审核队列仅在本地运行时可用。';
-    document.querySelector('.app-main')?.prepend(el);
-  }
+  const el = document.getElementById('staticHint');
+  if (el) el.hidden = !isStatic;
 }
 
 async function render() {
@@ -69,7 +68,7 @@ async function render() {
   currentState.route = route;
   setActiveNav(route.name);
   window.scrollTo({ top: 0, behavior: 'instant' });
-  markStaticMode();
+  await markStaticMode();
 
   try {
     switch (route.name) {
