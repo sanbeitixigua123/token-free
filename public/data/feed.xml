@@ -2,14 +2,14 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Token Free — AI 免费活动汇总</title>
-    <link>https://example.com</link>
+    <link>https://sanbeitixigua123.github.io/token-free</link>
     <description>每日自动汇总国内外 AI 模型厂商的免费额度、试用与学生优惠活动</description>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 03 Oct 2026 14:56:39 GMT</lastBuildDate>
-    <atom:link href="https://example.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <lastBuildDate>Sat, 03 Oct 2026 15:20:10 GMT</lastBuildDate>
+    <atom:link href="https://sanbeitixigua123.github.io/token-free/feed.xml" rel="self" type="application/rss+xml"/>
     <item>
       <title>[百度文心] 当前新用户注册百度千帆·大模型服务及Agent开发平台 ，实名认证后即送20元代金券！</title>
-      <link>https://example.com/#/activity/3</link>
+      <link>https://sanbeitixigua123.github.io/token-free/#/activity/3</link>
       <guid isPermaLink="false">9d020a9f934ba9b7774f84dbe6eb9cd2</guid>
       <pubDate>Sat, 03 Oct 2026 06:15:50 GMT</pubDate>
       <category>免费额度</category>
@@ -17,7 +17,7 @@
     </item>
     <item>
       <title>[MiniMax 稀宇科技] HD 系列模型赠送 10 个快速克隆音色</title>
-      <link>https://example.com/#/activity/2</link>
+      <link>https://sanbeitixigua123.github.io/token-free/#/activity/2</link>
       <guid isPermaLink="false">b50602368423573b5e434e125089bfeb</guid>
       <pubDate>Sat, 03 Oct 2026 06:15:50 GMT</pubDate>
       <category>免费试用</category>

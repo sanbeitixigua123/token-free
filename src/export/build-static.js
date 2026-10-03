@@ -21,6 +21,13 @@ const settings = loadSettings();
 const bundle = writeFeeds(db, settings);
 
 /**
+ * 匹配 sw.js 中的 SW_VERSION 声明。
+ * 提到模块作用域是因为构建号判定逻辑需要复用它做"是否匹配到"的检测，
+ * 而非像早期实现那样靠字符串比对反推。
+ */
+const RE_SW_VERSION = /const SW_VERSION = '[^']*';/;
+
+/**
  * 给 Service Worker 打版本戳。
  *
  * 起因：SW 用 CacheStorage 缓存主壳，若版本号恒定，用户部署新版后仍会拿到
@@ -38,15 +45,19 @@ function stampServiceWorker() {
   const src = readFileSync(swPath, 'utf8');
   // 构建号：北京时间 YYYYMMDDHHmm
   const bj = new Date(Date.now() + 8 * 3600 * 1000).toISOString().slice(0, 16).replace(/[-:T]/g, '');
-  const next = src.replace(
-    /const SW_VERSION = '[^']*';/,
-    `const SW_VERSION = '${bj}';`
-  );
-  if (next === src) {
-    log.warn("sw.js 中未匹配到 SW_VERSION 声明，版本戳未更新");
+
+  // 注意两种"没变化"要区分开：
+  //   a) 正则压根没匹配到 → 真的异常（声明被改名/删除），必须告警
+  //   b) 匹配到了，但本轮时间戳与上一轮相同（同一分钟内重复构建）→ 完全正常，静默
+  // 早期实现只判断 `next === src`，把 (b) 也报成告警，导致同一分钟内连跑两次构建
+  // 必然出现"未匹配到 SW_VERSION"的假告警。这里改为显式检测匹配结果。
+  if (!RE_SW_VERSION.test(src)) {
+    log.warn('sw.js 中未找到 SW_VERSION 声明（版本戳注入失败，SW 缓存将无法自动失效）');
     return null;
   }
-  writeFileSync(swPath, next, 'utf8');
+  const next = src.replace(RE_SW_VERSION, `const SW_VERSION = '${bj}';`);
+  // 时间戳未变时不必回写，避免制造无意义的文件改动
+  if (next !== src) writeFileSync(swPath, next, 'utf8');
   return bj;
 }
 

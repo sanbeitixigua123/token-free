@@ -7,6 +7,12 @@
   "newToday": 2,
   "providers": 2,
   "providersTracked": 12,
+  "byStatus": {
+    "active": 2,
+    "upcoming": 0,
+    "ended": 0
+  },
+  "providerCount": 2,
   "lastRun": {
     "finished_at": "2026-10-03 06:15:50",
     "status": "ok",

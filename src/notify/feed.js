@@ -151,15 +151,32 @@ export function buildDataFiles(db, settings = {}) {
   }));
 
   // 统计
+  //
+  // ⚠️ 契约要求：这里导出的 stats 必须是 /api/stats 的**超集**。
+  // 前端 app.js 只按 /api/stats 的嵌套结构取值（byStatus.active / providerCount），
+  // 静态模式下若缺这两个字段，首页「进行中」与「覆盖厂商」会静默显示 0。
+  // 故在扁平字段之外，额外补齐嵌套别名。改动本对象时请同步核对
+  // src/server.js 的 /api/stats 处理器，两者字段必须对齐。
+  const activeCount = activities.filter((a) => a.status === 'active').length;
+  const upcomingCount = activities.filter((a) => a.status === 'upcoming').length;
+  const endedCount = activities.filter((a) => a.status === 'ended').length;
+  const providersCovered = providers.filter((p) => p.activityCount > 0).length;
+
   const stats = {
+    // —— 扁平字段（保留，供 feed.xml 等既有消费方使用）——
     total: activities.length,
-    active: activities.filter((a) => a.status === 'active').length,
-    upcoming: activities.filter((a) => a.status === 'upcoming').length,
-    ended: activities.filter((a) => a.status === 'ended').length,
+    active: activeCount,
+    upcoming: upcomingCount,
+    ended: endedCount,
     endingSoon: activities.filter((a) => a.endingSoon && a.status === 'active').length,
     newToday: activities.filter((a) => a.isNew).length,
-    providers: providers.filter((p) => p.activityCount > 0).length,
+    providers: providersCovered,
     providersTracked: providers.length,
+    // —— 嵌套别名（与 /api/stats 对齐，前端实际读取的就是这些）——
+    byStatus: { active: activeCount, upcoming: upcomingCount, ended: endedCount },
+    providerCount: providersCovered,
+    // 与 /api/stats 一致的口径：providerCount 只计「有收录活动的厂商」，
+    // 而非 providers.yaml 里的全部跟踪厂商（后者见 providersTracked）。
     lastRun: get(db, `SELECT finished_at, status, items_new, sources_ok, sources_total
                       FROM fetch_runs WHERE finished_at IS NOT NULL ORDER BY id DESC LIMIT 1`) || null,
   };
