@@ -42,11 +42,34 @@ function parseHash() {
   return { name: segs[0] || 'home', param: segs[1] || null, param2: segs[2] || null, query };
 }
 
+/**
+ * 静态模式下给页面挂一个全局标记类。
+ *
+ * 之前只有首页的说明文字里写了"当前为静态只读版"，其它页面（模型库、端点库…）
+ * 完全没有提示 —— 用户会困惑为什么"抓取日志""待审"点进去是空的，
+ * 也看不到"筛选在浏览器内完成"这个关键信息。
+ * 这里统一挂 .is-static，由 CSS 显示一条顶部提示，不必每个页面各写一遍。
+ */
+function markStaticMode() {
+  const isStatic = api.getMode() === 'static';
+  document.documentElement.classList.toggle('is-static', isStatic);
+  let el = document.getElementById('staticHint');
+  if (!isStatic) { el?.remove(); return; }
+  if (!el) {
+    el = document.createElement('div');
+    el.id = 'staticHint';
+    el.className = 'static-hint';
+    el.innerHTML = '<span aria-hidden="true">📖</span>&nbsp;当前为<b>静态只读版</b>（GitHub Pages）——筛选与搜索在你的浏览器内完成，抓取日志与审核队列仅在本地运行时可用。';
+    document.querySelector('.app-main')?.prepend(el);
+  }
+}
+
 async function render() {
   const route = parseHash();
   currentState.route = route;
   setActiveNav(route.name);
   window.scrollTo({ top: 0, behavior: 'instant' });
+  markStaticMode();
 
   try {
     switch (route.name) {
@@ -96,6 +119,10 @@ function setActiveNav(name) {
 // ---------------- 首页 ----------------
 
 async function renderHome() {
+  // 先 await 一次探测，让后面的 getStats() 直接命中已缓存的结论。
+  // 若把 getStats() 与这行 Promise.all 一起发，两者会在同一微任务批次里
+  // 各调一次 detectMode() → 探测未完成 → /api/stats 发两次。
+  // （虽然 detectMode 内部已做了并发合并，这里仍显式串行，语义更清晰）
   const mode = await api.detectMode();
   $app.innerHTML = `<div class="page">
     <div class="stat-grid">${Array.from({ length: 4 }, () => `<div class="stat skeleton" style="height:88px"></div>`).join('')}</div>
@@ -1002,6 +1029,39 @@ async function renderAbout() {
     </div>
 
     <div class="panel">
+      <div class="panel__title">数据分几层</div>
+      <p style="font-size:13.5px;line-height:1.85;color:var(--text-secondary);margin:0 0 12px">
+        站内数据分三层，区分「常态」与「限时」——这是判断一个免费额度能不能长期依赖的关键：
+      </p>
+      <div class="table-wrap"><table class="table">
+        <tbody>
+          <tr>
+            <th style="width:110px">厂商</th>
+            <td>51 家国内外 AI 厂商。声明式维护在 <code class="mono">config/providers.yaml</code>。</td>
+          </tr>
+          <tr>
+            <th>端点</th>
+            <td><b>长期有效的免费额度政策</b>。例如"Google AI Studio 免费层 15 RPM / 1500 RPD"。<br>
+              相对稳定，适合作为长期可依赖的接入点。见「端点库」。</td>
+          </tr>
+          <tr>
+            <th>模型</th>
+            <td>能力载体，带能力分类（文本/代码/图像/视频/语音/嵌入）与上下文窗口。见「模型库」。</td>
+          </tr>
+          <tr>
+            <th>活动</th>
+            <td><b>限时促销</b>。例如"新用户注册送 ¥6 额度"，有明确起止时间。<br>
+              通过关联字段挂到上面的模型/端点上，见「活动」页。</td>
+          </tr>
+        </tbody>
+      </table></div>
+      <p style="font-size:13px;color:var(--text-muted);margin:12px 0 0">
+        一个模型可能同时有多个免费端点（不同厂商提供），门槛与额度各不相同。
+        模型详情页会按「免绑卡 → 国内直连 → 有评分」的顺序给出推荐。
+      </p>
+    </div>
+
+    <div class="panel">
       <div class="panel__title">数据来源与更新</div>
       <div class="table-wrap"><table class="table">
         <tbody>
@@ -1489,16 +1549,35 @@ function inline(s) {
 
 // ---------------- 启动 ----------------
 
-window.addEventListener('hashchange', render);
-window.addEventListener('DOMContentLoaded', async () => {
+/**
+ * 一次性启动。
+ *
+ * ⚠️ 修复了首屏重复渲染：原先同时挂了 DOMContentLoaded 监听 + 底部的
+ * `if (document.readyState !== 'loading')` 分支。而 <script type="module">
+ * 位于 </body> 之前、且 module 默认 defer —— 执行时 readyState 已经是
+ * 'interactive'，于是**两个入口都会跑**，render() 被调用两次。
+ * 后果：首屏所有数据请求发两遍（线上实测 /api/stats 发 2 次、
+ * 活动/meta 各 2 次），且 currentState 被后一次覆盖，容易出现竞态导致的
+ * 列表闪烁。改为用 started 标志位守住，只启动一次。
+ */
+let started = false;
+async function boot() {
+  if (started) return;
+  started = true;
+
   await api.detectMode();
+
   // 注册 Service Worker（仅 HTTPS / localhost）
   if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
     navigator.serviceWorker.register('js/sw.js').catch(() => {});
   }
-  render();
-});
-if (document.readyState !== 'loading') {
-  await api.detectMode();
-  render();
+
+  await render();
 }
+
+window.addEventListener('hashchange', render);
+window.addEventListener('DOMContentLoaded', boot);
+// 兜底：若脚本执行时 DOM 已就绪（module 默认 defer，通常如此），
+// DOMContentLoaded 不会再触发，这里直接启动。boot() 自身幂等，重复调用无害。
+if (document.readyState !== 'loading') boot();
+

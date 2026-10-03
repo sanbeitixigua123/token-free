@@ -24,38 +24,56 @@ const state = {
  * 现在：探测失败时不写死，允许后续调用重试（最多 3 次，指数退避）。
  */
 let probeAttempts = 0;
+/** 探测的并发合并：首屏有两个 render() 入口，会同时调 detectMode()，
+ *  若不合并就是两次 /api/stats（实测线上每个页面都发 2 次 404）。 */
+let probing = null;
+
 export async function detectMode() {
   if (state.cached) return state.mode;
   if (location.protocol === 'file:') { state.mode = 'static'; state.cached = true; return state.mode; }
 
-  probeAttempts++;
-  try {
-    const ctrl = new AbortController();
-    const timer = setTimeout(() => ctrl.abort(), 2500);
-    const res = await fetch('/api/stats', { signal: ctrl.signal, cache: 'no-store' });
-    clearTimeout(timer);
-    if (res.ok) {
-      const ct = res.headers.get('content-type') || '';
-      // 静态托管上 /api/stats 会返回 404 HTML，因此必须校验 content-type
-      if (ct.includes('application/json')) {
-        state.mode = 'api';
-        state.cached = true;
-        return state.mode;
+  // 复用进行中的探测，避免同一时刻并发重复请求
+  if (probing) return probing;
+  probing = (async () => {
+    try {
+      probeAttempts++;
+      const ctrl = new AbortController();
+      const timer = setTimeout(() => ctrl.abort(), 2500);
+      // 探测用专用的 /api/ping 而非 /api/stats：
+      // 静态托管上这个请求必然 404，而 404 会被浏览器记进 console.error，
+      // 用户打开 DevTools 就看到一片红色，像是站点坏了。
+      // ping 的响应体几乎为空，探测成本更低，语义也更准确（"探活"而非"取数"）。
+      // 老部署（无 ping 端点）会回 404 → 仍能正确判定为 static，向后兼容。
+      const res = await fetch('/api/ping', {
+        signal: ctrl.signal,
+        cache: 'no-store',
+      });
+      clearTimeout(timer);
+      if (res.ok) {
+        const ct = res.headers.get('content-type') || '';
+        // 静态托管上 /api/stats 会返回 404 HTML，因此必须校验 content-type
+        if (ct.includes('application/json')) {
+          state.mode = 'api';
+          state.cached = true;
+          return state.mode;
+        }
       }
+      // 有响应但不是 JSON API → 确认是静态托管，可缓存结论
+      state.mode = 'static';
+      state.cached = true;
+      return state.mode;
+    } catch {
+      /* 网络异常 / 超时：不缓存结论，允许重试 */
+      // 三次探测都失败后，才降级为 static（但允许下次调用继续尝试）
+      const fallback = probeAttempts >= 3 ? 'static' : 'api';
+      state.mode = state.mode || fallback;
+      if (probeAttempts >= 3) state.mode = 'static';
+      return state.mode;
+    } finally {
+      probing = null;
     }
-    // 有响应但不是 JSON API → 确认是静态托管，可缓存结论
-    state.mode = 'static';
-    state.cached = true;
-    return state.mode;
-  } catch {
-    /* 网络异常 / 超时：不缓存结论，允许重试 */
-  }
-
-  // 三次探测都失败后，才降级为 static（但允许下次调用继续尝试）
-  const fallback = probeAttempts >= 3 ? 'static' : 'api';
-  state.mode = state.mode || fallback;
-  if (probeAttempts >= 3) state.mode = 'static';
-  return state.mode;
+  })();
+  return probing;
 }
 
 export const getMode = () => state.mode || 'static';

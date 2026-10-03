@@ -645,6 +645,15 @@ async function handleApi(req, res, url) {
   const q = parseQuery(url);
 
   try {
+    // 前端的能力探测端点（见 public/js/api.js 的 detectMode）。
+    // 之所以单独开一个而不是复用 /api/stats：
+    // 静态托管上探测必然 404，浏览器会把 404 记进 console.error，
+    // 每个页面都刷一条 "Failed to load resource"，看起来像站点故障。
+    // 用一个极轻量的 /api/ping 不影响这一点，但体积几乎为零，
+    // 且语义上明确是"探活"而非"取数据"。
+    if (req.method === 'GET' && p === '/api/ping') {
+      return sendJson(res, { ok: true, service: 'token-free', mode: 'api' });
+    }
     if (req.method === 'GET' && p === '/api/activities') return sendJson(res, apiActivities(db, q));
 
     let m;

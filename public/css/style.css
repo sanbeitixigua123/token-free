@@ -452,6 +452,17 @@ code, .mono { font-family: var(--mono); font-size: 0.9em; }
 .card--link:hover { border-color: var(--brand); box-shadow: var(--shadow-lg); }
 .card--link .card__foot { margin-top: auto; }
 
+/* ---------------- 静态模式顶部提示 ---------------- */
+
+/* 只在 is-static 时出现；由 app.js 的 markStaticMode() 挂到 <html> 上 */
+.static-hint {
+  display: flex; align-items: center; gap: 2px; flex-wrap: wrap;
+  margin: 0 0 16px; padding: 9px 14px;
+  background: var(--brand-light); color: var(--brand-dark);
+  border-radius: var(--radius-sm); font-size: 12.5px; line-height: 1.6;
+}
+.static-hint b { font-weight: 750; }
+
 /* ---------------- 空态 / 骨架 ---------------- */
 
 .empty {
