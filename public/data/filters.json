@@ -1,0 +1,57 @@
+{
+  "categories": [
+    {
+      "value": "free_credit",
+      "label": "免费额度",
+      "count": 1
+    },
+    {
+      "value": "trial",
+      "label": "免费试用",
+      "count": 1
+    }
+  ],
+  "audiences": [
+    {
+      "value": "all",
+      "label": "所有人",
+      "count": 1
+    },
+    {
+      "value": "new_user",
+      "label": "新用户",
+      "count": 1
+    },
+    {
+      "value": "verified",
+      "label": "需实名/绑卡",
+      "count": 1
+    }
+  ],
+  "statuses": [
+    {
+      "value": "active",
+      "label": "进行中",
+      "count": 2
+    }
+  ],
+  "regions": [
+    {
+      "value": "CN",
+      "label": "国内",
+      "count": 2
+    }
+  ],
+  "providers": [
+    {
+      "value": "minimax",
+      "label": "MiniMax 稀宇科技",
+      "count": 1
+    },
+    {
+      "value": "baidu-ernie",
+      "label": "百度文心",
+      "count": 1
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "name": "Token Free · AI 大模型免费额度聚合",
+  "short_name": "Token Free",
+  "description": "每日自动汇总主流 AI 厂商的免费额度、试用与优惠活动。",
+  "lang": "zh-CN",
+  "start_url": "./index.html#/",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#f7f8fa",
+  "theme_color": "#2563eb",
+  "categories": ["utilities", "productivity", "developer"],
+  "icons": [
+    { "src": "data/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "data/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "data/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "最新活动", "url": "./index.html#/activities?sort=newest" },
+    { "name": "即将截止", "url": "./index.html#/activities?ending_soon=1" },
+    { "name": "厂商总览", "url": "./index.html#/providers" }
+  ]
+}

@@ -1,0 +1,64 @@
+# ============================================================
+# Token Free — .gitignore
+# 原则：只提交「源」与「可部署产物」，不提交「本地数据 / 快照 / 密钥」。
+# ============================================================
+
+# ---- 依赖（由 package-lock.json 复现，无需入库） ----
+node_modules/
+
+# ---- 数据库：本地权威数据源，不入库；线上靠 public/data/ 静态导出 ----
+# node:sqlite 默认开启 WAL，会产生 -wal / -shm 旁文件，三件套一起忽略。
+data/*.db
+data/*.db-shm
+data/*.db-wal
+data/*.sqlite
+data/*.sqlite-shm
+data/*.sqlite-wal
+
+# ---- 日志与原始快照 ----
+# logs/html/ 存放抓取的厂商原始 HTML（体积大，且内含第三方页面内的
+# Google API key、内联脚本等；属「可再生缓存」而非源，故整体忽略）。
+logs/
+# 例外：保留占位，便于 logs/ 目录随仓库存在
+!logs/.gitkeep
+
+# ---- 密钥（绝不入库） ----
+# .vapid.json 内含 Web Push 私钥（可用于冒充本站向订阅者推送）
+config/.vapid.json
+config/secrets.json
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+
+# ---- 构建缓存 / 工具缓存 ----
+# WorkBuddy AI 助手的本地记忆目录，与项目源码无关
+.workbuddy-ai/
+.cache/
+
+# ---- 系统垃圾 ----
+.DS_Store
+Thumbs.db
+desktop.ini
+ehthumbs.db
+
+# ---- 编辑器 / IDE ----
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ---- 日志文件 ----
+*.log
+npm-debug.log*
+yarn-error.log*
+
+# ============================================================
+# 注意：不要忽略 public/data/ ！
+#   其中 activities.json / providers.json / stats.json / filters.json
+#   / meta.json / feed.xml 是 GitHub Pages 静态站唯一的数据来源
+#   （见 public/js/api.js 静态模式），属于必须提交的部署产物。
+# ============================================================

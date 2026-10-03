@@ -1,0 +1,213 @@
+# ============================================================
+#  厂商与数据源清单（声明式）
+#
+#  扩充厂商：在 providers 下追加一段即可（约 10 行）。
+#  改完执行：node src/db/migrate.js
+#
+#  字段说明：
+#    slug           唯一英文标识（用于指纹与 URL）
+#    name_zh/name_en 中英文名
+#    country        CN / US / FR ...
+#    cn_accessible  国内是否可直连（差异化字段，竞品普遍缺失）
+#    tier           1=核心（优先抓取） 2=次要
+#    brand_color    品牌色，用于卡片与徽章
+#    sources[]      kind: pricing(定价页) | announcement(公告/新闻) | docs(文档)
+#                        | search(搜索兜底) | social(社媒)
+#                   url / query
+#                   selector  CSS 选择器，限定规则提取的正文范围（可选，默认全页）
+#                   enabled    false 可临时停用某个源
+# ============================================================
+
+providers:
+  # ---------------- 国内 ----------------
+
+  - slug: zhipu
+    name_zh: 智谱 AI
+    name_en: Zhipu AI
+    country: CN
+    website: https://www.z.ai
+    pricing_url: https://open.bigmodel.cn/pricing
+    announcement_url: https://www.z.ai/blog
+    brand_color: "#3B5BDB"
+    cn_accessible: true
+    tier: 1
+    sources:
+      - kind: pricing
+        url: https://open.bigmodel.cn/pricing
+        selector: main
+      - kind: docs
+        url: https://docs.bigmodel.cn/cn/guide/start/model-overview
+      - kind: search
+        query: 智谱 GLM ZCode 免费 赠送 token 活动
+        enabled: true
+
+  - slug: deepseek
+    name_zh: DeepSeek
+    name_en: DeepSeek
+    country: CN
+    website: https://www.deepseek.com
+    pricing_url: https://api-docs.deepseek.com/quick_start/pricing
+    announcement_url: https://api-docs.deepseek.com/news
+    brand_color: "#4D6BFE"
+    cn_accessible: true
+    tier: 1
+    sources:
+      - kind: pricing
+        url: https://api-docs.deepseek.com/quick_start/pricing
+        selector: article
+      - kind: announcement
+        url: https://api-docs.deepseek.com/news
+      - kind: search
+        query: DeepSeek Harness 桌面端 赠送 额度 活动
+
+  - slug: alibaba-qwen
+    name_zh: 阿里通义千问
+    name_en: Alibaba Qwen
+    country: CN
+    website: https://tongyi.aliyun.com
+    pricing_url: https://help.aliyun.com/zh/model-studio/models
+    brand_color: "#615CED"
+    cn_accessible: true
+    tier: 1
+    sources:
+      - kind: pricing
+        url: https://help.aliyun.com/zh/model-studio/models
+      - kind: search
+        query: 阿里 百炼 通义千问 免费额度 新用户 赠送
+
+  - slug: bytedance-doubao
+    name_zh: 字节豆包
+    name_en: ByteDance Doubao
+    country: CN
+    website: https://www.volcengine.com/product/doubao
+    pricing_url: https://www.volcengine.com/docs/82379/1099320
+    brand_color: "#1664FF"
+    cn_accessible: true
+    tier: 1
+    sources:
+      - kind: pricing
+        url: https://www.volcengine.com/docs/82379/1099320
+      - kind: search
+        query: 火山方舟 豆包 免费额度 赠送 token 活动
+
+  - slug: moonshot
+    name_zh: 月之暗面 Kimi
+    name_en: Moonshot AI
+    country: CN
+    website: https://www.moonshot.cn
+    pricing_url: https://platform.moonshot.cn/docs/pricing/chat
+    brand_color: "#0B0B0F"
+    cn_accessible: true
+    tier: 1
+    sources:
+      - kind: pricing
+        url: https://platform.moonshot.cn/docs/pricing/chat
+      - kind: search
+        query: Kimi 月之暗面 免费额度 赠送 新用户
+
+  - slug: minimax
+    name_zh: MiniMax 稀宇科技
+    name_en: MiniMax
+    country: CN
+    website: https://www.minimaxi.com
+    pricing_url: https://platform.minimaxi.com/document/price
+    brand_color: "#F23F5D"
+    cn_accessible: true
+    tier: 2
+    sources:
+      - kind: pricing
+        url: https://platform.minimaxi.com/document/price
+      - kind: search
+        query: MiniMax 海螺 免费额度 赠送 活动
+
+  - slug: baidu-ernie
+    name_zh: 百度文心
+    name_en: Baidu ERNIE
+    country: CN
+    website: https://yiyan.baidu.com
+    pricing_url: https://cloud.baidu.com/doc/WENXINWORKSHOP/index.html
+    brand_color: "#2932E1"
+    cn_accessible: true
+    tier: 2
+    sources:
+      - kind: pricing
+        url: https://cloud.baidu.com/doc/WENXINWORKSHOP/index.html
+      - kind: search
+        query: 百度 千帆 文心一言 免费额度 赠送 新用户
+
+  - slug: tencent-hunyuan
+    name_zh: 腾讯混元
+    name_en: Tencent Hunyuan
+    country: CN
+    website: https://hunyuan.tencent.com
+    pricing_url: https://cloud.tencent.com/document/product/1729/97731
+    brand_color: "#0052D9"
+    cn_accessible: true
+    tier: 2
+    sources:
+      - kind: pricing
+        url: https://cloud.tencent.com/document/product/1729/97731
+      - kind: search
+        query: 腾讯混元 免费额度 赠送 token 活动
+
+  # ---------------- 海外 ----------------
+
+  - slug: openai
+    name_zh: OpenAI
+    name_en: OpenAI
+    country: US
+    website: https://openai.com
+    pricing_url: https://platform.openai.com/docs/pricing
+    brand_color: "#10A37F"
+    cn_accessible: false
+    tier: 1
+    sources:
+      - kind: pricing
+        url: https://platform.openai.com/docs/pricing
+      - kind: search
+        query: OpenAI ChatGPT free credits student offer promotion
+
+  - slug: anthropic
+    name_zh: Anthropic
+    name_en: Anthropic
+    country: US
+    website: https://www.anthropic.com
+    pricing_url: https://www.anthropic.com/pricing
+    brand_color: "#D97757"
+    cn_accessible: false
+    tier: 1
+    sources:
+      - kind: pricing
+        url: https://www.anthropic.com/pricing
+      - kind: search
+        query: Anthropic Claude free credits student education offer
+
+  - slug: google
+    name_zh: Google
+    name_en: Google
+    country: US
+    website: https://ai.google.dev
+    pricing_url: https://ai.google.dev/pricing
+    brand_color: "#4285F4"
+    cn_accessible: false
+    tier: 1
+    sources:
+      - kind: pricing
+        url: https://ai.google.dev/pricing
+      - kind: search
+        query: Google Gemini AI Studio free tier student offer credits
+
+  - slug: xai
+    name_zh: xAI
+    name_en: xAI
+    country: US
+    website: https://x.ai
+    pricing_url: https://docs.x.ai/docs/models
+    brand_color: "#000000"
+    cn_accessible: false
+    tier: 2
+    sources:
+      - kind: pricing
+        url: https://docs.x.ai/docs/models
+      - kind: search
+        query: xAI Grok API free credits promotion

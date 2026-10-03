@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Token Free — AI 免费活动汇总</title>
+    <link>https://example.com</link>
+    <description>每日自动汇总国内外 AI 模型厂商的免费额度、试用与学生优惠活动</description>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 03 Oct 2026 14:15:50 GMT</lastBuildDate>
+    <atom:link href="https://example.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>[百度文心] 当前新用户注册百度千帆·大模型服务及Agent开发平台 ，实名认证后即送20元代金券！</title>
+      <link>https://example.com/#/activity/3</link>
+      <guid isPermaLink="false">9d020a9f934ba9b7774f84dbe6eb9cd2</guid>
+      <pubDate>Sat, 03 Oct 2026 06:15:50 GMT</pubDate>
+      <category>免费额度</category>
+      <description>百度文心 · 免费额度 ｜ 额度：¥20 ｜ 适用：新用户、需实名/绑卡 ｜ 当前新用户注册百度千帆·大模型服务及Agent开发平台 ，实名认证后即送20元代金券！全平台无门槛使用，有效期一个月。</description>
+    </item>
+    <item>
+      <title>[MiniMax 稀宇科技] HD 系列模型赠送 10 个快速克隆音色</title>
+      <link>https://example.com/#/activity/2</link>
+      <guid isPermaLink="false">b50602368423573b5e434e125089bfeb</guid>
+      <pubDate>Sat, 03 Oct 2026 06:15:50 GMT</pubDate>
+      <category>免费试用</category>
+      <description>MiniMax 稀宇科技 · 免费试用 ｜ 额度：赠送 10 个快速克隆音色 ｜ 适用：所有人 ｜ 支持 T2A v2 / T2A async v2 接口RPM：200支持 HD 系列模型赠送 30 个快速克隆音色 支持 T2A v2 / T2A async v2 接口RPM：500支持 HD 系列模型赠送 300 个快速克隆音色</description>
+    </item>
+  </channel>
+</rss>

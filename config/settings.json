@@ -1,0 +1,39 @@
+{
+  "timezone": "Asia/Shanghai",
+  "cron": "0 10 * * *",
+  "fetch": {
+    "timeoutMs": 20000,
+    "maxRetries": 4,
+    "backoffMs": 1000,
+    "perDomainConcurrency": 1,
+    "globalConcurrency": 4,
+    "perDomainDelayMs": 2000,
+    "userAgent": "TokenFreeBot/1.0 (+https://github.com/sanbeitixigua123/token-free; AI free-deals aggregator; public pages only)",
+    "respectRobots": true
+  },
+  "llm": {
+    "enabled": false,
+    "baseUrl": "",
+    "apiKey": "",
+    "model": "",
+    "maxItemsPerSource": 15
+  },
+  "archive": {
+    "afterDays": 30
+  },
+  "review": {
+    "autoApproveConfidence": 0.72,
+    "pendingConfidence": 0.45,
+    "note": "阈值依据可得数据实测定标：多数厂商页面不声明活动起止日期，抽取上限约 0.80~0.89。autoApprove 取 0.72 表示『抽到明确额度或强受众限定 + 标题合格』即可发布；0.45~0.72 进人工待审队列；低于 0.45 直接丢弃。若要更保守可上调到 0.80（发布量会显著减少）。"
+  },
+  "export": {
+    "siteName": "Token Free",
+    "siteUrl": ""
+  },
+  "search": {
+    "enabled": true,
+    "provider": "duckduckgo-lite",
+    "maxResultsPerQuery": 5,
+    "note": "无固定页面时用搜索兜底发现活动；失败不影响主流程"
+  }
+}

@@ -1,0 +1,66 @@
+# ============================================================
+#  deploy.yml — 把 public/ 部署到 GitHub Pages
+#
+#  本项目是「零构建」前端：public/ 下的 HTML/CSS/JS/JSON 即是最终产物，
+#  npm run build 只是重新导出 data/*.json（由 daily-crawl.yml 负责），
+#  因此这里不需要 setup-node / 依赖安装 / 打包，只需上传 public/ 目录。
+#
+#  首次使用：仓库 Settings → Pages → Source 选择 "GitHub Actions"。
+# ============================================================
+
+name: Deploy Pages
+
+on:
+  push:
+    branches: [main]
+    # 只有影响站点产物的改动才触发，减少无谓部署
+    paths:
+      - 'public/**'
+      - '.github/workflows/deploy.yml'
+  workflow_dispatch: # 支持手动触发
+
+# GITHUB_TOKEN 所需权限：读代码 + 写 Pages + 用 OIDC 换取部署令牌
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 同一时间只跑一个部署；新推送取消排队中的旧任务，但不打断进行中的部署
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: 发布 public/ 到 Pages
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+
+      - name: 校验站点产物存在
+        run: |
+          set -euo pipefail
+          test -f public/index.html || { echo "::error::缺少 public/index.html"; exit 1; }
+          test -d public/data       || { echo "::error::缺少 public/data/（请先运行 daily-crawl 或 npm run build）"; exit 1; }
+          echo "站点文件数：$(find public -type f | wc -l)"
+
+      # Pages 默认走 Jekyll，会忽略下划线开头的文件；.nojekyll 关闭该行为
+      - name: 生成 .nojekyll
+        run: touch public/.nojekyll
+
+      - name: 配置 Pages
+        uses: actions/configure-pages@v5
+
+      - name: 打包 public/ 为 Pages 产物
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+      - name: 部署到 GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

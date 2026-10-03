@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<title>Token Free · AI 大模型免费额度聚合</title>
+<meta name="description" content="每日自动汇总 OpenAI、Anthropic、Google、DeepSeek、阿里通义、字节豆包、智谱、月之暗面、xAI 等主流 AI 厂商的免费额度、试用与优惠活动，支持按厂商、类型、人群、时间筛选与关键词搜索。">
+<meta name="keywords" content="AI免费额度,大模型免费Token,免费API,学生优惠,AI试用,DeepSeek,智谱GLM,通义千问,豆包,OpenAI,Claude,Gemini">
+<meta name="author" content="Token Free">
+<meta name="theme-color" content="#2563eb">
+<meta name="robots" content="index, follow">
+
+<!-- 社交分享 -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Token Free">
+<meta property="og:title" content="Token Free · AI 大模型免费额度聚合">
+<meta property="og:description" content="每日自动汇总主流 AI 厂商的免费额度、试用与优惠活动。">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Token Free · AI 大模型免费额度聚合">
+<meta name="twitter:description" content="每日自动汇总主流 AI 厂商的免费额度、试用与优惠活动。">
+
+<!-- RSS -->
+<link rel="alternate" type="application/rss+xml" title="Token Free · 最新活动" href="data/feed.xml">
+
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="data/icon-192.png">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232563eb'/%3E%3Ctext x='16' y='22' font-size='17' font-family='system-ui,sans-serif' font-weight='700' fill='white' text-anchor='middle'%3EF%3C/text%3E%3C/svg%3E">
+
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<a class="skip-link" href="#app">跳到主内容</a>
+
+<header class="app-header">
+  <div class="app-header__inner">
+    <a class="brand" href="#/" aria-label="Token Free 首页">
+      <span class="brand__mark" aria-hidden="true">F</span>
+      <span class="brand__text">
+        <span class="brand__name">Token&nbsp;Free</span>
+        <span class="brand__tag">AI 免费额度聚合</span>
+      </span>
+    </a>
+
+    <nav class="nav" aria-label="主导航">
+      <a class="nav__link" data-nav="home" href="#/">首页</a>
+      <a class="nav__link" data-nav="activities" href="#/activities">活动</a>
+      <a class="nav__link" data-nav="providers" href="#/providers">厂商</a>
+      <a class="nav__link" data-nav="timeline" href="#/timeline">时间线</a>
+      <a class="nav__link" data-nav="subscribe" href="#/subscribe">订阅</a>
+      <a class="nav__link" data-nav="logs" href="#/logs">抓取日志</a>
+      <a class="nav__link" data-nav="review" href="#/review">待审</a>
+      <a class="nav__link" data-nav="about" href="#/about">关于</a>
+    </nav>
+
+    <button class="nav-toggle" type="button" aria-label="展开导航" aria-expanded="false" id="navToggle">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main id="app" class="app-main">
+  <div class="page">
+    <div class="card card--skeleton skeleton" style="height:120px"></div>
+    <div class="stat-grid" style="margin-top:16px">
+      <div class="stat skeleton" style="height:88px"></div>
+      <div class="stat skeleton" style="height:88px"></div>
+      <div class="stat skeleton" style="height:88px"></div>
+      <div class="stat skeleton" style="height:88px"></div>
+    </div>
+  </div>
+</main>
+
+<footer class="app-footer">
+  <div class="app-footer__inner">
+    <div class="app-footer__col">
+      <div class="app-footer__brand">Token Free</div>
+      <p>AI 大模型免费额度 / 试用 / 学生优惠聚合。数据每日 10:00（北京时间）自动抓取。</p>
+    </div>
+    <div class="app-footer__col">
+      <div class="app-footer__h">浏览</div>
+      <a href="#/activities">全部活动</a>
+      <a href="#/providers">厂商总览</a>
+      <a href="#/timeline">时间线</a>
+      <a href="#/subscribe">订阅提醒</a>
+    </div>
+    <div class="app-footer__col">
+      <div class="app-footer__h">数据</div>
+      <a href="data/feed.xml">RSS 订阅</a>
+      <a href="data/activities.json" target="_blank" rel="noopener">活动 JSON</a>
+      <a href="#/logs">抓取日志</a>
+      <a href="#/about">关于 / 免责</a>
+    </div>
+  </div>
+  <div class="app-footer__bottom">
+    <span>本站为信息聚合工具，活动最终解释权归各厂商所有。</span>
+    <span class="app-footer__status" id="footerStatus"></span>
+  </div>
+</footer>
+
+<script type="module" src="js/app.js"></script>
+<script>
+// 移动端导航开关（内联，避免额外请求）
+(function () {
+  var btn = document.getElementById('navToggle');
+  var header = document.querySelector('.app-header');
+  if (!btn || !header) return;
+  btn.addEventListener('click', function () {
+    var open = header.classList.toggle('is-nav-open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  document.querySelectorAll('.nav__link').forEach(function (a) {
+    a.addEventListener('click', function () {
+      header.classList.remove('is-nav-open');
+      btn.setAttribute('aria-expanded', 'false');
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

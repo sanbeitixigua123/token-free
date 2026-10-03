@@ -1,0 +1,99 @@
+# ============================================================
+#  daily-crawl.yml — 每日定时抓取并回写静态数据
+#
+#  北京时间 10:00 = UTC 02:00  →  cron: '0 2 * * *'
+#
+#  流程：checkout → setup-node(22) → npm ci → migrate → crawl → build
+#        → 把 public/data/ 的变更提交回 main → 触发 Pages 重新部署
+#
+#  重要：本项目用 Node 22 内置的 node:sqlite，**无需**安装 sqlite3 /
+#  better-sqlite3 等原生模块，故工作流里不装任何数据库相关依赖。
+#
+#  关于数据库：data/*.db 被 gitignore，CI 每次都是全新空库从零抓取。
+#  SQLite 只是「当日快照的暂存区」，权威产物是导出的 JSON，重建无损。
+#  若需要保留历史数据（变更轨迹、订阅者），见 README「CI 定时抓取」一节。
+# ============================================================
+
+name: Daily Crawl
+
+on:
+  schedule:
+    # UTC 02:00 == 北京时间 10:00
+    - cron: '0 2 * * *'
+  workflow_dispatch: # 支持手动触发（用于补跑 / 调试）
+
+# 需要写权限才能把抓取结果提交回仓库
+permissions:
+  contents: write
+
+# 避免上一次抓取未结束又启动一次
+concurrency:
+  group: daily-crawl
+  cancel-in-progress: false
+
+jobs:
+  crawl:
+    name: 抓取并导出静态数据
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+        with:
+          # 用内置 token 拉取，保证后续 push 有权限
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 1
+
+      - name: 配置 Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: 安装依赖
+        run: npm ci
+
+      - name: 建库并同步厂商配置
+        run: npm run migrate
+        env:
+          # 内置 node:sqlite 在部分版本会打印实验性警告，这里显式确认使用
+          NODE_NO_WARNINGS: '0'
+
+      - name: 抓取（每日一轮）
+        # 失败码：0 成功 / 1 部分失败 / 2 全失败。
+        # 部分源失败仍应继续导出与提交，故 1 不阻断；全失败才中止。
+        run: |
+          set +e
+          npm run crawl
+          code=$?
+          set -e
+          if [ "$code" -eq 2 ]; then
+            echo "::error::抓取全部失败（exit 2），中止本次工作流"
+            exit 2
+          fi
+          if [ "$code" -eq 1 ]; then
+            echo "::warning::部分数据源抓取失败（exit 1），继续导出既有结果"
+          fi
+        env:
+          TOKENFREE_LOG_LEVEL: info
+
+      - name: 导出静态数据到 public/
+        run: npm run build
+
+      - name: 提交 public/data/ 变更并推回 main
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: 'chore(data): 每日抓取更新 ${{ github.run_id }}'
+          file_pattern: 'public/data/**'
+          commit_user_name: 'Token Free Bot'
+          commit_user_email: 'tokenfree-bot@users.noreply.github.com'
+          commit_author: 'Token Free Bot <tokenfree-bot@users.noreply.github.com>'
+          # 无变更时不产生空提交（数据未变化的日子）
+          skip_dirty_check: false
+          push_options: '--no-verify'
+
+      - name: 部署提示
+        run: |
+          echo "静态数据已回写 main。"
+          echo "若 Pages 源为 GitHub Actions，deploy.yml 会因 public/** 变更自动触发。"
+          echo "若 Pages 源为 gh-pages 分支，请改用 scripts/publish-pages.sh 推送该分支。"

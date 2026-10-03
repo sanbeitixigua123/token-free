@@ -1,0 +1,17 @@
+{
+  "total": 2,
+  "active": 2,
+  "upcoming": 0,
+  "ended": 0,
+  "endingSoon": 0,
+  "newToday": 2,
+  "providers": 2,
+  "providersTracked": 12,
+  "lastRun": {
+    "finished_at": "2026-10-03 06:15:50",
+    "status": "ok",
+    "items_new": 4,
+    "sources_ok": 14,
+    "sources_total": 14
+  }
+}

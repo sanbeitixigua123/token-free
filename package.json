@@ -1,0 +1,25 @@
+{
+  "name": "token-free",
+  "version": "1.0.0",
+  "description": "AI 模型厂商免费活动每日汇总站",
+  "type": "module",
+  "private": true,
+  "engines": {
+    "node": ">=22.5.0"
+  },
+  "scripts": {
+    "migrate": "node src/db/migrate.js",
+    "crawl": "node src/jobs/daily-crawl.js",
+    "archive": "node src/jobs/archive.js",
+    "build": "node src/export/build-static.js",
+    "daily": "node src/jobs/daily-crawl.js && node src/jobs/archive.js && node src/export/build-static.js",
+    "start": "node src/server.js",
+    "serve": "node src/server.js",
+    "vapid": "node src/notify/push.js --generate-keys"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0",
+    "node-cron": "^3.0.3",
+    "web-push": "^3.6.7"
+  }
+}

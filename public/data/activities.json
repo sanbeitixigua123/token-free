@@ -1,0 +1,106 @@
+[
+  {
+    "id": 3,
+    "fingerprint": "9d020a9f934ba9b7774f84dbe6eb9cd2",
+    "provider": {
+      "slug": "baidu-ernie",
+      "name": "百度文心",
+      "nameEn": "Baidu ERNIE",
+      "country": "CN",
+      "website": "https://yiyan.baidu.com",
+      "color": "#2932E1",
+      "cnAccessible": true
+    },
+    "title": "当前新用户注册百度千帆·大模型服务及Agent开发平台 ，实名认证后即送20元代金券！",
+    "summary": "当前新用户注册百度千帆·大模型服务及Agent开发平台 ，实名认证后即送20元代金券！全平台无门槛使用，有效期一个月。",
+    "category": "free_credit",
+    "categoryLabel": "免费额度",
+    "benefit": {
+      "kind": "credit_cny",
+      "amount": 20,
+      "unit": "CNY",
+      "unitLabel": "元",
+      "text": "20元",
+      "display": "¥20"
+    },
+    "audience": [
+      "new_user",
+      "verified"
+    ],
+    "audienceLabels": [
+      "新用户",
+      "需实名/绑卡"
+    ],
+    "audienceNote": "新用户、实名",
+    "region": "CN",
+    "requiresCard": false,
+    "requiresVerification": "identity",
+    "startDate": null,
+    "endDate": null,
+    "isRecurring": null,
+    "claimUrl": "https://cloud.baidu.com/doc/qianfan/s/1mh4su5jg",
+    "sourceUrl": "https://cloud.baidu.com/doc/WENXINWORKSHOP/index.html",
+    "sourceExcerpt": "当前新用户注册百度千帆·大模型服务及Agent开发平台 ，实名认证后即送20元代金券！全平台无门槛使用，有效期一个月。\n模型服务\n应用开发\n组件广场\n系统管理",
+    "confidence": 0.89,
+    "reviewStatus": "auto_ok",
+    "status": "active",
+    "statusLabel": "NEW",
+    "daysLeft": null,
+    "endingSoon": false,
+    "isNew": true,
+    "createdAt": "2026-10-03 06:15:50",
+    "updatedAt": "2026-10-03 06:15:50",
+    "lastVerifiedAt": "2026-10-03 06:15:50"
+  },
+  {
+    "id": 2,
+    "fingerprint": "b50602368423573b5e434e125089bfeb",
+    "provider": {
+      "slug": "minimax",
+      "name": "MiniMax 稀宇科技",
+      "nameEn": "MiniMax",
+      "country": "CN",
+      "website": "https://www.minimaxi.com",
+      "color": "#F23F5D",
+      "cnAccessible": true
+    },
+    "title": "HD 系列模型赠送 10 个快速克隆音色",
+    "summary": "支持 T2A v2 / T2A async v2 接口RPM：200支持 HD 系列模型赠送 30 个快速克隆音色 支持 T2A v2 / T2A async v2 接口RPM：500支持 HD 系列模型赠送 300 个快速克隆音色",
+    "category": "trial",
+    "categoryLabel": "免费试用",
+    "benefit": {
+      "kind": "count",
+      "amount": 10,
+      "unit": "count",
+      "unitLabel": "个",
+      "text": "赠送 10 个快速克隆音色",
+      "display": "赠送 10 个快速克隆音色"
+    },
+    "audience": [
+      "all"
+    ],
+    "audienceLabels": [
+      "所有人"
+    ],
+    "audienceNote": null,
+    "region": "CN",
+    "requiresCard": false,
+    "requiresVerification": null,
+    "startDate": null,
+    "endDate": null,
+    "isRecurring": null,
+    "claimUrl": "https://platform.minimaxi.com/document/price",
+    "sourceUrl": "https://platform.minimaxi.com/document/price",
+    "sourceExcerpt": "支持 T2A v2 / T2A async v2 接口RPM：60支持 HD 系列模型赠送 10 个快速克隆音色\n支持 T2A v2 / T2A async v2 接口RPM：200支持 HD 系列模型赠送 30 个快速克隆音色\n支持 T2A v2 / T2A async v2 接口RPM：500支持 HD 系列模型赠送 300 个快速克隆音色\n无限 RPM/TPM模型更新优先体验专属的安全和稳定性保障",
+    "confidence": 0.74,
+    "reviewStatus": "auto_ok",
+    "status": "active",
+    "statusLabel": "NEW",
+    "daysLeft": null,
+    "endingSoon": false,
+    "isNew": true,
+    "createdAt": "2026-10-03 06:15:50",
+    "updatedAt": "2026-10-03 06:15:50",
+    "lastVerifiedAt": "2026-10-03 06:15:50"
+  }
+]
