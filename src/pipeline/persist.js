@@ -21,14 +21,14 @@ INSERT INTO activities (
   audience, audience_note, region, requires_card, requires_verification,
   start_date, end_date, is_recurring, claim_url,
   source_id, source_url, source_excerpt, evidence_id,
-  confidence, review_status, last_verified_at
+  confidence, extracted_by, review_status, last_verified_at
 ) VALUES (
   ?,?,?,?,?,
   ?,?,?,?,
   ?,?,?,?,?,
   ?,?,?,?,
   ?,?,?,?,
-  ?,?,datetime('now')
+  ?,?,?,datetime('now')
 )`;
 
 export function persistItems(db, items, { runId = null, providerIdBySlug, sourceIdByUrl, evidenceIdBySource }) {
@@ -50,7 +50,8 @@ export function persistItems(db, items, { runId = null, providerIdBySlug, source
               audience=?, audience_note=?, region=?, requires_card=?, requires_verification=?,
               start_date=?, end_date=?, is_recurring=?, claim_url=?,
               source_id=?, source_url=?, source_excerpt=?,
-              confidence=?, updated_at=datetime('now'), last_verified_at=datetime('now')
+              confidence=?, extracted_by=?,
+              updated_at=datetime('now'), last_verified_at=datetime('now')
             WHERE id=?`,
             [
               it.title, it.summary, it.category,
@@ -58,7 +59,7 @@ export function persistItems(db, items, { runId = null, providerIdBySlug, source
               JSON.stringify(it.audience), it.audienceNote, it.region, it.requiresCard, it.requiresVerification,
               it.startDate, it.endDate, it.isRecurring, it.claimUrl,
               sourceIdByUrl.get(it.sourceUrl) ?? existing.source_id, it.sourceUrl, it.sourceExcerpt,
-              it.confidence, existing.id,
+              it.confidence, it.extractedBy ?? existing.extracted_by ?? 'rule', existing.id,
             ]);
 
           for (const c of changes) {
@@ -87,7 +88,7 @@ export function persistItems(db, items, { runId = null, providerIdBySlug, source
         it.startDate, it.endDate, it.isRecurring, it.claimUrl,
         sourceIdByUrl.get(it.sourceUrl) ?? null, it.sourceUrl, it.sourceExcerpt,
         evidenceIdBySource.get(it.sourceUrl) ?? null,
-        it.confidence, reviewStatus,
+        it.confidence, it.extractedBy ?? 'rule', reviewStatus,
       ]);
       stats.new++;
       stats.newIds.push(res.lastInsertRowid);

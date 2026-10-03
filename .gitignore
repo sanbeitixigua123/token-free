@@ -14,6 +14,11 @@ data/*.db-wal
 data/*.sqlite
 data/*.sqlite-shm
 data/*.sqlite-wal
+# 数据库备份（*.db.bak-<时间戳>）：上面按后缀匹配不到，必须单独挡。
+# 曾经因漏了这条，一次 git add -A 就把 30MB 的备份提交进了仓库。
+data/*.bak
+data/*.bak-*
+data/*.db.bak*
 
 # ---- 日志与原始快照 ----
 # logs/html/ 存放抓取的厂商原始 HTML（体积大，且内含第三方页面内的

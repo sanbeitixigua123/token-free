@@ -1,5 +1,158 @@
 [
   {
+    "id": 11,
+    "fingerprint": "16e1471b89a97d545eb7717f6db99c58",
+    "provider": {
+      "slug": "deepseek",
+      "name": "DeepSeek",
+      "nameEn": "DeepSeek",
+      "country": "CN",
+      "website": "https://www.deepseek.com",
+      "color": "#4D6BFE",
+      "cnAccessible": true
+    },
+    "title": "DeepSeek Desktop 桌面版发布，快来领取鸡蛋 ¥6 额度 - 前沿快讯 - LINUX DO",
+    "summary": null,
+    "category": "free_credit",
+    "categoryLabel": "免费额度",
+    "benefit": {
+      "kind": "credit_cny",
+      "amount": 6,
+      "unit": "CNY",
+      "unitLabel": "元",
+      "text": "¥6",
+      "display": "¥6"
+    },
+    "audience": [
+      "new_user"
+    ],
+    "audienceLabels": [
+      "新用户"
+    ],
+    "audienceNote": "新注册",
+    "region": "CN",
+    "requiresCard": false,
+    "requiresVerification": null,
+    "startDate": null,
+    "endDate": "2026-10-06",
+    "isRecurring": null,
+    "claimUrl": "https://linux.do/t/topic/2967404",
+    "sourceUrl": null,
+    "sourceExcerpt": null,
+    "confidence": 1,
+    "reviewStatus": "auto_ok",
+    "status": "active",
+    "statusLabel": "NEW",
+    "daysLeft": 3,
+    "endingSoon": true,
+    "isNew": true,
+    "createdAt": "2026-10-03 07:37:11",
+    "updatedAt": "2026-10-03 07:37:11",
+    "lastVerifiedAt": "2026-10-03 07:37:11"
+  },
+  {
+    "id": 9,
+    "fingerprint": "190c9de83d21cc694ea644d399f7f199",
+    "provider": {
+      "slug": "deepseek",
+      "name": "DeepSeek",
+      "nameEn": "DeepSeek",
+      "country": "CN",
+      "website": "https://www.deepseek.com",
+      "color": "#4D6BFE",
+      "cnAccessible": true
+    },
+    "title": "DeepSeek Harness 桌面版登录可领 6 元赠金活动用到 10 月 6 日 | AI Promo Now",
+    "summary": null,
+    "category": "free_credit",
+    "categoryLabel": "免费额度",
+    "benefit": {
+      "kind": "credit_cny",
+      "amount": 6,
+      "unit": "CNY",
+      "unitLabel": "元",
+      "text": "6 元",
+      "display": "¥6"
+    },
+    "audience": [
+      "all"
+    ],
+    "audienceLabels": [
+      "所有人"
+    ],
+    "audienceNote": null,
+    "region": "CN",
+    "requiresCard": false,
+    "requiresVerification": null,
+    "startDate": null,
+    "endDate": "2026-10-06",
+    "isRecurring": null,
+    "claimUrl": "https://www.aipromonow.com/promos/deepseek-harness-desktop-6-rmb-credit-oct6-2026",
+    "sourceUrl": null,
+    "sourceExcerpt": null,
+    "confidence": 0.93,
+    "reviewStatus": "auto_ok",
+    "status": "active",
+    "statusLabel": "NEW",
+    "daysLeft": 3,
+    "endingSoon": true,
+    "isNew": true,
+    "createdAt": "2026-10-03 07:37:11",
+    "updatedAt": "2026-10-03 07:37:11",
+    "lastVerifiedAt": "2026-10-03 07:37:11"
+  },
+  {
+    "id": 8,
+    "fingerprint": "293e111a51450eddeaf6d22d83cf2d10",
+    "provider": {
+      "slug": "zhipu",
+      "name": "智谱 AI",
+      "nameEn": "Zhipu AI",
+      "country": "CN",
+      "website": "https://www.z.ai",
+      "color": "#3B5BDB",
+      "cnAccessible": true
+    },
+    "title": "GLM-5.3 × ZCode 免费周末：新用户送 1 亿 Token 领取攻略与日常指南 — Free AI API",
+    "summary": null,
+    "category": "free_credit",
+    "categoryLabel": "免费额度",
+    "benefit": {
+      "kind": "token",
+      "amount": 100000000,
+      "unit": "token",
+      "unitLabel": "tokens",
+      "text": "1 亿 Token",
+      "display": "1 亿 tokens"
+    },
+    "audience": [
+      "new_user"
+    ],
+    "audienceLabels": [
+      "新用户"
+    ],
+    "audienceNote": "新用户",
+    "region": "CN",
+    "requiresCard": false,
+    "requiresVerification": null,
+    "startDate": null,
+    "endDate": null,
+    "isRecurring": null,
+    "claimUrl": "https://freeaiapi.org/zh-cn/articles/zcode-free-weekend-100m-tokens",
+    "sourceUrl": null,
+    "sourceExcerpt": null,
+    "confidence": 0.95,
+    "reviewStatus": "auto_ok",
+    "status": "active",
+    "statusLabel": "NEW",
+    "daysLeft": null,
+    "endingSoon": false,
+    "isNew": true,
+    "createdAt": "2026-10-03 07:37:11",
+    "updatedAt": "2026-10-03 07:37:11",
+    "lastVerifiedAt": "2026-10-03 07:37:11"
+  },
+  {
     "id": 3,
     "fingerprint": "9d020a9f934ba9b7774f84dbe6eb9cd2",
     "provider": {
@@ -53,6 +206,203 @@
     "lastVerifiedAt": "2026-10-03 06:15:50"
   },
   {
+    "id": 13,
+    "fingerprint": "769e81b38bbcd6b87a61b597a90afb1f",
+    "provider": {
+      "slug": "aliyun-bailian",
+      "name": "阿里云百炼",
+      "nameEn": "Alibaba Bailian",
+      "country": "CN",
+      "website": "https://bailian.console.aliyun.com",
+      "color": "#FF6A00",
+      "cnAccessible": true
+    },
+    "title": "新用户免费额度",
+    "summary": "百炼为新用户提供北京地域专属的新人免费额度，用于体验模型调用。 未认证用户免费额度用完后无法继续使用，需要完成认证并充值后方能继续按量付费。",
+    "category": "trial",
+    "categoryLabel": "免费试用",
+    "benefit": null,
+    "audience": [
+      "new_user"
+    ],
+    "audienceLabels": [
+      "新用户"
+    ],
+    "audienceNote": "新用户",
+    "region": "CN",
+    "requiresCard": false,
+    "requiresVerification": null,
+    "startDate": null,
+    "endDate": null,
+    "isRecurring": null,
+    "claimUrl": "https://myaccount.console.aliyun.com/cert-info",
+    "sourceUrl": "https://help.aliyun.com/zh/model-studio/",
+    "sourceExcerpt": "百炼为新用户提供北京地域专属的新人免费额度，用于体验模型调用。\n未认证用户免费额度用完后无法继续使用，需要完成认证并充值后方能继续按量付费。\n已认证用户免费额度用完后自动转为按量付费，如需避免意外扣费，可开启免费额度用完即停功能，额度耗尽时服务自动停止。\n详见新人免费额度。",
+    "confidence": 0.83,
+    "reviewStatus": "auto_ok",
+    "status": "active",
+    "statusLabel": "NEW",
+    "daysLeft": null,
+    "endingSoon": false,
+    "isNew": true,
+    "createdAt": "2026-10-03 07:37:11",
+    "updatedAt": "2026-10-03 07:37:11",
+    "lastVerifiedAt": "2026-10-03 07:37:11"
+  },
+  {
+    "id": 5,
+    "fingerprint": "e32941dd55b3a7112ca3ad791fe584fa",
+    "provider": {
+      "slug": "zhipu",
+      "name": "智谱 AI",
+      "nameEn": "Zhipu AI",
+      "country": "CN",
+      "website": "https://www.z.ai",
+      "color": "#3B5BDB",
+      "cnAccessible": true
+    },
+    "title": "智谱 ZCode 算力大放水：免费周末 3 亿与 Global Build 规则全拆解 — Free AI API",
+    "summary": null,
+    "category": "free_credit",
+    "categoryLabel": "免费额度",
+    "benefit": {
+      "kind": "token",
+      "amount": 300000000,
+      "unit": "token",
+      "unitLabel": "tokens",
+      "text": "3 亿 Token",
+      "display": "3 亿 tokens"
+    },
+    "audience": [
+      "all"
+    ],
+    "audienceLabels": [
+      "所有人"
+    ],
+    "audienceNote": null,
+    "region": "CN",
+    "requiresCard": false,
+    "requiresVerification": null,
+    "startDate": null,
+    "endDate": null,
+    "isRecurring": null,
+    "claimUrl": "https://freeaiapi.org/zh-cn/articles/zcode-global-build-glm-5-3-flash",
+    "sourceUrl": null,
+    "sourceExcerpt": null,
+    "confidence": 0.83,
+    "reviewStatus": "auto_ok",
+    "status": "active",
+    "statusLabel": "NEW",
+    "daysLeft": null,
+    "endingSoon": false,
+    "isNew": true,
+    "createdAt": "2026-10-03 07:35:24",
+    "updatedAt": "2026-10-03 07:37:11",
+    "lastVerifiedAt": "2026-10-03 07:37:11"
+  },
+  {
+    "id": 12,
+    "fingerprint": "c712bb07b12450b911272f5f2e4a038e",
+    "provider": {
+      "slug": "deepseek",
+      "name": "DeepSeek",
+      "nameEn": "DeepSeek",
+      "country": "CN",
+      "website": "https://www.deepseek.com",
+      "color": "#4D6BFE",
+      "cnAccessible": true
+    },
+    "title": "DeepSeek 送福利：登录DeepSeek harness 桌面端，首次赠送6元赠金 - 福利羊毛 - LINUX DO",
+    "summary": null,
+    "category": "free_credit",
+    "categoryLabel": "免费额度",
+    "benefit": {
+      "kind": "credit_cny",
+      "amount": 6,
+      "unit": "CNY",
+      "unitLabel": "元",
+      "text": "6元",
+      "display": "¥6"
+    },
+    "audience": [
+      "all"
+    ],
+    "audienceLabels": [
+      "所有人"
+    ],
+    "audienceNote": null,
+    "region": "CN",
+    "requiresCard": false,
+    "requiresVerification": null,
+    "startDate": null,
+    "endDate": null,
+    "isRecurring": null,
+    "claimUrl": "https://linux.do/t/topic/2967596",
+    "sourceUrl": null,
+    "sourceExcerpt": null,
+    "confidence": 0.77,
+    "reviewStatus": "auto_ok",
+    "status": "active",
+    "statusLabel": "NEW",
+    "daysLeft": null,
+    "endingSoon": false,
+    "isNew": true,
+    "createdAt": "2026-10-03 07:37:11",
+    "updatedAt": "2026-10-03 07:37:11",
+    "lastVerifiedAt": "2026-10-03 07:37:11"
+  },
+  {
+    "id": 14,
+    "fingerprint": "7273caa95503a1559331aa0f87bc2725",
+    "provider": {
+      "slug": "github-student",
+      "name": "GitHub 学生开发者包",
+      "nameEn": "GitHub Student Developer Pack",
+      "country": "US",
+      "website": "https://education.github.com/pack",
+      "color": "#181717",
+      "cnAccessible": true
+    },
+    "title": "Offer",
+    "summary": "Free access to 25+ Microsoft Azure cloud services plus $100 in Azure credit. For students aged 18+.",
+    "category": "student",
+    "categoryLabel": "学生优惠",
+    "benefit": {
+      "kind": "credit_usd",
+      "amount": 100,
+      "unit": "USD",
+      "unitLabel": "美元",
+      "text": "$100",
+      "display": "$100"
+    },
+    "audience": [
+      "student"
+    ],
+    "audienceLabels": [
+      "学生"
+    ],
+    "audienceNote": "student",
+    "region": "GLOBAL",
+    "requiresCard": false,
+    "requiresVerification": "student_id",
+    "startDate": null,
+    "endDate": null,
+    "isRecurring": null,
+    "claimUrl": "https://education.github.com/pack",
+    "sourceUrl": "https://education.github.com/pack",
+    "sourceExcerpt": "Free access to 25+ Microsoft Azure cloud services plus $100 in Azure credit. For students aged 18+.",
+    "confidence": 0.75,
+    "reviewStatus": "auto_ok",
+    "status": "active",
+    "statusLabel": "NEW",
+    "daysLeft": null,
+    "endingSoon": false,
+    "isNew": true,
+    "createdAt": "2026-10-03 07:37:11",
+    "updatedAt": "2026-10-03 08:43:33",
+    "lastVerifiedAt": "2026-10-03 08:43:33"
+  },
+  {
     "id": 2,
     "fingerprint": "b50602368423573b5e434e125089bfeb",
     "provider": {
@@ -102,5 +452,151 @@
     "createdAt": "2026-10-03 06:15:50",
     "updatedAt": "2026-10-03 06:15:50",
     "lastVerifiedAt": "2026-10-03 06:15:50"
+  },
+  {
+    "id": 1,
+    "fingerprint": "44d74f8e0d04714bb4d5b14cfc0e4d39",
+    "provider": {
+      "slug": "anthropic",
+      "name": "Anthropic",
+      "nameEn": "Anthropic",
+      "country": "US",
+      "website": "https://www.anthropic.com",
+      "color": "#D97757",
+      "cnAccessible": false
+    },
+    "title": "Dedicated API credits and educational features for student learning",
+    "summary": "Training and enablement Resources for successful adoption across your institution",
+    "category": "student",
+    "categoryLabel": "学生优惠",
+    "benefit": null,
+    "audience": [
+      "student"
+    ],
+    "audienceLabels": [
+      "学生"
+    ],
+    "audienceNote": "student",
+    "region": "GLOBAL",
+    "requiresCard": false,
+    "requiresVerification": "student_id",
+    "startDate": null,
+    "endDate": null,
+    "isRecurring": null,
+    "claimUrl": "https://www.anthropic.com/pricing",
+    "sourceUrl": "https://www.anthropic.com/pricing",
+    "sourceExcerpt": "Dedicated API credits and educational features for student learning\nTraining and enablement\nResources for successful adoption across your institution",
+    "confidence": 0.69,
+    "reviewStatus": "auto_ok",
+    "status": "active",
+    "statusLabel": "NEW",
+    "daysLeft": null,
+    "endingSoon": false,
+    "isNew": true,
+    "createdAt": "2026-10-03 06:15:50",
+    "updatedAt": "2026-10-03 08:43:33",
+    "lastVerifiedAt": "2026-10-03 08:43:33"
+  },
+  {
+    "id": 7,
+    "fingerprint": "b1056efe9ebf34ebe17bf37b4f1be88e",
+    "provider": {
+      "slug": "zhipu",
+      "name": "智谱 AI",
+      "nameEn": "Zhipu AI",
+      "country": "CN",
+      "website": "https://www.z.ai",
+      "color": "#3B5BDB",
+      "cnAccessible": true
+    },
+    "title": "智谱 ZCode 周末活动：所有用户免费领 3 亿 GLM-5.3-Flash Token（2026-09-04-2026-09-07 新一轮",
+    "summary": null,
+    "category": "free_credit",
+    "categoryLabel": "免费额度",
+    "benefit": {
+      "kind": "token",
+      "amount": 300000000,
+      "unit": "token",
+      "unitLabel": "tokens",
+      "text": "3 亿 GLM-5.3-Flash Token",
+      "display": "3 亿 tokens"
+    },
+    "audience": [
+      "all"
+    ],
+    "audienceLabels": [
+      "所有人"
+    ],
+    "audienceNote": null,
+    "region": "CN",
+    "requiresCard": false,
+    "requiresVerification": null,
+    "startDate": "2026-09-04",
+    "endDate": "2026-09-07",
+    "isRecurring": "weekly",
+    "claimUrl": "https://igetoken.com/deals/2026-08-zcode-weekend-300m",
+    "sourceUrl": null,
+    "sourceExcerpt": null,
+    "confidence": 0.95,
+    "reviewStatus": "auto_ok",
+    "status": "ended",
+    "statusLabel": "已结束",
+    "daysLeft": -26,
+    "endingSoon": false,
+    "isNew": true,
+    "createdAt": "2026-10-03 07:35:24",
+    "updatedAt": "2026-10-03 07:35:24",
+    "lastVerifiedAt": "2026-10-03 07:35:24"
+  },
+  {
+    "id": 10,
+    "fingerprint": "52388eed4d58d119a1a79a936014e042",
+    "provider": {
+      "slug": "deepseek",
+      "name": "DeepSeek",
+      "nameEn": "DeepSeek",
+      "country": "CN",
+      "website": "https://www.deepseek.com",
+      "color": "#4D6BFE",
+      "cnAccessible": true
+    },
+    "title": "DeepSeek Harness 桌面端发布：6 元赠金领取与上手指南",
+    "summary": null,
+    "category": "free_credit",
+    "categoryLabel": "免费额度",
+    "benefit": {
+      "kind": "credit_cny",
+      "amount": 6,
+      "unit": "CNY",
+      "unitLabel": "元",
+      "text": "6 元",
+      "display": "¥6"
+    },
+    "audience": [
+      "all"
+    ],
+    "audienceLabels": [
+      "所有人"
+    ],
+    "audienceNote": null,
+    "region": "CN",
+    "requiresCard": false,
+    "requiresVerification": null,
+    "startDate": null,
+    "endDate": "2026-09-29",
+    "isRecurring": null,
+    "claimUrl": "https://www.denghy.cn/articles/deepseek-harness-desktop-launch",
+    "sourceUrl": null,
+    "sourceExcerpt": null,
+    "confidence": 0.93,
+    "reviewStatus": "auto_ok",
+    "status": "ended",
+    "statusLabel": "已结束",
+    "daysLeft": -4,
+    "endingSoon": false,
+    "isNew": true,
+    "createdAt": "2026-10-03 07:37:11",
+    "updatedAt": "2026-10-03 07:37:11",
+    "lastVerifiedAt": "2026-10-03 07:37:11"
   }
 ]

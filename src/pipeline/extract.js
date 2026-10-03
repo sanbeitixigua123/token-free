@@ -279,8 +279,14 @@ export function promoteTitle(candidateTitle, context, isBadTitle) {
  * @returns {object} 结构化活动（含 confidence），无法确定字段为 null
  */
 export function extractActivity(candidate, ctx) {
-  const { provider, source, refYear, allowedHosts = [], isBadTitle = () => ({ ok: true }) } = ctx;
-  const text = cleanText(`${candidate.title}\n${candidate.context}`);
+  const {
+    provider, source, refYear, allowedHosts = [],
+    isBadTitle = () => ({ ok: true }), skipHostCheck = false,
+  } = ctx;
+  // 搜索型源的候选把正文放在 text 里（见 pipeline/index.js 的 processSearchSource），
+  // 固定页源的候选用 context。两者都兼容，否则搜索源会拿到空文本。
+  const body = candidate.context || candidate.text || '';
+  const text = cleanText(`${candidate.title}\n${body}`);
   const lower = text.toLowerCase();
 
   // ---- 类别 ----
@@ -334,13 +340,21 @@ export function extractActivity(candidate, ctx) {
   }
 
   // ---- 领取链接 ----
-  let claimUrl = candidate.href || null;
+  // 搜索型源（skipHostCheck）的链接本就指向外部站点（媒体/社区/第三方汇总），
+  // 白名单在此不适用：若照常丢弃，搜索结果里最有价值的"详情页链接"就全没了。
+  // 故此处对搜索源保留原链接，安全性由渲染侧的 safeUrl() 协议白名单兜底。
+  let claimUrl = candidate.href || candidate.url || null;
   let linkOk = false;
   if (claimUrl) {
-    const host = safeHost(claimUrl);
-    linkOk = allowedHosts.some((h) => host === h || host.endsWith('.' + h)) || host === safeHost(source.url);
-    if (!linkOk) claimUrl = null; // 不同域 → 丢弃，避免幻觉/外链
-    else claimUrl = normalizeUrl(claimUrl);
+    if (skipHostCheck) {
+      claimUrl = normalizeUrl(claimUrl);
+      linkOk = true;
+    } else {
+      const host = safeHost(claimUrl);
+      linkOk = allowedHosts.some((h) => host === h || host.endsWith('.' + h)) || host === safeHost(source.url);
+      if (!linkOk) claimUrl = null; // 不同域 → 丢弃，避免幻觉/外链
+      else claimUrl = normalizeUrl(claimUrl);
+    }
   }
 
   // ---- 置信度 ----

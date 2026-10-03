@@ -57,6 +57,9 @@ providers:
         selector: article
       - kind: announcement
         url: https://api-docs.deepseek.com/news
+      # 官网新闻页（2026-10-03 四层校验通过：200 / 1772 字 / 同域 / title 含 DeepSeek）
+      - kind: announcement
+        url: https://www.deepseek.com/news
       - kind: search
         query: DeepSeek Harness 桌面端 赠送 额度 活动
 
@@ -164,6 +167,10 @@ providers:
     sources:
       - kind: pricing
         url: https://platform.openai.com/docs/pricing
+      # 中文新闻页 openai.com/zh-Hans-CN/news/ —— 探测时用 Chrome UA 返回 200，
+      # 但**流水线用诚实 UA（TokenFreeBot/1.0）实测 403**，故不能作为数据源。
+      # 这是"探测条件必须与运行时一致"的教训：用浏览器 UA 验证等于自欺欺人。
+      # 若日后 OpenAI 放宽 bot 策略可再加回；当前靠 search 源兜底。
       - kind: search
         query: OpenAI ChatGPT free credits student offer promotion
 
@@ -211,3 +218,424 @@ providers:
         url: https://docs.x.ai/docs/models
       - kind: search
         query: xAI Grok API free credits promotion
+
+  # ============================================================
+  #  编程工具 / 本地智能体
+  #  加入理由：这类产品是"送额度"最积极的一群，且多数有稳定公告/定价页。
+  #  此前完全缺失，是收录量稀少的主因之一。
+  # ============================================================
+
+  - slug: zhipu-zcode
+    name_zh: 智谱 ZCode
+    name_en: Zhipu ZCode
+    country: CN
+    website: https://www.zhipuai.cn
+    pricing_url: https://www.zhipuai.cn/blog
+    announcement_url: https://docs.bigmodel.cn/cn/update/new-releases
+    brand_color: "#3B5BDB"
+    cn_accessible: true
+    tier: 1
+    sources:
+      - kind: announcement
+        url: https://docs.bigmodel.cn/cn/update/new-releases
+      - kind: announcement
+        url: https://www.zhipuai.cn/blog
+      - kind: search
+        query: 智谱 ZCode 免费 赠送 亿 token 活动
+
+  - slug: aliyun-lingma
+    name_zh: 阿里通义灵码
+    name_en: Alibaba Lingma
+    country: CN
+    website: https://lingma.aliyun.com
+    pricing_url: https://lingma.aliyun.com/
+    announcement_url: https://help.aliyun.com/zh/model-studio/release-notes
+    brand_color: "#FF6A00"
+    cn_accessible: true
+    tier: 1
+    sources:
+      - kind: pricing
+        url: https://lingma.aliyun.com/
+      - kind: announcement
+        url: https://help.aliyun.com/zh/model-studio/release-notes
+      - kind: search
+        query: 通义灵码 免费 赠送 额度 活动
+
+  - slug: trae
+    name_zh: 字节 Trae
+    name_en: ByteDance Trae
+    country: CN
+    website: https://www.trae.ai
+    pricing_url: https://www.trae.ai/pricing
+    announcement_url: https://www.trae.ai/blog
+    brand_color: "#1E6FFF"
+    cn_accessible: true
+    tier: 1
+    sources:
+      - kind: pricing
+        url: https://www.trae.ai/pricing
+      # 官方博客（2026-10-03 四层校验通过：200 / 5577 字 / title 含 Trae）
+      # 注：该站其余 16 条候选路径均为 3~388 字的骨架屏空壳，已排除
+      - kind: announcement
+        url: https://www.trae.ai/blog
+      - kind: search
+        query: Trae 字节 免费 赠送 额度 活动
+
+  - slug: tencent-codebuddy
+    name_zh: 腾讯 CodeBuddy
+    name_en: Tencent CodeBuddy
+    country: CN
+    website: https://copilot.tencent.com
+    pricing_url: https://copilot.tencent.com/
+    announcement_url: https://cloud.tencent.com/developer/
+    brand_color: "#0052D9"
+    cn_accessible: true
+    tier: 2
+    sources:
+      - kind: pricing
+        url: https://copilot.tencent.com/
+      - kind: announcement
+        url: https://cloud.tencent.com/developer/
+      - kind: search
+        query: 腾讯 CodeBuddy 免费 赠送 额度 活动
+
+  - slug: baidu-comate
+    name_zh: 百度文心快码 Comate
+    name_en: Baidu Comate
+    country: CN
+    website: https://comate.baidu.com
+    pricing_url: https://comate.baidu.com/
+    announcement_url: https://comate.baidu.com/
+    brand_color: "#2932E1"
+    cn_accessible: true
+    tier: 2
+    sources:
+      - kind: pricing
+        url: https://comate.baidu.com/
+      - kind: search
+        query: 百度 Comate 文心快码 免费 赠送 活动
+
+  - slug: qoder
+    name_zh: 阿里 Qoder
+    name_en: Alibaba Qoder
+    country: CN
+    website: https://qoder.com
+    pricing_url: https://qoder.com/
+    announcement_url: https://qoder.com/zh/blog
+    brand_color: "#615CED"
+    cn_accessible: true
+    tier: 2
+    sources:
+      - kind: pricing
+        url: https://qoder.com/
+      # 中文博客 + 更新日志（2026-10-03 四层校验通过：5509 / 794 字，同域）
+      - kind: announcement
+        url: https://qoder.com/zh/blog
+      - kind: docs
+        url: https://qoder.com/changelog
+      - kind: search
+        query: Qoder 阿里 免费 试用 赠送 额度
+
+  - slug: github-copilot
+    name_zh: GitHub Copilot
+    name_en: GitHub Copilot
+    country: US
+    website: https://github.com/features/copilot
+    pricing_url: https://github.com/features/copilot/plans
+    announcement_url: https://github.blog/changelog/
+    brand_color: "#181717"
+    cn_accessible: true
+    tier: 1
+    sources:
+      - kind: announcement
+        url: https://github.blog/changelog/
+      - kind: search
+        query: GitHub Copilot free tier student pack credits announcement
+
+  - slug: cursor
+    name_zh: Cursor
+    name_en: Cursor
+    country: US
+    website: https://cursor.com
+    pricing_url: https://cursor.com/pricing
+    brand_color: "#000000"
+    cn_accessible: false
+    tier: 2
+    sources:
+      - kind: search
+        query: Cursor AI editor free plan trial credits 2026
+
+  - slug: windsurf
+    name_zh: Windsurf
+    name_en: Windsurf
+    country: US
+    website: https://windsurf.com
+    pricing_url: https://windsurf.com/pricing
+    brand_color: "#09B6A2"
+    cn_accessible: false
+    tier: 2
+    sources:
+      - kind: pricing
+        url: https://windsurf.com/pricing
+      - kind: search
+        query: Windsurf free plan credits trial 2026
+
+  - slug: cline
+    name_zh: Cline
+    name_en: Cline
+    country: US
+    website: https://cline.bot
+    pricing_url: https://cline.bot/pricing
+    brand_color: "#5B5BD6"
+    cn_accessible: false
+    tier: 3
+    sources:
+      - kind: search
+        query: Cline AI coding agent free credits offer
+
+  - slug: continue-dev
+    name_zh: Continue.dev
+    name_en: Continue
+    country: US
+    website: https://continue.dev
+    pricing_url: https://continue.dev/pricing
+    brand_color: "#7C3AED"
+    cn_accessible: false
+    tier: 3
+    sources:
+      - kind: search
+        query: Continue.dev free open source AI code assistant offer
+
+  - slug: jetbrains-ai
+    name_zh: JetBrains AI
+    name_en: JetBrains AI
+    country: CZ
+    website: https://www.jetbrains.com/ai
+    pricing_url: https://www.jetbrains.com/ai/pricing
+    announcement_url: https://www.jetbrains.com/community/education/
+    brand_color: "#FE315D"
+    cn_accessible: true
+    tier: 2
+    sources:
+      - kind: announcement
+        url: https://www.jetbrains.com/community/education/
+      - kind: search
+        query: JetBrains AI free student license offer
+
+  - slug: gemini-code-assist
+    name_zh: Google Gemini Code Assist
+    name_en: Gemini Code Assist
+    country: US
+    website: https://codeassist.google
+    pricing_url: https://codeassist.google/pricing
+    announcement_url: https://blog.google/technology/ai/
+    brand_color: "#4285F4"
+    cn_accessible: false
+    tier: 2
+    sources:
+      - kind: search
+        query: Gemini Code Assist free tier individual offer
+
+  - slug: amazon-q
+    name_zh: Amazon Q Developer
+    name_en: Amazon Q Developer
+    country: US
+    website: https://aws.amazon.com/q/developer
+    pricing_url: https://aws.amazon.com/q/developer/pricing
+    brand_color: "#FF9900"
+    cn_accessible: false
+    tier: 3
+    sources:
+      - kind: search
+        query: Amazon Q Developer free tier offer credits
+
+  - slug: mistral
+    name_zh: Mistral AI
+    name_en: Mistral AI
+    country: FR
+    website: https://mistral.ai
+    pricing_url: https://mistral.ai/pricing
+    announcement_url: https://mistral.ai/news
+    brand_color: "#FA520F"
+    cn_accessible: false
+    tier: 2
+    sources:
+      - kind: announcement
+        url: https://mistral.ai/news
+      - kind: search
+        query: Mistral AI free tier credits la plateforme
+
+  - slug: groq
+    name_zh: Groq
+    name_en: Groq
+    country: US
+    website: https://groq.com
+    pricing_url: https://groq.com/pricing
+    announcement_url: https://groq.com/
+    brand_color: "#F55036"
+    cn_accessible: false
+    tier: 3
+    sources:
+      - kind: pricing
+        url: https://groq.com/
+      - kind: search
+        query: Groq free tier API credits rate limit
+
+  - slug: together-ai
+    name_zh: Together AI
+    name_en: Together AI
+    country: US
+    website: https://www.together.ai
+    pricing_url: https://www.together.ai/pricing
+    announcement_url: https://www.together.ai/blog
+    brand_color: "#0F6FFF"
+    cn_accessible: false
+    tier: 3
+    sources:
+      - kind: announcement
+        url: https://www.together.ai/blog
+      - kind: search
+        query: Together AI free credits signup offer
+
+  - slug: openrouter
+    name_zh: OpenRouter
+    name_en: OpenRouter
+    country: US
+    website: https://openrouter.ai
+    pricing_url: https://openrouter.ai/models
+    announcement_url: https://openrouter.ai/docs/changelog
+    brand_color: "#6467F2"
+    cn_accessible: true
+    tier: 2
+    sources:
+      - kind: pricing
+        url: https://openrouter.ai/
+      # 更新日志（2026-10-03 四层校验通过：200 / 同域 / title 含 OpenRouter）
+      - kind: docs
+        url: https://openrouter.ai/docs/changelog
+      - kind: search
+        query: OpenRouter free models list 免费 模型
+
+  - slug: cerebras
+    name_zh: Cerebras
+    name_en: Cerebras
+    country: US
+    website: https://www.cerebras.ai
+    pricing_url: https://www.cerebras.ai/pricing
+    announcement_url: https://www.cerebras.ai/blog
+    brand_color: "#FF4F00"
+    cn_accessible: false
+    tier: 3
+    sources:
+      - kind: announcement
+        url: https://www.cerebras.ai/blog
+      - kind: search
+        query: Cerebras inference free tier tokens per day
+
+  - slug: siliconflow
+    name_zh: 硅基流动 SiliconFlow
+    name_en: SiliconFlow
+    country: CN
+    website: https://cloud.siliconflow.cn
+    pricing_url: https://cloud.siliconflow.cn/
+    announcement_url: https://cloud.siliconflow.cn/
+    brand_color: "#6E4AFF"
+    cn_accessible: true
+    tier: 1
+    sources:
+      - kind: pricing
+        url: https://cloud.siliconflow.cn/
+      - kind: search
+        query: 硅基流动 注册 赠送 token 免费额度
+
+  - slug: aliyun-bailian
+    name_zh: 阿里云百炼
+    name_en: Alibaba Bailian
+    country: CN
+    website: https://bailian.console.aliyun.com
+    pricing_url: https://help.aliyun.com/zh/model-studio/
+    announcement_url: https://help.aliyun.com/zh/model-studio/release-notes
+    brand_color: "#FF6A00"
+    cn_accessible: true
+    tier: 1
+    sources:
+      - kind: announcement
+        url: https://help.aliyun.com/zh/model-studio/release-notes
+      - kind: pricing
+        url: https://help.aliyun.com/zh/model-studio/
+      - kind: search
+        query: 阿里云百炼 新用户 免费 token 赠送 额度
+
+  - slug: volcengine-ark
+    name_zh: 火山引擎方舟
+    name_en: Volcengine Ark
+    country: CN
+    website: https://www.volcengine.com
+    pricing_url: https://www.volcengine.com/docs/82379/1099320
+    announcement_url: https://www.volcengine.com/docs/82379/1099320
+    brand_color: "#1664FF"
+    cn_accessible: true
+    tier: 1
+    sources:
+      - kind: pricing
+        url: https://www.volcengine.com/docs/82379/1099320
+      - kind: search
+        query: 火山方舟 豆包 免费额度 赠送 token 活动
+
+  - slug: iflytek-spark
+    name_zh: 讯飞星火
+    name_en: iFlytek Spark
+    country: CN
+    website: https://xinghuo.xfyun.cn
+    pricing_url: https://xinghuo.xfyun.cn/sparkapi
+    announcement_url: https://xinghuo.xfyun.cn/sparkapi
+    brand_color: "#1F7AE0"
+    cn_accessible: true
+    tier: 2
+    sources:
+      - kind: pricing
+        url: https://xinghuo.xfyun.cn/sparkapi
+      - kind: search
+        query: 讯飞星火 免费 赠送 token 额度 新用户
+
+  - slug: stepfun
+    name_zh: 阶跃星辰
+    name_en: StepFun
+    country: CN
+    website: https://platform.stepfun.com
+    pricing_url: https://platform.stepfun.com/pricing
+    brand_color: "#1A5CFF"
+    cn_accessible: true
+    tier: 2
+    sources:
+      - kind: search
+        query: 阶跃星辰 StepFun 免费额度 赠送 token
+
+  - slug: baichuan
+    name_zh: 百川智能
+    name_en: Baichuan AI
+    country: CN
+    website: https://www.baichuan-ai.com
+    pricing_url: https://platform.baichuan-ai.com/price
+    brand_color: "#1B7AFF"
+    cn_accessible: true
+    tier: 3
+    sources:
+      - kind: search
+        query: 百川智能 Baichuan 免费额度 试用 赠送
+
+  - slug: github-student
+    name_zh: GitHub 学生开发者包
+    name_en: GitHub Student Developer Pack
+    country: US
+    website: https://education.github.com/pack
+    pricing_url: https://education.github.com/pack
+    announcement_url: https://education.github.com/pack
+    brand_color: "#181717"
+    cn_accessible: true
+    tier: 1
+    sources:
+      - kind: announcement
+        url: https://education.github.com/pack
+      - kind: search
+        query: GitHub Student Developer Pack 学生 免费 权益 申请

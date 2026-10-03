@@ -2,10 +2,17 @@
  * llm-extract.js — LLM 结构化提取适配器（可选增强）
  *
  * 设计：走 OpenAI 兼容的 /chat/completions 接口，因此可对接
- *   DeepSeek / 智谱 GLM / 阿里百炼 / Moonshot / OpenAI / 任何兼容网关。
+ *   Gemini / DeepSeek / 智谱 GLM / 阿里百炼 / Moonshot / OpenAI / 任何兼容网关。
  *
  * 未配置 key 时 enabled=false，本模块被流水线自动跳过，不影响主流程。
- * 用户日后在 config/settings.json 的 llm 节点填入 baseUrl/apiKey/model 即生效。
+ * 凭据来源见 src/lib/config.js 的 applySecrets()：
+ *   config/secrets.json（本地，已 gitignore）或环境变量 TOKENFREE_LLM_API_KEY（CI）。
+ *
+ * 当前配置（2026-10-03 实测）：
+ *   baseUrl https://generativelanguage.googleapis.com/v1beta/openai
+ *   model   gemini-3.8-flash
+ *   ⚠️ 注意：gemini-2.5-flash 对**新用户**已停用（API 返回 404 并提示改用 3.8）。
+ *      列在 /v1beta/models 里 ≠ 可调用，必须实际发一次请求验证。
  *
  * 防幻觉三道闸：
  *   1) 提示词强制"只抽原文，缺失返回 null"

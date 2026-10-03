@@ -173,10 +173,17 @@ export function hasGiftSemantics(item) {
 }
 
 /**
- * @returns {{ok:boolean, action:'auto_ok'|'pending'|'reject', reasons:string[], item:object}}
+ * @returns {{ok:boolean, action:'auto_ok'|'pending'|'reject', reasons:string[], notes:string[], item:object}}
+ *
+ * reasons 与 notes 的区别（重要）：
+ *   reasons —— 硬性问题，会阻塞 auto_ok（如链接域名不在白名单、额度量级异常）
+ *   notes   —— 说明性备注，仅供人工审阅参考，不参与 auto_ok 判定
+ * 此前二者混用，导致搜索源的条目因"链接来自搜索结果"这条纯说明被永久
+ * 挡在待审门外（置信度 0.95 也无法发布），是 ZCode 未被收录的直接原因。
  */
-export function validateItem(item, { allowedHosts = [], sourceUrl = null, settings = {} } = {}) {
+export function validateItem(item, { allowedHosts = [], sourceUrl = null, settings = {}, skipHostCheck = false } = {}) {
   const reasons = [];
+  const notes = [];
   const review = settings.review || {};
   const autoApprove = review.autoApproveConfidence ?? 0.8;
   const pendingFloor = review.pendingConfidence ?? 0.5;
@@ -184,43 +191,63 @@ export function validateItem(item, { allowedHosts = [], sourceUrl = null, settin
 
   // V1 标题
   if (!item.title || item.title.length < 4) {
-    return { ok: false, action: REJECT, reasons: ['标题缺失或过短'], item };
+    return { ok: false, action: REJECT, reasons: ['标题缺失或过短'], notes, item };
   }
   // V1a 标题质量（挡掉导航项、报价句、句子片段）
   const titleCheck = isBadTitle(item.title);
   if (!titleCheck.ok) {
-    return { ok: false, action: REJECT, reasons: [`标题质量不合格：${titleCheck.reason}`], item };
+    return { ok: false, action: REJECT, reasons: [`标题质量不合格：${titleCheck.reason}`], notes, item };
   }
 
   // V1b 赠予语义（核心质量闸门）
   // 定价页的"$2.00 / 1M tokens"必须挡掉；没有赠予语义的条目一律拒绝。
   if (isPriceOnly(item)) {
-    return { ok: false, action: REJECT, reasons: ['单价型定价行，非赠送活动'], item };
+    return { ok: false, action: REJECT, reasons: ['单价型定价行，非赠送活动'], notes, item };
   }
   // 付费档位标签（"付费层级（美元/100 万个 token）"）
   if (isPaidTier(item.title) || isPaidTier(item.summary)) {
-    return { ok: false, action: REJECT, reasons: ['付费档位标签，非活动'], item };
+    return { ok: false, action: REJECT, reasons: ['付费档位标签，非活动'], notes, item };
   }
   if (!hasGiftSemantics(item)) {
-    return { ok: false, action: REJECT, reasons: ['缺少赠予/免费语义'], item };
+    return { ok: false, action: REJECT, reasons: ['缺少赠予/免费语义'], notes, item };
   }
 
   // V2 链接
   if (!item.claimUrl) {
-    reasons.push('缺少领取链接');
-  } else if (!/^https?:\/\//i.test(item.claimUrl)) {
-    return { ok: false, action: REJECT, reasons: ['领取链接非 http(s)'], item };
+    // 缺链接是"信息不完整"，不是"内容不可信" —— 记入 notes 而非 reasons，
+    // 避免把内容翔实但暂无直达链接的活动一律压在待审。
+    notes.push('缺少领取链接');
+  } else if (!/^https?:\/\//i.test(String(item.claimUrl).trim())) {
+    // 占位链接（"#"、"javascript:void(0)"）等价于"没有链接"：
+    // 规则抓取常把 a[href="#"] 的"立即领取"按钮当成链接带出，
+    // 若直接判为"非 http(s)"整条拒绝，会把活动本身一起丢掉。
+    // 故降级为"缺链接"处理（记 notes、不阻塞 auto_ok），而非 reject。
+    if (/^(?:#|javascript:)/i.test(String(item.claimUrl).trim())) {
+      notes.push('领取链接为占位锚点，视同缺失');
+      item.claimUrl = null;
+    } else {
+      return { ok: false, action: REJECT, reasons: ['领取链接非 http(s)'], notes, item };
+    }
+  } else if (skipHostCheck) {
+    // 搜索型源的结果天然指向媒体/社区/第三方站，白名单在此不适用。
+    // 不降置信度，仅记一条说明，便于人工审阅时知道链接是外部来源。
+    notes.push('链接来自搜索结果（外部站点）');
   } else {
     const host = safeHost(item.claimUrl);
     const srcHost = sourceUrl ? safeHost(sourceUrl) : '';
-    const allowed = host === srcHost || allowedHosts.some((h) => host === h || host.endsWith('.' + h));
+    // 子域后缀匹配：白名单存的是域名，实际链接常带多级子域
+    //（如白名单 aliyun.com → 实际 myaccount.console.aliyun.com）。
+    // 因此判定条件是「host 等于白名单项 或 是其后代子域」，而非精确相等。
+    const allowed = !!host && (
+      host === srcHost ||
+      allowedHosts.some((h) => host === h || host.endsWith('.' + h))
+    );
     if (!allowed) {
       // 不在白名单 → 降级待审（可能被抓到了第三方转述页）
-      reasons.push(`链接域名 ${host} 不在厂商白名单`);
+      reasons.push(`链接域名 ${host || '(无法解析)'} 不在厂商白名单`);
       item.confidence = Math.min(item.confidence, 0.55);
     }
   }
-
   // V3 日期
   for (const [k, v] of [['startDate', item.startDate], ['endDate', item.endDate]]) {
     if (!v) continue;
@@ -261,12 +288,13 @@ export function validateItem(item, { allowedHosts = [], sourceUrl = null, settin
     // 让每条拒绝都有可追溯的原因（此前"未知"拒绝无法回溯，是审计盲点）
     reasons.push(`置信度不足（${Number(item.confidence).toFixed(2)} < ${pendingFloor}）`);
   }
-  // 有硬性问题（链接域名异常等）时，即使置信度高也转待审
+  // 有硬性问题（链接域名异常、额度量级异常等）时，即使置信度高也转待审。
+  // 注意：这里只看 reasons，notes 是说明性备注，不阻塞发布。
   if (action === AUTO_OK && reasons.length) action = PENDING;
 
   if (reasons.length) log.debug(`校验提示：${item.title}`, { reasons: reasons.join('; ') });
 
-  return { ok: action !== REJECT, action, reasons, item };
+  return { ok: action !== REJECT, action, reasons, notes, item };
 }
 
 function safeHost(u) {

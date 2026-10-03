@@ -3,24 +3,34 @@
     {
       "value": "free_credit",
       "label": "免费额度",
-      "count": 1
+      "count": 8
     },
     {
       "value": "trial",
       "label": "免费试用",
-      "count": 1
+      "count": 2
+    },
+    {
+      "value": "student",
+      "label": "学生优惠",
+      "count": 2
     }
   ],
   "audiences": [
     {
       "value": "all",
       "label": "所有人",
-      "count": 1
+      "count": 6
     },
     {
       "value": "new_user",
       "label": "新用户",
-      "count": 1
+      "count": 4
+    },
+    {
+      "value": "student",
+      "label": "学生",
+      "count": 2
     },
     {
       "value": "verified",
@@ -32,6 +42,11 @@
     {
       "value": "active",
       "label": "进行中",
+      "count": 10
+    },
+    {
+      "value": "ended",
+      "label": "已结束",
       "count": 2
     }
   ],
@@ -39,10 +54,40 @@
     {
       "value": "CN",
       "label": "国内",
+      "count": 10
+    },
+    {
+      "value": "GLOBAL",
+      "label": "海外",
       "count": 2
     }
   ],
   "providers": [
+    {
+      "value": "deepseek",
+      "label": "DeepSeek",
+      "count": 4
+    },
+    {
+      "value": "zhipu",
+      "label": "智谱 AI",
+      "count": 3
+    },
+    {
+      "value": "anthropic",
+      "label": "Anthropic",
+      "count": 1
+    },
+    {
+      "value": "github-student",
+      "label": "GitHub 学生开发者包",
+      "count": 1
+    },
+    {
+      "value": "aliyun-bailian",
+      "label": "阿里云百炼",
+      "count": 1
+    },
     {
       "value": "minimax",
       "label": "MiniMax 稀宇科技",

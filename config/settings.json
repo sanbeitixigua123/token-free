@@ -12,19 +12,21 @@
     "respectRobots": true
   },
   "llm": {
-    "enabled": false,
-    "baseUrl": "",
+    "enabled": true,
+    "baseUrl": "https://generativelanguage.googleapis.com/v1beta/openai",
     "apiKey": "",
-    "model": "",
-    "maxItemsPerSource": 15
+    "model": "gemini-3.8-flash",
+    "maxItemsPerSource": 15,
+    "timeoutMs": 60000,
+    "note": "apiKey 故意留空：凭据存于 config/secrets.json（已 gitignore），或由环境变量 TOKENFREE_LLM_API_KEY 注入（CI 用）。优先用 OpenAI 兼容端点 /v1beta/openai，可零改动复用 llama 模块的 /chat/completions 调用；如需换厂商，只改 baseUrl 与 model 即可。"
   },
   "archive": {
     "afterDays": 30
   },
   "review": {
-    "autoApproveConfidence": 0.72,
-    "pendingConfidence": 0.45,
-    "note": "阈值依据可得数据实测定标：多数厂商页面不声明活动起止日期，抽取上限约 0.80~0.89。autoApprove 取 0.72 表示『抽到明确额度或强受众限定 + 标题合格』即可发布；0.45~0.72 进人工待审队列；低于 0.45 直接丢弃。若要更保守可上调到 0.80（发布量会显著减少）。"
+    "autoApproveConfidence": 0.62,
+    "pendingConfidence": 0.25,
+    "note": "口径：宁多毋缺。autoApprove 0.62 —— 抽到明确额度或强受众限定且标题合格即可自动发布；pending 0.25 —— 低置信条目不再直接丢弃，而是进待审队列，由 /review 页人工放行，避免漏掉真实活动。此前 0.72/0.45 过于保守，叠加数据源错配（全抓定价页）导致线上长期只有 2 条。下调后配合 announcement/search 类型的数据源，覆盖率显著提升；质量由 /review 人工闸门兜底。"
   },
   "export": {
     "siteName": "Token Free",
@@ -34,6 +36,9 @@
     "enabled": true,
     "provider": "duckduckgo-lite",
     "maxResultsPerQuery": 5,
-    "note": "无固定页面时用搜索兜底发现活动；失败不影响主流程"
+    "timeoutMs": 15000,
+    "delayMs": 1500,
+    "maxConsecutiveBlocks": 3,
+    "note": "无固定页面时用搜索兜底发现活动；失败不影响主流程。delayMs 为请求间隔（DDG 对连续请求敏感，2026-10-03 实测无间隔连发会被 202 挑战页拦截）；maxConsecutiveBlocks 为连续零结果阈值，达到即判定端点限流、放弃本轮剩余 query，避免加重封禁。搜索仅是兜底路径，可靠来源仍是 pricing/announcement/docs。"
   }
 }

@@ -35,14 +35,20 @@ CREATE TABLE IF NOT EXISTS sources (
   id                   INTEGER PRIMARY KEY,
   provider_id          INTEGER NOT NULL REFERENCES providers(id) ON DELETE CASCADE,
   kind                 TEXT NOT NULL,
-  url                  TEXT NOT NULL,
+  -- 固定页源填 url；搜索型源（kind='search'）填 query，此时 url 允许为 NULL。
+  -- 早期版本把 url 定义为 NOT NULL，导致搜索源根本无法入库，
+  -- 于是 providers.yaml 里所有 kind:search 配置形同虚设（详见 2026-10-03 排查）。
+  url                  TEXT,
+  query                TEXT,
   selector             TEXT,
   frequency            TEXT NOT NULL DEFAULT 'daily',
   enabled              INTEGER NOT NULL DEFAULT 1,
   last_ok_at           TEXT,
   consecutive_failures INTEGER NOT NULL DEFAULT 0,
   created_at           TEXT NOT NULL DEFAULT (datetime('now')),
-  UNIQUE(provider_id, url)
+  -- 同一厂商下：固定源按 url 唯一，搜索源按 query 唯一。
+  -- 两列都参与唯一约束，NULL 在 SQLite 中互不相等，故不会误判。
+  UNIQUE(provider_id, url, query)
 );
 CREATE INDEX IF NOT EXISTS idx_src_provider ON sources(provider_id, enabled);
 
@@ -117,6 +123,11 @@ CREATE TABLE IF NOT EXISTS activities (
   source_excerpt        TEXT,
   evidence_id           INTEGER REFERENCES raw_snapshots(id),
   confidence            REAL NOT NULL DEFAULT 0.5,
+  -- extracted_by: 该条目由哪条路径产出（rule / search / llm / search+llm）。
+  -- 必须持久化，否则"链接是否经过域名白名单校验"这一决策事后无法追溯：
+  -- 搜索型源的产物刻意跳过白名单校验（宁多毋缺），若无此列，
+  -- 事后重算审核状态时无法还原当时的判定上下文（实测踩过这个坑）。
+  extracted_by          TEXT,
   review_status         TEXT NOT NULL DEFAULT 'pending',
   status_override       TEXT,
   archived_at           TEXT,

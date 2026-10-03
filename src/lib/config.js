@@ -164,9 +164,61 @@ export function loadSettings() {
     archive: { afterDays: 30 },
     export: { siteName: 'Token Free', siteUrl: '' },
   };
-  if (!fs.existsSync(file)) return defaults;
+  if (!fs.existsSync(file)) return applySecrets(defaults);
   const user = JSON.parse(fs.readFileSync(file, 'utf8'));
-  return deepMerge(defaults, user);
+  return applySecrets(deepMerge(defaults, user));
+}
+
+/**
+ * 把敏感凭据注入设置对象。
+ *
+ * 为什么单独拆一个文件：config/settings.json **受版本控制**（用于共享非敏感配置），
+ * 若把 API key 写进去，push 后会永久留在公开仓库的提交历史里，事后删除也清不掉。
+ * 故凭据一律走 config/secrets.json —— 该文件已在 .gitignore 中忽略。
+ *
+ * 优先级（后者覆盖前者）：
+ *   1) settings.json 里的值（兼容旧写法 / 本地临时覆盖）
+ *   2) config/secrets.json
+ *   3) 环境变量
+ * 环境变量优先级最高，因为 CI（GitHub Actions）只能通过 secrets 注入，
+ * 不该把密钥落到 runner 的磁盘文件上。
+ */
+function applySecrets(settings) {
+  const out = { ...settings };
+
+  // 2) 本地密钥文件
+  const secretsFile = path.join(CONFIG_DIR, 'secrets.json');
+  if (fs.existsSync(secretsFile)) {
+    try {
+      const sec = JSON.parse(fs.readFileSync(secretsFile, 'utf8'));
+      out.llm = { ...(out.llm || {}), ...stripComments(sec.llm || {}) };
+    } catch (err) {
+      console.warn(`[config] secrets.json 解析失败，已忽略：${err.message}`);
+    }
+  }
+
+  // 3) 环境变量（CI 用）
+  const envMap = {
+    TOKENFREE_LLM_API_KEY: 'apiKey',
+    TOKENFREE_LLM_BASE_URL: 'baseUrl',
+    TOKENFREE_LLM_MODEL: 'model',
+  };
+  out.llm = out.llm || {};
+  for (const [envName, field] of Object.entries(envMap)) {
+    const v = process.env[envName];
+    if (v) out.llm[field] = v;
+  }
+
+  return out;
+}
+
+/** 去掉 JSON 里以 _ 开头的注释键，避免污染配置 */
+function stripComments(obj) {
+  const out = {};
+  for (const [k, v] of Object.entries(obj)) {
+    if (!k.startsWith('_')) out[k] = v;
+  }
+  return out;
 }
 
 function deepMerge(base, over) {
