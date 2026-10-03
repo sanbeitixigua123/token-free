@@ -60,6 +60,33 @@ const SYSTEM_PROMPT = `你是一个严谨的信息抽取引擎，专门从网页
 }`;
 
 /**
+ * LLM 凭据级故障标记（进程内）。
+ *
+ * 背景（实测）：密钥失效时服务端返回 401，且**每个候选条目都会各失败一次**——
+ * 单次爬取能刷出上百条 `LLM 抽取失败` 告警，把真实告警彻底淹没。
+ * 401/403 是凭据问题而非单条数据问题，重试其余候选没有任何意义，
+ * 故一旦确认凭据无效，本轮后续调用直接短路返回空数组。
+ *
+ * 注意：只对**认证类**错误短路。429（限流）、5xx（服务端抖动）仍逐条重试，
+ * 因为那类错误具备恢复可能，不能因一次失败放弃整轮抽取。
+ */
+let credentialsInvalid = false;
+
+/** 供 job 层在每轮运行开始时重置 */
+export function resetLlmCredentialState() {
+  credentialsInvalid = false;
+}
+
+export function llmCredentialsInvalid() {
+  return credentialsInvalid;
+}
+
+/** 判断错误是否为"凭据无效"（不可恢复） */
+function isAuthError(message) {
+  return /\bHTTP\s+(?:401|403)\b/.test(String(message || ''));
+}
+
+/**
  * 调用 LLM 抽取一批候选活动。
  * @param {Array<object>} candidates
  * @param {{provider:object, source:object, refYear:number, settings:object, allowedHosts:string[]}} ctx
@@ -69,12 +96,15 @@ export async function extractWithLLM(candidates, ctx) {
   const { provider, source, refYear, settings, allowedHosts = [] } = ctx;
   const cfg = settings.llm || {};
   if (!cfg.enabled || !cfg.apiKey || !cfg.baseUrl) return [];
+  // 已确认凭据无效：不再发起任何请求（见 credentialsInvalid 注释）
+  if (credentialsInvalid) return [];
 
   const maxItems = cfg.maxItemsPerSource ?? 15;
   const batch = candidates.slice(0, maxItems);
   const out = [];
 
   for (const [idx, cand] of batch.entries()) {
+    if (credentialsInvalid) break; // 循环中途失效：立即停止剩余候选
     // 逐个调用以保证字段级可控与失败隔离（模型对单条上下文更专注）
     try {
       const userPrompt = buildUserPrompt(cand, provider, source, refYear);
@@ -85,7 +115,19 @@ export async function extractWithLLM(candidates, ctx) {
       const item = postProcess(parsed, { provider, source, refYear, allowedHosts, cand });
       if (item) out.push(item);
     } catch (err) {
-      log.warn(`LLM 抽取失败（${provider.slug} #${idx}）`, { err: err.message });
+      if (isAuthError(err.message)) {
+        // 只在**首次**发现凭据问题时详细告警一次，后续静默
+        if (!credentialsInvalid) {
+          credentialsInvalid = true;
+          log.warn(
+            `LLM 凭据无效（${err.message.slice(0, 120)}）：本轮将跳过所有 LLM 增强，` +
+            `仅使用规则抽取。请检查 config/secrets.json 的 llm.apiKey`,
+            { provider: provider.slug }
+          );
+        }
+      } else {
+        log.warn(`LLM 抽取失败（${provider.slug} #${idx}）`, { err: err.message });
+      }
     }
   }
   return out;

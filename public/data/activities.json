@@ -206,50 +206,6 @@
     "lastVerifiedAt": "2026-10-03 06:15:50"
   },
   {
-    "id": 13,
-    "fingerprint": "769e81b38bbcd6b87a61b597a90afb1f",
-    "provider": {
-      "slug": "aliyun-bailian",
-      "name": "阿里云百炼",
-      "nameEn": "Alibaba Bailian",
-      "country": "CN",
-      "website": "https://bailian.console.aliyun.com",
-      "color": "#FF6A00",
-      "cnAccessible": true
-    },
-    "title": "新用户免费额度",
-    "summary": "百炼为新用户提供北京地域专属的新人免费额度，用于体验模型调用。 未认证用户免费额度用完后无法继续使用，需要完成认证并充值后方能继续按量付费。",
-    "category": "trial",
-    "categoryLabel": "免费试用",
-    "benefit": null,
-    "audience": [
-      "new_user"
-    ],
-    "audienceLabels": [
-      "新用户"
-    ],
-    "audienceNote": "新用户",
-    "region": "CN",
-    "requiresCard": false,
-    "requiresVerification": null,
-    "startDate": null,
-    "endDate": null,
-    "isRecurring": null,
-    "claimUrl": "https://myaccount.console.aliyun.com/cert-info",
-    "sourceUrl": "https://help.aliyun.com/zh/model-studio/",
-    "sourceExcerpt": "百炼为新用户提供北京地域专属的新人免费额度，用于体验模型调用。\n未认证用户免费额度用完后无法继续使用，需要完成认证并充值后方能继续按量付费。\n已认证用户免费额度用完后自动转为按量付费，如需避免意外扣费，可开启免费额度用完即停功能，额度耗尽时服务自动停止。\n详见新人免费额度。",
-    "confidence": 0.83,
-    "reviewStatus": "auto_ok",
-    "status": "active",
-    "statusLabel": "NEW",
-    "daysLeft": null,
-    "endingSoon": false,
-    "isNew": true,
-    "createdAt": "2026-10-03 07:37:11",
-    "updatedAt": "2026-10-03 07:37:11",
-    "lastVerifiedAt": "2026-10-03 07:37:11"
-  },
-  {
     "id": 5,
     "fingerprint": "e32941dd55b3a7112ca3ad791fe584fa",
     "provider": {
@@ -352,57 +308,6 @@
     "lastVerifiedAt": "2026-10-03 07:37:11"
   },
   {
-    "id": 14,
-    "fingerprint": "7273caa95503a1559331aa0f87bc2725",
-    "provider": {
-      "slug": "github-student",
-      "name": "GitHub 学生开发者包",
-      "nameEn": "GitHub Student Developer Pack",
-      "country": "US",
-      "website": "https://education.github.com/pack",
-      "color": "#181717",
-      "cnAccessible": true
-    },
-    "title": "Offer",
-    "summary": "Free access to 25+ Microsoft Azure cloud services plus $100 in Azure credit. For students aged 18+.",
-    "category": "student",
-    "categoryLabel": "学生优惠",
-    "benefit": {
-      "kind": "credit_usd",
-      "amount": 100,
-      "unit": "USD",
-      "unitLabel": "美元",
-      "text": "$100",
-      "display": "$100"
-    },
-    "audience": [
-      "student"
-    ],
-    "audienceLabels": [
-      "学生"
-    ],
-    "audienceNote": "student",
-    "region": "GLOBAL",
-    "requiresCard": false,
-    "requiresVerification": "student_id",
-    "startDate": null,
-    "endDate": null,
-    "isRecurring": null,
-    "claimUrl": "https://education.github.com/pack",
-    "sourceUrl": "https://education.github.com/pack",
-    "sourceExcerpt": "Free access to 25+ Microsoft Azure cloud services plus $100 in Azure credit. For students aged 18+.",
-    "confidence": 0.75,
-    "reviewStatus": "auto_ok",
-    "status": "active",
-    "statusLabel": "NEW",
-    "daysLeft": null,
-    "endingSoon": false,
-    "isNew": true,
-    "createdAt": "2026-10-03 07:37:11",
-    "updatedAt": "2026-10-03 08:43:33",
-    "lastVerifiedAt": "2026-10-03 08:43:33"
-  },
-  {
     "id": 2,
     "fingerprint": "b50602368423573b5e434e125089bfeb",
     "provider": {
@@ -452,50 +357,6 @@
     "createdAt": "2026-10-03 06:15:50",
     "updatedAt": "2026-10-03 06:15:50",
     "lastVerifiedAt": "2026-10-03 06:15:50"
-  },
-  {
-    "id": 1,
-    "fingerprint": "44d74f8e0d04714bb4d5b14cfc0e4d39",
-    "provider": {
-      "slug": "anthropic",
-      "name": "Anthropic",
-      "nameEn": "Anthropic",
-      "country": "US",
-      "website": "https://www.anthropic.com",
-      "color": "#D97757",
-      "cnAccessible": false
-    },
-    "title": "Dedicated API credits and educational features for student learning",
-    "summary": "Training and enablement Resources for successful adoption across your institution",
-    "category": "student",
-    "categoryLabel": "学生优惠",
-    "benefit": null,
-    "audience": [
-      "student"
-    ],
-    "audienceLabels": [
-      "学生"
-    ],
-    "audienceNote": "student",
-    "region": "GLOBAL",
-    "requiresCard": false,
-    "requiresVerification": "student_id",
-    "startDate": null,
-    "endDate": null,
-    "isRecurring": null,
-    "claimUrl": "https://www.anthropic.com/pricing",
-    "sourceUrl": "https://www.anthropic.com/pricing",
-    "sourceExcerpt": "Dedicated API credits and educational features for student learning\nTraining and enablement\nResources for successful adoption across your institution",
-    "confidence": 0.69,
-    "reviewStatus": "auto_ok",
-    "status": "active",
-    "statusLabel": "NEW",
-    "daysLeft": null,
-    "endingSoon": false,
-    "isNew": true,
-    "createdAt": "2026-10-03 06:15:50",
-    "updatedAt": "2026-10-03 08:43:33",
-    "lastVerifiedAt": "2026-10-03 08:43:33"
   },
   {
     "id": 7,

@@ -121,16 +121,53 @@ export function isPaidTier(title) {
   return /(?:美元|元|美金)\s*\/|per\s+\d|\/\s*\d*\s*(?:万|千|个)?\s*(?:token|tokens|次|个)/i.test(t);
 }
 
+/**
+ * 泛化标题黑名单：脱离上下文后**不携带任何活动信息**的标题。
+ *
+ * 来源（实测踩坑）：定价页/文档站的栏目名与英文页面标题会被规则抽取当成活动标题，
+ * 例如 GitHub Student Pack 页抽出的 "Offer"、阿里云定价页的 "新用户免费额度"。
+ * 它们恰好含赠予词（offer / 免费额度），因而能通过赠予语义检查，
+ * 但作为活动标题对用户毫无价值 —— 用户无法从中得知"送什么、给谁、多少"。
+ *
+ * 判据：纯英文单词表命中，或中文泛词**完全等于**标题（不做包含匹配，
+ * 否则 "新用户免费额度领取攻略" 这类正常标题会被误杀）。
+ */
+const GENERIC_TITLE_EN = new Set([
+  'offer', 'offers', 'free', 'free tier', 'free trial', 'free plan',
+  'pricing', 'plans', 'credits', 'credit', 'promo', 'promotion',
+  'sign up', 'signup', 'get started', 'learn more', 'bonus',
+]);
+const GENERIC_TITLE_ZH = new Set([
+  '免费额度', '免费试用', '免费套餐', '新用户免费额度', '新用户专享',
+  '赠送额度', '活动详情', '优惠活动', '领取', '立即领取', '免费领取',
+  '福利', '试用', '体验', '套餐', '价格', '定价',
+]);
+
 export function isBadTitle(title) {
   const t = String(title || '').trim();
   if (!t) return { ok: false, reason: '标题为空' };
   if (t.length < 4) return { ok: false, reason: '标题过短' };
+
+  // 泛化标题：仅当"整条标题"就是泛词时才判负（精确匹配，非包含）
+  const lowerT = t.toLowerCase().replace(/[：:·—\-\s]+$/, '').trim();
+  if (GENERIC_TITLE_EN.has(lowerT) || GENERIC_TITLE_ZH.has(t)) {
+    return { ok: false, reason: '标题为泛化栏目名（不含活动信息）' };
+  }
 
   // 去掉序号前缀后再判导航词（"③平台操作" → "平台操作"）
   const bare = t.replace(ORDINAL_PREFIX, '').trim();
   if (NAV_TITLE_RE.test(bare)) return { ok: false, reason: '标题疑似导航项 / 菜单项' };
   if (NAV_TITLE_RE.test(t)) return { ok: false, reason: '标题疑似导航项 / 菜单项' };
   if (isPaidTier(t)) return { ok: false, reason: '标题为付费档位标签' };
+
+  // 英文长句片段：以连接词/标点截断的英文页面标题
+  // 例："Dedicated API credits and educational features for student lea"
+  // 特征：全英文 + 长度偏大 + 含介词/连词（说明是被截断的完整句子）
+  if (!/[\u4e00-\u9fa5]/.test(t) && t.length > 40) {
+    if (/\b(?:and|for|with|the|to|of|in|on|your|our|all)\b/i.test(t)) {
+      return { ok: false, reason: '标题为英文长句片段（疑被截断）' };
+    }
+  }
 
   // 标题是"报价句"——以金额结尾且含价格语义词
   if (/(?:美元|元|美金)\s*$/.test(t) && countMoneyMentions(t) >= 1) {

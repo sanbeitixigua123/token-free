@@ -17,7 +17,7 @@ import { cleanText } from '../lib/fingerprint.js';
 import { Fetcher, recordAttempt, recordSnapshot } from './fetch.js';
 import { extractBlocks, discoverCandidates } from './discover.js';
 import { extractActivity } from './extract.js';
-import { extractWithLLM } from './llm-extract.js';
+import { extractWithLLM, resetLlmCredentialState, llmCredentialsInvalid } from './llm-extract.js';
 import { searchCandidates, searchResultToText } from './search.js';
 import { normalizeItem, dedupeWithinBatch } from './normalize.js';
 import { validateItem, isBadTitle, AUTO_OK } from './validate.js';
@@ -193,6 +193,27 @@ export function searchBreakerState() {
 }
 
 /**
+ * 记录一次搜索失败并按需触发熔断。
+ *
+ * ⚠️ 注意：爬取是**并发**的（mapLimit），熔断阈值被跨过的那一刻，
+ * 通常还有若干个请求已经在飞行中。它们返回后同样会走到这里并再次满足
+ * `>= 阈值`，若不加 `tripped` 前置判断就会重复打印告警（实测会连打 3 条）。
+ * 因此只在**首次**触发时输出日志。
+ */
+function noteSearchFailure(maxConsecutiveFailures, message) {
+  if (searchBreaker.tripped) return; // 已熔断：不重复告警
+  searchBreaker.consecutiveFailures++;
+  if (searchBreaker.consecutiveFailures >= maxConsecutiveFailures) {
+    searchBreaker.tripped = true;
+    log.warn(
+      `搜索后端连续 ${searchBreaker.consecutiveFailures} 次异常，本轮熔断：` +
+      `剩余搜索源将跳过（${message}）。` +
+      `如需恢复搜索能力，请配置可用的搜索 API（见 config/settings.json 的 search 段）`
+    );
+  }
+}
+
+/**
  * 处理搜索型源（kind='search'）。
  *
  * 与固定页源的关键差异：
@@ -221,30 +242,15 @@ async function processSearchSource(db, ctx) {
     results = await searchCandidates(queries, settings);
   } catch (err) {
     run(db, `UPDATE sources SET consecutive_failures = consecutive_failures + 1 WHERE id=?`, [source.id]);
-    searchBreaker.consecutiveFailures++;
-    if (searchBreaker.consecutiveFailures >= maxConsecutiveFailures) {
-      searchBreaker.tripped = true;
-      log.warn(
-        `搜索后端连续 ${searchBreaker.consecutiveFailures} 次失败，本轮熔断：` +
-        `剩余搜索源将跳过（原因：${err.message}）。` +
-        `如需恢复搜索能力，请配置可用的搜索 API（见 config/settings.json 的 search 段）`
-      );
-    }
+    noteSearchFailure(maxConsecutiveFailures, `原因：${err.message}`);
     return { ok: false, error: `搜索失败：${err.message}`, items: [] };
   }
 
   if (!results.length) {
     // "无结果"不等于"失败"：可能是查询词太窄。但**若连续多次无结果**，
-    // 更可能是搜索后端在静默降级（挑战页从 result 容器缺失的形态出现），
+    // 更可能是搜索后端在静默降级（挑战页以 result 容器缺失的形态出现），
     // 故同样计入熔断计数。
-    searchBreaker.consecutiveFailures++;
-    if (searchBreaker.consecutiveFailures >= maxConsecutiveFailures) {
-      searchBreaker.tripped = true;
-      log.warn(
-        `搜索后端连续 ${searchBreaker.consecutiveFailures} 次无结果，本轮熔断：` +
-        `剩余搜索源将跳过（疑似限流或反爬静默降级）`
-      );
-    }
+    noteSearchFailure(maxConsecutiveFailures, '疑似限流或反爬静默降级');
     return { ok: true, items: [], candidates: 0, searched: true };
   }
 
@@ -346,8 +352,9 @@ export async function runPipeline({ trigger = 'manual', onlyProvider = null, onP
   const allItems = [];
   let okCount = 0, found = 0, breakerSkipped = 0;
   const failedSources = [];
-  // 每次运行重置搜索熔断状态（进程级，跨源共享；见 searchBreaker 注释）
+  // 每次运行重置熔断状态（均为进程级、跨源共享；见各 breaker 注释）
   resetSearchBreaker();
+  resetLlmCredentialState();
   for (const r of results) {
     // mapLimit 返回 { ok, value }；value 即上面 worker 的返回对象
     const out = r?.value ?? r;
@@ -371,6 +378,9 @@ export async function runPipeline({ trigger = 'manual', onlyProvider = null, onP
   }
   if (breakerSkipped) {
     log.warn(`搜索源熔断生效：跳过 ${breakerSkipped} 个（这些源本轮未产生数据，非页面故障）`);
+  }
+  if (llmCredentialsInvalid()) {
+    log.warn('本轮 LLM 增强全程跳过（凭据无效），所有条目均由规则抽取产出');
   }
 
   // 去重 → 校验 → 落库

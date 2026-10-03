@@ -5,24 +5,8 @@
     <link>https://sanbeitixigua123.github.io/token-free</link>
     <description>每日自动汇总国内外 AI 模型厂商的免费额度、试用与学生优惠活动</description>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 03 Oct 2026 16:43:47 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 03 Oct 2026 16:54:52 GMT</lastBuildDate>
     <atom:link href="https://sanbeitixigua123.github.io/token-free/feed.xml" rel="self" type="application/rss+xml"/>
-    <item>
-      <title>[GitHub 学生开发者包] Offer</title>
-      <link>https://sanbeitixigua123.github.io/token-free/#/activity/14</link>
-      <guid isPermaLink="false">7273caa95503a1559331aa0f87bc2725</guid>
-      <pubDate>Sat, 03 Oct 2026 07:37:11 GMT</pubDate>
-      <category>学生优惠</category>
-      <description>GitHub 学生开发者包 · 学生优惠 ｜ 额度：$100 ｜ 适用：学生 ｜ Free access to 25+ Microsoft Azure cloud services plus $100 in Azure credit. For students aged 18+.</description>
-    </item>
-    <item>
-      <title>[阿里云百炼] 新用户免费额度</title>
-      <link>https://sanbeitixigua123.github.io/token-free/#/activity/13</link>
-      <guid isPermaLink="false">769e81b38bbcd6b87a61b597a90afb1f</guid>
-      <pubDate>Sat, 03 Oct 2026 07:37:11 GMT</pubDate>
-      <category>免费试用</category>
-      <description>阿里云百炼 · 免费试用 ｜ 适用：新用户 ｜ 百炼为新用户提供北京地域专属的新人免费额度，用于体验模型调用。 未认证用户免费额度用完后无法继续使用，需要完成认证并充值后方能继续按量付费。</description>
-    </item>
     <item>
       <title>[DeepSeek] DeepSeek 送福利：登录DeepSeek harness 桌面端，首次赠送6元赠金 - 福利羊毛 - LINUX DO</title>
       <link>https://sanbeitixigua123.github.io/token-free/#/activity/12</link>
@@ -94,14 +78,6 @@
       <pubDate>Sat, 03 Oct 2026 06:15:50 GMT</pubDate>
       <category>免费试用</category>
       <description>MiniMax 稀宇科技 · 免费试用 ｜ 额度：赠送 10 个快速克隆音色 ｜ 适用：所有人 ｜ 支持 T2A v2 / T2A async v2 接口RPM：200支持 HD 系列模型赠送 30 个快速克隆音色 支持 T2A v2 / T2A async v2 接口RPM：500支持 HD 系列模型赠送 300 个快速克隆音色</description>
-    </item>
-    <item>
-      <title>[Anthropic] Dedicated API credits and educational features for student learning</title>
-      <link>https://sanbeitixigua123.github.io/token-free/#/activity/1</link>
-      <guid isPermaLink="false">44d74f8e0d04714bb4d5b14cfc0e4d39</guid>
-      <pubDate>Sat, 03 Oct 2026 06:15:50 GMT</pubDate>
-      <category>学生优惠</category>
-      <description>Anthropic · 学生优惠 ｜ 适用：学生 ｜ Training and enablement Resources for successful adoption across your institution</description>
     </item>
   </channel>
 </rss>

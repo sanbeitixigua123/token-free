@@ -375,8 +375,14 @@ providers:
     cn_accessible: false
     tier: 2
     sources:
+      # ⚠️ 定价源已停用（enabled: false）。
+      # 实测：windsurf.com 整域在国内网络下连接层失败（curl 返回 000），
+      # codeium.com 亦无法建立 TLS 连接。每轮爬取会重试 3 次 + 退避共约 7 秒，
+      # 并触发"连续失败 6 次"的 ERROR 告警，持续污染日志且无任何收益。
+      # 保留配置（便于日后换网络环境时一键恢复），改为依赖搜索源间接发现活动。
       - kind: pricing
         url: https://windsurf.com/pricing
+        enabled: false
       - kind: search
         query: Windsurf free plan credits trial 2026
 
