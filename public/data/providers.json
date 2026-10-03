@@ -28,6 +28,20 @@
     "activeCount": 2
   },
   {
+    "slug": "github-student",
+    "name": "GitHub 学生开发者包",
+    "nameEn": "GitHub Student Developer Pack",
+    "country": "US",
+    "website": "https://education.github.com/pack",
+    "pricingUrl": "https://education.github.com/pack",
+    "announcementUrl": "https://education.github.com/pack",
+    "color": "#181717",
+    "cnAccessible": true,
+    "tier": 1,
+    "activityCount": 1,
+    "activeCount": 1
+  },
+  {
     "slug": "anthropic",
     "name": "Anthropic",
     "nameEn": "Anthropic",
@@ -63,20 +77,6 @@
     "website": "https://github.com/features/copilot",
     "pricingUrl": "https://github.com/features/copilot/plans",
     "announcementUrl": "https://github.blog/changelog/",
-    "color": "#181717",
-    "cnAccessible": true,
-    "tier": 1,
-    "activityCount": 0,
-    "activeCount": 1
-  },
-  {
-    "slug": "github-student",
-    "name": "GitHub 学生开发者包",
-    "nameEn": "GitHub Student Developer Pack",
-    "country": "US",
-    "website": "https://education.github.com/pack",
-    "pricingUrl": "https://education.github.com/pack",
-    "announcementUrl": "https://education.github.com/pack",
     "color": "#181717",
     "cnAccessible": true,
     "tier": 1,

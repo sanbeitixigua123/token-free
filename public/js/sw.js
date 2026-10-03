@@ -14,7 +14,7 @@
  * 保持 'dev' 即可，不要手工改（改了也会被构建覆盖）。
  */
 
-const SW_VERSION = '202610031809';
+const SW_VERSION = '202610031904';
 const CACHE_PREFIX = 'tokenfree-shell-';
 const SHELL_CACHE = `${CACHE_PREFIX}${SW_VERSION}`;
 const SHELL_ASSETS = [

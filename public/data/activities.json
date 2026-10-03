@@ -397,6 +397,59 @@
     "endpoint": null
   },
   {
+    "id": 17,
+    "fingerprint": "5d555963647a712d844cf30c4ed6d83d",
+    "provider": {
+      "slug": "github-student",
+      "name": "GitHub 学生开发者包",
+      "nameEn": "GitHub Student Developer Pack",
+      "country": "US",
+      "website": "https://education.github.com/pack",
+      "color": "#181717",
+      "cnAccessible": true
+    },
+    "title": "GitHub 学生开发者包",
+    "summary": "提供 Visual Studio Community、Pluralsight 培训和 Azure 服务，首月 $200 信用额度，免费一年",
+    "category": "student",
+    "categoryLabel": "学生优惠",
+    "benefit": {
+      "kind": "credit_usd",
+      "amount": 200,
+      "unit": "USD",
+      "unitLabel": "美元",
+      "text": "1 free year of Azure services with $200 credit for the 1st month",
+      "display": "$200"
+    },
+    "audience": [
+      "student"
+    ],
+    "audienceLabels": [
+      "学生"
+    ],
+    "audienceNote": null,
+    "region": "GLOBAL",
+    "requiresCard": false,
+    "requiresVerification": "student_id",
+    "startDate": null,
+    "endDate": null,
+    "isRecurring": null,
+    "claimUrl": "https://education.github.com/pack",
+    "sourceUrl": "https://education.github.com/pack",
+    "sourceExcerpt": "Visual Studio Community, Visual Studio Community for Mac, access to Pluralsight training, 1 free year of Azure services with $200 credit for the 1st month and more.",
+    "confidence": 0.65,
+    "reviewStatus": "auto_ok",
+    "status": "active",
+    "statusLabel": "NEW",
+    "daysLeft": null,
+    "endingSoon": false,
+    "isNew": true,
+    "createdAt": "2026-10-03 11:04:33",
+    "updatedAt": "2026-10-03 11:04:33",
+    "lastVerifiedAt": "2026-10-03 11:04:33",
+    "model": null,
+    "endpoint": null
+  },
+  {
     "id": 7,
     "fingerprint": "b1056efe9ebf34ebe17bf37b4f1be88e",
     "provider": {

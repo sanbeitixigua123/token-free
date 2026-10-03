@@ -13,12 +13,14 @@
   },
   "llm": {
     "enabled": true,
-    "baseUrl": "https://generativelanguage.googleapis.com/v1beta/openai",
+    "baseUrl": "https://open.bigmodel.cn/api/paas/v4",
     "apiKey": "",
-    "model": "gemini-3.8-flash",
+    "model": "glm-4.5-flash",
     "maxItemsPerSource": 15,
-    "timeoutMs": 60000,
-    "note": "apiKey 故意留空：凭据存于 config/secrets.json（已 gitignore），或由环境变量 TOKENFREE_LLM_API_KEY 注入（CI 用）。优先用 OpenAI 兼容端点 /v1beta/openai，可零改动复用 llama 模块的 /chat/completions 调用；如需换厂商，只改 baseUrl 与 model 即可。"
+    "timeoutMs": 120000,
+    "minIntervalMs": 3000,
+    "rateLimitRetries": 3,
+    "note": "apiKey 故意留空：凭据存于 config/secrets.json（已 gitignore），或由环境变量 TOKENFREE_LLM_API_KEY 注入（CI 用）。走 OpenAI 兼容端点 /chat/completions，换厂商只改 baseUrl 与 model 即可。当前=智谱 GLM（2026-10-03 实测）：账号仅免费模型可用，glm-4.5-flash / glm-4-flash / glm-4-flash-250414 三选一；glm-5.3-flash、glm-5.3-flashx、glm-4.6 等均返回「余额不足」，换了会静默降级为纯规则抽取。GLM 响应含 reasoning_content 字段（思考过程），业务内容在 message.content，解析器已正确取用。minIntervalMs/rateLimitRetries：智谱免费层 RPM 很低，不节流会成片 429（实测 18 秒内 39 次），故设 3s 最小间隔 + 429 指数退避重试。"
   },
   "archive": {
     "afterDays": 30

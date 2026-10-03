@@ -9,10 +9,23 @@
  *   config/secrets.json（本地，已 gitignore）或环境变量 TOKENFREE_LLM_API_KEY（CI）。
  *
  * 当前配置（2026-10-03 实测）：
- *   baseUrl https://generativelanguage.googleapis.com/v1beta/openai
- *   model   gemini-3.8-flash
- *   ⚠️ 注意：gemini-2.5-flash 对**新用户**已停用（API 返回 404 并提示改用 3.8）。
- *      列在 /v1beta/models 里 ≠ 可调用，必须实际发一次请求验证。
+ *   baseUrl https://open.bigmodel.cn/api/paas/v4
+ *   model   glm-4.5-flash
+ *   ⚠️ 账号仅**免费模型**可用：glm-4.5-flash / glm-4-flash / glm-4-flash-250414。
+ *      glm-5.3-flash、glm-5.3-flashx、glm-4.6 等一律返回「余额不足或无可用资源包」。
+ *      列在 /models 里 ≠ 可调用，必须实际发一次请求验证（Gemini 侧也踩过同一坑）。
+ *
+ *   ⚠️⚠️ thinking 必须关闭（实测关键，2026-10-03）：
+ *      GLM 默认开思考模式，会先输出一大段 reasoning_content 再给正文。
+ *      A/B 实测同一提示词：
+ *        开思考 → 7.8s，completion 838 tokens（大部分是思考），且 title 返回 null
+ *        关思考 → 9.3s→（小请求 0.65s），completion 293 tokens，title **正确抽出**
+ *      即思考模式不仅更慢，还**劣化抽取质量**——模型把预算花在犹豫上，
+ *      最后对 title 这类显式字段反而返回 null。故固定加 thinking:{type:'disabled'}。
+ *      该参数对非 GLM 厂商是未知字段，会被忽略，因此可安全常驻。
+ *
+ * 兼容性：GLM 的 message.content 是干净 JSON（无 markdown 围栏），
+ *   思考内容单独放在 message.reasoning_content，不影响 content 解析。
  *
  * 防幻觉三道闸：
  *   1) 提示词强制"只抽原文，缺失返回 null"
@@ -146,31 +159,77 @@ ${cand.context}
 请按规则输出 JSON。`;
 }
 
+/**
+ * 判断是否限流错误。
+ * 智谱免费层返回 HTTP 429 + code 1302「您的账户已达到速率限制」。
+ * 其他厂商多为 429 / 1302 / rate_limit 字样，统一按限流处理。
+ */
+function isRateLimitError(msg) {
+  return /HTTP 429/.test(msg) || /1302/.test(msg) || /rate.?limit/i.test(msg) || /速率限制/.test(msg);
+}
+
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+/**
+ * 请求节流：智谱免费层 RPM 很低，连发会成片 429。
+ * 用串行最小间隔把突发摊平——实测未节流时 18 秒内 39 次 429。
+ */
+let lastCallAt = 0;
+async function throttle(minIntervalMs) {
+  const wait = lastCallAt + minIntervalMs - Date.now();
+  if (wait > 0) await sleep(wait);
+  lastCallAt = Date.now();
+}
+
 async function callChat(cfg, system, user) {
   const url = cfg.baseUrl.replace(/\/+$/, '') + '/chat/completions';
-  const res = await fetch(url, {
-    method: 'POST',
-    headers: {
-      'content-type': 'application/json',
-      authorization: `Bearer ${cfg.apiKey}`,
-    },
-    body: JSON.stringify({
-      model: cfg.model,
-      temperature: 0,
-      max_tokens: 1200,
-      messages: [
-        { role: 'system', content: system },
-        { role: 'user', content: user },
-      ],
-    }),
-    signal: AbortSignal.timeout(cfg.timeoutMs ?? 60000),
-  });
-  if (!res.ok) {
+  const minInterval = cfg.minIntervalMs ?? 0;
+  const maxRetries = cfg.rateLimitRetries ?? 3;
+
+  for (let attempt = 0; attempt <= maxRetries; attempt++) {
+    if (minInterval > 0) await throttle(minInterval);
+
+    const res = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+        authorization: `Bearer ${cfg.apiKey}`,
+      },
+      body: JSON.stringify({
+        model: cfg.model,
+        temperature: 0,
+        max_tokens: 1200,
+        // 关闭思考模式：GLM 默认会先输出大段 reasoning_content，
+        // 实测既慢（7.8s vs 0.65s）又劣化抽取（title 会被返回成 null）。
+        // 非 GLM 厂商会忽略该未知字段，故可常驻。详见文件头注释。
+        thinking: { type: 'disabled' },
+        messages: [
+          { role: 'system', content: system },
+          { role: 'user', content: user },
+        ],
+      }),
+      signal: AbortSignal.timeout(cfg.timeoutMs ?? 60000),
+    });
+
+    if (res.ok) {
+      const data = await res.json();
+      return data?.choices?.[0]?.message?.content || '';
+    }
+
     const body = await res.text().catch(() => '');
-    throw new Error(`LLM HTTP ${res.status}: ${body.slice(0, 200)}`);
+    const errMsg = `LLM HTTP ${res.status}: ${body.slice(0, 200)}`;
+
+    // 限流：指数退避重试（尊重 Retry-After，若无则 1.5s → 3s → 6s）
+    if (isRateLimitError(errMsg) && attempt < maxRetries) {
+      const ra = Number(res.headers.get('retry-after'));
+      const backoff = Number.isFinite(ra) && ra > 0 ? ra * 1000 : 1500 * 2 ** attempt;
+      log.warn(`LLM 限流，${Math.round(backoff / 1000)}s 后重试（第 ${attempt + 1}/${maxRetries} 次）`);
+      await sleep(backoff);
+      continue;
+    }
+    throw new Error(errMsg);
   }
-  const data = await res.json();
-  return data?.choices?.[0]?.message?.content || '';
+  throw new Error('LLM 限流重试耗尽');
 }
 
 /** 容忍模型偶尔裹 markdown 代码块 */

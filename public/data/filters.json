@@ -9,6 +9,11 @@
       "value": "trial",
       "label": "免费试用",
       "count": 1
+    },
+    {
+      "value": "student",
+      "label": "学生优惠",
+      "count": 1
     }
   ],
   "audiences": [
@@ -23,6 +28,11 @@
       "count": 3
     },
     {
+      "value": "student",
+      "label": "学生",
+      "count": 1
+    },
+    {
       "value": "verified",
       "label": "需实名/绑卡",
       "count": 1
@@ -32,7 +42,7 @@
     {
       "value": "active",
       "label": "进行中",
-      "count": 7
+      "count": 8
     },
     {
       "value": "ended",
@@ -45,6 +55,11 @@
       "value": "CN",
       "label": "国内",
       "count": 9
+    },
+    {
+      "value": "GLOBAL",
+      "label": "海外",
+      "count": 1
     }
   ],
   "providers": [
@@ -57,6 +72,11 @@
       "value": "zhipu",
       "label": "智谱 AI",
       "count": 3
+    },
+    {
+      "value": "github-student",
+      "label": "GitHub 学生开发者包",
+      "count": 1
     },
     {
       "value": "minimax",
