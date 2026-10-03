@@ -23,8 +23,20 @@ const CONFIG_DIR = path.join(PROJECT_ROOT, 'config');
 function parseScalar(raw) {
   let v = raw.trim();
   if (v === '' || v === '~' || v.toLowerCase() === 'null') return null;
-  // 去引号
-  if ((v.startsWith('"') && v.endsWith('"')) || (v.startsWith("'") && v.endsWith("'"))) {
+  // 去引号。
+  // ⚠️ 双引号内必须还原转义序列（\n / \" / \\），否则自动生成的攻略正文会带着
+  // 字面量 "\n" 显示（实测：guide-gen 写出的体段落，前端渲染成长串反斜杠 n）。
+  // 本项目是行式解析器（一行一个值），无法表达真正的多行标量，
+  // 因此换行**只能**靠 "\n" 转义承载 —— 这里就成了唯一的还原点。
+  // 单引号按 YAML 规范不做转义，保持原样。
+  if (v.startsWith('"') && v.endsWith('"') && v.length >= 2) {
+    return v.slice(1, -1)
+      .replace(/\\n/g, '\n')
+      .replace(/\\t/g, '\t')
+      .replace(/\\"/g, '"')
+      .replace(/\\\\/g, '\\');
+  }
+  if (v.startsWith("'") && v.endsWith("'")) {
     return v.slice(1, -1);
   }
   if (v === 'true') return true;
@@ -129,6 +141,62 @@ export function loadProviders() {
     return [];
   }
   return doc.providers.filter((p) => p && p.slug && p.name_zh);
+}
+
+/**
+ * 读取模型清单（三层结构的中层：模型实体）。
+ *
+ * 与 providers.yaml 分开维护的理由：模型与厂商是**多对多**关系
+ * （GLM-5.3-Flash 同时出现在智谱官方、OpenCode、Vultr 上），
+ * 塞进厂商配置会导致大量重复定义，且改名时容易不同步。
+ */
+export function loadModels() {
+  const doc = loadYamlFile('models.yaml');
+  if (!doc || !Array.isArray(doc.models)) return [];
+  return doc.models.filter((m) => m && m.slug && m.name);
+}
+
+/**
+ * 读取端点清单（三层结构的上层：厂商×模型的可领取额度）。
+ *
+ * 端点是"最小可领取单元"——用户真正关心的不是"某厂商有免费额度"，
+ * 而是"我能在哪儿、用哪个模型、免费拿到多少、要不要绑卡"。
+ */
+export function loadEndpoints() {
+  const doc = loadYamlFile('endpoints.yaml');
+  if (!doc || !Array.isArray(doc.endpoints)) return [];
+  return doc.endpoints.filter((e) => e && e.provider && e.model);
+}
+
+/**
+ * 读取攻略文章：合并「手写稿」与「自动生成稿」。
+ *
+ * 分成两个文件是刻意的：
+ *   - config/guides.yaml      手写，受版本控制，内容一旦写入就不该被机器覆盖；
+ *   - config/guides.auto.yaml pipeline 每日常规生成，会被整体重写。
+ * 若两者同写一个文件，自动生成的重写动作会把人工内容一并冲掉（实测最容易踩的坑）。
+ *
+ * 合并规则：手写优先 —— 同 slug 时手写稿覆盖自动稿。
+ * 这样当作者认为某篇自动稿值得手工修订时，只需把该 slug 抄进 guides.yaml 改写，
+ * 无需删除自动稿（自动稿下次生成仍会产出，但被手写稿遮蔽）。
+ */
+export function loadGuides() {
+  const handwritten = readGuidesFile('guides.yaml');
+  const auto = readGuidesFile('guides.auto.yaml');
+  if (!handwritten.length) return auto;
+  if (!auto.length) return handwritten;
+
+  const bySlug = new Map();
+  for (const g of auto) bySlug.set(g.slug, g);
+  for (const g of handwritten) bySlug.set(g.slug, g); // 手写后写，覆盖同 slug 自动稿
+  return [...bySlug.values()];
+}
+
+/** 读取单个攻略 YAML 文件并做最小校验 */
+function readGuidesFile(name) {
+  const doc = loadYamlFile(name);
+  if (!doc || !Array.isArray(doc.guides)) return [];
+  return doc.guides.filter((g) => g && g.slug && g.title);
 }
 
 /** 读取提取规则 */

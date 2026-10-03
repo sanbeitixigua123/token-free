@@ -48,7 +48,9 @@
     "isNew": true,
     "createdAt": "2026-10-03 07:37:11",
     "updatedAt": "2026-10-03 07:37:11",
-    "lastVerifiedAt": "2026-10-03 07:37:11"
+    "lastVerifiedAt": "2026-10-03 07:37:11",
+    "model": null,
+    "endpoint": null
   },
   {
     "id": 9,
@@ -99,7 +101,9 @@
     "isNew": true,
     "createdAt": "2026-10-03 07:37:11",
     "updatedAt": "2026-10-03 07:37:11",
-    "lastVerifiedAt": "2026-10-03 07:37:11"
+    "lastVerifiedAt": "2026-10-03 07:37:11",
+    "model": null,
+    "endpoint": null
   },
   {
     "id": 8,
@@ -149,8 +153,34 @@
     "endingSoon": false,
     "isNew": true,
     "createdAt": "2026-10-03 07:37:11",
-    "updatedAt": "2026-10-03 07:37:11",
-    "lastVerifiedAt": "2026-10-03 07:37:11"
+    "updatedAt": "2026-10-03 09:11:10",
+    "lastVerifiedAt": "2026-10-03 07:37:11",
+    "model": {
+      "slug": "glm-5-3-flash",
+      "name": "GLM-5.3-Flash",
+      "capability": "code-generation",
+      "capabilityLabel": "代码生成",
+      "capabilities": [
+        "code-generation",
+        "text-generation"
+      ],
+      "contextWindow": 1000000
+    },
+    "endpoint": {
+      "slug": "zhipu--glm-5-3-flash",
+      "quotaKind": "credits",
+      "quotaKindLabel": "赠送额度",
+      "quotaRpm": null,
+      "quotaRpd": null,
+      "quotaText": "官方开放平台新用户赠送额度",
+      "apiBase": "https://open.bigmodel.cn/api/paas/v4",
+      "score": null,
+      "requiresCard": false,
+      "cnAccessible": true,
+      "openaiCompatible": true,
+      "claimUrl": "https://open.bigmodel.cn",
+      "docsUrl": "https://z.ai"
+    }
   },
   {
     "id": 3,
@@ -203,7 +233,9 @@
     "isNew": true,
     "createdAt": "2026-10-03 06:15:50",
     "updatedAt": "2026-10-03 06:15:50",
-    "lastVerifiedAt": "2026-10-03 06:15:50"
+    "lastVerifiedAt": "2026-10-03 06:15:50",
+    "model": null,
+    "endpoint": null
   },
   {
     "id": 5,
@@ -254,7 +286,9 @@
     "isNew": true,
     "createdAt": "2026-10-03 07:35:24",
     "updatedAt": "2026-10-03 07:37:11",
-    "lastVerifiedAt": "2026-10-03 07:37:11"
+    "lastVerifiedAt": "2026-10-03 07:37:11",
+    "model": null,
+    "endpoint": null
   },
   {
     "id": 12,
@@ -305,7 +339,9 @@
     "isNew": true,
     "createdAt": "2026-10-03 07:37:11",
     "updatedAt": "2026-10-03 07:37:11",
-    "lastVerifiedAt": "2026-10-03 07:37:11"
+    "lastVerifiedAt": "2026-10-03 07:37:11",
+    "model": null,
+    "endpoint": null
   },
   {
     "id": 2,
@@ -356,7 +392,9 @@
     "isNew": true,
     "createdAt": "2026-10-03 06:15:50",
     "updatedAt": "2026-10-03 06:15:50",
-    "lastVerifiedAt": "2026-10-03 06:15:50"
+    "lastVerifiedAt": "2026-10-03 06:15:50",
+    "model": null,
+    "endpoint": null
   },
   {
     "id": 7,
@@ -406,8 +444,34 @@
     "endingSoon": false,
     "isNew": true,
     "createdAt": "2026-10-03 07:35:24",
-    "updatedAt": "2026-10-03 07:35:24",
-    "lastVerifiedAt": "2026-10-03 07:35:24"
+    "updatedAt": "2026-10-03 09:11:10",
+    "lastVerifiedAt": "2026-10-03 07:35:24",
+    "model": {
+      "slug": "glm-5-3-flash",
+      "name": "GLM-5.3-Flash",
+      "capability": "code-generation",
+      "capabilityLabel": "代码生成",
+      "capabilities": [
+        "code-generation",
+        "text-generation"
+      ],
+      "contextWindow": 1000000
+    },
+    "endpoint": {
+      "slug": "zhipu--glm-5-3-flash",
+      "quotaKind": "credits",
+      "quotaKindLabel": "赠送额度",
+      "quotaRpm": null,
+      "quotaRpd": null,
+      "quotaText": "官方开放平台新用户赠送额度",
+      "apiBase": "https://open.bigmodel.cn/api/paas/v4",
+      "score": null,
+      "requiresCard": false,
+      "cnAccessible": true,
+      "openaiCompatible": true,
+      "claimUrl": "https://open.bigmodel.cn",
+      "docsUrl": "https://z.ai"
+    }
   },
   {
     "id": 10,
@@ -458,6 +522,8 @@
     "isNew": true,
     "createdAt": "2026-10-03 07:37:11",
     "updatedAt": "2026-10-03 07:37:11",
-    "lastVerifiedAt": "2026-10-03 07:37:11"
+    "lastVerifiedAt": "2026-10-03 07:37:11",
+    "model": null,
+    "endpoint": null
   }
 ]

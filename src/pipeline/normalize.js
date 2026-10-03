@@ -39,6 +39,11 @@ export function normalizeItem(raw, provider) {
     sourceExcerpt: raw.sourceExcerpt ? cleanText(raw.sourceExcerpt).slice(0, 500) : null,
     confidence: typeof raw.confidence === 'number' ? raw.confidence : 0.5,
     extractedBy: raw.extractedBy || 'rule',
+    // 三层关联字段（由 linkItemsToModels 在落库前批量填充；此处只做透传，
+    // 保证归一化函数的输出形状稳定）
+    modelId: raw.modelId ?? null,
+    endpointId: raw.endpointId ?? null,
+    modelMatchedBy: raw.modelMatchedBy ?? null,
   };
 
   // 日期一致性修正

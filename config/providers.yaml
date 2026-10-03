@@ -645,3 +645,210 @@ providers:
         url: https://education.github.com/pack
       - kind: search
         query: GitHub Student Developer Pack 学生 免费 权益 申请
+
+  # ============================================================
+  #  以下为对标 freeaiapi.org 后补齐的品类（2026-10-03）
+  #
+  #  背景：此前 38 家几乎全是"文本/代码"类厂商，缺图像、语音、视频、嵌入
+  #  四个品类。这四类在开发者中同样高频，且免费额度活动并不少。
+  #  品类划分沿用 freeaiapi 的 12 个 capability 命名（见 config/models.yaml）。
+  # ============================================================
+
+  # ---------------- 图像生成 ----------------
+  - slug: black-forest-labs
+    name_zh: Black Forest Labs
+    name_en: Black Forest Labs
+    country: US
+    website: https://blackforestlabs.ai
+    pricing_url: https://blackforestlabs.ai
+    brand_color: "#111111"
+    cn_accessible: false
+    tier: 2
+    sources:
+      - kind: pricing
+        url: https://blackforestlabs.ai
+      - kind: search
+        query: FLUX free credits BFL API trial 2026
+
+  - slug: stability-ai
+    name_zh: Stability AI
+    name_en: Stability AI
+    country: GB
+    website: https://stability.ai
+    pricing_url: https://platform.stability.ai/pricing
+    brand_color: "#8B5CF6"
+    cn_accessible: false
+    tier: 2
+    sources:
+      - kind: pricing
+        url: https://platform.stability.ai/pricing
+      - kind: search
+        query: Stability AI free credits Stable Diffusion API trial
+
+  # ---------------- 语音（TTS / STT） ----------------
+  - slug: fish-audio
+    name_zh: Fish Audio
+    name_en: Fish Audio
+    country: CN
+    website: https://fish.audio
+    pricing_url: https://fish.audio/pricing
+    brand_color: "#0EA5E9"
+    cn_accessible: true
+    tier: 2
+    sources:
+      - kind: pricing
+        url: https://fish.audio/pricing
+      - kind: search
+        query: Fish Audio 免费 TTS 声音克隆 额度
+
+  - slug: deepgram
+    name_zh: Deepgram
+    name_en: Deepgram
+    country: US
+    website: https://deepgram.com
+    pricing_url: https://deepgram.com/pricing
+    brand_color: "#13EF93"
+    cn_accessible: false
+    tier: 2
+    sources:
+      - kind: pricing
+        url: https://deepgram.com/pricing
+      - kind: search
+        query: Deepgram free credits speech to text trial
+
+  # ---------------- 视频生成 ----------------
+  - slug: higgsfield
+    name_zh: Higgsfield
+    name_en: Higgsfield
+    country: US
+    website: https://higgsfield.ai
+    pricing_url: https://higgsfield.ai/pricing
+    brand_color: "#FF4D6D"
+    cn_accessible: false
+    tier: 3
+    sources:
+      - kind: pricing
+        url: https://higgsfield.ai/pricing
+      - kind: search
+        query: Higgsfield free trial Seedance unlimited plan
+
+  # ---------------- 云计算与新晋提供方（freeaiapi 的核心厂商） ----------------
+  - slug: vultr
+    name_zh: Vultr
+    name_en: Vultr
+    country: US
+    website: https://www.vultr.com
+    pricing_url: https://www.vultr.com/pricing/
+    brand_color: "#007BFC"
+    cn_accessible: false
+    tier: 1
+    sources:
+      - kind: pricing
+        url: https://www.vultr.com/pricing/
+      - kind: search
+        query: Vultr Serverless Inference free credits $300 trial
+
+  - slug: amd-radeon-cloud
+    name_zh: AMD Radeon Cloud
+    name_en: AMD Radeon Cloud Token Factory
+    country: US
+    website: https://developer.amd.com.cn
+    pricing_url: https://developer.amd.com.cn
+    brand_color: "#ED1C24"
+    cn_accessible: true
+    tier: 2
+    sources:
+      - kind: docs
+        url: https://developer.amd.com.cn
+      - kind: search
+        query: AMD Radeon Cloud Token Factory 免费 API 模型
+
+  - slug: gmi-cloud
+    name_zh: GMI Cloud
+    name_en: GMI Cloud
+    country: US
+    website: https://www.gmicloud.ai
+    pricing_url: https://www.gmicloud.ai
+    brand_color: "#5B7CFA"
+    cn_accessible: false
+    tier: 2
+    sources:
+      - kind: pricing
+        url: https://www.gmicloud.ai
+      - kind: search
+        query: GMI Cloud MiniMax free week 0元 API
+
+  - slug: nvidia-nim
+    name_zh: NVIDIA NIM
+    name_en: NVIDIA NIM
+    country: US
+    website: https://build.nvidia.com
+    pricing_url: https://build.nvidia.com
+    brand_color: "#76B900"
+    cn_accessible: false
+    tier: 1
+    sources:
+      - kind: docs
+        url: https://build.nvidia.com
+      - kind: search
+        query: NVIDIA NIM free inference credits API build.nvidia.com
+
+  - slug: cloudflare-workers-ai
+    name_zh: Cloudflare Workers AI
+    name_en: Cloudflare Workers AI
+    country: US
+    website: https://developers.cloudflare.com/workers-ai/
+    pricing_url: https://developers.cloudflare.com/workers-ai/platform/pricing/
+    brand_color: "#F38020"
+    cn_accessible: false
+    tier: 1
+    sources:
+      - kind: pricing
+        url: https://developers.cloudflare.com/workers-ai/platform/pricing/
+      - kind: search
+        query: Cloudflare Workers AI free tier neurons daily limit
+
+  - slug: vercel-ai-gateway
+    name_zh: Vercel AI Gateway
+    name_en: Vercel AI Gateway
+    country: US
+    website: https://vercel.com/ai
+    pricing_url: https://vercel.com/docs/ai-gateway/pricing
+    brand_color: "#000000"
+    cn_accessible: false
+    tier: 1
+    sources:
+      - kind: pricing
+        url: https://vercel.com/docs/ai-gateway/pricing
+      - kind: search
+        query: Vercel AI Gateway free $5 credits monthly
+
+  - slug: xiaomi-mimo
+    name_zh: 小米 MiMo
+    name_en: Xiaomi MiMo
+    country: CN
+    website: https://100t.xiaomimimo.com
+    pricing_url: https://100t.xiaomimimo.com
+    brand_color: "#FF6900"
+    cn_accessible: true
+    tier: 2
+    sources:
+      - kind: pricing
+        url: https://100t.xiaomimimo.com
+      - kind: search
+        query: 小米 MiMo 开放平台 免费额度 TTS
+
+  # ---------------- 快手可灵（视频生成，国内可用性最佳的视频模型之一） ----------------
+  - slug: kuaishou
+    name_zh: 快手可灵
+    name_en: Kuaishou Kling AI
+    country: CN
+    website: https://klingai.kuaishou.com
+    brand_color: "#ff5000"
+    cn_accessible: true
+    tier: 1
+    sources:
+      - kind: pricing
+        url: https://klingai.kuaishou.com
+      - kind: docs
+        url: https://app.klingai.com/cn/dev/document-api

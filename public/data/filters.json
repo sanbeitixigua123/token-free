@@ -68,5 +68,35 @@
       "label": "百度文心",
       "count": 1
     }
+  ],
+  "capabilities": [
+    {
+      "value": "text-generation",
+      "label": "文本生成",
+      "count": 2
+    },
+    {
+      "value": "code-generation",
+      "label": "代码生成",
+      "count": 2
+    }
+  ],
+  "sorts": [
+    {
+      "value": "ending",
+      "label": "即将结束优先"
+    },
+    {
+      "value": "newest",
+      "label": "最新收录"
+    },
+    {
+      "value": "confidence",
+      "label": "可信度优先"
+    },
+    {
+      "value": "provider",
+      "label": "按厂商"
+    }
   ]
 }

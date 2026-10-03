@@ -107,9 +107,95 @@ let _singleton = null;
 export function getDb() {
   if (!_singleton) {
     _singleton = openDatabase();
+    // ⚠️ 顺序很重要：必须先跑"前置迁移"再 applySchema。
+    // 原因：schema.sql 里的 v_activities 视图引用了 activities.endpoint_id / model_id，
+    // 而**老库**的 activities 表还没有这两列 —— 直接 applySchema 会立刻报
+    // `no such column: endpoint_id`（实测踩过）。
+    // 因此凡是"新视图依赖老表新列"的情况，都必须先把列补上，再建视图。
+    preSchemaMigrations(_singleton);
     applySchema(_singleton);
   }
   return _singleton;
+}
+
+/**
+ * 建视图之前必须完成的列补齐。
+ *
+ * 与 migrate.js 里那些迁移的区别：这里只放"schema.sql 会依赖到"的最小改动，
+ * 其余业务性迁移仍归 migrate.js。这样任何入口（服务、脚本、定时任务）
+ * 打开数据库时都不会因缺列而崩溃，而不必强制先跑一次 migrate。
+ */
+function preSchemaMigrations(db) {
+  const tableExists = (t) =>
+    db.prepare(`SELECT name FROM sqlite_master WHERE type='table' AND name=?`).get(t);
+
+  // 老库缺 models / endpoints 两张表（三层结构引入时新增）。
+  // 视图 v_activities 会 LEFT JOIN 它们，缺表同样会报 no such table。
+  if (!tableExists('models')) {
+    db.exec(`
+      CREATE TABLE IF NOT EXISTS models (
+        id               INTEGER PRIMARY KEY,
+        slug             TEXT NOT NULL UNIQUE,
+        vendor_slug      TEXT,
+        name             TEXT NOT NULL,
+        capability       TEXT NOT NULL DEFAULT 'text-generation',
+        capabilities     TEXT NOT NULL DEFAULT '[]',
+        context_window   INTEGER,
+        max_output       INTEGER,
+        is_multimodal    INTEGER NOT NULL DEFAULT 0,
+        is_open_weights  INTEGER NOT NULL DEFAULT 0,
+        description      TEXT,
+        homepage_url     TEXT,
+        released_at      TEXT,
+        created_at       TEXT NOT NULL DEFAULT (datetime('now')),
+        updated_at       TEXT NOT NULL DEFAULT (datetime('now'))
+      );
+    `);
+  }
+  if (!tableExists('endpoints')) {
+    db.exec(`
+      CREATE TABLE IF NOT EXISTS endpoints (
+        id                INTEGER PRIMARY KEY,
+        provider_id       INTEGER NOT NULL REFERENCES providers(id) ON DELETE CASCADE,
+        model_id          INTEGER NOT NULL REFERENCES models(id) ON DELETE CASCADE,
+        slug              TEXT NOT NULL UNIQUE,
+        quota_kind        TEXT,
+        quota_rpm         INTEGER,
+        quota_rpd         INTEGER,
+        quota_tpm         INTEGER,
+        quota_amount      REAL,
+        quota_unit        TEXT,
+        quota_text        TEXT,
+        requires_card     INTEGER NOT NULL DEFAULT 0,
+        requires_signup   INTEGER NOT NULL DEFAULT 1,
+        requires_phone    INTEGER NOT NULL DEFAULT 0,
+        cn_accessible     INTEGER NOT NULL DEFAULT 1,
+        api_base_url      TEXT,
+        openai_compatible INTEGER NOT NULL DEFAULT 1,
+        docs_url          TEXT,
+        claim_url         TEXT,
+        score             REAL,
+        score_source      TEXT,
+        verified_at       TEXT,
+        enabled           INTEGER NOT NULL DEFAULT 1,
+        created_at        TEXT NOT NULL DEFAULT (datetime('now')),
+        updated_at        TEXT NOT NULL DEFAULT (datetime('now')),
+        UNIQUE(provider_id, model_id)
+      );
+    `);
+  }
+
+  // 老库的 activities 表可能缺 endpoint_id / model_id（三层结构引入时新增）
+  if (tableExists('activities')) {
+    const cols = db.prepare('PRAGMA table_info(activities)').all().map((c) => c.name);
+    if (!cols.includes('endpoint_id')) {
+      // 此时 endpoints 表可能还不存在，故不能带 REFERENCES（SQLite 允许省略）
+      db.exec('ALTER TABLE activities ADD COLUMN endpoint_id INTEGER;');
+    }
+    if (!cols.includes('model_id')) {
+      db.exec('ALTER TABLE activities ADD COLUMN model_id INTEGER;');
+    }
+  }
 }
 
 /** 北京时间当天 YYYY-MM-DD */

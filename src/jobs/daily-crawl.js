@@ -20,6 +20,7 @@ import { loadSettings } from '../lib/config.js';
 import { createLogger } from '../lib/logger.js';
 import { notifyNewActivities } from '../notify/push.js';
 import { writeFeeds } from '../notify/feed.js';
+import { generateAndSave } from '../lib/guide-gen.js';
 
 const log = createLogger('daily');
 
@@ -51,6 +52,21 @@ async function main() {
     } catch (err) {
       log.warn('推送失败（不影响抓取结果）', { err: err.message });
     }
+  }
+
+  // 自动生成攻略草稿。
+  //
+  // ⚠️ 顺序很重要：必须跑在 writeFeeds **之前**（实测踩过）。
+  // writeFeeds → buildDataFiles 会调用 loadGuides() 把攻略写进 public/data/guides.json，
+  // 若先写 feed 再生成，当天新增的攻略要等下一次构建才会出现在静态站上（差一天）。
+  // 这里失败不阻断抓取：攻略是附属产物，不该让主流程非零退出。
+  try {
+    const gen = generateAndSave(db, { minConfidence: 0.75, limit: 20 });
+    log.info(gen.drafts.length
+      ? `自动生成攻略：新增 ${gen.drafts.length} 篇（累计 ${gen.total} 篇）`
+      : `自动生成攻略：无新增（累计 ${gen.total} 篇）`);
+  } catch (err) {
+    log.warn('自动生成攻略失败（不影响抓取结果）', { err: err.message });
   }
 
   // 生成 RSS / JSON feed

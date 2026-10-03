@@ -1,0 +1,521 @@
+# ============================================================
+#  models.yaml —— 模型实体清单（三层结构的中层）
+#
+#  为什么单独一个文件：
+#    模型与厂商是**多对多**关系（GLM-5.3-Flash 同时出现在智谱官方、OpenCode、
+#    Vultr、AMD 等多家提供方），把模型定义塞进 providers.yaml 会造成大量重复，
+#    且改名时极易不同步。独立成文件后，厂商/端点的配置只需引用 model slug。
+#
+#  capability 取值（对齐业界惯例，便于与同类站点互通）：
+#    text-generation / code-generation / image-generation / image-understanding
+#    speech-to-text / text-to-speech / text-embeddings / video-generation / translation
+#
+#  字段说明：
+#    slug             全局唯一标识，端点的 model 字段引用它
+#    vendor_slug      模型开发方（可能是厂商之外的第三方，如 Meta 的 Llama）
+#    name             展示名
+#    capability       主能力（用于列表分组与筛选，单值便于建索引）
+#    capabilities     全量能力列表（多模态模型填多项）
+#    context_window   上下文窗口（token）
+#    is_open_weights  是否开源权重
+# ============================================================
+
+models:
+  # ---------------- 文本 / 代码（主力，与现有活动对应） ----------------
+  - slug: glm-5-3-flash
+    vendor_slug: zhipu
+    name: GLM-5.3-Flash
+    capability: code-generation
+    capabilities: [code-generation, text-generation]
+    context_window: 1000000
+    is_open_weights: true
+    description: 智谱 2026-08 发布，320B-A18B MoE，原生多模态，1M 上下文，MIT 开源
+    homepage_url: https://z.ai
+
+  - slug: glm-5-3
+    vendor_slug: zhipu
+    name: GLM-5.3
+    capability: text-generation
+    capabilities: [text-generation, code-generation]
+    context_window: 1000000
+    is_open_weights: true
+    description: 智谱 GLM-5 系列旗舰
+    homepage_url: https://z.ai
+
+  - slug: deepseek-v4-1-flash
+    vendor_slug: deepseek
+    name: DeepSeek V4.1 Flash
+    capability: code-generation
+    capabilities: [code-generation, text-generation]
+    context_window: 1000000
+    max_output: 384000
+    is_open_weights: true
+    description: 2026-09-10 发布，552B MoE 非对称，输出 197 tok/s，缓存折扣 50 倍
+    homepage_url: https://www.deepseek.com
+
+  - slug: deepseek-v4-flash
+    vendor_slug: deepseek
+    name: DeepSeek V4 Flash
+    capability: text-generation
+    capabilities: [text-generation, code-generation]
+    context_window: 1000000
+    is_open_weights: true
+    description: DeepSeek V4 系列的轻量高速版本
+    homepage_url: https://www.deepseek.com
+
+  - slug: deepseek-v4-flash-vision
+    vendor_slug: deepseek
+    name: DeepSeek V4 Flash Vision (Exp)
+    capability: image-understanding
+    capabilities: [image-understanding, text-generation]
+    context_window: 1000000
+    is_open_weights: true
+    description: DeepSeek 实验性多模态版本，支持视觉理解
+    homepage_url: https://www.deepseek.com
+
+  - slug: qwen-3-8-flash
+    vendor_slug: alibaba-qwen
+    name: Qwen 3.8 Flash
+    capability: code-generation
+    capabilities: [code-generation, text-generation]
+    is_open_weights: false
+    description: 阿里通义千问超灵敏代码与文本补全模型
+    homepage_url: https://tongyi.aliyun.com
+
+  - slug: qwen-3-8-max
+    vendor_slug: alibaba-qwen
+    name: Qwen 3.8 Max
+    capability: code-generation
+    capabilities: [code-generation, text-generation]
+    is_open_weights: false
+    description: 阿里通义千问旗舰，原生 agentic 工具调用
+    homepage_url: https://tongyi.aliyun.com
+
+  - slug: kimi-k3
+    vendor_slug: moonshot
+    name: Kimi K3
+    capability: text-generation
+    capabilities: [text-generation, image-understanding]
+    context_window: 1000000
+    description: 月之暗面原生视觉模型，1M 上下文，长程 coding 能力
+    homepage_url: https://www.moonshot.cn
+
+  - slug: minimax-m3
+    vendor_slug: minimax
+    name: MiniMax M3
+    capability: text-generation
+    capabilities: [text-generation, code-generation, image-understanding]
+    context_window: 1000000
+    description: MiniMax 旗舰，MSA 稀疏注意力，SWE-Bench Pro 表现突出
+    homepage_url: https://www.minimaxi.com
+
+  - slug: minimax-m2-7
+    vendor_slug: minimax
+    name: MiniMax M2.7
+    capability: text-generation
+    capabilities: [text-generation, code-generation]
+    description: MiniMax M2 系列升级版
+    homepage_url: https://www.minimaxi.com
+
+  - slug: mimo-2-6-pro
+    vendor_slug: xiaomi-mimo
+    name: MiMo 2.6 Pro
+    capability: text-generation
+    capabilities: [text-generation, image-understanding, speech-to-text]
+    context_window: 1000000
+    is_open_weights: true
+    is_multimodal: true
+    description: 小米全模态旗舰，原生音频直收免除 STT，DeepSWE 71.9
+    homepage_url: https://100t.xiaomimimo.com
+
+  - slug: mimo-2-6-flash
+    vendor_slug: xiaomi-mimo
+    name: MiMo 2.6 Flash
+    capability: text-generation
+    capabilities: [text-generation, image-understanding]
+    is_open_weights: true
+    description: 小米高效全模态模型，原生音频理解
+    homepage_url: https://100t.xiaomimimo.com
+
+  - slug: ernie-5
+    vendor_slug: baidu-ernie
+    name: 文心 ERNIE 5
+    capability: text-generation
+    capabilities: [text-generation, code-generation]
+    description: 百度文心大模型 5 系列
+    homepage_url: https://cloud.baidu.com/product/wenxinworkshop
+
+  - slug: hunyuan-3
+    vendor_slug: tencent-hunyuan
+    name: 混元 3.0 (Hy3.0)
+    capability: code-generation
+    capabilities: [code-generation, text-generation]
+    description: 腾讯混元新一代，「快慢思考融合」MoE 架构，已全量接入 CodeBuddy
+    homepage_url: https://hunyuan.tencent.com
+
+  - slug: spark-5
+    vendor_slug: iflytek-spark
+    name: 讯飞星火 5
+    capability: text-generation
+    capabilities: [text-generation, speech-to-text, text-to-speech]
+    is_multimodal: true
+    description: 科大讯飞星火大模型，语音能力见长
+    homepage_url: https://xinghuo.xfyun.cn
+
+  - slug: step-4
+    vendor_slug: stepfun
+    name: 阶跃星辰 Step-4
+    capability: text-generation
+    capabilities: [text-generation, image-understanding]
+    description: 阶跃星辰多模态大模型
+    homepage_url: https://www.stepfun.com
+
+  - slug: baichuan-4
+    vendor_slug: baichuan
+    name: 百川 4
+    capability: text-generation
+    capabilities: [text-generation]
+    description: 百川智能大模型
+    homepage_url: https://www.baichuan-ai.com
+
+  - slug: claude-opus-5
+    vendor_slug: anthropic
+    name: Claude Opus 5
+    capability: code-generation
+    capabilities: [code-generation, text-generation]
+    description: Anthropic 第五代旗舰，能力逼近前代 Fable、价格减半
+    homepage_url: https://www.anthropic.com
+
+  - slug: claude-sonnet-5
+    vendor_slug: anthropic
+    name: Claude Sonnet 5
+    capability: code-generation
+    capabilities: [code-generation, text-generation]
+    description: agentic 能力追平上代 Opus，claude.ai 免费/Pro 计划默认模型
+    homepage_url: https://www.anthropic.com
+
+  - slug: gemini-3-8-flash
+    vendor_slug: google
+    name: Gemini 3.8 Flash
+    capability: code-generation
+    capabilities: [code-generation, text-generation, image-understanding, speech-to-text]
+    context_window: 1000000
+    is_multimodal: true
+    description: Google 2026-09 发布，1M 上下文，291 tok/s，AA 智能指数 41
+    homepage_url: https://aistudio.google.com
+
+  - slug: gemini-3-7-flash
+    vendor_slug: google
+    name: Gemini 3.7 Flash
+    capability: text-generation
+    capabilities: [text-generation, image-understanding]
+    context_window: 2000000
+    is_multimodal: true
+    description: 亚秒延迟，2M 上下文，混合思考模式
+    homepage_url: https://aistudio.google.com
+
+  - slug: gemini-2-5-flash-lite
+    vendor_slug: google
+    name: Gemini 2.5 Flash-Lite
+    capability: text-generation
+    capabilities: [text-generation, image-understanding]
+    is_multimodal: true
+    description: Google 免费配额最高的轻量模型
+    homepage_url: https://aistudio.google.com
+
+  - slug: gpt-5-6-sol
+    vendor_slug: openai
+    name: GPT-5.6 Sol
+    capability: text-generation
+    capabilities: [text-generation, code-generation]
+    description: OpenAI 前沿旗舰
+    homepage_url: https://openai.com
+
+  - slug: gpt-5-6-luna
+    vendor_slug: openai
+    name: GPT-5.6 Luna
+    capability: text-generation
+    capabilities: [text-generation]
+    description: 超快轻量，亚秒级实时交互
+    homepage_url: https://openai.com
+
+  - slug: grok-4-6
+    vendor_slug: xai
+    name: Grok 4.6
+    capability: text-generation
+    capabilities: [text-generation, image-understanding]
+    is_multimodal: true
+    description: xAI 基于 Colossus 超算，实时知识与工具调用
+    homepage_url: https://x.ai
+
+  - slug: mistral-small-3-1
+    vendor_slug: mistral
+    name: Mistral Small 3.1
+    capability: text-generation
+    capabilities: [text-generation, image-understanding]
+    context_window: 128000
+    is_open_weights: true
+    is_multimodal: true
+    description: Mistral 增强视觉理解版本
+    homepage_url: https://mistral.ai
+
+  - slug: llama-4-scout
+    vendor_slug: meta
+    name: Llama 4 Scout
+    capability: text-generation
+    capabilities: [text-generation, image-understanding]
+    is_open_weights: true
+    is_multimodal: true
+    description: Meta 原生多模态开源模型，17B 参数 16 专家
+    homepage_url: https://www.llama.com
+
+  - slug: nemotron-3-ultra
+    vendor_slug: nvidia
+    name: Nemotron 3 Ultra 550B
+    capability: code-generation
+    capabilities: [code-generation, text-generation]
+    is_open_weights: true
+    description: NVIDIA 550B MoE 旗舰推理模型，面向自主 agent
+    homepage_url: https://build.nvidia.com
+
+  - slug: longcat-2-5-preview
+    vendor_slug: meituan
+    name: LongCat 2.5 Preview
+    capability: text-generation
+    capabilities: [text-generation, code-generation]
+    context_window: 1000000
+    description: 美团 1.6T MoE 架构，1M 上下文，零数据留存
+    homepage_url: https://longcat.ai
+
+  - slug: lcm-2-5
+    vendor_slug: meta
+    name: LCM 2.5
+    capability: text-generation
+    capabilities: [text-generation]
+    is_open_weights: true
+    description: Meta 大概念模型
+    homepage_url: https://www.llama.com
+
+  # ---------------- 图像生成（对标 freeaiapi 的补齐项） ----------------
+  - slug: flux-2-dev
+    vendor_slug: black-forest-labs
+    name: FLUX 2 Dev
+    capability: image-generation
+    capabilities: [image-generation]
+    is_open_weights: true
+    description: 高真实感文生图，支持多参考图
+    homepage_url: https://blackforestlabs.ai
+
+  - slug: flux-2-klein
+    vendor_slug: black-forest-labs
+    name: FLUX 2 Klein
+    capability: image-generation
+    capabilities: [image-generation]
+    is_open_weights: true
+    description: 超快蒸馏图像模型，生成与编辑统一
+    homepage_url: https://blackforestlabs.ai
+
+  - slug: stable-diffusion-xl
+    vendor_slug: stability-ai
+    name: Stable Diffusion XL
+    capability: image-generation
+    capabilities: [image-generation]
+    is_open_weights: true
+    description: 扩散式文生图模型
+    homepage_url: https://stability.ai
+
+  - slug: z-image-turbo
+    vendor_slug: zhipu
+    name: Z-Image Turbo
+    capability: image-generation
+    capabilities: [image-generation]
+    description: 智谱高速文生图模型，输出 token 价格 $0.00
+    homepage_url: https://z.ai
+
+  # ---------------- 语音 ----------------
+  - slug: minimax-speech-2-8
+    vendor_slug: minimax
+    name: MiniMax Speech 2.8
+    capability: text-to-speech
+    capabilities: [text-to-speech]
+    description: MiniMax 语音合成，全球 SOTA 梯队
+    homepage_url: https://www.minimaxi.com
+
+  - slug: minimax-music-3
+    vendor_slug: minimax
+    name: MiniMax Music 3.0
+    capability: text-to-speech
+    capabilities: [text-to-speech]
+    description: MiniMax 音乐生成
+    homepage_url: https://www.minimaxi.com
+
+  - slug: fish-audio-s2-1-pro
+    vendor_slug: fish-audio
+    name: Fish Audio S2.1 Pro
+    capability: text-to-speech
+    capabilities: [text-to-speech]
+    description: 支持 83 种语言、自然语言情绪控制与可复用声音克隆
+    homepage_url: https://fish.audio
+
+  - slug: whisper-large-v3-turbo
+    vendor_slug: openai
+    name: Whisper Large V3 Turbo
+    capability: speech-to-text
+    capabilities: [speech-to-text]
+    is_open_weights: true
+    description: Whisper 大模型 Turbo 版语音识别
+    homepage_url: https://openai.com
+
+  - slug: deepgram-aura-2
+    vendor_slug: deepgram
+    name: Deepgram Aura 2
+    capability: text-to-speech
+    capabilities: [text-to-speech]
+    description: 上下文感知 TTS，支持多语言
+    homepage_url: https://deepgram.com
+
+  - slug: deepgram-nova-3
+    vendor_slug: deepgram
+    name: Deepgram Nova 3
+    capability: speech-to-text
+    capabilities: [speech-to-text]
+    description: Deepgram 新一代语音转文字模型
+    homepage_url: https://deepgram.com
+
+  # ---------------- 视频生成 ----------------
+  - slug: seedance-2-5
+    vendor_slug: bytedance-doubao
+    name: Seedance 2.5
+    capability: video-generation
+    capabilities: [video-generation]
+    description: 字节跳动视频生成模型
+    homepage_url: https://www.volcengine.com
+
+  - slug: cosmos-transfer-2-5
+    vendor_slug: nvidia
+    name: Cosmos Transfer 2.5
+    capability: video-generation
+    capabilities: [video-generation]
+    is_open_weights: true
+    description: NVIDIA 物理视频迁移与世界模型
+    homepage_url: https://build.nvidia.com
+
+  # ---------------- 嵌入与重排 ----------------
+  - slug: bge-m3
+    vendor_slug: baai
+    name: BGE-M3
+    capability: text-embeddings
+    capabilities: [text-embeddings]
+    is_open_weights: true
+    description: 多功能、多语言、多粒度文本嵌入
+    homepage_url: https://github.com/FlagOpen/FlagEmbedding
+
+  - slug: bge-reranker-base
+    vendor_slug: baai
+    name: BGE Reranker Base
+    capability: text-embeddings
+    capabilities: [text-embeddings]
+    is_open_weights: true
+    description: 文本重排序模型，输出相似度分数
+    homepage_url: https://github.com/FlagOpen/FlagEmbedding
+
+  - slug: qwen3-embedding-0-6b
+    vendor_slug: alibaba-qwen
+    name: Qwen3 Embedding 0.6B
+    capability: text-embeddings
+    capabilities: [text-embeddings]
+    is_open_weights: true
+    description: 通义千问文本嵌入与排名模型
+    homepage_url: https://tongyi.aliyun.com
+
+  # ---------------- 翻译 ----------------
+  - slug: m2m-100
+    vendor_slug: meta
+    name: M2M-100 1.2B
+    capability: translation
+    capabilities: [translation]
+    is_open_weights: true
+    description: Meta 多对多机器翻译模型
+    homepage_url: https://www.llama.com
+
+  # ---------------- 语音/视频补充（第二批：为已删除的错配端点找到正确模型） ----------------
+  # 背景：首批扩充时把"百炼的 Paraformer 语音识别"和"智谱的视频生成"
+  # 错挂在 qwen-3-8-flash / glm-5-3-flash 上，触发 (provider,model) 唯一约束冲突。
+  # 根因是这两个能力其实来自**不同的模型**，此处补上正确的模型实体。
+  - slug: paraformer-v2
+    vendor_slug: alibaba-qwen
+    name: Paraformer v2
+    capability: speech-to-text
+    capabilities: [speech-to-text]
+    description: 阿里通义实验室语音识别模型，百炼平台内置，中文识别准确率高
+    homepage_url: https://help.aliyun.com/zh/model-studio
+
+  - slug: cosyvoice-2
+    vendor_slug: alibaba-qwen
+    name: CosyVoice 2
+    capability: text-to-speech
+    capabilities: [text-to-speech]
+    is_open_weights: true
+    description: 阿里通义语音合成，支持音色克隆与情感控制
+    homepage_url: https://help.aliyun.com/zh/model-studio
+
+  - slug: cogvideox-5
+    vendor_slug: zhipu
+    name: CogVideoX 5
+    capability: video-generation
+    capabilities: [video-generation]
+    is_open_weights: true
+    description: 智谱开源视频生成模型，文生视频与图生视频
+    homepage_url: https://z.ai
+
+  - slug: hunyuan-video
+    vendor_slug: tencent-hunyuan
+    name: 混元视频 HunyuanVideo
+    capability: video-generation
+    capabilities: [video-generation]
+    is_open_weights: true
+    description: 腾讯混元开源视频生成模型，130 亿参数
+    homepage_url: https://hunyuan.tencent.com
+
+  - slug: kling-2-6
+    vendor_slug: kuaishou
+    name: 可灵 Kling 2.6
+    capability: video-generation
+    capabilities: [video-generation]
+    description: 快手可灵视频生成模型，国内可用性最佳的视频模型之一
+    homepage_url: https://klingai.kuaishou.com
+
+  - slug: wan-2-5
+    vendor_slug: alibaba-qwen
+    name: 通义万相 Wan 2.5
+    capability: video-generation
+    capabilities: [video-generation, image-generation]
+    is_open_weights: true
+    description: 阿里通义万相视频与图像生成模型
+    homepage_url: https://tongyi.aliyun.com
+
+  - slug: hunyuan-image-3
+    vendor_slug: tencent-hunyuan
+    name: 混元图像 3.0
+    capability: image-generation
+    capabilities: [image-generation]
+    is_open_weights: true
+    description: 腾讯混元图像生成模型，原生多模态架构
+    homepage_url: https://hunyuan.tencent.com
+
+  - slug: seedream-4
+    vendor_slug: bytedance-doubao
+    name: Seedream 4.0
+    capability: image-generation
+    capabilities: [image-generation]
+    description: 字节跳动图像生成模型，即梦同源
+    homepage_url: https://www.volcengine.com
+
+  - slug: sensevoice-small
+    vendor_slug: alibaba-qwen
+    name: SenseVoice Small
+    capability: speech-to-text
+    capabilities: [speech-to-text]
+    is_open_weights: true
+    description: 阿里多语言语音识别与情感识别模型，推理极快
+    homepage_url: https://github.com/FunAudioLLM/SenseVoice

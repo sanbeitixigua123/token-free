@@ -1,0 +1,806 @@
+# ============================================================
+#  endpoints.yaml —— 端点清单（三层结构的上层，最小可领取单元）
+#
+#  语义：某**提供方**在某个**模型**上给出的免费额度。
+#    例：google-ai-studio × gemini-3-8-flash = 15 RPM / 1500 RPD / 免绑卡
+#
+#  与 activities 的区别（易混，务必分清）：
+#    endpoint  —— 长期稳定的"免费额度政策"（Google AI Studio 一直给 1500 RPD）
+#    activity  —— 有时效的"限时活动"（ZCode 周末送 1 亿，9/7 截止）
+#    二者是"常态"与"限时"的关系。
+#
+#  为什么要有这一层：
+#    引入前只有「厂商 → 活动」两层，用户看到"某厂商有免费额度"却不知道
+#    "具体能领多少、要不要绑卡、支不支持国内直连"。端点层把这些条件结构化，
+#    才能做"免绑卡优先""国内可直连"这类真正有用的筛选。
+#
+#  字段说明（未标注者为可选）：
+#    provider          厂商 slug，须存在于 providers.yaml
+#    model             模型 slug，须存在于 models.yaml
+#    quota_kind        rate_limit / credits / free_tier / unlimited
+#    quota_rpm/rpd/tpm 速率限制（每分钟请求 / 每日请求 / 每分钟 token）
+#    quota_amount+unit 额度数值与单位（credits 型使用）
+#    requires_card     是否必须绑卡（这个字段最有价值，用户最关心）
+#    cn_accessible     国内是否可直连
+#    api_base_url      OpenAI 兼容端点，便于直接接入
+#    score             评分（可选，必须同时给 score_source）
+# ============================================================
+
+endpoints:
+  # ---------------- 智谱 AI（ZCode / GLM 系列） ----------------
+  - provider: zhipu-zcode
+    model: glm-5-3-flash
+    quota_kind: free_tier
+    quota_text: 客户端内免费使用，周末活动可领 1~3 亿 token
+    requires_card: false
+    cn_accessible: true
+    claim_url: https://zcode.z.ai
+    docs_url: https://z.ai
+    # 注：ZCode 的额度仅限客户端内使用，不提供外部 API Key（官方明确说明）
+
+  - provider: zhipu
+    model: glm-5-3-flash
+    quota_kind: credits
+    quota_amount: 0
+    quota_unit: token
+    quota_text: 官方开放平台新用户赠送额度
+    requires_card: false
+    cn_accessible: true
+    api_base_url: https://open.bigmodel.cn/api/paas/v4
+    openai_compatible: true
+    claim_url: https://open.bigmodel.cn
+    docs_url: https://z.ai
+
+  # ---------------- DeepSeek ----------------
+  - provider: deepseek
+    model: deepseek-v4-1-flash
+    quota_kind: credits
+    quota_amount: 6
+    quota_unit: CNY
+    quota_text: 桌面客户端登录赠金，用于抵扣 API 调用
+    requires_card: false
+    cn_accessible: true
+    api_base_url: https://api.deepseek.com
+    openai_compatible: true
+    claim_url: https://www.deepseek.com
+    docs_url: https://api-docs.deepseek.com
+
+  # ---------------- 阿里云百炼 / 通义千问 ----------------
+  - provider: aliyun-bailian
+    model: qwen-3-8-flash
+    quota_kind: credits
+    quota_amount: 0
+    quota_unit: CNY
+    quota_text: 新用户实名认证后领取免费额度
+    requires_card: false
+    cn_accessible: true
+    api_base_url: https://dashscope.aliyuncs.com/compatible-mode/v1
+    openai_compatible: true
+    claim_url: https://bailian.console.aliyun.com
+    docs_url: https://help.aliyun.com/zh/model-studio
+
+  # ---------------- 阿里通义灵码 ----------------
+  - provider: aliyun-lingma
+    model: qwen-3-8-flash
+    quota_kind: free_tier
+    quota_text: 个人版免费使用
+    requires_card: false
+    cn_accessible: true
+    claim_url: https://lingma.aliyun.com
+    docs_url: https://help.aliyun.com/zh/model-studio/release-notes
+
+  # ---------------- 阿里 Qoder ----------------
+  - provider: qoder
+    model: qwen-3-8-flash
+    quota_kind: free_tier
+    quota_text: 免费试用额度
+    requires_card: false
+    cn_accessible: true
+    claim_url: https://qoder.com
+    docs_url: https://qoder.com/changelog
+
+  # ---------------- Google AI Studio（业界最慷慨的官方免费额度） ----------------
+  - provider: gemini-code-assist
+    model: gemini-3-8-flash
+    quota_kind: rate_limit
+    quota_rpm: 15
+    quota_rpd: 1500
+    quota_text: Google AI Studio 免费层：15 RPM / 1500 RPD
+    requires_card: false
+    cn_accessible: false
+    api_base_url: https://generativelanguage.googleapis.com/v1beta/openai
+    openai_compatible: true
+    claim_url: https://aistudio.google.com
+    docs_url: https://aistudio.google.com
+    # 注：免费层请求数据可能被 Google 用于产品改进，且需在未开通 Billing 的空项目里生成 Key
+
+  - provider: gemini-code-assist
+    model: gemini-3-7-flash
+    quota_kind: free_tier
+    quota_text: Google AI Studio 免费层
+    requires_card: false
+    cn_accessible: false
+    api_base_url: https://generativelanguage.googleapis.com/v1beta/openai
+    openai_compatible: true
+    claim_url: https://aistudio.google.com
+    docs_url: https://aistudio.google.com
+
+  - provider: gemini-code-assist
+    model: gemini-2-5-flash-lite
+    quota_kind: rate_limit
+    quota_rpd: 1000
+    quota_text: Google AI Studio 免费层中配额最高的模型，约 1000 RPD
+    requires_card: false
+    cn_accessible: false
+    api_base_url: https://generativelanguage.googleapis.com/v1beta/openai
+    openai_compatible: true
+    claim_url: https://aistudio.google.com
+    docs_url: https://aistudio.google.com
+
+  # ---------------- GitHub Models ----------------
+  - provider: github-copilot
+    model: gpt-5-6-luna
+    quota_kind: rate_limit
+    quota_text: GitHub 账号令牌直接调用，有限速
+    requires_card: false
+    cn_accessible: false
+    api_base_url: https://models.inference.ai.azure.com
+    openai_compatible: true
+    claim_url: https://github.com/marketplace/models
+    docs_url: https://docs.github.com/en/github-models
+    # 注：无需单独的 provider 账号，用 GitHub token 即可
+
+  # ---------------- Cloudflare Workers AI ----------------
+  - provider: cloudflare-workers-ai
+    model: llama-4-scout
+    quota_kind: rate_limit
+    quota_rpd: 10000
+    quota_text: 每日 Neurons 免费额度，服务端无 GPU 成本
+    requires_card: false
+    cn_accessible: false
+    api_base_url: https://api.cloudflare.com/client/v4/accounts/{account_id}/ai/v1
+    openai_compatible: true
+    claim_url: https://dash.cloudflare.com
+    docs_url: https://developers.cloudflare.com/workers-ai
+
+  # ---------------- Vercel AI Gateway ----------------
+  - provider: vercel-ai-gateway
+    model: claude-sonnet-5
+    quota_kind: credits
+    quota_amount: 5
+    quota_unit: USD
+    quota_text: 每月 $5 免费 Gateway Credits，无需自带 Key
+    requires_card: false
+    cn_accessible: false
+    openai_compatible: true
+    claim_url: https://vercel.com/ai
+    docs_url: https://sdk.vercel.ai
+
+  # ---------------- OpenRouter ----------------
+  - provider: openrouter
+    model: deepseek-v4-flash
+    quota_kind: free_tier
+    quota_text: 标注 :free 的模型免费调用，有速率限制；定期开放匿名测试模型
+    requires_card: false
+    cn_accessible: false
+    api_base_url: https://openrouter.ai/api/v1
+    openai_compatible: true
+    claim_url: https://openrouter.ai
+    docs_url: https://openrouter.ai/docs/changelog
+
+  # ---------------- NVIDIA NIM ----------------
+  - provider: nvidia-nim
+    model: nemotron-3-ultra
+    quota_kind: credits
+    quota_amount: 1000
+    quota_unit: request
+    quota_text: 注册赠送 1000 次免费推理额度
+    requires_card: false
+    cn_accessible: false
+    openai_compatible: true
+    claim_url: https://build.nvidia.com
+    docs_url: https://build.nvidia.com
+
+  # ---------------- Vultr Serverless Inference ----------------
+  - provider: vultr
+    model: deepseek-v4-1-flash
+    quota_kind: credits
+    quota_amount: 300
+    quota_unit: USD
+    quota_text: 新用户 $300 试用额度（30 天），实测可抵扣 Serverless Inference
+    requires_card: true
+    cn_accessible: false
+    openai_compatible: true
+    claim_url: https://www.vultr.com
+    docs_url: https://www.vultr.com
+
+  # ---------------- AMD Radeon Cloud ----------------
+  - provider: amd-radeon-cloud
+    model: deepseek-v4-flash
+    quota_kind: free_tier
+    quota_text: 开发者平台免费开放，原生双协议，免绑卡
+    requires_card: false
+    cn_accessible: true
+    openai_compatible: true
+    claim_url: https://developer.amd.com.cn
+    docs_url: https://developer.amd.com.cn
+
+  # ---------------- GMI Cloud ----------------
+  - provider: gmi-cloud
+    model: minimax-m3
+    quota_kind: free_tier
+    quota_text: MiniMax Week 限时 14 天全量免费，免绑卡免预充
+    requires_card: false
+    cn_accessible: false
+    openai_compatible: true
+    claim_url: https://console.gmicloud.ai
+    docs_url: https://console.gmicloud.ai
+
+  # ---------------- 小米 MiMo ----------------
+  - provider: xiaomi-mimo
+    model: mimo-2-6-pro
+    quota_kind: free_tier
+    quota_text: 开放平台免费额度；TTS 限时免费
+    requires_card: false
+    cn_accessible: true
+    openai_compatible: true
+    claim_url: https://100t.xiaomimimo.com
+    docs_url: https://100t.xiaomimimo.com
+
+  # ---------------- 百度千帆 ----------------
+  - provider: baidu-comate
+    model: ernie-5
+    quota_kind: credits
+    quota_amount: 20
+    quota_unit: CNY
+    quota_text: 新用户注册并实名认证后赠送 20 元代金券
+    requires_card: false
+    cn_accessible: true
+    api_base_url: https://qianfan.baidubce.com/v2
+    openai_compatible: true
+    claim_url: https://console.bce.baidu.com/qianfan
+    docs_url: https://cloud.baidu.com/doc/qianfan
+
+  # ---------------- 腾讯 CodeBuddy（混元） ----------------
+  - provider: tencent-codebuddy
+    model: hunyuan-3
+    quota_kind: free_tier
+    quota_text: 免费体验混元 3.0「快慢思考」
+    requires_card: false
+    cn_accessible: true
+    claim_url: https://copilot.tencent.com
+    docs_url: https://copilot.tencent.com
+
+  # ---------------- 讯飞星火 ----------------
+  - provider: iflytek-spark
+    model: spark-5
+    quota_kind: credits
+    quota_amount: 0
+    quota_unit: CNY
+    quota_text: 新用户免费额度
+    requires_card: false
+    cn_accessible: true
+    openai_compatible: true
+    claim_url: https://xinghuo.xfyun.cn
+    docs_url: https://www.xfyun.cn/doc
+
+  # ---------------- 阶跃星辰 ----------------
+  - provider: stepfun
+    model: step-4
+    quota_kind: free_tier
+    quota_text: 开放平台免费额度
+    requires_card: false
+    cn_accessible: true
+    openai_compatible: true
+    claim_url: https://platform.stepfun.com
+    docs_url: https://platform.stepfun.com
+
+  # ---------------- 百川智能 ----------------
+  - provider: baichuan
+    model: baichuan-4
+    quota_kind: free_tier
+    quota_text: 新用户免费试用额度
+    requires_card: false
+    cn_accessible: true
+    openai_compatible: true
+    claim_url: https://platform.baichuan-ai.com
+    docs_url: https://platform.baichuan-ai.com
+
+  # ---------------- 火山引擎（豆包 / Seedance） ----------------
+  - provider: bytedance-doubao
+    model: seedance-2-5
+    quota_kind: free_tier
+    quota_text: 新用户免费额度与限时活动
+    requires_card: false
+    cn_accessible: true
+    openai_compatible: true
+    claim_url: https://console.volcengine.com
+    docs_url: https://www.volcengine.com/docs
+
+  # ---------------- 硅基流动 ----------------
+  - provider: siliconflow
+    model: bge-m3
+    quota_kind: credits
+    quota_amount: 14
+    quota_unit: CNY
+    quota_text: 新用户赠送额度，可调用开源模型与嵌入模型
+    requires_card: false
+    cn_accessible: true
+    api_base_url: https://api.siliconflow.cn/v1
+    openai_compatible: true
+    claim_url: https://cloud.siliconflow.cn
+    docs_url: https://docs.siliconflow.cn
+
+  # ---------------- 月之暗面 Kimi ----------------
+  - provider: moonshot
+    model: kimi-k3
+    quota_kind: credits
+    quota_amount: 0
+    quota_unit: CNY
+    quota_text: 新用户赠送额度；邀请好友可参与额度抽奖
+    requires_card: false
+    cn_accessible: true
+    api_base_url: https://api.moonshot.cn/v1
+    openai_compatible: true
+    claim_url: https://platform.moonshot.cn
+    docs_url: https://platform.moonshot.cn
+
+  # ---------------- MiniMax ----------------
+  - provider: minimax
+    model: minimax-m3
+    quota_kind: free_tier
+    quota_text: 开放平台免费额度，语音与音乐模型亦有限时免费
+    requires_card: false
+    cn_accessible: true
+    openai_compatible: true
+    claim_url: https://platform.minimaxi.com
+    docs_url: https://platform.minimaxi.com
+
+  # ---------------- Fish Audio（语音） ----------------
+  - provider: fish-audio
+    model: fish-audio-s2-1-pro
+    quota_kind: free_tier
+    quota_text: 免费档可用 S2.1 Pro TTS 与声音克隆
+    requires_card: false
+    cn_accessible: false
+    openai_compatible: false
+    claim_url: https://fish.audio
+    docs_url: https://docs.fish.audio
+
+  # ---------------- Deepgram（语音） ----------------
+  - provider: deepgram
+    model: deepgram-nova-3
+    quota_kind: credits
+    quota_amount: 200
+    quota_unit: USD
+    quota_text: 新用户注册赠送 $200 额度
+    requires_card: true
+    cn_accessible: false
+    openai_compatible: false
+    claim_url: https://deepgram.com
+    docs_url: https://developers.deepgram.com
+
+  # ---------------- Black Forest Labs（图像） ----------------
+  - provider: black-forest-labs
+    model: flux-2-dev
+    quota_kind: credits
+    quota_text: 注册赠送试用额度
+    requires_card: false
+    cn_accessible: false
+    openai_compatible: false
+    claim_url: https://blackforestlabs.ai
+    docs_url: https://docs.bfl.ai
+
+  # ---------------- Stability AI（图像） ----------------
+  - provider: stability-ai
+    model: stable-diffusion-xl
+    quota_kind: credits
+    quota_text: 注册赠送试用额度
+    requires_card: false
+    cn_accessible: false
+    openai_compatible: false
+    claim_url: https://platform.stability.ai
+    docs_url: https://platform.stability.ai/docs
+
+  # ---------------- Higgsfield（视频） ----------------
+  - provider: higgsfield
+    model: seedance-2-5
+    quota_kind: free_tier
+    quota_text: 免费档可用；Plus 及以上套餐最高送 33 天 Seedance 2.5 无限量
+    requires_card: true
+    cn_accessible: false
+    openai_compatible: false
+    claim_url: https://higgsfield.ai
+    docs_url: https://higgsfield.ai
+
+  # ---------------- Groq（高吞吐推理） ----------------
+  - provider: groq
+    model: llama-4-scout
+    quota_kind: rate_limit
+    quota_text: 免费层有速率限制，推理速度极高
+    requires_card: false
+    cn_accessible: false
+    api_base_url: https://api.groq.com/openai/v1
+    openai_compatible: true
+    claim_url: https://console.groq.com
+    docs_url: https://console.groq.com/docs
+
+  # ---------------- Together AI ----------------
+  - provider: together-ai
+    model: llama-4-scout
+    quota_kind: credits
+    quota_amount: 1
+    quota_unit: USD
+    quota_text: 新用户赠送试用额度
+    requires_card: false
+    cn_accessible: false
+    api_base_url: https://api.together.xyz/v1
+    openai_compatible: true
+    claim_url: https://api.together.ai
+    docs_url: https://docs.together.ai
+
+  # ---------------- Cerebras ----------------
+  - provider: cerebras
+    model: llama-4-scout
+    quota_kind: free_tier
+    quota_text: 免费层每日额度，推理速度极快
+    requires_card: false
+    cn_accessible: false
+    api_base_url: https://api.cerebras.ai/v1
+    openai_compatible: true
+    claim_url: https://cloud.cerebras.ai
+    docs_url: https://inference-docs.cerebras.ai
+
+  # ---------------- Mistral ----------------
+  - provider: mistral
+    model: mistral-small-3-1
+    quota_kind: free_tier
+    quota_text: 官方免费层（La Plateforme 实验计划）
+    requires_card: false
+    cn_accessible: false
+    api_base_url: https://api.mistral.ai/v1
+    openai_compatible: true
+    claim_url: https://console.mistral.ai
+    docs_url: https://docs.mistral.ai
+
+  # ============================================================
+  #  四品类扩充批次（图像 / 语音 / 视频 / 嵌入）
+  #
+  #  背景：首批 36 个端点里 29 个是文本与代码类，四品类合计仅 7 个。
+  #  而 freeaiapi 的能力分布（image-understanding / tts / stt / embeddings
+  #  各有成规模的条目）说明：用户找免费额度时，图像与语音的需求并不低。
+  #  本批次把四品类各补到 5 条以上，并在同一模型上尽量给出多家提供方，
+  #  便于前端做"同一模型的不同来源比价"。
+  # ============================================================
+
+  # ---------------- 图像生成 ----------------
+  # 说明：图像模型的免费额度普遍以"张数/积分"计量，而非 token，
+  #      因此 quota_kind 多为 credits，单位用 image / credit。
+  - provider: siliconflow
+    model: flux-2-dev
+    quota_kind: credits
+    quota_amount: 14
+    quota_unit: CNY
+    quota_text: 新用户赠额可用于 FLUX 系列文生图
+    requires_card: false
+    cn_accessible: true
+    api_base_url: https://api.siliconflow.cn/v1
+    openai_compatible: true
+    claim_url: https://cloud.siliconflow.cn
+    docs_url: https://docs.siliconflow.cn
+
+  - provider: siliconflow
+    model: stable-diffusion-xl
+    quota_kind: credits
+    quota_amount: 14
+    quota_unit: CNY
+    quota_text: 新用户赠额可调用 SDXL 与 Kolors 系列
+    requires_card: false
+    cn_accessible: true
+    api_base_url: https://api.siliconflow.cn/v1
+    openai_compatible: false
+    claim_url: https://cloud.siliconflow.cn
+    docs_url: https://docs.siliconflow.cn
+
+  - provider: zhipu
+    model: z-image-turbo
+    quota_kind: free_tier
+    quota_text: Z-Image 系列输出 token 计价为 $0.00，实际免费生成
+    requires_card: false
+    cn_accessible: true
+    api_base_url: https://open.bigmodel.cn/api/paas/v4
+    openai_compatible: true
+    claim_url: https://open.bigmodel.cn
+    docs_url: https://z.ai
+
+  - provider: cloudflare-workers-ai
+    model: flux-2-klein
+    quota_kind: rate_limit
+    quota_text: Workers AI 免费额度按 Neurons 计，FLUX 系列已内置
+    requires_card: false
+    cn_accessible: false
+    api_base_url: https://api.cloudflare.com/client/v4/accounts/{account_id}/ai/v1
+    openai_compatible: true
+    claim_url: https://dash.cloudflare.com
+    docs_url: https://developers.cloudflare.com/workers-ai/models
+
+  - provider: nvidia-nim
+    model: flux-2-dev
+    quota_kind: credits
+    quota_amount: 1000
+    quota_unit: request
+    quota_text: NIM 免费额度可调用 FLUX 图像生成端点
+    requires_card: false
+    cn_accessible: false
+    openai_compatible: true
+    claim_url: https://build.nvidia.com
+    docs_url: https://build.nvidia.com
+
+  # ---------------- 语音合成（TTS） ----------------
+  - provider: minimax
+    model: minimax-speech-2-8
+    quota_kind: free_tier
+    quota_text: 平台免费额度；HD 系列模型另赠 10 个快速克隆音色
+    requires_card: false
+    cn_accessible: true
+    openai_compatible: false
+    claim_url: https://platform.minimaxi.com
+    docs_url: https://platform.minimaxi.com/document
+
+  - provider: minimax
+    model: minimax-music-3
+    quota_kind: free_tier
+    quota_text: 音乐生成模型限时免费体验
+    requires_card: false
+    cn_accessible: true
+    openai_compatible: false
+    claim_url: https://platform.minimaxi.com
+    docs_url: https://platform.minimaxi.com/document
+
+  - provider: deepgram
+    model: deepgram-aura-2
+    quota_kind: credits
+    quota_amount: 200
+    quota_unit: USD
+    quota_text: 新用户 $200 额度，Aura 2 TTS 按字符计费
+    requires_card: true
+    cn_accessible: false
+    openai_compatible: false
+    claim_url: https://deepgram.com
+    docs_url: https://developers.deepgram.com/docs/tts-models
+
+  - provider: groq
+    model: whisper-large-v3-turbo
+    quota_kind: rate_limit
+    quota_text: Groq 免费层提供 Whisper 极速转写，有速率限制
+    requires_card: false
+    cn_accessible: false
+    api_base_url: https://api.groq.com/openai/v1
+    openai_compatible: true
+    claim_url: https://console.groq.com
+    docs_url: https://console.groq.com/docs/speech-to-text
+
+  - provider: cloudflare-workers-ai
+    model: whisper-large-v3-turbo
+    quota_kind: rate_limit
+    quota_text: Workers AI 内置 Whisper，消耗免费 Neurons 额度
+    requires_card: false
+    cn_accessible: false
+    openai_compatible: true
+    claim_url: https://dash.cloudflare.com
+    docs_url: https://developers.cloudflare.com/workers-ai/models
+
+  - provider: siliconflow
+    model: whisper-large-v3-turbo
+    quota_kind: credits
+    quota_amount: 14
+    quota_unit: CNY
+    quota_text: 新用户赠额可调用 SenseVoice 与 Whisper 系列
+    requires_card: false
+    cn_accessible: true
+    api_base_url: https://api.siliconflow.cn/v1
+    openai_compatible: true
+    claim_url: https://cloud.siliconflow.cn
+    docs_url: https://docs.siliconflow.cn
+
+  - provider: xiaomi-mimo
+    model: mimo-2-6-flash
+    quota_kind: free_tier
+    quota_text: MiMo 原生音频直收，免除独立 STT 步骤
+    requires_card: false
+    cn_accessible: true
+    openai_compatible: true
+    claim_url: https://100t.xiaomimimo.com
+    docs_url: https://100t.xiaomimimo.com
+
+  - provider: nvidia-nim
+    model: cosmos-transfer-2-5
+    quota_kind: credits
+    quota_amount: 1000
+    quota_unit: request
+    quota_text: NIM 免费额度可调用 Cosmos 世界模型端点
+    requires_card: false
+    cn_accessible: false
+    openai_compatible: false
+    claim_url: https://build.nvidia.com
+    docs_url: https://build.nvidia.com
+
+  - provider: gmi-cloud
+    model: seedance-2-5
+    quota_kind: free_tier
+    quota_text: GMI Cloud 限时活动期间视频模型全量免费
+    requires_card: false
+    cn_accessible: false
+    openai_compatible: false
+    claim_url: https://console.gmicloud.ai
+    docs_url: https://console.gmicloud.ai
+
+  - provider: siliconflow
+    model: bge-reranker-base
+    quota_kind: credits
+    quota_amount: 14
+    quota_unit: CNY
+    quota_text: 新用户赠额可调用 BGE 重排模型
+    requires_card: false
+    cn_accessible: true
+    api_base_url: https://api.siliconflow.cn/v1
+    openai_compatible: true
+    claim_url: https://cloud.siliconflow.cn
+    docs_url: https://docs.siliconflow.cn
+
+  - provider: siliconflow
+    model: qwen3-embedding-0-6b
+    quota_kind: credits
+    quota_amount: 14
+    quota_unit: CNY
+    quota_text: Qwen3 Embedding 系列在赠额内免费调用
+    requires_card: false
+    cn_accessible: true
+    api_base_url: https://api.siliconflow.cn/v1
+    openai_compatible: true
+    claim_url: https://cloud.siliconflow.cn
+    docs_url: https://docs.siliconflow.cn
+
+  - provider: cloudflare-workers-ai
+    model: bge-m3
+    quota_kind: rate_limit
+    quota_text: Workers AI 内置 BGE 系列嵌入模型，消耗免费 Neurons
+    requires_card: false
+    cn_accessible: false
+    api_base_url: https://api.cloudflare.com/client/v4/accounts/{account_id}/ai/v1
+    openai_compatible: true
+    claim_url: https://dash.cloudflare.com
+    docs_url: https://developers.cloudflare.com/workers-ai/models
+
+  - provider: nvidia-nim
+    model: bge-m3
+    quota_kind: credits
+    quota_amount: 1000
+    quota_unit: request
+    quota_text: NIM 免费额度支持 BGE 嵌入端点
+    requires_card: false
+    cn_accessible: false
+    openai_compatible: true
+    claim_url: https://build.nvidia.com
+    docs_url: https://build.nvidia.com
+
+  - provider: aliyun-bailian
+    model: qwen3-embedding-0-6b
+    quota_kind: free_tier
+    quota_text: 百炼 text-embedding-v4 有免费额度，1M token 以内免费
+    requires_card: false
+    cn_accessible: true
+    api_base_url: https://dashscope.aliyuncs.com/compatible-mode/v1
+    openai_compatible: true
+    claim_url: https://bailian.console.aliyun.com
+    docs_url: https://help.aliyun.com/zh/model-studio
+
+  - provider: vercel-ai-gateway
+    model: bge-m3
+    quota_kind: credits
+    quota_amount: 5
+    quota_unit: USD
+    quota_text: 每月 $5 免费 Gateway Credits，可路由至嵌入模型
+    requires_card: false
+    cn_accessible: false
+    openai_compatible: true
+    claim_url: https://vercel.com/ai
+    docs_url: https://sdk.vercel.ai
+
+  # ---------------- 第二批：为新增的语音/视频/图像模型建端点 ----------------
+  # 这些端点此前不存在（能力被错挂在文本模型上），现在挂到正确的模型实体。
+  - provider: aliyun-bailian
+    model: paraformer-v2
+    quota_kind: free_tier
+    quota_text: 百炼 Paraformer 语音识别赠送额度，有效期 90 天
+    requires_card: false
+    cn_accessible: true
+    api_base_url: https://dashscope.aliyuncs.com/compatible-mode/v1
+    openai_compatible: true
+    claim_url: https://bailian.console.aliyun.com
+    docs_url: https://help.aliyun.com/zh/model-studio
+
+  - provider: aliyun-bailian
+    model: cosyvoice-2
+    quota_kind: free_tier
+    quota_text: 百炼 CosyVoice 语音合成免费额度，音色克隆另计
+    requires_card: false
+    cn_accessible: true
+    api_base_url: https://dashscope.aliyuncs.com/compatible-mode/v1
+    openai_compatible: true
+    claim_url: https://bailian.console.aliyun.com
+    docs_url: https://help.aliyun.com/zh/model-studio
+
+  - provider: aliyun-bailian
+    model: wan-2-5
+    quota_kind: free_tier
+    quota_text: 通义万相新用户免费额度，可生成视频与图像
+    requires_card: false
+    cn_accessible: true
+    openai_compatible: false
+    claim_url: https://bailian.console.aliyun.com
+    docs_url: https://help.aliyun.com/zh/model-studio
+
+  - provider: zhipu
+    model: cogvideox-5
+    quota_kind: free_tier
+    quota_text: CogVideoX 开源模型可在智谱开放平台免费试用
+    requires_card: false
+    cn_accessible: true
+    api_base_url: https://open.bigmodel.cn/api/paas/v4
+    openai_compatible: true
+    claim_url: https://open.bigmodel.cn
+    docs_url: https://z.ai
+
+  - provider: tencent-codebuddy
+    model: hunyuan-video
+    quota_kind: free_tier
+    quota_text: 混元视频开源模型，腾讯云提供免费推理额度
+    requires_card: false
+    cn_accessible: true
+    openai_compatible: false
+    claim_url: https://hunyuan.tencent.com
+    docs_url: https://hunyuan.tencent.com
+
+  - provider: tencent-codebuddy
+    model: hunyuan-image-3
+    quota_kind: free_tier
+    quota_text: 混元图像 3.0 免费体验额度
+    requires_card: false
+    cn_accessible: true
+    openai_compatible: false
+    claim_url: https://hunyuan.tencent.com
+    docs_url: https://hunyuan.tencent.com
+
+  - provider: bytedance-doubao
+    model: seedream-4
+    quota_kind: free_tier
+    quota_text: 火山方舟新用户赠送 Seedream 图像生成试用额度
+    requires_card: false
+    cn_accessible: true
+    openai_compatible: false
+    claim_url: https://console.volcengine.com
+    docs_url: https://www.volcengine.com/docs
+
+  - provider: kuaishou
+    model: kling-2-6
+    quota_kind: free_tier
+    quota_text: 每日登录赠送灵感值，可免费生成若干条视频
+    requires_card: false
+    cn_accessible: true
+    openai_compatible: false
+    claim_url: https://klingai.kuaishou.com
+    docs_url: https://app.klingai.com/cn/dev/document-api
+
+  - provider: siliconflow
+    model: sensevoice-small
+    quota_kind: credits
+    quota_amount: 14
+    quota_unit: CNY
+    quota_text: 新用户赠额可调用 SenseVoice 语音识别
+    requires_card: false
+    cn_accessible: true
+    api_base_url: https://api.siliconflow.cn/v1
+    openai_compatible: true
+    claim_url: https://cloud.siliconflow.cn
+    docs_url: https://docs.siliconflow.cn

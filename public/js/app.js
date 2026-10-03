@@ -8,6 +8,12 @@
  *   #/providers        厂商总览
  *   #/provider/:slug   单厂商活动
  *   #/timeline         时间线
+ *   #/models           模型库（按能力/厂商筛选）
+ *   #/model/:slug      模型详情（含可领取端点）
+ *   #/endpoints        免费端点库（额度/速率/门槛一览）
+ *   #/endpoint/:provider/:model  端点详情
+ *   #/guides           攻略 / 解读
+ *   #/guide/:slug      攻略正文
  *   #/logs             抓取日志（仅本地服务）
  *   #/review           待审队列（仅本地服务）
  *   #/subscribe        订阅管理
@@ -16,9 +22,11 @@
 
 import * as api from './api.js';
 import {
-  esc, safeUrl, activityCard, skeletonCards, emptyState, errorState, pager, statCard,
+  esc, safeUrl, activityCard, skeletonCards, skeletonBlocks, emptyState, errorState, pager, statCard,
   statusBadge, categoryBadge, audienceBadges, benefitDisplay, relTime, fmtDate,
   providerDot, CAT_COLOR,
+  modelCard, endpointCard, guideCard, capabilityBadge, endpointFlags, quotaDisplay,
+  scoreRing, capColor, fmtTokens,
 } from './components.js';
 
 const $app = document.getElementById('app');
@@ -31,7 +39,7 @@ function parseHash() {
   const [pathPart, queryPart] = raw.split('?');
   const segs = pathPart.split('/').filter(Boolean);
   const query = Object.fromEntries(new URLSearchParams(queryPart || ''));
-  return { name: segs[0] || 'home', param: segs[1] || null, query };
+  return { name: segs[0] || 'home', param: segs[1] || null, param2: segs[2] || null, query };
 }
 
 async function render() {
@@ -48,6 +56,12 @@ async function render() {
       case 'providers': return await renderProviders();
       case 'provider': return await renderProviderDetail(route.param);
       case 'timeline': return await renderTimeline();
+      case 'models': return await renderModels(route.query);
+      case 'model': return await renderModelDetail(route.param);
+      case 'endpoints': return await renderEndpoints(route.query);
+      case 'endpoint': return await renderEndpointDetail(route.param, route.param2);
+      case 'guides': return await renderGuides();
+      case 'guide': return await renderGuideDetail(route.param);
       case 'logs': return await renderLogs();
       case 'review': return await renderReview();
       case 'subscribe': return await renderSubscribe();
@@ -69,6 +83,8 @@ function setActiveNav(name) {
   const map = {
     home: 'home', activities: 'activities', activity: 'activities',
     providers: 'providers', provider: 'providers', timeline: 'timeline',
+    models: 'models', model: 'models', endpoints: 'endpoints', endpoint: 'endpoints',
+    guides: 'guides', guide: 'guides',
     logs: 'logs', review: 'review', subscribe: 'subscribe', about: 'about',
   };
   const active = map[name] || 'home';
@@ -260,6 +276,7 @@ function renderFacets(f, q) {
   return [
     group('状态', 'status', f.statuses),
     group('活动类型', 'category', f.categories),
+    group('模型能力', 'capability', f.capabilities),
     group('适用人群', 'audience', f.audiences),
     group('厂商', 'provider', f.providers),
     group('地域', 'region', f.regions),
@@ -267,6 +284,7 @@ function renderFacets(f, q) {
     toggles('3 天内截止', 'ending_soon'),
     toggles('无需绑卡', 'no_card'),
     toggles('国内可直连', 'cn_accessible'),
+    toggles('已关联模型', 'has_model'),
   ].filter(Boolean).join('');
 }
 
@@ -277,13 +295,13 @@ function renderActiveChips(q, f, total) {
     `<a class="badge badge--audience" href="#/activities${buildQueryString(removeKey(q, key, value))}" style="cursor:pointer">${esc(text)} ✕</a>`
   );
   for (const [key, opts] of [
-    ['status', f.statuses], ['category', f.categories], ['audience', f.audiences],
-    ['region', f.regions], ['provider', f.providers],
+    ['status', f.statuses], ['category', f.categories], ['capability', f.capabilities],
+    ['audience', f.audiences], ['region', f.regions], ['provider', f.providers],
   ]) {
     const vals = String(q[key] || '').split(',').filter(Boolean);
     for (const v of vals) push(key, v, labelOf(opts, v));
   }
-  for (const [key, text] of [['is_new', '今日新增'], ['ending_soon', '3 天内截止'], ['no_card', '无需绑卡'], ['cn_accessible', '国内可直连']]) {
+  for (const [key, text] of [['is_new', '今日新增'], ['ending_soon', '3 天内截止'], ['no_card', '无需绑卡'], ['cn_accessible', '国内可直连'], ['has_model', '已关联模型']]) {
     if (q[key] === '1') chips.push(`<a class="badge badge--audience" href="#/activities${buildQueryString(removeKey(q, key))}" style="cursor:pointer">${text} ✕</a>`);
   }
   if (q.q) chips.push(`<a class="badge badge--audience" href="#/activities${buildQueryString(removeKey(q, 'q'))}" style="cursor:pointer">搜索："${esc(q.q)}" ✕</a>`);
@@ -1029,6 +1047,444 @@ async function renderAbout() {
       </p>
     </div>
   </div>`;
+}
+
+// ---------------- 模型库 ----------------
+
+/**
+ * 能力选择条。
+ *
+ * 用 <a> 而非 <button>：筛选状态体现在 URL（可分享、可后退、可被搜索引擎抓取），
+ * 按钮 + JS 状态很难做到这点，且刷新后会丢失。
+ *
+ * `countField` 必须按页面传对 —— 这是踩过的坑：
+ * `/api/capabilities` 同时返回 endpointCount / modelCount / activityCount 三个口径。
+ * 模型库按**模型**筛、端点库按**端点**筛；若统一读同一个字段，
+ * 会出现 chip 写"文本嵌入 7"、点进去只列出 3 条的不一致，看起来像数据算错。
+ */
+function renderCapBar(caps, activeCap, basePath, baseQuery = {}, { extra = {}, countField = 'count', hint = '' } = {}) {
+  const set = new Set(String(activeCap || '').split(',').filter(Boolean));
+  const chip = (value, label, count, color) => {
+    const isOn = set.has(value);
+    const next = new Set(set);
+    if (isOn) next.delete(value); else next.add(value);
+    const q = { ...baseQuery, ...extra };
+    if (next.size) q.capability = [...next].join(','); else delete q.capability;
+    delete q.page;
+    return `<a class="cap-chip ${isOn ? 'is-active' : ''}" style="--cap-color:${color}"
+      href="#/${basePath}${buildQueryString(q)}"
+      aria-pressed="${isOn}" title="${esc(label)}">${esc(label)}${count != null ? ` <span class="cap-chip__n">${count}</span>` : ''}</a>`;
+  };
+
+  return `<div class="cap-bar" role="group" aria-label="按模型能力筛选">
+    <a class="cap-chip ${set.size ? '' : 'is-active'}" style="--cap-color:var(--brand)"
+       href="#/${basePath}${buildQueryString({ ...baseQuery, ...extra })}">全部</a>
+    ${(caps || []).map((c) => chip(c.value, c.label, c[countField], capColor(c.value))).join('')}
+  </div>
+  ${hint ? `<div style="font-size:11.5px;color:var(--text-faint);margin:-10px 0 14px">${esc(hint)}</div>` : ''}`;
+}
+
+async function renderModels(query) {
+  $app.innerHTML = `<div class="page">
+    <div class="page__head">
+      <div class="page__title"><h1>模型库</h1></div>
+      <p class="page__desc">按能力维度浏览已收录的大模型，查看每个模型当前有哪些免费端点可领。</p>
+    </div>
+    <div class="cap-bar"></div>
+    <div class="cards">${skeletonCards(8)}</div>
+  </div>`;
+
+  const [caps, models] = await Promise.all([
+    api.getCapabilities(),
+    api.getModels(query),
+  ]);
+
+  const capMap = Object.fromEntries((caps || []).map((c) => [c.value, c.label]));
+
+  $app.innerHTML = `<div class="page">
+    <div class="page__head">
+      <div class="page__title"><h1>模型库</h1></div>
+      <p class="page__desc">
+        共 ${models.length} 个模型${query.capability ? `（能力：${esc(String(query.capability).split(',').map((c) => capMap[c] || c).join('、'))}）` : ''}。
+        模型是"能力载体"，端点才是"能白嫖的入口" —— 点进模型可看到它在各家厂商下的免费端点。
+      </p>
+    </div>
+    ${renderCapBar(caps, query.capability, 'models', {}, { countField: 'modelCount', hint: '数字为该能力下的模型数量' })}
+    <div class="cards">
+      ${models.length ? models.map(modelCard).join('') : emptyState({
+    icon: '🧠', title: '没有匹配的模型',
+    desc: '试试切换其它能力，或到「活动」页用关键词搜索',
+  })}
+    </div>
+  </div>`;
+}
+
+async function renderModelDetail(slug) {
+  if (!slug) { location.hash = '#/models'; return; }
+  $app.innerHTML = `<div class="page"><div class="panel skeleton" style="height:320px"></div></div>`;
+
+  const m = await api.getModel(slug);
+  if (!m) {
+    $app.innerHTML = `<div class="page">${emptyState({ icon: '🧠', title: '未找到该模型', desc: '它可能尚未收录，或链接有误' })}</div>`;
+    return;
+  }
+
+  const caps = (m.capabilities && m.capabilities.length) ? m.capabilities : [m.capability];
+  const labels = m.capabilityLabels || caps;
+  const eps = m.endpoints || [];
+  const acts = m.activities || [];
+  const color = capColor(caps[0]);
+
+  // 端点按"免绑卡 → 国内直连 → 有评分"排序：越靠前越省事
+  const sortedEps = eps.slice().sort((a, b) =>
+    (a.requiresCard - b.requiresCard)
+    || (b.cnAccessible - a.cnAccessible)
+    || ((b.score ?? -1) - (a.score ?? -1)));
+
+  $app.innerHTML = `<div class="page">
+    <div style="margin-bottom:14px"><a href="#/models" class="btn btn--ghost btn--sm">← 模型库</a></div>
+
+    <div class="panel" style="border-left:4px solid ${color}">
+      <div class="ep-head">
+        <div class="ep-head__main">
+          <h1 class="ep-head__title">${esc(m.name)}</h1>
+          <div class="ep-head__sub">
+            ${esc(m.vendorSlug || '')}${m.isMultimodal ? ' · 原生多模态' : ''}${m.isOpenWeights ? ' · 开源权重' : ''}
+            ${m.releasedAt ? ` · 发布于 ${esc(m.releasedAt)}` : ''}
+          </div>
+          <div class="card__tags" style="margin-top:12px">
+            ${caps.map((c, i) => capabilityBadge(c, labels[i])).join('')}
+          </div>
+        </div>
+      </div>
+
+      ${m.description ? `<p class="detail__summary" style="margin-top:16px;margin-bottom:0">${esc(m.description)}</p>` : ''}
+
+      <div class="field-grid" style="margin-top:18px">
+        <div class="field">
+          <div class="field__label">上下文窗口</div>
+          <div class="field__value">${m.contextWindow ? esc(fmtTokens(m.contextWindow)) : '<span style="color:var(--text-faint)">未收录</span>'}</div>
+        </div>
+        <div class="field">
+          <div class="field__label">最大输出</div>
+          <div class="field__value">${m.maxOutput ? esc(fmtTokens(m.maxOutput)) : '<span style="color:var(--text-faint)">未收录</span>'}</div>
+        </div>
+        <div class="field">
+          <div class="field__label">可领端点</div>
+          <div class="field__value field__value--big">${eps.length}</div>
+        </div>
+        <div class="field">
+          <div class="field__label">关联活动</div>
+          <div class="field__value field__value--big">${acts.length}</div>
+        </div>
+      </div>
+
+      <div style="margin-top:18px;display:flex;gap:9px;flex-wrap:wrap">
+        ${m.homepageUrl ? `<a class="btn btn--sm" href="${esc(safeUrl(m.homepageUrl))}" target="_blank" rel="noopener noreferrer">模型主页</a>` : ''}
+        <a class="btn btn--sm" href="#/activities?capability=${esc(caps[0])}">看相关活动 →</a>
+      </div>
+    </div>
+
+    <div class="page__head" style="margin-top:26px">
+      <div class="page__title"><h2>免费端点（${sortedEps.length}）</h2></div>
+      <p class="page__desc">同一个模型在不同厂商/平台下可能有多个免费入口，门槛与额度各不相同。</p>
+    </div>
+    <div class="cards">
+      ${sortedEps.length ? sortedEps.map(endpointCard).join('') : emptyState({
+    icon: '🔌', title: '该模型暂无免费端点',
+    desc: '它可能只在付费端点提供，或免费额度尚未被收录',
+  })}
+    </div>
+
+    ${acts.length ? `
+      <div class="page__head" style="margin-top:26px">
+        <div class="page__title"><h2>关联活动（${acts.length}）</h2></div>
+      </div>
+      <div class="cards">${acts.map(activityCard).join('')}</div>` : ''}
+  </div>`;
+}
+
+// ---------------- 端点库 ----------------
+
+async function renderEndpoints(query) {
+  $app.innerHTML = `<div class="page">
+    <div class="page__head">
+      <div class="page__title"><h1>免费端点库</h1></div>
+      <p class="page__desc">按门槛挑最省事的那一个。</p>
+    </div>
+    <div class="cap-bar"></div>
+    <div class="cards">${skeletonCards(8)}</div>
+  </div>`;
+
+  const [caps, list] = await Promise.all([
+    api.getCapabilities(),
+    api.getEndpoints(query),
+  ]);
+  const capMap = Object.fromEntries((caps || []).map((c) => [c.value, c.label]));
+
+  const toggles = [
+    ['no_card', '免绑卡'],
+    ['cn_accessible', '国内直连'],
+    ['openai_compatible', 'OpenAI 兼容'],
+  ];
+  const toggleBar = `<div class="toolbar" style="margin-bottom:14px">
+    ${toggles.map(([k, label]) => {
+    const on = query[k] === '1';
+    const q = { ...query, [k]: on ? '' : '1' };
+    if (!q[k]) delete q[k];
+    delete q.page;
+    return `<a class="cap-chip ${on ? 'is-active' : ''}" style="--cap-color:var(--brand)"
+        href="#/endpoints${buildQueryString(q)}">${on ? '✓ ' : ''}${esc(label)}</a>`;
+  }).join('')}
+    <span class="spacer" style="flex:1"></span>
+    <span style="font-size:13.5px;color:var(--text-muted)">共 ${list.length} 个端点</span>
+  </div>`;
+
+  $app.innerHTML = `<div class="page">
+    <div class="page__head">
+      <div class="page__title"><h1>免费端点库</h1></div>
+      <p class="page__desc">
+        端点 = 一个厂商给出的、长期有效的免费额度政策。相比"限时活动"，端点更稳定，
+        适合作为长期可依赖的接入点。共 ${list.length} 个端点，覆盖 ${new Set(list.map((e) => e.provider.slug)).size} 家厂商。
+      </p>
+    </div>
+    ${renderCapBar(caps, query.capability, 'endpoints', {}, { countField: 'endpointCount', hint: '数字为该能力下的端点数量' })}
+    ${toggleBar}
+    <div class="cards">
+      ${list.length ? list.map(endpointCard).join('') : emptyState({
+    icon: '🔌', title: '没有匹配的端点',
+    desc: query.capability ? `当前能力（${esc(capMap[query.capability] || query.capability)}）下暂无免绑卡 + 国内直连的组合，试试放宽条件` : '试试放宽筛选条件',
+  })}
+    </div>
+  </div>`;
+}
+
+async function renderEndpointDetail(providerSlug, modelSlug) {
+  if (!providerSlug || !modelSlug) { location.hash = '#/endpoints'; return; }
+  $app.innerHTML = `<div class="page"><div class="panel skeleton" style="height:320px"></div></div>`;
+
+  const e = await api.getEndpoint(providerSlug, modelSlug);
+  if (!e) {
+    $app.innerHTML = `<div class="page">${emptyState({ icon: '🔌', title: '未找到该端点', desc: '它可能已下线，或链接有误' })}</div>`;
+    return;
+  }
+
+  const color = capColor(e.model.capability);
+  const acts = e.activities || [];
+  const alts = e.alternatives || [];
+
+  // 速率限制单独成块：很多"免费"其实是速率限制型，用户最关心 RPM/RPD
+  const rateRows = [
+    ['RPM（每分钟）', e.quotaRpm],
+    ['RPD（每日）', e.quotaRpd],
+    ['TPM（每分钟 token）', e.quotaTpm],
+  ].filter(([, v]) => v != null);
+
+  $app.innerHTML = `<div class="page">
+    <div style="margin-bottom:14px"><a href="#/endpoints" class="btn btn--ghost btn--sm">← 端点库</a></div>
+
+    <div class="panel" style="border-left:4px solid ${color}">
+      <div class="ep-head">
+        <div class="ep-head__main">
+          <div class="card__provider" style="font-size:13.5px;margin-bottom:6px">
+            <span class="card__dot" style="background:${esc(e.provider.color || '#2563eb')}"></span>
+            <a href="#/provider/${esc(e.provider.slug)}">${esc(e.provider.name)}</a>
+          </div>
+          <h1 class="ep-head__title">${esc(e.model.name)}</h1>
+          <div class="ep-head__sub">
+            <a href="#/model/${esc(e.model.slug)}">查看模型详情</a>
+            ${e.quotaKindLabel ? ` · ${esc(e.quotaKindLabel)}` : ''}
+          </div>
+        </div>
+        <div class="ep-head__score">
+          ${scoreRing(e.score, e.scoreSource)}
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:5px">
+            ${e.score != null ? '综合评分' : '暂无评分'}
+          </div>
+        </div>
+      </div>
+
+      <div class="card__tags" style="margin-top:14px">
+        ${capabilityBadge(e.model.capability, e.model.capabilityLabel)}
+        ${endpointFlags(e)}
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel__title">额度与速率</div>
+      <div class="ep-quota">
+        <div class="ep-quota__label">免费额度</div>
+        <div class="ep-quota__text">${esc(quotaDisplay(e))}</div>
+      </div>
+      ${rateRows.length ? `<dl class="ep-kv">
+        ${rateRows.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join('')}
+      </dl>` : ''}
+    </div>
+
+    <div class="panel">
+      <div class="panel__title">接入信息</div>
+      <dl class="ep-kv">
+        <dt>API Base</dt>
+        <dd>${e.apiBaseUrl ? `<code class="mono">${esc(e.apiBaseUrl)}</code>` : '<span style="color:var(--text-faint)">未收录</span>'}</dd>
+        <dt>OpenAI 兼容</dt>
+        <dd>${e.openaiCompatible ? '<span class="badge badge--ok">是</span>' : '<span class="badge badge--neutral">否 / 未确认</span>'}</dd>
+        <dt>访问网络</dt>
+        <dd>${e.cnAccessible ? '<span class="badge badge--ok">国内可直连</span>' : '<span class="badge badge--warn">需海外网络</span>'}</dd>
+        <dt>支付门槛</dt>
+        <dd>${e.requiresCard ? '<span class="badge badge--warn">需绑定支付方式</span>' : '<span class="badge badge--ok">无需绑卡</span>'}</dd>
+        ${e.requiresPhone ? '<dt>手机号</dt><dd>需验证手机号</dd>' : ''}
+        ${e.verifiedAt ? `<dt>最后核验</dt><dd>${esc(relTime(e.verifiedAt))}</dd>` : ''}
+      </dl>
+      <div style="margin-top:16px;display:flex;gap:9px;flex-wrap:wrap">
+        <a class="btn btn--primary" href="${esc(safeUrl(e.claimUrl || e.provider.website))}" target="_blank" rel="noopener noreferrer">前往领取 / 接入 →</a>
+        ${e.docsUrl ? `<a class="btn" href="${esc(safeUrl(e.docsUrl))}" target="_blank" rel="noopener noreferrer">API 文档</a>` : ''}
+        ${e.provider.website ? `<a class="btn" href="${esc(safeUrl(e.provider.website))}" target="_blank" rel="noopener noreferrer">厂商官网</a>` : ''}
+      </div>
+    </div>
+
+    ${acts.length ? `<div class="panel">
+      <div class="panel__title">关联活动（${acts.length}）</div>
+      <div class="cards">${acts.map(activityCard).join('')}</div>
+    </div>` : ''}
+
+    ${alts.length ? `<div class="panel">
+      <div class="panel__title">同模型的其它端点（${alts.length}）</div>
+      <p style="font-size:13px;color:var(--text-muted);margin:0 0 12px">
+        下面这些端点提供同一个模型，门槛或额度可能更划算。
+      </p>
+      <div class="cards">${alts.map(endpointCard).join('')}</div>
+    </div>` : ''}
+
+    <div class="panel">
+      <div class="panel__title">免责声明</div>
+      <p style="font-size:12.5px;color:var(--text-muted);margin:0;line-height:1.7">
+        额度与速率上限由厂商随时调整，可能存在滞后。请以厂商官方文档为准。
+      </p>
+    </div>
+  </div>`;
+}
+
+// ---------------- 攻略 ----------------
+
+async function renderGuides() {
+  $app.innerHTML = `<div class="page"><div class="cards">${skeletonCards(4)}</div></div>`;
+  const guides = await api.getGuides();
+
+  $app.innerHTML = `<div class="page">
+    <div class="page__head">
+      <div class="page__title"><h1>攻略 / 解读</h1></div>
+      <p class="page__desc">
+        免费额度活动往往"能领但不能用"——额度仅限客户端、需要绑卡、国内无法直连。
+        这里拆解具体活动的真实规则与踩坑点，以及一套可复用的选择方法。
+      </p>
+    </div>
+    <div class="cards">
+      ${guides.length ? guides.map(guideCard).join('') : emptyState({ icon: '📖', title: '暂无攻略', desc: '攻略会在收录到高价值活动后自动生成' })}
+    </div>
+  </div>`;
+}
+
+async function renderGuideDetail(slug) {
+  if (!slug) { location.hash = '#/guides'; return; }
+  $app.innerHTML = `<div class="page"><div class="panel skeleton" style="height:420px"></div></div>`;
+
+  const g = await api.getGuide(slug);
+  if (!g) {
+    $app.innerHTML = `<div class="page">${emptyState({ icon: '📖', title: '未找到该攻略', desc: '它可能已下线，或链接有误' })}</div>`;
+    return;
+  }
+
+  const sections = g.sections || [];
+  // 目录锚点：id 由序号生成而非标题，避免中文标题进 id 后被 encode 破坏锚点
+  const toc = sections.length > 2
+    ? `<div class="panel">
+        <div class="panel__title">目录</div>
+        <div class="article__toc">
+          ${sections.map((s, i) => `<div><a href="#/guide/${esc(g.slug)}#s${i}">${esc(s.title)}</a></div>`).join('')}
+        </div>
+      </div>`
+    : '';
+
+  $app.innerHTML = `<div class="page" style="max-width:860px">
+    <div style="margin-bottom:14px"><a href="#/guides" class="btn btn--ghost btn--sm">← 攻略列表</a></div>
+
+    <div class="page__head">
+      <div class="page__title"><h1>${esc(g.title)}</h1></div>
+      <p class="page__desc">${esc(g.summary || '')}</p>
+      <div class="card__tags" style="margin-top:12px">
+        ${(g.tags || []).map((t) => `<span class="badge badge--neutral">${esc(t)}</span>`).join('')}
+        ${g.publishedAt ? `<span class="badge badge--neutral">${esc(g.publishedAt)}</span>` : ''}
+      </div>
+      <div style="display:flex;gap:9px;flex-wrap:wrap;margin-top:14px">
+        ${g.providerSlug ? `<a class="btn btn--sm" href="#/provider/${esc(g.providerSlug)}">相关厂商</a>` : ''}
+        ${g.modelSlug ? `<a class="btn btn--sm" href="#/model/${esc(g.modelSlug)}">相关模型</a>` : ''}
+        <a class="btn btn--sm" href="#/activities?q=${encodeURIComponent(g.tags?.[0] || '')}">看相关活动 →</a>
+      </div>
+    </div>
+
+    ${toc}
+
+    <div class="panel">
+      <div class="article">
+        ${sections.map((s, i) => `
+          <h2 id="s${i}">${esc(s.title)}</h2>
+          ${renderGuideBody(s.body)}
+        `).join('')}
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel__title">免责声明</div>
+      <p style="font-size:12.5px;color:var(--text-muted);margin:0;line-height:1.7">
+        本文基于公开信息整理，活动规则可能随时调整。最终解释权归厂商所有，请以官方页面为准。
+      </p>
+    </div>
+  </div>`;
+
+  // 站内锚点跳转（#/guide/x#s1）不会触发 hashchange，需要手动滚动
+  if (location.hash.includes('#s')) {
+    const id = location.hash.split('#').pop();
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+
+/**
+ * 攻略正文渲染。
+ *
+ * 输入来自 config/guides.yaml 的纯文本，属于可信来源（仓库存档、非用户输入），
+ * 因此这里做的是"轻量 Markdown 子集"渲染，而不是 HTML 转义。
+ * 但为防配置被污染，仍先转义再按行还原受支持的语法 —— 顺序不能反。
+ */
+function renderGuideBody(body) {
+  const raw = String(body ?? '').replace(/^\n+|\n+$/g, '');
+  if (!raw) return '';
+  const text = esc(raw);
+
+  const blocks = text.split(/\n{2,}/).map((chunk) => {
+    const lines = chunk.split('\n');
+    // 无序列表
+    if (lines.every((l) => /^\s*[-*]\s+/.test(l))) {
+      return `<ul>${lines.map((l) => `<li>${inline(l.replace(/^\s*[-*]\s+/, ''))}</li>`).join('')}</ul>`;
+    }
+    // 有序列表
+    if (lines.every((l) => /^\s*\d+[.)]\s+/.test(l))) {
+      return `<ol>${lines.map((l) => `<li>${inline(l.replace(/^\s*\d+[.)]\s+/, ''))}</li>`).join('')}</ol>`;
+    }
+    // 引用
+    if (lines.every((l) => /^\s*&gt;\s?/.test(l))) {
+      return `<blockquote><p>${lines.map((l) => inline(l.replace(/^\s*&gt;\s?/, ''))).join('<br>')}</p></blockquote>`;
+    }
+    return `<p>${inline(lines.join('<br>'))}</p>`;
+  });
+
+  return blocks.join('');
+}
+
+/** 行内语法：**加粗**、`代码`。输入必须已 esc()。 */
+function inline(s) {
+  return s
+    .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+    .replace(/`([^`]+)`/g, '<code>$1</code>');
 }
 
 // ---------------- 启动 ----------------

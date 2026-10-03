@@ -16,14 +16,18 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { getDb, all, get, run, PROJECT_ROOT } from './db/db.js';
-import { loadSettings } from './lib/config.js';
+import { loadSettings, loadGuides } from './lib/config.js';
 import { createLogger } from './lib/logger.js';
 import { searchActivityIds } from './lib/search.js';
 import { runPipeline } from './pipeline/index.js';
 import { archiveExpired, reviewActivity } from './pipeline/persist.js';
 import { saveSubscription, removeSubscription, getVapidPublicKey } from './notify/push.js';
 import { buildRss, writeFeeds } from './notify/feed.js';
-import { serializeActivity, CATEGORY_LABEL, AUDIENCE_LABEL, STATUS_LABEL } from './notify/feed.js';
+import {
+  serializeActivity, serializeModel, serializeEndpoint, serializeGuide, safeJsonArray,
+  CATEGORY_LABEL, AUDIENCE_LABEL, STATUS_LABEL,
+  CAPABILITY_LABEL, CAPABILITY_ORDER,
+} from './notify/feed.js';
 
 const log = createLogger('server');
 const PUBLIC_DIR = path.join(PROJECT_ROOT, 'public');
@@ -137,6 +141,18 @@ function apiActivities(db, q) {
   if (q.from) { where.push(`(end_date IS NULL OR date(end_date) >= date(?))`); params.push(q.from); }
   if (q.to) { where.push(`(start_date IS NULL OR date(start_date) <= date(?))`); params.push(q.to); }
   if (q.cn_accessible === '1') where.push(`cn_accessible = 1`);
+  // 三层结构：按模型能力筛选活动。
+  // 命中可能落在 model_capabilities 数组里（多模态模型），故用 LIKE 匹配 JSON 串；
+  // 若活动只关联了主能力（老数据），再由 model_capability 兜底。
+  if (q.capability) {
+    const list = String(q.capability).split(',').filter(Boolean);
+    where.push('(' + list.flatMap(() => [
+      `model_capabilities LIKE ?`, `model_capability = ?`,
+    ]).join(' OR ') + ')');
+    for (const c of list) params.push(`%"${c}"%`, c);
+  }
+  // 只看已关联到模型的（"送的是哪个模型"）—— 用于区分"模型额度"与"账户级普惠"
+  if (q.has_model === '1') where.push('model_id IS NOT NULL');
 
   // 关键词搜索（FTS + LIKE 双路）
   if (q.q && q.q.trim()) {
@@ -267,6 +283,19 @@ function apiFilters(db) {
       FROM providers p LEFT JOIN v_activities a ON a.provider_id=p.id
       GROUP BY p.id HAVING count > 0 ORDER BY count DESC
     `),
+    // 能力分面（按活动数计），与静态导出的 filters.json 保持同构。
+    // 注意：这里计的是**活动数**；端点库页的能力分面计的是**端点数**，
+    // 两者口径不同、数值也不同，不要互相参照。
+    capabilities: CAPABILITY_ORDER.map((c) => ({
+      value: c,
+      label: CAPABILITY_LABEL[c] || c,
+      count: rows.filter((r) => {
+        let caps = [];
+        try { caps = r.model_capabilities ? JSON.parse(r.model_capabilities) : []; } catch { caps = []; }
+        if (!caps.length && r.model_capability) caps = [r.model_capability];
+        return caps.includes(c);
+      }).length,
+    })).filter((x) => x.count > 0),
     sorts: [
       { value: 'ending', label: '即将结束优先' },
       { value: 'newest', label: '最新收录' },
@@ -305,7 +334,308 @@ function apiReviewQueue(db, q) {
   `, [limit]).map(serializeActivity);
 }
 
-export { apiActivities, apiActivityDetail, apiStats, apiProviders, apiFilters, apiFetchRuns, apiFetchRunDetail, apiReviewQueue };
+// ---------------- 三层结构：模型库 / 端点库 / 能力分面 ----------------
+
+/**
+ * GET /api/models
+ *
+ * 支持筛选：
+ *   capability  能力（可多值逗号分隔）
+ *   vendor      模型开发方 slug
+ *   q           关键词（匹配名称/描述/slug）
+ *   has_endpoint=1  只返回有端点（即当前真能拿到免费额度）的模型
+ *
+ * 默认按能力分组排序，与前端模型库页的展示顺序一致。
+ */
+function apiModels(db, q) {
+  const counts = new Map();
+  for (const r of all(db, `SELECT model_id, COUNT(*) c, COUNT(DISTINCT provider_id) p
+                            FROM endpoints WHERE enabled=1 GROUP BY model_id`)) {
+    counts.set(r.model_id, { endpoints: r.c, providers: r.p });
+  }
+
+  let rows = all(db, 'SELECT * FROM models ORDER BY capability, name');
+
+  if (q.capability) {
+    const set = new Set(String(q.capability).split(',').filter(Boolean));
+    rows = rows.filter((m) => {
+      const caps = safeJsonArray(m.capabilities);
+      const list = caps.length ? caps : [m.capability];
+      return list.some((c) => set.has(c));
+    });
+  }
+  if (q.vendor) {
+    const set = new Set(String(q.vendor).split(',').filter(Boolean));
+    rows = rows.filter((m) => set.has(m.vendor_slug));
+  }
+  if (q.q) {
+    const kw = String(q.q).trim().toLowerCase();
+    rows = rows.filter((m) => [m.name, m.slug, m.description, m.vendor_slug]
+      .filter(Boolean).join(' ').toLowerCase().includes(kw));
+  }
+  if (q.has_endpoint === '1') {
+    rows = rows.filter((m) => (counts.get(m.id)?.endpoints || 0) > 0);
+  }
+
+  return rows.map((m) => {
+    const c = counts.get(m.id) || { endpoints: 0, providers: 0 };
+    return serializeModel(m, { endpointCount: c.endpoints, providerCount: c.providers });
+  });
+}
+
+/** GET /api/models/:slug —— 模型详情（含其全部端点与关联活动） */
+function apiModelDetail(db, slug) {
+  const m = get(db, 'SELECT * FROM models WHERE slug=?', [slug]);
+  if (!m) return null;
+
+  const endpoints = all(db, `
+    SELECT e.*,
+           p.slug AS provider_slug, p.name_zh AS provider_name, p.name_en AS provider_name_en,
+           p.country, p.brand_color, p.website,
+           m.slug AS model_slug, m.name AS model_name, m.capability AS model_capability,
+           m.context_window AS model_context_window, m.is_open_weights AS model_is_open_weights
+    FROM endpoints e
+    JOIN providers p ON p.id = e.provider_id
+    JOIN models m    ON m.id = e.model_id
+    WHERE e.model_id = ? AND e.enabled = 1
+    ORDER BY e.requires_card ASC, p.tier, p.name_zh
+  `, [m.id]).map(serializeEndpoint);
+
+  const activities = all(db, `
+    SELECT * FROM v_activities
+    WHERE model_id = ? AND review_status IN ('auto_ok','approved')
+    ORDER BY CASE status WHEN 'active' THEN 0 WHEN 'upcoming' THEN 1 ELSE 2 END,
+             COALESCE(end_date,'9999-12-31') ASC
+  `, [m.id]).map(serializeActivity);
+
+  return {
+    ...serializeModel(m, {
+      endpointCount: endpoints.length,
+      providerCount: new Set(endpoints.map((e) => e.provider.slug)).size,
+    }),
+    endpoints,
+    activities,
+  };
+}
+
+/**
+ * GET /api/endpoints
+ *
+ * 这是三层结构里最有用的接口 —— 用户真正的问题是
+ * "我能在哪儿、用哪个模型、免费拿到多少、要不要绑卡"。
+ *
+ * 支持筛选：provider / model / capability / no_card / cn_accessible / openai_compatible / q
+ */
+function apiEndpoints(db, q) {
+  const actCounts = new Map();
+  for (const r of all(db, `SELECT endpoint_id, COUNT(*) c FROM activities
+                            WHERE endpoint_id IS NOT NULL AND archived_at IS NULL
+                              AND review_status IN ('auto_ok','approved')
+                            GROUP BY endpoint_id`)) {
+    actCounts.set(r.endpoint_id, r.c);
+  }
+
+  const where = ['e.enabled = 1'];
+  const params = [];
+  if (q.provider) {
+    const list = String(q.provider).split(',').filter(Boolean);
+    where.push(`p.slug IN (${list.map(() => '?').join(',')})`);
+    params.push(...list);
+  }
+  if (q.model) {
+    const list = String(q.model).split(',').filter(Boolean);
+    where.push(`m.slug IN (${list.map(() => '?').join(',')})`);
+    params.push(...list);
+  }
+  if (q.capability) {
+    const list = String(q.capability).split(',').filter(Boolean);
+    // 能力可能落在 capabilities 数组里（多模态模型），故用 LIKE 匹配 JSON 串
+    where.push('(' + list.map(() => `m.capabilities LIKE ?`).join(' OR ') + ')');
+    params.push(...list.map((c) => `%"${c}"%`));
+  }
+  if (q.no_card === '1') where.push('e.requires_card = 0');
+  if (q.cn_accessible === '1') where.push('e.cn_accessible = 1');
+  if (q.openai_compatible === '1') where.push('e.openai_compatible = 1');
+  if (q.q) {
+    where.push('(m.name LIKE ? OR m.slug LIKE ? OR p.name_zh LIKE ? OR e.quota_text LIKE ?)');
+    const like = `%${q.q}%`;
+    params.push(like, like, like, like);
+  }
+
+  const order = q.sort === 'score' ? 'e.score DESC NULLS LAST, p.name_zh'
+    : q.sort === 'card' ? 'e.requires_card ASC, p.name_zh'
+      : q.sort === 'provider' ? 'p.name_zh, m.name'
+        : 'm.capability, e.requires_card ASC, p.name_zh';
+
+  return all(db, `
+    SELECT e.*,
+           p.slug AS provider_slug, p.name_zh AS provider_name, p.name_en AS provider_name_en,
+           p.country, p.brand_color, p.website,
+           m.slug AS model_slug, m.name AS model_name, m.capability AS model_capability,
+           m.context_window AS model_context_window, m.is_open_weights AS model_is_open_weights
+    FROM endpoints e
+    JOIN providers p ON p.id = e.provider_id
+    JOIN models m    ON m.id = e.model_id
+    WHERE ${where.join(' AND ')}
+    ORDER BY ${order}
+  `, params).map((e) => serializeEndpoint({ ...e, activity_count: actCounts.get(e.id) || 0 }));
+}
+
+/** GET /api/endpoints/:provider/:model —— 单个端点详情（含关联活动） */
+function apiEndpointDetail(db, providerSlug, modelSlug) {
+  const e = get(db, `
+    SELECT e.*,
+           p.slug AS provider_slug, p.name_zh AS provider_name, p.name_en AS provider_name_en,
+           p.country, p.brand_color, p.website,
+           m.slug AS model_slug, m.name AS model_name, m.capability AS model_capability,
+           m.context_window AS model_context_window, m.is_open_weights AS model_is_open_weights
+    FROM endpoints e
+    JOIN providers p ON p.id = e.provider_id
+    JOIN models m    ON m.id = e.model_id
+    WHERE p.slug = ? AND m.slug = ?
+  `, [providerSlug, modelSlug]);
+  if (!e) return null;
+
+  const activities = all(db, `
+    SELECT * FROM v_activities
+    WHERE endpoint_id = ? AND review_status IN ('auto_ok','approved')
+    ORDER BY CASE status WHEN 'active' THEN 0 WHEN 'upcoming' THEN 1 ELSE 2 END,
+             COALESCE(end_date,'9999-12-31') ASC
+  `, [e.id]).map(serializeActivity);
+
+  // 同一模型的其他提供方 —— 这是"比价"视角：同一个模型还有谁免费给
+  const alternatives = all(db, `
+    SELECT e.*,
+           p.slug AS provider_slug, p.name_zh AS provider_name, p.name_en AS provider_name_en,
+           p.country, p.brand_color, p.website,
+           m.slug AS model_slug, m.name AS model_name, m.capability AS model_capability,
+           m.context_window AS model_context_window, m.is_open_weights AS model_is_open_weights
+    FROM endpoints e
+    JOIN providers p ON p.id = e.provider_id
+    JOIN models m    ON m.id = e.model_id
+    WHERE e.model_id = ? AND e.id <> ? AND e.enabled = 1
+    ORDER BY e.requires_card ASC, p.name_zh
+  `, [e.model_id, e.id]).map(serializeEndpoint);
+
+  return {
+    ...serializeEndpoint({ ...e, activity_count: activities.length }),
+    activities,
+    alternatives,
+  };
+}
+
+/** GET /api/capabilities —— 能力分面（供前端筛选器） */
+/**
+ * GET /api/capabilities —— 三层结构下的能力分面
+ *
+ * ⚠️ 三个计数口径必须同时返回，前端按页面各取所需。混用会造成显示 bug：
+ * 模型库按**模型**筛，端点库按**端点**筛，活动列表按**活动**筛。
+ * 早期只返回 count（当时语义是端点数），模型库 chip 上的数字就对不上了
+ * （chip 写"文本嵌入 7"、点进去只有 3 个模型）。
+ *
+ * 实现上刻意用**三条独立的按能力聚合查询**，再在 JS 侧按能力合并，
+ * 而不是写一条 JOIN 一起算。原因：模型与端点是两套不同的多重关系
+ * （端点按 model_id 关联、模型自身又带一个 capabilities 数组），
+ * 塞进一条 SQL 会因笛卡尔积而重复计数，且极难验证。
+ * 分开查虽然多两次查询，但每个数字都只来自一个明确的集合，可独立核对。
+ */
+function apiCapabilities(db) {
+  // ① 按能力统计端点（一个端点归属一个模型，取模型的 capability 即可，不会重复计数）
+  const epRows = all(db, `
+    SELECT m.capability AS value,
+           COUNT(*) AS endpoint_count,
+           COUNT(DISTINCT e.provider_id) AS provider_count
+    FROM endpoints e JOIN models m ON m.id = e.model_id
+    WHERE e.enabled = 1
+    GROUP BY m.capability
+  `);
+  const epMap = new Map(epRows.map((r) => [r.value, r]));
+
+  // ② 按能力统计模型。
+  // 模型的 capabilities 是 JSON 数组（可能一个模型横跨多个能力），
+  // SQLite 的 json_each 可以把它展开成多行再计数。
+  // 若 json 字段为空/非法，退回该模型自己的 capability 单值。
+  const mdRows = all(db, `
+    SELECT cap AS value, COUNT(DISTINCT id) AS model_count FROM (
+      SELECT m.id AS id, je.value AS cap
+      FROM models m, json_each(COALESCE(NULLIF(m.capabilities, ''), '["' || m.capability || '"]')) je
+      WHERE m.capability IS NOT NULL
+      UNION
+      SELECT m.id AS id, m.capability AS cap FROM models m WHERE m.capability IS NOT NULL
+    ) GROUP BY cap
+  `);
+  const mdMap = new Map(mdRows.map((r) => [r.value, r.model_count]));
+
+  // ③ 按能力统计活动。
+  // ⚠️ 必须查 v_activities 而非 activities：表上没有 status 列，
+  // status 由视图按北京时间实时派生（见 schema.sql 的 CASE 表达式）。
+  // 直接写 a.status 会报 no such column: a.status（实测踩过）。
+  const actRows = all(db, `
+    SELECT cap AS value, COUNT(DISTINCT id) AS c FROM (
+      SELECT a.id AS id, je.value AS cap
+      FROM v_activities a,
+           json_each(COALESCE(NULLIF(a.model_capabilities, ''), '["' || a.model_capability || '"]')) je
+      WHERE a.status IN ('active', 'upcoming')
+    ) GROUP BY cap
+  `);
+  const actMap = new Map(actRows.map((r) => [r.value, r.c]));
+
+  const values = new Set([...epMap.keys(), ...mdMap.keys(), ...actMap.keys()]);
+
+  return CAPABILITY_ORDER
+    .filter((c) => values.has(c))
+    .map((c) => ({
+      value: c,
+      label: CAPABILITY_LABEL[c] || c,
+      count: epMap.get(c)?.endpoint_count ?? 0,   // 兼容旧调用方，语义 = 端点数
+      endpointCount: epMap.get(c)?.endpoint_count ?? 0,
+      modelCount: mdMap.get(c) ?? 0,
+      activityCount: actMap.get(c) ?? 0,
+      providerCount: epMap.get(c)?.provider_count ?? 0,
+    }));
+}
+
+// ---------------- 攻略栏目 ----------------
+
+/** GET /api/guides —— 攻略列表（静态兜底用 config/guides.yaml） */
+function apiGuides(db, q) {
+  const rows = listGuides(db);
+  let out = rows;
+  if (q.provider) out = out.filter((g) => g.providerSlug === q.provider);
+  if (q.model) out = out.filter((g) => g.modelSlug === q.model);
+  if (q.q) {
+    const kw = String(q.q).toLowerCase();
+    out = out.filter((g) => [g.title, g.summary, (g.tags || []).join(' ')]
+      .filter(Boolean).join(' ').toLowerCase().includes(kw));
+  }
+  // 列表页不需要全文，去掉 sections 以减小响应体积
+  return out.map(({ sections, ...rest }) => rest);
+}
+
+/** GET /api/guides/:slug */
+function apiGuideDetail(db, slug) {
+  return listGuides(db).find((g) => g.slug === slug) || null;
+}
+
+/**
+ * 攻略数据来源：优先 config/guides.yaml（人工/流水线维护），
+ * 若不存在则回退到数据库表。这样攻略内容既能声明式维护，
+ * 也支持未来由 pipeline 自动生成后落库。
+ */
+function listGuides(db) {
+  const fromYaml = loadGuides();
+  if (fromYaml.length) return fromYaml.map(serializeGuide);
+  const hasTable = get(db, `SELECT name FROM sqlite_master WHERE type='table' AND name='guides'`);
+  if (!hasTable) return [];
+  return all(db, 'SELECT * FROM guides ORDER BY published_at DESC, slug').map(serializeGuide);
+}
+
+export {
+  apiActivities, apiActivityDetail, apiStats, apiProviders, apiFilters,
+  apiFetchRuns, apiFetchRunDetail, apiReviewQueue,
+  apiModels, apiModelDetail, apiEndpoints, apiEndpointDetail, apiCapabilities,
+  apiGuides, apiGuideDetail,
+};
 
 // ---------------- 路由 ----------------
 
@@ -331,6 +661,26 @@ async function handleApi(req, res, url) {
       return d ? sendJson(res, d) : sendJson(res, { error: '未找到该批次' }, 404);
     }
     if (req.method === 'GET' && p === '/api/review-queue') return sendJson(res, apiReviewQueue(db, q));
+
+    // —— 三层结构：模型库 / 端点库 / 能力分面 ——
+    if (req.method === 'GET' && p === '/api/models') return sendJson(res, apiModels(db, q));
+    if (req.method === 'GET' && (m = p.match(/^\/api\/models\/([^/]+)$/))) {
+      const d = apiModelDetail(db, decodeURIComponent(m[1]));
+      return d ? sendJson(res, d) : sendJson(res, { error: '未找到该模型' }, 404);
+    }
+    if (req.method === 'GET' && p === '/api/endpoints') return sendJson(res, apiEndpoints(db, q));
+    if (req.method === 'GET' && (m = p.match(/^\/api\/endpoints\/([^/]+)\/([^/]+)$/))) {
+      const d = apiEndpointDetail(db, decodeURIComponent(m[1]), decodeURIComponent(m[2]));
+      return d ? sendJson(res, d) : sendJson(res, { error: '未找到该端点' }, 404);
+    }
+    if (req.method === 'GET' && p === '/api/capabilities') return sendJson(res, apiCapabilities(db));
+
+    // —— 攻略栏目 ——
+    if (req.method === 'GET' && p === '/api/guides') return sendJson(res, apiGuides(db, q));
+    if (req.method === 'GET' && (m = p.match(/^\/api\/guides\/([^/]+)$/))) {
+      const d = apiGuideDetail(db, decodeURIComponent(m[1]));
+      return d ? sendJson(res, d) : sendJson(res, { error: '未找到该攻略' }, 404);
+    }
 
     // 人工审核
     if (req.method === 'POST' && (m = p.match(/^\/api\/review\/(\d+)$/))) {

@@ -130,6 +130,14 @@ function filterLocally(all, p) {
   if (p.ending_soon === '1') items = items.filter((a) => a.endingSoon && a.status === 'active');
   if (p.is_new === '1') items = items.filter((a) => a.isNew);
   if (p.cn_accessible === '1') items = items.filter((a) => a.provider?.cnAccessible);
+  if (p.has_model === '1') items = items.filter((a) => !!a.model);
+  if (p.capability) {
+    const set = new Set(String(p.capability).split(','));
+    items = items.filter((a) => {
+      const caps = a.model ? (a.model.capabilities?.length ? a.model.capabilities : [a.model.capability]) : [];
+      return caps.some((c) => set.has(c));
+    });
+  }
 
   // 排序
   const rank = { active: 0, upcoming: 1, ended: 2 };
@@ -199,6 +207,218 @@ export async function getFilters() {
   const mode = await detectMode();
   if (mode === 'api') return fetchJson('/api/filters');
   return fetchJson('data/filters.json');
+}
+
+// ---------------- 三层结构：模型库 / 端点库 / 攻略 ----------------
+
+/**
+ * 模型库。静态模式下在浏览器内完成筛选 —— 与活动列表同一套策略。
+ * 模型仅 55 个，全量加载后本地过滤的开销可忽略。
+ */
+export async function getModels(params = {}) {
+  const mode = await detectMode();
+  if (mode === 'api') {
+    const qs = new URLSearchParams(
+      Object.fromEntries(Object.entries(params).filter(([, v]) => v != null && v !== ''))
+    );
+    return fetchJson(`/api/models?${qs}`);
+  }
+  const all = await fetchJson('data/models.json');
+  return filterModelsLocally(all, params);
+}
+
+function filterModelsLocally(all, p) {
+  let items = all.slice();
+  if (p.capability) {
+    const set = new Set(String(p.capability).split(','));
+    items = items.filter((m) => (m.capabilities || [m.capability]).some((c) => set.has(c)));
+  }
+  if (p.vendor) {
+    const set = new Set(String(p.vendor).split(','));
+    items = items.filter((m) => set.has(m.vendorSlug));
+  }
+  if (p.q) {
+    const kw = String(p.q).trim().toLowerCase();
+    if (kw) {
+      items = items.filter((m) => [m.name, m.slug, m.description, m.vendorSlug]
+        .filter(Boolean).join(' ').toLowerCase().includes(kw));
+    }
+  }
+  if (p.has_endpoint === '1') items = items.filter((m) => m.endpointCount > 0);
+  return items;
+}
+
+export async function getModel(slug) {
+  const mode = await detectMode();
+  if (mode === 'api') {
+    try {
+      return await fetchJson(`/api/models/${encodeURIComponent(slug)}`);
+    } catch (err) {
+      if (/\b404\b/.test(String(err.message))) return null;
+      throw err;
+    }
+  }
+  const [models, endpoints, activities] = await Promise.all([
+    fetchJson('data/models.json'),
+    fetchJson('data/endpoints.json').catch(() => []),
+    fetchJson('data/activities.json').catch(() => []),
+  ]);
+  const model = models.find((m) => m.slug === slug);
+  if (!model) return null;
+  const eps = endpoints.filter((e) => e.model.slug === slug);
+  return {
+    ...model,
+    endpoints: eps,
+    activities: activities.filter((a) => a.model && a.model.slug === slug),
+  };
+}
+
+export async function getEndpoints(params = {}) {
+  const mode = await detectMode();
+  if (mode === 'api') {
+    const qs = new URLSearchParams(
+      Object.fromEntries(Object.entries(params).filter(([, v]) => v != null && v !== ''))
+    );
+    return fetchJson(`/api/endpoints?${qs}`);
+  }
+  const all = await fetchJson('data/endpoints.json');
+  return filterEndpointsLocally(all, params);
+}
+
+function filterEndpointsLocally(all, p) {
+  let items = all.slice();
+  if (p.provider) {
+    const set = new Set(String(p.provider).split(','));
+    items = items.filter((e) => set.has(e.provider.slug));
+  }
+  if (p.model) {
+    const set = new Set(String(p.model).split(','));
+    items = items.filter((e) => set.has(e.model.slug));
+  }
+  if (p.capability) {
+    const set = new Set(String(p.capability).split(','));
+    items = items.filter((e) => set.has(e.model.capability));
+  }
+  if (p.no_card === '1') items = items.filter((e) => !e.requiresCard);
+  if (p.cn_accessible === '1') items = items.filter((e) => e.cnAccessible);
+  if (p.openai_compatible === '1') items = items.filter((e) => e.openaiCompatible);
+  if (p.q) {
+    const kw = String(p.q).trim().toLowerCase();
+    if (kw) {
+      items = items.filter((e) => [e.model.name, e.model.slug, e.provider.name, e.quotaText]
+        .filter(Boolean).join(' ').toLowerCase().includes(kw));
+    }
+  }
+  // 排序：与后端保持一致的四种口径
+  const sorters = {
+    score: (a, b) => (b.score ?? -1) - (a.score ?? -1) || a.provider.name.localeCompare(b.provider.name, 'zh'),
+    card: (a, b) => (a.requiresCard - b.requiresCard) || a.provider.name.localeCompare(b.provider.name, 'zh'),
+    provider: (a, b) => a.provider.name.localeCompare(b.provider.name, 'zh') || a.model.name.localeCompare(b.model.name),
+  };
+  if (p.sort && sorters[p.sort]) items.sort(sorters[p.sort]);
+  return items;
+}
+
+export async function getEndpoint(providerSlug, modelSlug) {
+  const mode = await detectMode();
+  if (mode === 'api') {
+    try {
+      return await fetchJson(`/api/endpoints/${encodeURIComponent(providerSlug)}/${encodeURIComponent(modelSlug)}`);
+    } catch (err) {
+      if (/\b404\b/.test(String(err.message))) return null;
+      throw err;
+    }
+  }
+  const [endpoints, activities] = await Promise.all([
+    fetchJson('data/endpoints.json'),
+    fetchJson('data/activities.json').catch(() => []),
+  ]);
+  const ep = endpoints.find((e) => e.provider.slug === providerSlug && e.model.slug === modelSlug);
+  if (!ep) return null;
+  return {
+    ...ep,
+    activities: activities.filter((a) => a.endpoint && a.endpoint.slug === ep.slug),
+    alternatives: endpoints.filter((e) => e.model.slug === modelSlug && e.slug !== ep.slug),
+  };
+}
+
+export async function getCapabilities() {
+  try {
+    if (await detectMode() === 'api') return fetchJson('/api/capabilities');
+  } catch { /* 降级到静态 */ }
+  return fetchJson('data/capabilities.json').catch(() => []);
+}
+
+/**
+ * 能力分面的本地兜底计算。
+ *
+ * 为什么必须从 models/endpoints 现算而不是只读 capabilities.json：
+ * 静态站可能只更新了 models.json（例如增量导出），capabilities.json 会滞后。
+ * 现算保证 chip 上的数字与下方实际列出的条目**永远一致** —— 这正是
+ * 之前踩过的 bug（chip 写 7、点进去只有 3 条）。数据源不同步时，
+ * 一致性比"少算一次"重要得多。
+ */
+export function deriveCapabilitiesLocally(models, endpoints) {
+  const ORDER = [
+    'text-generation', 'code-generation', 'image-generation', 'image-understanding',
+    'video-generation', 'speech-to-text', 'text-to-speech', 'text-embeddings',
+    'translation', 'rerank',
+  ];
+  const LABEL = {
+    'text-generation': '文本生成', 'code-generation': '代码生成',
+    'image-generation': '图像生成', 'image-understanding': '图像理解',
+    'video-generation': '视频生成', 'speech-to-text': '语音识别',
+    'text-to-speech': '语音合成', 'text-embeddings': '文本嵌入',
+    'translation': '翻译', 'rerank': '重排序',
+  };
+  const acc = new Map();
+  for (const e of endpoints || []) {
+    const c = e.model.capability;
+    const cur = acc.get(c) || { eps: 0, providers: new Set() };
+    cur.eps++;
+    cur.providers.add(e.provider.slug);
+    acc.set(c, cur);
+  }
+  return ORDER.filter((c) => acc.has(c)).map((c) => {
+    const v = acc.get(c);
+    const mods = (models || []).filter((m) =>
+      (m.capabilities?.length ? m.capabilities : [m.capability]).includes(c));
+    return {
+      value: c,
+      label: LABEL[c] || c,
+      count: v.eps,
+      endpointCount: v.eps,
+      modelCount: mods.length,
+      activityCount: 0,
+      providerCount: v.providers.size,
+    };
+  });
+}
+
+export async function getGuides(params = {}) {
+  const mode = await detectMode();
+  if (mode === 'api') {
+    const qs = new URLSearchParams(
+      Object.fromEntries(Object.entries(params).filter(([, v]) => v != null && v !== ''))
+    );
+    return fetchJson(`/api/guides?${qs}`);
+  }
+  const all = await fetchJson('data/guides.json').catch(() => []);
+  return all.map(({ sections, ...rest }) => rest);
+}
+
+export async function getGuide(slug) {
+  const mode = await detectMode();
+  if (mode === 'api') {
+    try {
+      return await fetchJson(`/api/guides/${encodeURIComponent(slug)}`);
+    } catch (err) {
+      if (/\b404\b/.test(String(err.message))) return null;
+      throw err;
+    }
+  }
+  const all = await fetchJson('data/guides.json').catch(() => []);
+  return all.find((g) => g.slug === slug) || null;
 }
 
 export async function getMeta() {

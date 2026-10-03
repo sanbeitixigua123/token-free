@@ -22,6 +22,7 @@ import { searchCandidates, searchResultToText } from './search.js';
 import { normalizeItem, dedupeWithinBatch } from './normalize.js';
 import { validateItem, isBadTitle, AUTO_OK } from './validate.js';
 import { persistItems } from './persist.js';
+import { linkItemsToModels } from '../lib/link-model.js';
 import * as cheerio from 'cheerio';
 
 const log = createLogger('pipeline');
@@ -383,9 +384,20 @@ export async function runPipeline({ trigger = 'manual', onlyProvider = null, onP
     log.warn('本轮 LLM 增强全程跳过（凭据无效），所有条目均由规则抽取产出');
   }
 
-  // 去重 → 校验 → 落库
+  // 去重 → 三层关联 → 校验 → 落库
   const deduped = dedupeWithinBatch(allItems);
   const providerIdBySlug = new Map(all(db, 'SELECT id, slug FROM providers').map((p) => [p.slug, p.id]));
+
+  // 三层关联：给每条活动找出"送的是哪个模型 / 哪个端点"。
+  // 必须放在校验之前 —— 校验会丢弃不合法条目，先关联可避免为将被丢弃的条目做无用匹配。
+  const linkStats = linkItemsToModels(db, deduped);
+  if (linkStats.linked) {
+    log.info(`三层关联：${linkStats.linked}/${deduped.length} 条活动匹配到模型`
+      + (linkStats.byUrl ? `（其中 ${linkStats.byUrl} 条依据 API 地址判定）` : ''));
+  } else if (deduped.length) {
+    log.info(`三层关联：本轮 ${deduped.length} 条活动均未匹配到已知模型（可能是新厂商活动）`);
+  }
+
   const sourceIdByUrl = new Map(all(db, 'SELECT id, url FROM sources').map((s) => [s.id ? s.url : s.url, s.id]));
   const evidenceIdBySource = new Map(
     deduped.filter((d) => d.sourceUrl && d.evidenceId).map((d) => [d.sourceUrl, d.evidenceId])

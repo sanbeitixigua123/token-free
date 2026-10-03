@@ -30,6 +30,82 @@ CREATE TABLE IF NOT EXISTS providers (
 );
 CREATE INDEX IF NOT EXISTS idx_prov_active ON providers(active, tier);
 
+-- ---------------- 模型（"给的是什么"） ----------------
+--
+-- 为什么要有独立的模型实体？
+--   引入前的结构是「活动 → 厂商」两层，一条活动只能表达"某厂商在送东西",
+--   却表达不了"送的是哪个模型"，前端也就无法按模型或能力分类浏览。
+--   对标 freeaiapi.org（177 个模型 / 157 个端点）后确认，独立的模型层是其能
+--   收录得多、且能被按能力检索的根本原因。
+--
+-- 能力分类 capability 采用 freeaiapi 的命名（与业界惯例一致，便于互通）：
+--   text-generation / code-generation / image-generation / image-understanding
+--   speech-to-text / text-to-speech / text-embeddings / video-generation / translation
+CREATE TABLE IF NOT EXISTS models (
+  id               INTEGER PRIMARY KEY,
+  slug             TEXT NOT NULL UNIQUE,     -- 全局唯一模型标识，如 gemini-3-8-flash
+  vendor_slug      TEXT,                     -- 模型开发方（可能是厂商外的第三方，如 Meta）
+  name             TEXT NOT NULL,            -- 展示名，如 "Gemini 3.8 Flash"
+  capability       TEXT NOT NULL DEFAULT 'text-generation',
+  -- 同一模型可能具备多种能力（如既支持文本又支持视觉），用 JSON 数组存全部
+  capabilities     TEXT NOT NULL DEFAULT '[]',
+  context_window   INTEGER,                  -- 上下文窗口（token 数）
+  max_output       INTEGER,                  -- 最大输出长度
+  is_multimodal    INTEGER NOT NULL DEFAULT 0,
+  is_open_weights  INTEGER NOT NULL DEFAULT 0,
+  description      TEXT,
+  homepage_url     TEXT,
+  released_at      TEXT,
+  created_at       TEXT NOT NULL DEFAULT (datetime('now')),
+  updated_at       TEXT NOT NULL DEFAULT (datetime('now'))
+);
+CREATE INDEX IF NOT EXISTS idx_model_cap ON models(capability);
+
+-- ---------------- 端点（"在哪儿领、能领多少"）★ 最小可领取单元 ----------------
+--
+-- 这是三层结构里最关键的一层，也是此前完全缺失的一层。
+-- 语义：某**提供方**在某个**模型**上给出的免费额度。
+--   例：Google AI Studio × Gemini 3.8 Flash = 15 RPM / 1500 RPD / 1M 上下文 / 免绑卡
+--
+-- 与 activities 的区别（易混，务必分清）：
+--   endpoint   —— 长期稳定的"免费额度政策"（Google AI Studio 一直给 1500 RPD）
+--   activity   —— 有时效的"限时活动"（ZCode 周末送 1 亿，9/7 截止）
+-- 二者是"常态"与"限时"的关系。一条 activity 可以指向某个 endpoint（即"这次活动
+-- 给的是这个端点的额度"），也可以不指向（纯活动发放，不对应长期端点）。
+CREATE TABLE IF NOT EXISTS endpoints (
+  id                INTEGER PRIMARY KEY,
+  provider_id       INTEGER NOT NULL REFERENCES providers(id) ON DELETE CASCADE,
+  model_id          INTEGER NOT NULL REFERENCES models(id) ON DELETE CASCADE,
+  slug              TEXT NOT NULL UNIQUE,    -- 形如 google-ai-studio--gemini-3-8-flash
+  -- 免费配额：用结构化字段而非自然语言，才能做"按额度排序/筛选"
+  quota_kind        TEXT,                    -- rate_limit / credits / free_tier / unlimited
+  quota_rpm         INTEGER,                 -- 每分钟请求数
+  quota_rpd         INTEGER,                 -- 每日请求数
+  quota_tpm         INTEGER,                 -- 每分钟 token 数
+  quota_amount      REAL,                    -- 额度数值（当 quota_kind=credits 时）
+  quota_unit        TEXT,                    -- token / CNY / USD / request
+  quota_text        TEXT,                    -- 原文表述（结构化解析不了时保底展示）
+  requires_card     INTEGER NOT NULL DEFAULT 0,
+  requires_signup   INTEGER NOT NULL DEFAULT 1,
+  requires_phone    INTEGER NOT NULL DEFAULT 0,
+  cn_accessible     INTEGER NOT NULL DEFAULT 1,
+  api_base_url      TEXT,                    -- OpenAI 兼容端点，便于用户直接接入
+  openai_compatible INTEGER NOT NULL DEFAULT 1,
+  docs_url          TEXT,
+  claim_url         TEXT,                    -- 领取/注册入口
+  score             REAL,                    -- 评分（可为空）
+  score_source      TEXT,                    -- 评分来源，避免"来源不明的数字"
+  verified_at       TEXT,                    -- 最近一次人工核实时间
+  enabled           INTEGER NOT NULL DEFAULT 1,
+  created_at        TEXT NOT NULL DEFAULT (datetime('now')),
+  updated_at        TEXT NOT NULL DEFAULT (datetime('now')),
+  -- 同一厂商下同一模型只能有一个端点（避免重复条目）
+  UNIQUE(provider_id, model_id)
+);
+CREATE INDEX IF NOT EXISTS idx_ep_provider ON endpoints(provider_id, enabled);
+CREATE INDEX IF NOT EXISTS idx_ep_model    ON endpoints(model_id, enabled);
+CREATE INDEX IF NOT EXISTS idx_ep_free     ON endpoints(requires_card, cn_accessible);
+
 -- ---------------- 数据源 ----------------
 CREATE TABLE IF NOT EXISTS sources (
   id                   INTEGER PRIMARY KEY,
@@ -102,6 +178,11 @@ CREATE TABLE IF NOT EXISTS activities (
   id                    INTEGER PRIMARY KEY,
   fingerprint           TEXT NOT NULL UNIQUE,
   provider_id           INTEGER NOT NULL REFERENCES providers(id),
+  -- 关联到"端点"与"模型"（见上方两张表的注释）。
+  -- 允许为空：并非每条活动都能对应到某个已知模型/长期端点
+  --（如"登录客户端送 6 元赠金"这类与具体模型无关的普惠活动）。
+  endpoint_id           INTEGER REFERENCES endpoints(id) ON DELETE SET NULL,
+  model_id              INTEGER REFERENCES models(id) ON DELETE SET NULL,
   title                 TEXT NOT NULL,
   summary               TEXT,
   category              TEXT NOT NULL DEFAULT 'free_credit',
@@ -141,6 +222,8 @@ CREATE INDEX IF NOT EXISTS idx_act_dates    ON activities(start_date, end_date);
 CREATE INDEX IF NOT EXISTS idx_act_review   ON activities(review_status);
 CREATE INDEX IF NOT EXISTS idx_act_archived ON activities(archived_at);
 CREATE INDEX IF NOT EXISTS idx_act_created  ON activities(created_at DESC);
+CREATE INDEX IF NOT EXISTS idx_act_endpoint ON activities(endpoint_id);
+CREATE INDEX IF NOT EXISTS idx_act_model    ON activities(model_id);
 
 -- ---------------- 变更历史（谁在何时改了什么） ----------------
 CREATE TABLE IF NOT EXISTS change_history (
@@ -258,6 +341,27 @@ SELECT
   p.website       AS provider_website,
   p.brand_color   AS provider_color,
   p.cn_accessible AS cn_accessible,
+  -- 模型层（可能为空：部分普惠活动不绑定具体模型）
+  m.slug          AS model_slug,
+  m.name          AS model_name,
+  m.capability    AS model_capability,
+  m.capabilities  AS model_capabilities,
+  m.context_window AS model_context_window,
+  -- 端点层（可能为空：限时活动不一定对应长期端点）
+  e.slug          AS endpoint_slug,
+  e.quota_kind    AS endpoint_quota_kind,
+  e.quota_rpm     AS endpoint_quota_rpm,
+  e.quota_rpd     AS endpoint_quota_rpd,
+  e.quota_text    AS endpoint_quota_text,
+  e.api_base_url  AS endpoint_api_base,
+  e.score         AS endpoint_score,
+  -- 端点的门槛信息：用于活动卡片直接标注"免绑卡 / 国内直连"，
+  -- 这些字段来自长期端点而非限时活动，可信度高于从活动文本里猜出来的 requires_card
+  e.requires_card    AS endpoint_requires_card,
+  e.cn_accessible    AS endpoint_cn_accessible,
+  e.openai_compatible AS endpoint_openai_compatible,
+  e.claim_url        AS endpoint_claim_url,
+  e.docs_url         AS endpoint_docs_url,
   CASE
     WHEN a.status_override IS NOT NULL THEN a.status_override
     WHEN a.archived_at IS NOT NULL THEN 'ended'
@@ -279,4 +383,6 @@ SELECT
     WHEN a.created_at >= datetime('now','-1 day') THEN 1 ELSE 0
   END AS is_new
 FROM activities a
-JOIN providers p ON p.id = a.provider_id;
+JOIN providers p ON p.id = a.provider_id
+LEFT JOIN models    m ON m.id = a.model_id
+LEFT JOIN endpoints e ON e.id = a.endpoint_id;

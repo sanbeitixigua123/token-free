@@ -411,6 +411,47 @@ code, .mono { font-family: var(--mono); font-size: 0.9em; }
   background: currentColor; flex-shrink: 0;
 }
 
+/* 三层结构：能力徽章用 --cap-color 变量染色，与卡片左侧色条同源 */
+.badge--cap {
+  background: color-mix(in srgb, var(--cap-color, #6b7280) 10%, #fff);
+  color: var(--cap-color, #6b7280);
+  border: 1px solid color-mix(in srgb, var(--cap-color, #6b7280) 26%, #fff);
+}
+.badge--cap b { font-weight: 700; opacity: 0.72; font-variant-numeric: tabular-nums; }
+
+.badge--ok { background: var(--status-active-bg); color: #15803d; }
+.badge--warn { background: var(--status-ending-bg); color: #9a3412; }
+.badge--neutral { background: var(--bg-subtle); color: var(--text-muted); border: 1px solid var(--border); }
+.badge--lg { padding: 4px 11px; font-size: 12.5px; }
+
+/* ---------------- 评分环 ---------------- */
+
+.score-ring {
+  --v: 0;
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 34px; height: 34px; border-radius: 50%; flex-shrink: 0;
+  font-size: 11.5px; font-weight: 800; font-variant-numeric: tabular-nums;
+  background:
+    conic-gradient(currentColor calc(var(--v) * 1%), var(--bg-subtle) 0);
+}
+.score-ring > span {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 26px; height: 26px; border-radius: 50%;
+  background: var(--bg-elevated); color: var(--text);
+}
+.score-ring.is-high { color: var(--status-active); }
+.score-ring.is-mid { color: var(--brand); }
+.score-ring.is-low { color: var(--status-ending); }
+.score-ring.is-none { color: var(--border-strong); }
+.score-ring.is-none > span { color: var(--text-faint); }
+
+/* ---------------- 可点击整卡 ---------------- */
+
+/* 整卡可点：用 <a> 包整块卡片。hover 时才加边框强调，避免静态页面过于花哨 */
+.card--link { display: flex; flex-direction: column; }
+.card--link:hover { border-color: var(--brand); box-shadow: var(--shadow-lg); }
+.card--link .card__foot { margin-top: auto; }
+
 /* ---------------- 空态 / 骨架 ---------------- */
 
 .empty {
@@ -531,6 +572,86 @@ code, .mono { font-family: var(--mono); font-size: 0.9em; }
 .provider-card__stats { display: flex; gap: 16px; font-size: 12.5px; color: var(--text-muted); }
 .provider-card__stats b { color: var(--text); font-size: 15px; font-weight: 700; }
 .provider-card__links { display: flex; gap: 10px; font-size: 12px; flex-wrap: wrap; margin-top: auto; }
+
+/* ---------------- 能力选择条（模型库 / 端点库共用） ---------------- */
+
+.cap-bar { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 18px; }
+.cap-chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 7px 13px; border-radius: 999px;
+  border: 1px solid var(--border); background: var(--bg-elevated);
+  font-size: 13px; font-weight: 600; color: var(--text-secondary);
+  cursor: pointer; transition: border-color 0.15s, background 0.15s, color 0.15s;
+  min-height: 36px;
+}
+.cap-chip:hover { border-color: var(--cap-color, var(--brand)); color: var(--text); text-decoration: none; }
+.cap-chip.is-active {
+  background: color-mix(in srgb, var(--cap-color, #2563eb) 12%, #fff);
+  border-color: var(--cap-color, var(--brand));
+  color: var(--cap-color, var(--brand-dark));
+}
+.cap-chip__n {
+  font-size: 11.5px; font-weight: 700; font-variant-numeric: tabular-nums;
+  color: var(--text-faint);
+}
+.cap-chip.is-active .cap-chip__n { color: inherit; opacity: 0.8; }
+
+/* ---------------- 端点详情 ---------------- */
+
+.ep-head { display: flex; align-items: flex-start; gap: 14px; flex-wrap: wrap; }
+.ep-head__main { flex: 1; min-width: 260px; }
+.ep-head__title { font-size: 24px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 6px; }
+.ep-head__sub { font-size: 14px; color: var(--text-muted); }
+.ep-head__score { text-align: center; }
+.ep-head__score .score-ring { width: 54px; height: 54px; font-size: 15px; }
+.ep-head__score .score-ring > span { width: 42px; height: 42px; }
+
+.ep-quota {
+  border-radius: var(--radius-sm); padding: 13px 15px; margin-bottom: 16px;
+  background: color-mix(in srgb, var(--brand) 7%, #fff);
+  border: 1px solid color-mix(in srgb, var(--brand) 18%, #fff);
+}
+.ep-quota__label { font-size: 11.5px; font-weight: 700; color: var(--brand); letter-spacing: 0.03em; margin-bottom: 4px; }
+.ep-quota__text { font-size: 15px; font-weight: 650; color: var(--text); line-height: 1.55; }
+
+.ep-kv { display: grid; grid-template-columns: 92px 1fr; gap: 7px 14px; font-size: 13.5px; }
+.ep-kv dt { color: var(--text-muted); }
+.ep-kv dd { margin: 0; color: var(--text); word-break: break-word; }
+
+/* ---------------- 攻略文章 ---------------- */
+
+.article { font-size: 15px; line-height: 1.85; color: var(--text-secondary); }
+.article h2 {
+  font-size: 19px; font-weight: 750; color: var(--text);
+  margin: 30px 0 12px; padding-top: 6px;
+}
+.article h2:first-child { margin-top: 0; }
+.article h3 { font-size: 16px; font-weight: 700; color: var(--text); margin: 22px 0 9px; }
+.article p { margin: 0 0 14px; }
+.article ul, .article ol { margin: 0 0 14px; padding-left: 22px; }
+.article li { margin-bottom: 7px; }
+.article strong { color: var(--text); font-weight: 700; }
+.article code {
+  font-family: var(--mono); font-size: 0.88em;
+  background: var(--bg-subtle); padding: 2px 6px; border-radius: 5px;
+  color: var(--brand-dark);
+}
+.article blockquote {
+  margin: 0 0 16px; padding: 11px 15px;
+  border-left: 3px solid var(--brand); background: var(--bg-subtle);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  color: var(--text-secondary); font-size: 14px;
+}
+.article blockquote p:last-child { margin-bottom: 0; }
+/* 表格在窄屏可横向滚动，避免撑破布局 */
+.article .table-wrap { margin: 0 0 16px; }
+.article__toc {
+  font-size: 13.5px; line-height: 1.9;
+  columns: 2; column-gap: 24px;
+}
+@media (max-width: 620px) { .article__toc { columns: 1; } }
+.article__toc a { color: var(--text-secondary); }
+.article__toc a:hover { color: var(--brand); }
 
 /* ---------------- 时间线 ---------------- */
 

@@ -1,0 +1,94 @@
+# ============================================================
+#  guides.auto.yaml —— 自动生成的攻略草稿
+#
+#  ⚠️ 本文件由 src/lib/guide-gen.js 自动生成，请勿手工编辑。
+#     手写攻略请写 config/guides.yaml（loadGuides 会合并两者，手写优先）。
+#     每次生成都会整体重写本文件 —— 这也是幂等性的来源：
+#     slug 由活动 id 派生，同一条活动只会有一个条目。
+#  最近生成：2026-10-03 17:30:09（北京时间）
+#  条目数：4
+# ============================================================
+
+guides:
+  - slug: "auto-deepseek-11"
+    title: "DeepSeek ¥6 怎么领：额度仅限客户端内、不给 API Key"
+    summary: "DeepSeek现提供 ¥6 的免费额度。最大的坑：额度仅限客户端内、不给 API Key。本文拆解活动规则、领取步骤与避坑要点。"
+    provider: "deepseek"
+    tags: ["DeepSeek", "客户端额度"]
+    published_at: "2026-10-03"
+    source_activity_id: 11
+    topic_key: "deepseek::¥6::client"
+    confidence: 1
+    sections:
+      - title: "核心速览"
+        body: "- **额度**：¥6\n- **厂商**：DeepSeek\n- **模型**：本条活动未绑定具体模型，属账户级赠额\n- **是否需绑卡**：❌ 不需要\n- **国内可直连**：✅ 可直连\n- **截止日期**：2026-10-06"
+      - title: "一、活动规则"
+        body: "活动要点：DeepSeek Desktop 桌面版发布，快来领取鸡蛋 ¥6 额度 - 前沿快讯 - LINUX DO\n\n适用人群：新注册\n\n据抓取到的公开信息，该活动提供的免费额度为 **¥6**。\n\n额度通常在领取后设有有效期（常见为 1 个月），过期不结转、不作废重发，请领到后尽快消耗。"
+      - title: "二、领取流程"
+        body: "1. 打开活动/领取页：https://linux.do/t/topic/2967404\n2. 注册并登录厂商账号（多数需手机号验证码，部分需实名认证）\n3. 在控制台「费用中心 / 赠额管理」确认额度到账\n4. 先发一条测试请求验证额度可用，再投入正式开发"
+      - title: "三、避坑提示"
+        body: "- ⚠️ **最大的坑：额度仅限客户端，不提供外部 API Key**。以为领到的 Token 能通过 API 调进 VSCode / Cline / Continue 的会白忙一场。想接编辑器，请改用该厂商的开放平台账号（另行注册）。\n- ⚠️ 活动规则随时可能调整，额度的最终解释权归厂商所有；领取前请以官方页面为准。"
+      - title: "附：信息来源"
+        body: "本文由规则模板根据公开信息自动生成，原始来源：https://linux.do/t/topic/2967404\n\n> 自动生成的内容可能存在偏差，活动规则请以官方页面为准。"
+  - slug: "auto-zhipu-7"
+    title: "智谱 AI 3 亿 tokens 怎么领：先到先得，注意有效期"
+    summary: "智谱 AI现提供 3 亿 tokens 的免费额度（GLM-5.3-Flash）。最大的坑：先到先得，注意有效期。本文拆解活动规则、领取步骤与避坑要点。"
+    provider: "zhipu"
+    model: "glm-5-3-flash"
+    tags: ["智谱 AI", "GLM-5.3-Flash", "代码生成", "API 额度"]
+    published_at: "2026-10-03"
+    source_activity_id: 7
+    topic_key: "zhipu::3 亿 tokens::api"
+    confidence: 0.95
+    sections:
+      - title: "核心速览"
+        body: "- **额度**：3 亿 tokens（官方表述：3 亿 GLM-5.3-Flash Token）\n- **厂商**：智谱 AI\n- **模型**：GLM-5.3-Flash（code-generation，上下文窗口 1000K）\n- **是否需绑卡**：❌ 不需要\n- **国内可直连**：✅ 可直连\n- **可否调 API**：OpenAI 兼容，改 base_url 即可接入\n- **截止日期**：2026-09-07\n- **开始日期**：2026-09-04"
+      - title: "一、活动规则"
+        body: "活动要点：智谱 ZCode 周末活动：所有用户免费领 3 亿 GLM-5.3-Flash Token（2026-09-04-2026-09-07 新一轮\n\n据抓取到的公开信息，该活动提供的免费额度为 **3 亿 tokens**。\n\n额度通常在领取后设有有效期（常见为 1 个月），过期不结转、不作废重发，请领到后尽快消耗。\n\n本活动对应模型 **GLM-5.3-Flash**，如需了解其能力与其它免费提供方，可在「模型库」中查看。"
+      - title: "二、领取流程"
+        body: "1. 打开活动/领取页：https://open.bigmodel.cn\n2. 查阅官方文档确认最新规则：https://z.ai\n3. 注册并登录厂商账号（多数需手机号验证码，部分需实名认证）\n4. 在控制台「费用中心 / 赠额管理」确认额度到账\n5. 在代码或客户端中把 Base URL 指向：https://open.bigmodel.cn/api/paas/v4\n6. 先发一条测试请求验证额度可用，再投入正式开发"
+      - title: "三、避坑提示"
+        body: "- ⚠️ 活动规则随时可能调整，额度的最终解释权归厂商所有；领取前请以官方页面为准。"
+      - title: "附：信息来源"
+        body: "本文由规则模板根据公开信息自动生成，原始来源：https://igetoken.com/deals/2026-08-zcode-weekend-300m\n\n> 自动生成的内容可能存在偏差，活动规则请以官方页面为准。"
+  - slug: "auto-zhipu-8"
+    title: "智谱 AI 1 亿 tokens 怎么领：先到先得，注意有效期"
+    summary: "智谱 AI现提供 1 亿 tokens 的免费额度（GLM-5.3-Flash）。最大的坑：先到先得，注意有效期。本文拆解活动规则、领取步骤与避坑要点。"
+    provider: "zhipu"
+    model: "glm-5-3-flash"
+    tags: ["智谱 AI", "GLM-5.3-Flash", "代码生成", "API 额度"]
+    published_at: "2026-10-03"
+    source_activity_id: 8
+    topic_key: "zhipu::1 亿 tokens::api"
+    confidence: 0.95
+    sections:
+      - title: "核心速览"
+        body: "- **额度**：1 亿 tokens（官方表述：1 亿 Token）\n- **厂商**：智谱 AI\n- **模型**：GLM-5.3-Flash（code-generation，上下文窗口 1000K）\n- **是否需绑卡**：❌ 不需要\n- **国内可直连**：✅ 可直连\n- **可否调 API**：OpenAI 兼容，改 base_url 即可接入"
+      - title: "一、活动规则"
+        body: "活动要点：GLM-5.3 × ZCode 免费周末：新用户送 1 亿 Token 领取攻略与日常指南 — Free AI API\n\n适用人群：新用户\n\n据抓取到的公开信息，该活动提供的免费额度为 **1 亿 tokens**。\n\n额度通常在领取后设有有效期（常见为 1 个月），过期不结转、不作废重发，请领到后尽快消耗。\n\n本活动对应模型 **GLM-5.3-Flash**，如需了解其能力与其它免费提供方，可在「模型库」中查看。"
+      - title: "二、领取流程"
+        body: "1. 打开活动/领取页：https://open.bigmodel.cn\n2. 查阅官方文档确认最新规则：https://z.ai\n3. 注册并登录厂商账号（多数需手机号验证码，部分需实名认证）\n4. 在控制台「费用中心 / 赠额管理」确认额度到账\n5. 在代码或客户端中把 Base URL 指向：https://open.bigmodel.cn/api/paas/v4\n6. 先发一条测试请求验证额度可用，再投入正式开发"
+      - title: "三、避坑提示"
+        body: "- ⚠️ 活动规则随时可能调整，额度的最终解释权归厂商所有；领取前请以官方页面为准。"
+      - title: "附：信息来源"
+        body: "本文由规则模板根据公开信息自动生成，原始来源：https://freeaiapi.org/zh-cn/articles/zcode-free-weekend-100m-tokens\n\n> 自动生成的内容可能存在偏差，活动规则请以官方页面为准。"
+  - slug: "auto-baidu-ernie-3"
+    title: "百度文心 ¥20 怎么领：先到先得，注意有效期"
+    summary: "百度文心现提供 ¥20 的免费额度。最大的坑：先到先得，注意有效期。本文拆解活动规则、领取步骤与避坑要点。"
+    provider: "baidu-ernie"
+    tags: ["百度文心", "API 额度"]
+    published_at: "2026-10-03"
+    source_activity_id: 3
+    topic_key: "baidu-ernie::¥20::api"
+    confidence: 0.89
+    sections:
+      - title: "核心速览"
+        body: "- **额度**：¥20（官方表述：20元）\n- **厂商**：百度文心\n- **模型**：本条活动未绑定具体模型，属账户级赠额\n- **是否需绑卡**：❌ 不需要\n- **国内可直连**：✅ 可直连"
+      - title: "一、活动规则"
+        body: "活动要点：当前新用户注册百度千帆·大模型服务及Agent开发平台 ，实名认证后即送20元代金券！全平台无门槛使用，有效期一个月。\n\n适用人群：新用户、实名\n\n据抓取到的公开信息，该活动提供的免费额度为 **¥20**。\n\n额度通常在领取后设有有效期（常见为 1 个月），过期不结转、不作废重发，请领到后尽快消耗。"
+      - title: "二、领取流程"
+        body: "1. 打开活动/领取页：https://cloud.baidu.com/doc/qianfan/s/1mh4su5jg\n2. 注册并登录厂商账号（多数需手机号验证码，部分需实名认证）\n3. 在控制台「费用中心 / 赠额管理」确认额度到账\n4. 先发一条测试请求验证额度可用，再投入正式开发"
+      - title: "三、避坑提示"
+        body: "- ⚠️ 活动规则随时可能调整，额度的最终解释权归厂商所有；领取前请以官方页面为准。"
+      - title: "附：信息来源"
+        body: "本文由规则模板根据公开信息自动生成，原始来源：https://cloud.baidu.com/doc/WENXINWORKSHOP/index.html\n\n> 自动生成的内容可能存在偏差，活动规则请以官方页面为准。"

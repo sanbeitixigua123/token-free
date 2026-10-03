@@ -21,14 +21,14 @@ INSERT INTO activities (
   audience, audience_note, region, requires_card, requires_verification,
   start_date, end_date, is_recurring, claim_url,
   source_id, source_url, source_excerpt, evidence_id,
-  confidence, extracted_by, review_status, last_verified_at
+  confidence, extracted_by, review_status, model_id, endpoint_id, last_verified_at
 ) VALUES (
   ?,?,?,?,?,
   ?,?,?,?,
   ?,?,?,?,?,
   ?,?,?,?,
   ?,?,?,?,
-  ?,?,?,datetime('now')
+  ?,?,?,?,?,datetime('now')
 )`;
 
 export function persistItems(db, items, { runId = null, providerIdBySlug, sourceIdByUrl, evidenceIdBySource }) {
@@ -51,6 +51,7 @@ export function persistItems(db, items, { runId = null, providerIdBySlug, source
               start_date=?, end_date=?, is_recurring=?, claim_url=?,
               source_id=?, source_url=?, source_excerpt=?,
               confidence=?, extracted_by=?,
+              model_id=?, endpoint_id=?,
               updated_at=datetime('now'), last_verified_at=datetime('now')
             WHERE id=?`,
             [
@@ -59,7 +60,13 @@ export function persistItems(db, items, { runId = null, providerIdBySlug, source
               JSON.stringify(it.audience), it.audienceNote, it.region, it.requiresCard, it.requiresVerification,
               it.startDate, it.endDate, it.isRecurring, it.claimUrl,
               sourceIdByUrl.get(it.sourceUrl) ?? existing.source_id, it.sourceUrl, it.sourceExcerpt,
-              it.confidence, it.extractedBy ?? existing.extracted_by ?? 'rule', existing.id,
+              it.confidence, it.extractedBy ?? existing.extracted_by ?? 'rule',
+              // 关联字段：本次没匹配到（null）时保留库中已有值。
+              // 理由：模型匹配依赖端点在库中的存在性，若某次端点临时被停用，
+              // 不应把已经建立好的正确关联抹掉——那是数据退化，不是数据更新。
+              it.modelId ?? existing.model_id ?? null,
+              it.endpointId ?? existing.endpoint_id ?? null,
+              existing.id,
             ]);
 
           for (const c of changes) {
@@ -89,6 +96,7 @@ export function persistItems(db, items, { runId = null, providerIdBySlug, source
         sourceIdByUrl.get(it.sourceUrl) ?? null, it.sourceUrl, it.sourceExcerpt,
         evidenceIdBySource.get(it.sourceUrl) ?? null,
         it.confidence, it.extractedBy ?? 'rule', reviewStatus,
+        it.modelId ?? null, it.endpointId ?? null,
       ]);
       stats.new++;
       stats.newIds.push(res.lastInsertRowid);

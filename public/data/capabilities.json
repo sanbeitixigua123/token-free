@@ -1,0 +1,83 @@
+[
+  {
+    "value": "text-generation",
+    "label": "文本生成",
+    "count": 19,
+    "endpointCount": 19,
+    "modelCount": 30,
+    "activityCount": 2,
+    "providerCount": 17
+  },
+  {
+    "value": "code-generation",
+    "label": "代码生成",
+    "count": 11,
+    "endpointCount": 11,
+    "modelCount": 16,
+    "activityCount": 2,
+    "providerCount": 11
+  },
+  {
+    "value": "image-generation",
+    "label": "图像生成",
+    "count": 9,
+    "endpointCount": 9,
+    "modelCount": 7,
+    "activityCount": 0,
+    "providerCount": 8
+  },
+  {
+    "value": "image-understanding",
+    "label": "图像理解",
+    "count": 0,
+    "endpointCount": 0,
+    "modelCount": 12,
+    "activityCount": 0,
+    "providerCount": 0
+  },
+  {
+    "value": "video-generation",
+    "label": "视频生成",
+    "count": 8,
+    "endpointCount": 8,
+    "modelCount": 6,
+    "activityCount": 0,
+    "providerCount": 8
+  },
+  {
+    "value": "speech-to-text",
+    "label": "语音识别",
+    "count": 6,
+    "endpointCount": 6,
+    "modelCount": 7,
+    "activityCount": 0,
+    "providerCount": 5
+  },
+  {
+    "value": "text-to-speech",
+    "label": "语音合成",
+    "count": 5,
+    "endpointCount": 5,
+    "modelCount": 6,
+    "activityCount": 0,
+    "providerCount": 4
+  },
+  {
+    "value": "text-embeddings",
+    "label": "文本嵌入",
+    "count": 7,
+    "endpointCount": 7,
+    "modelCount": 3,
+    "activityCount": 0,
+    "providerCount": 5
+  },
+  {
+    "value": "translation",
+    "label": "翻译",
+    "count": 0,
+    "endpointCount": 0,
+    "modelCount": 1,
+    "activityCount": 0,
+    "providerCount": 0
+  }
+]
