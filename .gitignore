@@ -37,6 +37,8 @@ config/secrets.json
 # WorkBuddy AI 助手的本地记忆目录，与项目源码无关
 .workbuddy-ai/
 .cache/
+# 临时校验脚本目录（非项目源码）
+.verify/
 
 # ---- 系统垃圾 ----
 .DS_Store
