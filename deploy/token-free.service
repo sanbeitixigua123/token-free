@@ -1,0 +1,53 @@
+# systemd 单元文件
+#
+# 安装：
+#   sudo cp deploy/token-free.service /etc/systemd/system/
+#   sudo systemctl daemon-reload
+#   sudo systemctl enable --now token-free
+#   sudo journalctl -u token-free -f
+#
+# ⚠️ 单实例：不要起第二个，内置 cron 会重复抓取（见 ecosystem.config.cjs 说明）
+
+[Unit]
+Description=Token Free - AI 免费额度聚合站
+Documentation=https://github.com/sanbeitixigua123/token-free
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=www-data
+Group=www-data
+WorkingDirectory=/opt/token-free
+
+# 用绝对路径更稳；若用 nvm 装的 node 请改成实际路径（which node）
+ExecStart=/usr/bin/node src/server.js
+
+# 从文件读环境变量（ADMIN_TOKEN 等）；该文件权限应为 600
+EnvironmentFile=/opt/token-free/.env
+Environment=NODE_ENV=production
+Environment=DEPLOY=1
+Environment=PORT=8787
+Environment=TZ=Asia/Shanghai
+
+Restart=always
+RestartSec=5
+
+# 优雅关闭：给 15s（server.js 内 10s 后强制退出）
+KillSignal=SIGTERM
+TimeoutStopSec=15
+
+# 安全加固
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+# data/ 与 logs/ 需要可写，显式放行
+ReadWritePaths=/opt/token-free/data /opt/token-free/logs
+ProtectHome=true
+
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=token-free
+
+[Install]
+WantedBy=multi-user.target

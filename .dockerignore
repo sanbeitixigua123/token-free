@@ -1,0 +1,23 @@
+# 必须排除：logs/html 已累积 265MB 的 HTML 快照，
+# 不加这个文件的话 docker build 会把几百 MB 垃圾塞进构建上下文，
+# 既慢又白白撑大镜像层。
+logs/
+data/*.db
+data/*.db-wal
+data/*.db-shm
+
+# 依赖与版本控制
+node_modules/
+.git/
+.github/
+
+# 密钥
+.env
+.env.*
+!.env.example
+config/secrets.json
+
+# 开发产物
+docs/
+*.log
+.DS_Store

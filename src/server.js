@@ -9,11 +9,19 @@
  *
  * 启动：node src/server.js   （PORT 环境变量可覆盖，默认 8787）
  *        DEPLOY=1 时绑定 0.0.0.0 并读取 PORT（用于云端托管）
+ *
+ * 生产部署（2026-10-03 服务器上线前加固）：
+ *   写接口（review/crawl/export/退订）需 ADMIN_TOKEN，见 requireAdmin()。
+ *   ⚠️ 未设置 ADMIN_TOKEN 时管理接口**直接拒绝**（503），而不是放行——
+ *      "忘了配"绝不能退化成"完全敞开"。
+ *   ⚠️ 内置 cron 只在单实例下安全；多副本部署须把调度外置，
+ *      否则每个副本都会各抓一次（互相触发反爬 + 重复消耗 LLM 配额）。
  */
 
 import http from 'node:http';
 import fs from 'node:fs';
 import path from 'node:path';
+import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { getDb, all, get, run, PROJECT_ROOT } from './db/db.js';
 import { loadSettings, loadGuides } from './lib/config.js';
@@ -56,18 +64,78 @@ const MIME = {
 
 // ---------------- 工具 ----------------
 
-function sendJson(res, data, status = 200) {
+/**
+ * 安全响应头（2026-10-03 上线前补齐）。
+ * 此前一个都没有——公网裸奔会被点框劫持 / MIME 嗅探。
+ *
+ * CSP 说明：本站是零构建原生 ES modules，无内联 <script>，故可上较严策略。
+ * 但 style-src 必须留 'unsafe-inline'：组件里有内联 style 属性
+ * （如 scoreRing 用 CSS 变量写 --v）。收紧前需先改掉这些用法。
+ */
+const SECURITY_HEADERS = {
+  'x-content-type-options': 'nosniff',
+  'x-frame-options': 'DENY',
+  'referrer-policy': 'strict-origin-when-cross-origin',
+  'permissions-policy': 'geolocation=(), microphone=(), camera=()',
+  'content-security-policy':
+    "default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; " +
+    "font-src 'self' data:; connect-src 'self'",
+  // HSTS 只在 HTTPS 下有意义；本地 http 加了会被忽略且误导。
+  ...(process.env.DEPLOY === '1'
+    ? { 'strict-transport-security': 'max-age=31536000; includeSubDomains' }
+    : {}),
+};
+
+/**
+ * 管理接口鉴权。
+ * 返回 undefined 表示通过；否则返回 true 表示「已发出响应，调用方须 return」。
+ */
+function requireAdmin(req, res) {
+  const expected = process.env.ADMIN_TOKEN;
+  if (!expected) {
+    // 关键：未配置 = 禁用，绝不放行
+    sendJson(res, {
+      error: '服务端未配置 ADMIN_TOKEN，管理接口已禁用。设置环境变量 ADMIN_TOKEN 后重启即可启用。',
+    }, 503);
+    return true;
+  }
+  const got = String(req.headers['x-admin-token'] || '');
+  // 长度不等时 timingSafeEqual 会抛异常，必须先比长度
+  let ok = false;
+  if (got.length === expected.length) {
+    try {
+      ok = crypto.timingSafeEqual(Buffer.from(got, 'utf8'), Buffer.from(expected, 'utf8'));
+    } catch { ok = false; }
+  }
+  if (!ok) {
+    log.warn('管理接口鉴权失败', {
+      path: req.url,
+      ip: req.socket?.remoteAddress,
+      ua: String(req.headers['user-agent'] || '').slice(0, 80),
+    });
+    sendJson(res, { error: '未授权：缺少或错误的 x-admin-token' }, 401);
+    return true;
+  }
+  return undefined;
+}
+
+function sendJson(res, data, status = 200, extraHeaders = null) {
   const body = JSON.stringify(data);
   res.writeHead(status, {
     'content-type': 'application/json; charset=utf-8',
     'cache-control': 'no-store',
     'access-control-allow-origin': '*',
+    ...SECURITY_HEADERS,
+    ...(extraHeaders || {}),
   });
   res.end(body);
 }
 
 function sendText(res, text, status = 200, type = 'text/plain; charset=utf-8') {
-  res.writeHead(status, { 'content-type': type });
+  res.writeHead(status, {
+    'content-type': type,
+    ...SECURITY_HEADERS,
+  });
   res.end(text);
 }
 
@@ -654,6 +722,30 @@ async function handleApi(req, res, url) {
     if (req.method === 'GET' && p === '/api/ping') {
       return sendJson(res, { ok: true, service: 'token-free', mode: 'api' });
     }
+
+    // 健康检查：供负载均衡 / 容器编排 / 外部监控探活。
+    // 与 /api/ping 的区别：ping 只证明"进程在"，health 还会实际查一次库，
+    // 并带上最近抓取时间——因为**抓取失败时服务仍然"活着"但数据是陈旧的**，
+    // 只看进程存活的监控形同虚设。
+    if (req.method === 'GET' && p === '/api/health') {
+      let dbOk = false;
+      let dbErr = null;
+      try {
+        dbOk = get(db, 'SELECT 1 AS ok')?.ok === 1;
+      } catch (err) { dbErr = err.message; }
+      const lastRun = get(db, 'SELECT started_at, status FROM fetch_runs ORDER BY id DESC LIMIT 1');
+      return sendJson(res, {
+        ok: dbOk,
+        service: 'token-free',
+        db: dbOk ? 'ok' : 'error',
+        ...(dbErr ? { dbError: dbErr } : {}),
+        uptime: Math.round(process.uptime()),
+        memMB: Math.round(process.memoryUsage().rss / 1048576),
+        lastCrawlAt: lastRun?.started_at || null,
+        lastCrawlStatus: lastRun?.status || null,
+        cronEnabled: process.env.CRON !== '0',
+      }, dbOk ? 200 : 503);
+    }
     if (req.method === 'GET' && p === '/api/activities') return sendJson(res, apiActivities(db, q));
 
     let m;
@@ -691,18 +783,31 @@ async function handleApi(req, res, url) {
       return d ? sendJson(res, d) : sendJson(res, { error: '未找到该攻略' }, 404);
     }
 
-    // 人工审核
+    // 人工审核（写操作：需鉴权）
     if (req.method === 'POST' && (m = p.match(/^\/api\/review\/(\d+)$/))) {
+      if (requireAdmin(req, res)) return;
       const body = await readBody(req);
-      const updated = reviewActivity(db, parseInt(m[1], 10), {
-        action: body.action, patch: body.patch || null, note: body.note || null,
-      });
-      log.info(`人工审核 #${m[1]} → ${body.action}`);
+      const id = parseInt(m[1], 10);
+      let updated;
+      try {
+        updated = reviewActivity(db, id, {
+          action: body.action, patch: body.patch || null, note: body.note || null,
+        });
+      } catch (err) {
+        // 业务错误（如"活动不存在"）应回 404 而不是 500。
+        // 此前这里走到 catch-all 统一返回 500，掩盖了真实的语义。
+        if (/不存在|未找到|not found/i.test(err.message)) {
+          return sendJson(res, { error: err.message }, 404);
+        }
+        throw err;
+      }
+      log.info(`人工审核 #${id} → ${body.action}`);
       return sendJson(res, { ok: true, activity: updated });
     }
 
-    // 手动触发抓取（异步）
+    // 手动触发抓取（异步；写操作：需鉴权）
     if (req.method === 'POST' && p === '/api/crawl') {
+      if (requireAdmin(req, res)) return;
       const body = await readBody(req).catch(() => ({}));
       log.info('收到手动抓取请求');
       runPipeline({ trigger: 'manual', onlyProvider: body.provider || null })
@@ -726,6 +831,9 @@ async function handleApi(req, res, url) {
       return sendJson(res, { ok: true, id: sub.id, message: '订阅成功，有新活动时会收到通知' });
     }
     if (req.method === 'DELETE' && p === '/api/subscribe') {
+      // 退订虽是"减操作"，但拿到 endpoint 即可退订他人，故同样需鉴权。
+      // 注：用户自行退订走前端本地清除 + 停推即可，不必暴露此接口。
+      if (requireAdmin(req, res)) return;
       const body = await readBody(req).catch(() => ({}));
       const endpoint = body.endpoint || q.endpoint;
       if (!endpoint) return sendJson(res, { error: '缺少 endpoint' }, 400);
@@ -744,6 +852,7 @@ async function handleApi(req, res, url) {
       return sendText(res, buildRss(db, settings), 200, 'application/rss+xml; charset=utf-8');
     }
     if (req.method === 'POST' && p === '/api/export') {
+      if (requireAdmin(req, res)) return;
       writeFeeds(db, settings);
       return sendJson(res, { ok: true, message: '已导出静态数据到 public/data/' });
     }
@@ -781,6 +890,7 @@ function serveStatic(req, res, url) {
       // 用响应头而不是探一个不存在的路径，是为了避免 404 污染浏览器控制台
       // —— 浏览器对任何 4xx 都会打一条 console.error，JS 无法抑制。
       'x-served-by': 'token-free-api',
+      ...SECURITY_HEADERS,
     };
     res.writeHead(200, headers);
     fs.createReadStream(filePath).pipe(res);
@@ -842,3 +952,51 @@ if (process.env.CRON !== '0') {
     log.warn('定时任务注册失败（不影响服务）', { err: err.message });
   }
 }
+
+// ---------------- 优雅关闭 ----------------
+//
+// 为什么必须有：没有它时 `docker stop` / PM2 reload / 容器滚动更新会直接杀进程。
+// 若此刻正在写 SQLite 事务或跑 runPipeline，会留下 WAL 未检查点、
+// 孤立的 fetch_runs 记录、以及未释放的文件锁——下次启动可能读到半截状态。
+//
+// 设计要点：
+//   - 幂等：重复信号只处理一次（否则第二次 close 会抛错）
+//   - 兜底超时：10s 后强制退出，避免某个连接挂着导致永不退出
+//   - uncaughtException 后**必须真的退出**：继续跑一个状态未知的进程更危险，
+//     交给守护进程拉起干净的即可。
+
+let shuttingDown = false;
+
+function gracefulShutdown(signal) {
+  return () => {
+    if (shuttingDown) return;
+    shuttingDown = true;
+    log.info(`收到 ${signal}，开始优雅关闭（等待现有请求结束）`);
+
+    // 兜底：无论如何 10 秒后退出，防止 server.close 挂死
+    const forceTimer = setTimeout(() => {
+      log.warn('优雅关闭超时，强制退出');
+      process.exit(1);
+    }, 10_000);
+    forceTimer.unref();
+
+    server.close(() => {
+      clearTimeout(forceTimer);
+      try { getDb().close(); } catch { /* 已关闭则忽略 */ }
+      log.info('已关闭 HTTP 服务与数据库连接');
+      process.exit(0);
+    });
+  };
+}
+
+process.on('SIGTERM', gracefulShutdown('SIGTERM'));
+process.on('SIGINT', gracefulShutdown('SIGINT'));
+
+process.on('unhandledRejection', (reason) => {
+  log.error('未处理的 Promise 拒绝', { err: String(reason?.stack || reason) });
+});
+
+process.on('uncaughtException', (err) => {
+  log.error('未捕获异常，准备退出', { err: err.message, stack: err.stack });
+  gracefulShutdown('uncaughtException')();
+});
