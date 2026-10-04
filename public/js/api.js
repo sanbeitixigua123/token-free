@@ -470,6 +470,19 @@ export async function getMeta() {
   }
 }
 
+/**
+ * 免费 Token 中转站目录。
+ * 数据由 GitHub Actions 定期从社区目录仓库采集合并（见 scripts/fetch-relays.mjs），
+ * 两种部署模式下都直接读静态文件 —— 应用侧没有对应 API。
+ */
+export async function getRelays() {
+  try {
+    return await fetchJson('data/relays.json');
+  } catch {
+    return { generatedAt: null, meta: { total: 0, online: 0, offline: 0, recommended: 0, sources: [] }, relays: [] };
+  }
+}
+
 export async function getFetchRuns(limit = 30) {
   const mode = await detectMode();
   if (mode !== 'api') return null;   // 静态站无抓取日志

@@ -1,0 +1,77 @@
+# ============================================================
+#  relays.yml — 搜罗免费 Token 中转站（定时采集 + 探活合并 + 分发）
+#
+#  为什么采集放在 Actions 而不是聚合服务器：
+#  服务器（国内节点）直连 GitHub / 多数中转站均超时，Actions 网络无碍。
+#  产出 public/data/relays.json（纯静态）后：
+#    ① 提交回 main —— GitHub Pages 跟随更新；
+#    ② scp 推送到真实服务器 /opt/token-free/public/data/（前端 /token/data/ 代理的
+#       就是该目录）与 /www/wwwroot/token-free/data/（静态备份），需在仓库
+#       Secrets 配置 SERVER_SSH_KEY / SERVER_HOST / SERVER_PORT；
+#       未配置密钥时本步骤自动跳过，不影响采集与提交。
+# ============================================================
+
+name: Relay Discovery
+
+on:
+  schedule:
+    # 每 6 小时（UTC）；北京时间 08:23 / 14:23 / 20:23 / 02:23
+    - cron: '23 */6 * * *'
+  workflow_dispatch: # 手动补跑 / 调试
+
+permissions:
+  contents: write
+
+concurrency:
+  group: relay-discovery
+  cancel-in-progress: false
+
+env:
+  SERVER_SSH_KEY: ${{ secrets.SERVER_SSH_KEY }}
+  SERVER_HOST: ${{ secrets.SERVER_HOST }}
+  SERVER_PORT: ${{ secrets.SERVER_PORT }}
+
+jobs:
+  discover:
+    name: 抓取社区目录并合并探活结果
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 1
+
+      - name: 配置 Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: 抓取并合并中转站数据
+        run: node scripts/fetch-relays.mjs
+
+      - name: 概要
+        run: |
+          node -e "const d=require('./public/data/relays.json'); console.log('站点总数:', d.meta.total, '| 在线:', d.meta.online, '| 来源:', d.meta.sources.map(s=>s.repo+(s.ok?'':'(失败)')).join(', '))"
+
+      - name: 提交 relays.json 回 main
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: 'chore(data): 中转站目录更新 ${{ github.run_id }}'
+          file_pattern: 'public/data/relays.json'
+          commit_user_name: 'Token Free Bot'
+          commit_user_email: 'tokenfree-bot@users.noreply.github.com'
+          commit_author: 'Token Free Bot <tokenfree-bot@users.noreply.github.com>'
+
+      - name: 推送到真实服务器
+        if: env.SERVER_SSH_KEY != '' && env.SERVER_HOST != ''
+        run: |
+          install -m 600 -D /dev/null ~/.ssh/deploy_key
+          printf '%s\n' "$SERVER_SSH_KEY" > ~/.ssh/deploy_key
+          PORT="${SERVER_PORT:-48151}"
+          ssh-keyscan -p "$PORT" "$SERVER_HOST" >> ~/.ssh/known_hosts 2>/dev/null
+          SSH="ssh -i ~/.ssh/deploy_key -p $PORT"
+          SCP="scp -i ~/.ssh/deploy_key -P $PORT"
+          $SCP public/data/relays.json "root@$SERVER_HOST:/opt/token-free/public/data/relays.json"
+          $SCP public/data/relays.json "root@$SERVER_HOST:/www/wwwroot/token-free/data/relays.json"
+          $SSH "root@$SERVER_HOST" "chown www-data:www-data /opt/token-free/public/data/relays.json && echo 服务器已更新"

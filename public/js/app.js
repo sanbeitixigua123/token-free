@@ -81,6 +81,7 @@ async function render() {
       case 'models': return await renderModels(route.query);
       case 'model': return await renderModelDetail(route.param);
       case 'endpoints': return await renderEndpoints(route.query);
+      case 'relays': return await renderRelays(route.query);
       case 'endpoint': return await renderEndpointDetail(route.param, route.param2);
       case 'guides': return await renderGuides();
       case 'guide': return await renderGuideDetail(route.param);
@@ -1419,6 +1420,141 @@ async function renderEndpointDetail(providerSlug, modelSlug) {
       <p style="font-size:12.5px;color:var(--text-muted);margin:0;line-height:1.7">
         额度与速率上限由厂商随时调整，可能存在滞后。请以厂商官方文档为准。
       </p>
+    </div>
+  </div>`;
+}
+
+// ---------------- 免费 Token 中转站 ----------------
+
+async function renderRelays(query) {
+  $app.innerHTML = `<div class="page">
+    <div class="page__head">
+      <div class="page__title"><h1>免费 Token 中转站</h1></div>
+      <p class="page__desc">正在从社区目录加载…</p>
+    </div>
+    <div class="cards">${skeletonCards(6)}</div>
+  </div>`;
+
+  const data = await api.getRelays();
+  const relays = data.relays || [];
+  const meta = data.meta || {};
+
+  const q = (query.q || '').trim().toLowerCase();
+  const status = query.status || '';
+  let list = relays;
+  if (q) {
+    list = list.filter((r) => [r.name, r.subtitle, r.bonus, ...(r.tags || []), ...(r.models || [])]
+      .filter(Boolean).join(' ').toLowerCase().includes(q));
+  }
+  if (status === 'online') list = list.filter((r) => r.online === true);
+  else if (status === 'bad') list = list.filter((r) => r.online === false);
+
+  const lastCheck = relays.map((r) => r.checkedAt).filter(Boolean).sort().pop();
+  const chips = [
+    ['', '全部'],
+    ['online', '当前在线'],
+    ['bad', '异常 / 不可达'],
+  ].map(([v, label]) => {
+    const on = status === v;
+    const qq = { ...query };
+    if (v) qq.status = v; else delete qq.status;
+    return `<a class="cap-chip ${on ? 'is-active' : ''}" style="--cap-color:var(--brand)"
+      href="#/relays${buildQueryString(qq)}">${on ? '✓ ' : ''}${esc(label)}</a>`;
+  }).join('');
+
+  $app.innerHTML = `<div class="page">
+    <div class="page__head">
+      <div class="page__title"><h1>免费 Token 中转站</h1></div>
+      <p class="page__desc">
+        收录社区公开分享的第三方 AI API 中转站 / 公益站，注册即送免费额度。
+        探活状态与模型列表来自各目录仓库的自动检测，每 6 小时同步一次。
+      </p>
+    </div>
+
+    <div class="stat-grid" style="margin-bottom:16px">
+      ${statCard({ icon: '🛰️', label: '收录站点', value: meta.total ?? 0 })}
+      ${statCard({ icon: '✅', label: '当前在线', value: meta.online ?? 0 })}
+      ${statCard({ icon: '⚠️', label: '异常 / 不可达', value: meta.offline ?? 0 })}
+      ${statCard({ icon: '🕒', label: '最近检测', value: lastCheck ? relTime(lastCheck) : '—' })}
+    </div>
+
+    <div class="toolbar" style="margin-bottom:14px">
+      <input id="relay-search" class="relay-search" type="search" placeholder="搜索站点 / 模型 / 标签…"
+        value="${esc(query.q || '')}" aria-label="搜索中转站">
+      <span class="spacer" style="flex:1"></span>
+      ${chips}
+    </div>
+
+    <div class="cards">
+      ${list.length ? list.map(relayCard).join('') : emptyState({
+    icon: '🛰️', title: '没有匹配的中转站',
+    desc: '试试调整搜索词或状态筛选',
+  })}
+    </div>
+
+    <div class="panel" style="margin-top:20px">
+      <div class="panel__title">来源与风险提示</div>
+      <p style="font-size:12.5px;color:var(--text-muted);margin:0 0 8px;line-height:1.7">
+        数据合并自 GitHub 社区目录仓库：${(meta.sources || []).map((s) => esc(s.repo)).join('、') || '—'}
+        ${data.generatedAt ? `，更新于 ${esc(relTime(data.generatedAt))}` : ''}。
+        探活结果在海外网络环境测得，你所在网络到各站点的连通性可能不同（部分站点提供备用镜像域名）。
+      </p>
+      <p style="font-size:12.5px;color:var(--text-muted);margin:0;line-height:1.7">
+        ⚠️ 中转站为第三方服务：免费额度随时可能失效，请勿在请求中发送敏感数据，勿绑定常用密码；
+        部分注册链接含社区推广参数，本站仅作聚合展示，不代表推荐。
+      </p>
+    </div>
+  </div>`;
+
+  document.getElementById('relay-search')?.addEventListener('keydown', (e) => {
+    if (e.key !== 'Enter') return;
+    const v = e.target.value.trim();
+    const qq = { ...query };
+    if (v) qq.q = v; else delete qq.q;
+    location.hash = `#/relays${buildQueryString(qq)}`;
+  });
+}
+
+function relayCard(r) {
+  const dot = r.online === true ? '#16a34a' : r.online === false ? '#dc2626' : '#9ca3af';
+  const badge = r.online === true ? '<span class="badge badge--ok">在线</span>'
+    : r.online === false ? '<span class="badge badge--warn">异常 / 不可达</span>'
+      : '<span class="badge badge--neutral">未探测</span>';
+
+  const models = (r.models || []).map((m) => `<span class="badge badge--neutral">${esc(m)}</span>`);
+  const moreModels = (r.modelsCount || 0) > (r.models || []).length
+    ? `<span class="badge badge--neutral">+${r.modelsCount - (r.models || []).length}</span>` : '';
+  const modelsNote = !r.models && r.modelsNote
+    ? `<span style="font-size:12.5px;color:var(--text-faint)">${esc(r.modelsNote)}</span>` : '';
+
+  return `<div class="card">
+    <div class="card__top">
+      <div class="card__provider">
+        <span class="card__dot" style="background:${dot}"></span>
+        <span class="card__title">${esc(r.name)}</span>
+        ${r.recommended ? '<span class="badge badge--new">推荐</span>' : ''}
+      </div>
+      ${badge}
+    </div>
+    ${r.subtitle ? `<div class="card__summary">${esc(r.subtitle)}</div>` : ''}
+    ${r.bonus ? `<div class="relay-bonus">🎁 ${esc(r.bonus)}</div>` : ''}
+    ${(r.tags || []).length ? `<div class="card__tags" style="margin-top:10px">
+      ${r.tags.map((t) => `<span class="badge badge--cap">${esc(t)}</span>`).join('')}
+    </div>` : ''}
+    ${(models.length || modelsNote) ? `<div class="relay-models">${models.join('')}${moreModels}${modelsNote}</div>` : ''}
+    ${r.announcement ? `<div class="notice notice--info relay-anno">
+      📢 ${esc(r.announcement.text)}${r.announcement.date ? `<span style="color:var(--text-faint)">（${esc(r.announcement.date)}）</span>` : ''}
+    </div>` : ''}
+    ${r.caveats ? `<div class="meta-item meta-item--warn" style="margin-top:8px">${esc(r.caveats)}</div>` : ''}
+    <div class="card__foot">
+      <span style="font-size:12px;color:var(--text-faint)">
+        ${r.checkedAt ? `检测于 ${esc(relTime(r.checkedAt))}` : '暂无探活'}${r.latencyMs ? ` · ${esc(r.latencyMs)}ms` : ''}
+        · 来源 ${esc((r.sources || [r.source]).join(' / '))}
+      </span>
+      <span class="spacer" style="flex:1"></span>
+      ${r.signupUrl ? `<a class="btn btn--primary btn--sm" href="${esc(safeUrl(r.signupUrl))}" target="_blank" rel="noopener noreferrer">注册领取</a>` : ''}
+      ${r.homeUrl ? `<a class="btn btn--sm" href="${esc(safeUrl(r.homeUrl))}" target="_blank" rel="noopener noreferrer">官网</a>` : ''}
+      ${r.mirror ? `<a class="btn btn--sm" href="${esc(safeUrl(r.mirror))}" target="_blank" rel="noopener noreferrer">镜像</a>` : ''}
     </div>
   </div>`;
 }
