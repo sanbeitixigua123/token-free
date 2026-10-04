@@ -69,9 +69,11 @@ jobs:
           install -m 600 -D /dev/null ~/.ssh/deploy_key
           printf '%s\n' "$SERVER_SSH_KEY" > ~/.ssh/deploy_key
           PORT="${SERVER_PORT:-48151}"
-          ssh-keyscan -p "$PORT" "$SERVER_HOST" >> ~/.ssh/known_hosts 2>/dev/null
-          SSH="ssh -i ~/.ssh/deploy_key -p $PORT"
-          SCP="scp -i ~/.ssh/deploy_key -P $PORT"
+          echo "== 连通性探测 TCP $SERVER_HOST:$PORT =="
+          timeout 8 bash -c "cat < /dev/null > /dev/tcp/$SERVER_HOST/$PORT" \
+            && echo "端口可达" || echo "端口不可达（境外出口可能被网关拦截）"
+          SSH="ssh -i ~/.ssh/deploy_key -p $PORT -o StrictHostKeyChecking=accept-new -o ConnectTimeout=15"
+          SCP="scp -i ~/.ssh/deploy_key -P $PORT -o StrictHostKeyChecking=accept-new -o ConnectTimeout=15"
           $SCP public/data/relays.json "root@$SERVER_HOST:/opt/token-free/public/data/relays.json"
           $SCP public/data/relays.json "root@$SERVER_HOST:/www/wwwroot/token-free/data/relays.json"
           $SSH "root@$SERVER_HOST" "chown www-data:www-data /opt/token-free/public/data/relays.json && echo 服务器已更新"
