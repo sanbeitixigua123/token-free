@@ -472,15 +472,29 @@ export async function getMeta() {
 
 /**
  * 免费 Token 中转站目录。
- * 数据由 GitHub Actions 定期从社区目录仓库采集合并（见 scripts/fetch-relays.mjs），
- * 两种部署模式下都直接读静态文件 —— 应用侧没有对应 API。
+ * 数据由 GitHub Actions 定期从社区目录仓库采集合并（见 scripts/fetch-relays.mjs）。
+ * 应用侧没有对应 API，读取顺序：
+ *   ① 同源 data/relays.json（服务器由本机桥接任务/Actions 定时推送）
+ *   ② GitHub Pages 兜底（Actions 提交后 Pages 自动更新，允许跨域 GET）
+ *   ③ localStorage 里上次成功拉取的副本
  */
 export async function getRelays() {
   try {
     return await fetchJson('data/relays.json');
-  } catch {
-    return { generatedAt: null, meta: { total: 0, online: 0, offline: 0, recommended: 0, sources: [] }, relays: [] };
-  }
+  } catch {}
+  try {
+    const res = await fetch('https://sanbeitixigua123.github.io/token-free/data/relays.json', { cache: 'no-store' });
+    if (res.ok) {
+      const data = await res.json();
+      try { localStorage.setItem('tf-relays-cache', JSON.stringify(data)); } catch {}
+      return data;
+    }
+  } catch {}
+  try {
+    const cached = localStorage.getItem('tf-relays-cache');
+    if (cached) return JSON.parse(cached);
+  } catch {}
+  return { generatedAt: null, meta: { total: 0, online: 0, offline: 0, recommended: 0, sources: [] }, relays: [] };
 }
 
 export async function getFetchRuns(limit = 30) {
