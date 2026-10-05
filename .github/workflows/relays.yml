@@ -64,6 +64,9 @@ jobs:
           commit_author: 'Token Free Bot <tokenfree-bot@users.noreply.github.com>'
 
       - name: 推送到真实服务器
+        # 帷云网关只接受国内来源的 SSH，Actions（境外出口）必然连不上——
+        # 数据分发由本机桥接任务与前端 Pages 兜底完成，此步骤保留作诊断，失败不算失败。
+        continue-on-error: true
         if: env.SERVER_SSH_KEY != '' && env.SERVER_HOST != ''
         run: |
           install -m 600 -D /dev/null ~/.ssh/deploy_key
