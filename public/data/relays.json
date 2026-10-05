@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-10-04T21:35:51.073Z",
+  "generatedAt": "2026-10-05T05:11:36.503Z",
   "meta": {
     "total": 54,
-    "online": 24,
-    "offline": 0,
+    "online": 23,
+    "offline": 1,
     "recommended": 1,
     "sources": [
       {
@@ -81,8 +81,8 @@
       ],
       "caveats": "免费用户与 SVIP 速率差异大；模型上下架较频繁，以站内公告为准",
       "online": true,
-      "latencyMs": 2402,
-      "checkedAt": "2026-10-04T20:56:01.921Z",
+      "latencyMs": 1900,
+      "checkedAt": "2026-10-05T04:25:06.571Z",
       "models": null,
       "modelsCount": 0,
       "modelsNote": null,
@@ -123,17 +123,17 @@
       ],
       "caveats": "签到开关当前为关闭状态；历史上有过安全事件（7·23 投毒事件，官方公告已复盘），自行斟酌数据敏感性",
       "online": true,
-      "latencyMs": 145,
-      "checkedAt": "2026-10-04T20:56:01.284Z",
+      "latencyMs": 53,
+      "checkedAt": "2026-10-05T04:25:06.268Z",
       "models": [
-        "glm-4.6v-flash",
-        "gpt-5.4-openai-compact",
-        "gpt-5.5",
-        "claude-fable-5",
-        "glm-5.2-fast",
-        "gpt-5.5-openai-compact",
-        "grok-4.5",
-        "glm-5.3-flash"
+        "gemini-3.7-flash",
+        "gemini-3.8-flash-api",
+        "grok-build-0.1",
+        "grok-composer-2.5-fast",
+        "qwen3.8-max",
+        "codex-auto-review",
+        "gemini-3.1-flash-lite",
+        "gpt-5.6-sol"
       ],
       "modelsCount": 77,
       "modelsNote": null,
@@ -172,8 +172,8 @@
       ],
       "caveats": "baipiao.org 社区投票判「失效」（8✓/22✗，27% 好用率），注册前先浏览器确认服务状态",
       "online": true,
-      "latencyMs": 628,
-      "checkedAt": "2026-10-04T20:56:00.346Z",
+      "latencyMs": 485,
+      "checkedAt": "2026-10-05T04:25:04.447Z",
       "models": null,
       "modelsCount": 0,
       "modelsNote": null,
@@ -287,8 +287,8 @@
       ],
       "caveats": "兑换站商品库存有限且部分售罄(实测:随时跑路 / ArkHub / Lanln 注册码有货,余量以兑换站实时库存为准)",
       "online": true,
-      "latencyMs": 430,
-      "checkedAt": "2026-10-04T20:56:04.387Z",
+      "latencyMs": 509,
+      "checkedAt": "2026-10-05T04:25:07.757Z",
       "models": null,
       "modelsCount": 0,
       "modelsNote": null,
@@ -321,8 +321,8 @@
       ],
       "caveats": "官方 README 对每日免费请求限制存在 100 次与 200 次两种口径，不能在额度字段中登记为确定数值",
       "online": true,
-      "latencyMs": 409,
-      "checkedAt": "2026-10-04T20:56:02.811Z",
+      "latencyMs": 593,
+      "checkedAt": "2026-10-05T04:25:07.107Z",
       "models": null,
       "modelsCount": 0,
       "modelsNote": null,
@@ -400,41 +400,6 @@
       "source": "panxunying/ai-coding-welfare",
       "sources": [
         "panxunying/ai-coding-welfare"
-      ]
-    },
-    {
-      "id": "conduit",
-      "name": "Conduit",
-      "subtitle": "多模型 AI API 网关 · OpenAI / Anthropic 兼容，公开目录列出 59 个模型",
-      "homeUrl": "https://conduit.ozdoev.net",
-      "signupUrl": "https://t.me/conduitoff_bot?start=ref_6939669896",
-      "docsUrl": "https://conduit.ozdoev.net/#docs-page",
-      "recommended": false,
-      "bonus": "注册送 $500",
-      "tags": [
-        "AI API 网关",
-        "多模型",
-        "免费模型",
-        "OpenAI 兼容",
-        "Anthropic 兼容",
-        "Claude Code"
-      ],
-      "highlights": [
-        "免费计划当前仪表盘显示可用余额 $500；余额型免费模型会从这笔余额扣除",
-        "兼容 OpenAI Chat Completions 与 Anthropic Messages，分别使用 /v1 和 /v1/messages 接口"
-      ],
-      "caveats": "当前登录仪表盘显示免费计划可用余额 $500；这是面板实时余额，不代表所有账号都一定获得同额赠送",
-      "online": true,
-      "latencyMs": 1776,
-      "checkedAt": "2026-10-04T20:56:04.250Z",
-      "models": null,
-      "modelsCount": 0,
-      "modelsNote": null,
-      "announcement": null,
-      "mirror": null,
-      "source": "wynx1123/ai-welfare-hub",
-      "sources": [
-        "wynx1123/ai-welfare-hub"
       ]
     },
     {
@@ -636,8 +601,8 @@
       ],
       "caveats": "GitHub 账号需满 120 天方可注册；未开放账密直接注册",
       "online": true,
-      "latencyMs": 750,
-      "checkedAt": "2026-10-04T20:56:03.095Z",
+      "latencyMs": 187,
+      "checkedAt": "2026-10-05T04:25:07.394Z",
       "models": null,
       "modelsCount": 0,
       "modelsNote": null,
@@ -819,8 +784,8 @@
       ],
       "caveats": "$50 是每日重置的额度池，当天用不完会清零，不会累积到第二天",
       "online": true,
-      "latencyMs": 210,
-      "checkedAt": "2026-10-04T20:55:58.614Z",
+      "latencyMs": 481,
+      "checkedAt": "2026-10-05T04:25:03.654Z",
       "models": null,
       "modelsCount": 0,
       "modelsNote": null,
@@ -851,8 +816,8 @@
       ],
       "caveats": "公开接口全部有防护拦截，本页无法自动探活面板数据",
       "online": true,
-      "latencyMs": 336,
-      "checkedAt": "2026-10-04T20:56:00.650Z",
+      "latencyMs": 240,
+      "checkedAt": "2026-10-05T04:25:05.391Z",
       "models": null,
       "modelsCount": 0,
       "modelsNote": null,
@@ -884,8 +849,8 @@
       ],
       "caveats": "面板数据不公开（401），额度与模型需注册后查看",
       "online": true,
-      "latencyMs": 476,
-      "checkedAt": "2026-10-04T20:56:01.914Z",
+      "latencyMs": 513,
+      "checkedAt": "2026-10-05T04:25:06.502Z",
       "models": null,
       "modelsCount": 0,
       "modelsNote": null,
@@ -919,8 +884,8 @@
       ],
       "caveats": "面板自称「经济实惠的 API 代理」而非公益站，定位偏付费中转 + 邀请奖励",
       "online": true,
-      "latencyMs": 207,
-      "checkedAt": "2026-10-04T20:56:02.534Z",
+      "latencyMs": 243,
+      "checkedAt": "2026-10-05T04:25:07.093Z",
       "models": null,
       "modelsCount": 0,
       "modelsNote": null,
@@ -1275,6 +1240,41 @@
       "source": "1sh1ro/ai-api-zhongzhuan",
       "sources": [
         "1sh1ro/ai-api-zhongzhuan"
+      ]
+    },
+    {
+      "id": "conduit",
+      "name": "Conduit",
+      "subtitle": "多模型 AI API 网关 · OpenAI / Anthropic 兼容，公开目录列出 59 个模型",
+      "homeUrl": "https://conduit.ozdoev.net",
+      "signupUrl": "https://t.me/conduitoff_bot?start=ref_6939669896",
+      "docsUrl": "https://conduit.ozdoev.net/#docs-page",
+      "recommended": false,
+      "bonus": "注册送 $500",
+      "tags": [
+        "AI API 网关",
+        "多模型",
+        "免费模型",
+        "OpenAI 兼容",
+        "Anthropic 兼容",
+        "Claude Code"
+      ],
+      "highlights": [
+        "免费计划当前仪表盘显示可用余额 $500；余额型免费模型会从这笔余额扣除",
+        "兼容 OpenAI Chat Completions 与 Anthropic Messages，分别使用 /v1 和 /v1/messages 接口"
+      ],
+      "caveats": "当前登录仪表盘显示免费计划可用余额 $500；这是面板实时余额，不代表所有账号都一定获得同额赠送",
+      "online": false,
+      "latencyMs": null,
+      "checkedAt": "2026-10-05T04:25:07.678Z",
+      "models": null,
+      "modelsCount": 0,
+      "modelsNote": null,
+      "announcement": null,
+      "mirror": null,
+      "source": "wynx1123/ai-welfare-hub",
+      "sources": [
+        "wynx1123/ai-welfare-hub"
       ]
     },
     {
