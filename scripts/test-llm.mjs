@@ -1,4 +1,14 @@
 // 端到端验证：走真实的 extractWithLLM 代码路径（不是 curl）
+//
+// 为什么必须走真实代码路径：curl 只能验证「端点通不通」，
+// 而这里会一并验证提示词拼装、JSON 解析、白名单校验、置信度调整等下游逻辑。
+// 换 LLM 厂商后务必跑一次。
+//
+// 用法：node scripts/test-llm.mjs
+//
+// ⚠️ 构造测试候选时字段名必须是 cand.context —— buildUserPrompt 读的是 context，
+//    写成 cand.text 会导致提示词正文为空、模型返回 isActivity:false，
+//    看起来像"代码坏了"，实际是测试数据构造错误（已踩过）。
 import { loadSettings } from '../src/lib/config.js';
 import { extractWithLLM, llmCredentialsInvalid, resetLlmCredentialState } from '../src/pipeline/llm-extract.js';
 

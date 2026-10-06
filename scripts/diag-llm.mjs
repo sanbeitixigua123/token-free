@@ -1,4 +1,8 @@
-// 诊断：直接观察 GLM 的原始返回与解析结果
+// 诊断：直接观察 LLM 的原始返回与解析结果（不依赖具体厂商，读 settings.llm）
+//
+// 用途：当抽取结果异常（如恒为 0 条、字段为 null）时，先用它看模型到底回了什么，
+//       避免把「模型返回不符合预期」误判成「代码坏了」。
+// 用法：node scripts/diag-llm.mjs
 import { loadSettings } from '../src/lib/config.js';
 import { SYSTEM_PROMPT } from '../src/pipeline/llm-extract.js';
 

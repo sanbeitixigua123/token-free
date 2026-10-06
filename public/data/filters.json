@@ -13,7 +13,7 @@
     {
       "value": "student",
       "label": "学生优惠",
-      "count": 1
+      "count": 5
     }
   ],
   "audiences": [
@@ -30,7 +30,7 @@
     {
       "value": "student",
       "label": "学生",
-      "count": 1
+      "count": 5
     },
     {
       "value": "verified",
@@ -42,12 +42,12 @@
     {
       "value": "active",
       "label": "进行中",
-      "count": 8
+      "count": 10
     },
     {
       "value": "ended",
       "label": "已结束",
-      "count": 2
+      "count": 4
     }
   ],
   "regions": [
@@ -59,10 +59,15 @@
     {
       "value": "GLOBAL",
       "label": "海外",
-      "count": 1
+      "count": 5
     }
   ],
   "providers": [
+    {
+      "value": "github-student",
+      "label": "GitHub 学生开发者包",
+      "count": 5
+    },
     {
       "value": "deepseek",
       "label": "DeepSeek",
@@ -72,11 +77,6 @@
       "value": "zhipu",
       "label": "智谱 AI",
       "count": 3
-    },
-    {
-      "value": "github-student",
-      "label": "GitHub 学生开发者包",
-      "count": 1
     },
     {
       "value": "minimax",
