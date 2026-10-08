@@ -35,6 +35,8 @@ on:
 # 需要写权限才能把抓取结果提交回仓库
 permissions:
   contents: write
+  # 需要它才能用 gh workflow run 触发 deploy.yml（见「触发 Pages 重新部署」步骤）
+  actions: write
 
 # 避免上一次抓取未结束又启动一次
 concurrency:
@@ -91,6 +93,7 @@ jobs:
         run: npm run build
 
       - name: 提交 public/data/ 变更并推回 main
+        id: commit
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: 'chore(data): 每日抓取更新 ${{ github.run_id }}'
@@ -102,8 +105,20 @@ jobs:
           skip_dirty_check: false
           push_options: '--no-verify'
 
+      # ⚠️ 2026-10-08 修正：原先此处只打印一句提示，且断言
+      #    「deploy.yml 会因 public/** 变更自动触发」——**该断言是错的**。
+      #    GitHub 规定用内置 GITHUB_TOKEN 推送的提交不触发其他 workflow，
+      #    所以机器人提交进得了 main，Deploy Pages 却永远不会跑，
+      #    Pages 上的数据会停在最后一次人工推送。必须显式 dispatch。
+      - name: 触发 Pages 重新部署
+        if: steps.commit.outputs.changes_detected == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh workflow run deploy.yml --ref main
+          echo "已触发 Deploy Pages（public/data/ 有变更）"
+
       - name: 部署提示
         run: |
-          echo "静态数据已回写 main。"
-          echo "若 Pages 源为 GitHub Actions，deploy.yml 会因 public/** 变更自动触发。"
+          echo "静态数据已回写 main，并已显式触发 Deploy Pages。"
           echo "若 Pages 源为 gh-pages 分支，请改用 scripts/publish-pages.sh 推送该分支。"

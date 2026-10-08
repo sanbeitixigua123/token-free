@@ -232,7 +232,22 @@ npm ci && npm run migrate && npm run crawl && npm run start
 
 ### CI 定时抓取（`.github/workflows/daily-crawl.yml`）
 
+> **当前状态（2026-10-08）**：定时触发已停用，改为 `workflow_dispatch` 手动补跑。
+> 日常抓取由部署在服务器上的实例负责（服务器有持久化 `data/`，可复用「页面未变化则跳过」）。
+
 每天 UTC 02:00（北京 10:00）在 runner 上 `migrate → crawl → build`，把 `public/data/` 变更提交回 `main`，并触发 Pages 重新部署。
+
+> ⚠️ **机器人提交不会自动触发 Pages 部署**（2026-10-08 踩坑）
+>
+> GitHub 规定：用仓库内置 `GITHUB_TOKEN` 推送的提交**不会触发其他 workflow**（防递归设计）。
+> 所以 `git-auto-commit-action` 把数据推进 `main` 后，`deploy.yml` **不会**因 `public/**` 变更而醒来，
+> Pages 上的数据会一直停在最后一次**人工 push**。
+>
+> 症状：仓库里数据天天更新，线上纹丝不动。
+>
+> 解法：在提交后**显式** `gh workflow run deploy.yml --ref main`
+> （`workflow_dispatch` 是 `GITHUB_TOKEN` 允许触发的例外），并给 workflow 加 `permissions.actions: write`。
+> `daily-crawl.yml` 与 `relays.yml` 均已按此修复。
 
 > **关于数据库**：`data/*.db` 被 gitignore，CI 每次都是**全新空库**从零抓取——因为 SQLite 只是「当日快照的暂存区」，权威产物是导出的 JSON，重建完全无损。
 >

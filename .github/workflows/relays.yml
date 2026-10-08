@@ -21,6 +21,8 @@ on:
 
 permissions:
   contents: write
+  # 需要它才能用 gh workflow run 触发 deploy.yml（见文末「触发 Pages 部署」步骤）
+  actions: write
 
 concurrency:
   group: relay-discovery
@@ -55,6 +57,7 @@ jobs:
           node -e "const d=require('./public/data/relays.json'); console.log('站点总数:', d.meta.total, '| 在线:', d.meta.online, '| 来源:', d.meta.sources.map(s=>s.repo+(s.ok?'':'(失败)')).join(', '))"
 
       - name: 提交 relays.json 回 main
+        id: commit
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: 'chore(data): 中转站目录更新 ${{ github.run_id }}'
@@ -62,6 +65,26 @@ jobs:
           commit_user_name: 'Token Free Bot'
           commit_user_email: 'tokenfree-bot@users.noreply.github.com'
           commit_author: 'Token Free Bot <tokenfree-bot@users.noreply.github.com>'
+
+      # ⚠️ 这一步不可省略（2026-10-08 排查出的核心缺陷）
+      #
+      # 症状：relays.json 在仓库里每天更新，但 GitHub Pages 上的数据纹丝不动，
+      #       线上 generatedAt 永远停在最后一次「人工 push」的时间。
+      #
+      # 根因：GitHub 的硬性规定——用仓库内置 GITHUB_TOKEN 推送的提交，
+      #       **不会触发其他 workflow 运行**（防止递归触发的设计）。
+      #       所以上面的机器人提交虽然进了 main，deploy.yml 却永远不会被唤醒。
+      #       实测：Deploy Pages 历史 12 次运行全部来自人工 push，零次来自机器人提交。
+      #
+      # 解法：显式调用 workflow_dispatch。它是 GITHUB_TOKEN 允许触发的例外之一
+      #       （另一个是 repository_dispatch）。需要 permissions.actions: write。
+      - name: 触发 Pages 重新部署
+        if: steps.commit.outputs.changes_detected == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh workflow run deploy.yml --ref main
+          echo "已触发 Deploy Pages（relays.json 有变更）"
 
       - name: 推送到真实服务器
         # 帷云网关只接受国内来源的 SSH，Actions（境外出口）必然连不上——
