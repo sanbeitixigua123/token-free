@@ -1,19 +1,5 @@
 [
   {
-    "slug": "github-student",
-    "name": "GitHub 学生开发者包",
-    "nameEn": "GitHub Student Developer Pack",
-    "country": "US",
-    "website": "https://education.github.com/pack",
-    "pricingUrl": "https://education.github.com/pack",
-    "announcementUrl": "https://education.github.com/pack",
-    "color": "#181717",
-    "cnAccessible": true,
-    "tier": 1,
-    "activityCount": 5,
-    "activeCount": 5
-  },
-  {
     "slug": "deepseek",
     "name": "DeepSeek",
     "nameEn": "DeepSeek",
@@ -25,7 +11,7 @@
     "cnAccessible": true,
     "tier": 1,
     "activityCount": 4,
-    "activeCount": 1
+    "activeCount": 3
   },
   {
     "slug": "zhipu",
@@ -38,8 +24,36 @@
     "color": "#3B5BDB",
     "cnAccessible": true,
     "tier": 1,
-    "activityCount": 3,
-    "activeCount": 2
+    "activityCount": 2,
+    "activeCount": 1
+  },
+  {
+    "slug": "vercel-ai-gateway",
+    "name": "Vercel AI Gateway",
+    "nameEn": "Vercel AI Gateway",
+    "country": "US",
+    "website": "https://vercel.com/ai",
+    "pricingUrl": "https://vercel.com/docs/ai-gateway/pricing",
+    "announcementUrl": null,
+    "color": "#000000",
+    "cnAccessible": false,
+    "tier": 1,
+    "activityCount": 1,
+    "activeCount": 1
+  },
+  {
+    "slug": "aliyun-bailian",
+    "name": "阿里云百炼",
+    "nameEn": "Alibaba Bailian",
+    "country": "CN",
+    "website": "https://bailian.console.aliyun.com",
+    "pricingUrl": "https://help.aliyun.com/zh/model-studio/",
+    "announcementUrl": "https://help.aliyun.com/zh/model-studio/release-notes",
+    "color": "#FF6A00",
+    "cnAccessible": true,
+    "tier": 1,
+    "activityCount": 1,
+    "activeCount": 1
   },
   {
     "slug": "anthropic",
@@ -84,6 +98,20 @@
     "activeCount": 1
   },
   {
+    "slug": "github-student",
+    "name": "GitHub 学生开发者包",
+    "nameEn": "GitHub Student Developer Pack",
+    "country": "US",
+    "website": "https://education.github.com/pack",
+    "pricingUrl": "https://education.github.com/pack",
+    "announcementUrl": "https://education.github.com/pack",
+    "color": "#181717",
+    "cnAccessible": true,
+    "tier": 1,
+    "activityCount": 0,
+    "activeCount": 1
+  },
+  {
     "slug": "google",
     "name": "Google",
     "nameEn": "Google",
@@ -120,20 +148,6 @@
     "pricingUrl": "https://platform.openai.com/docs/pricing",
     "announcementUrl": null,
     "color": "#10A37F",
-    "cnAccessible": false,
-    "tier": 1,
-    "activityCount": 0,
-    "activeCount": 1
-  },
-  {
-    "slug": "vercel-ai-gateway",
-    "name": "Vercel AI Gateway",
-    "nameEn": "Vercel AI Gateway",
-    "country": "US",
-    "website": "https://vercel.com/ai",
-    "pricingUrl": "https://vercel.com/docs/ai-gateway/pricing",
-    "announcementUrl": null,
-    "color": "#000000",
     "cnAccessible": false,
     "tier": 1,
     "activityCount": 0,
@@ -252,20 +266,6 @@
     "activeCount": 1
   },
   {
-    "slug": "aliyun-bailian",
-    "name": "阿里云百炼",
-    "nameEn": "Alibaba Bailian",
-    "country": "CN",
-    "website": "https://bailian.console.aliyun.com",
-    "pricingUrl": "https://help.aliyun.com/zh/model-studio/",
-    "announcementUrl": "https://help.aliyun.com/zh/model-studio/release-notes",
-    "color": "#FF6A00",
-    "cnAccessible": true,
-    "tier": 1,
-    "activityCount": 0,
-    "activeCount": 1
-  },
-  {
     "slug": "alibaba-qwen",
     "name": "阿里通义千问",
     "nameEn": "Alibaba Qwen",
@@ -294,6 +294,20 @@
     "activeCount": 1
   },
   {
+    "slug": "deepgram",
+    "name": "Deepgram",
+    "nameEn": "Deepgram",
+    "country": "US",
+    "website": "https://deepgram.com",
+    "pricingUrl": "https://deepgram.com/pricing",
+    "announcementUrl": null,
+    "color": "#13EF93",
+    "cnAccessible": false,
+    "tier": 2,
+    "activityCount": 1,
+    "activeCount": 1
+  },
+  {
     "slug": "minimax",
     "name": "MiniMax 稀宇科技",
     "nameEn": "MiniMax",
@@ -316,6 +330,20 @@
     "pricingUrl": "https://cloud.baidu.com/doc/WENXINWORKSHOP/index.html",
     "announcementUrl": null,
     "color": "#2932E1",
+    "cnAccessible": true,
+    "tier": 2,
+    "activityCount": 1,
+    "activeCount": 1
+  },
+  {
+    "slug": "tencent-hunyuan",
+    "name": "腾讯混元",
+    "nameEn": "Tencent Hunyuan",
+    "country": "CN",
+    "website": "https://hunyuan.tencent.com",
+    "pricingUrl": "https://cloud.tencent.com/document/product/1729/97731",
+    "announcementUrl": null,
+    "color": "#0052D9",
     "cnAccessible": true,
     "tier": 2,
     "activityCount": 1,
@@ -358,20 +386,6 @@
     "pricingUrl": "https://cursor.com/pricing",
     "announcementUrl": null,
     "color": "#000000",
-    "cnAccessible": false,
-    "tier": 2,
-    "activityCount": 0,
-    "activeCount": 1
-  },
-  {
-    "slug": "deepgram",
-    "name": "Deepgram",
-    "nameEn": "Deepgram",
-    "country": "US",
-    "website": "https://deepgram.com",
-    "pricingUrl": "https://deepgram.com/pricing",
-    "announcementUrl": null,
-    "color": "#13EF93",
     "cnAccessible": false,
     "tier": 2,
     "activityCount": 0,
@@ -539,20 +553,6 @@
     "website": "https://copilot.tencent.com",
     "pricingUrl": "https://copilot.tencent.com/",
     "announcementUrl": "https://cloud.tencent.com/developer/",
-    "color": "#0052D9",
-    "cnAccessible": true,
-    "tier": 2,
-    "activityCount": 0,
-    "activeCount": 1
-  },
-  {
-    "slug": "tencent-hunyuan",
-    "name": "腾讯混元",
-    "nameEn": "Tencent Hunyuan",
-    "country": "CN",
-    "website": "https://hunyuan.tencent.com",
-    "pricingUrl": "https://cloud.tencent.com/document/product/1729/97731",
-    "announcementUrl": null,
     "color": "#0052D9",
     "cnAccessible": true,
     "tier": 2,

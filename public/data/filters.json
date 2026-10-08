@@ -3,34 +3,24 @@
     {
       "value": "free_credit",
       "label": "免费额度",
-      "count": 8
+      "count": 10
     },
     {
       "value": "trial",
       "label": "免费试用",
-      "count": 1
-    },
-    {
-      "value": "student",
-      "label": "学生优惠",
-      "count": 5
+      "count": 2
     }
   ],
   "audiences": [
     {
       "value": "all",
       "label": "所有人",
-      "count": 6
+      "count": 9
     },
     {
       "value": "new_user",
       "label": "新用户",
       "count": 3
-    },
-    {
-      "value": "student",
-      "label": "学生",
-      "count": 5
     },
     {
       "value": "verified",
@@ -47,27 +37,22 @@
     {
       "value": "ended",
       "label": "已结束",
-      "count": 4
+      "count": 2
     }
   ],
   "regions": [
     {
       "value": "CN",
       "label": "国内",
-      "count": 9
+      "count": 10
     },
     {
       "value": "GLOBAL",
       "label": "海外",
-      "count": 5
+      "count": 2
     }
   ],
   "providers": [
-    {
-      "value": "github-student",
-      "label": "GitHub 学生开发者包",
-      "count": 5
-    },
     {
       "value": "deepseek",
       "label": "DeepSeek",
@@ -76,7 +61,22 @@
     {
       "value": "zhipu",
       "label": "智谱 AI",
-      "count": 3
+      "count": 2
+    },
+    {
+      "value": "vercel-ai-gateway",
+      "label": "Vercel AI Gateway",
+      "count": 1
+    },
+    {
+      "value": "aliyun-bailian",
+      "label": "阿里云百炼",
+      "count": 1
+    },
+    {
+      "value": "deepgram",
+      "label": "Deepgram",
+      "count": 1
     },
     {
       "value": "minimax",
@@ -86,6 +86,11 @@
     {
       "value": "baidu-ernie",
       "label": "百度文心",
+      "count": 1
+    },
+    {
+      "value": "tencent-hunyuan",
+      "label": "腾讯混元",
       "count": 1
     }
   ],
