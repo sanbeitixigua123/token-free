@@ -232,8 +232,11 @@ npm ci && npm run migrate && npm run crawl && npm run start
 
 ### CI 定时抓取（`.github/workflows/daily-crawl.yml`）
 
-> **当前状态（2026-10-08）**：定时触发已停用，改为 `workflow_dispatch` 手动补跑。
-> 日常抓取由部署在服务器上的实例负责（服务器有持久化 `data/`，可复用「页面未变化则跳过」）。
+> **当前状态（2026-10-08）**：定时触发**已恢复**（每日 UTC 02:00 / 北京 10:00）。
+> 主访问入口是服务器实例；Actions 抓取负责让 Pages 保持同步，作为对外镜像与降级快照。
+>
+> ⚠️ 注意：服务器侧若也在跑内置 cron，两边会同时抓取、重复消耗 LLM 配额。
+> 若服务器已接管，请给服务器设 `CRON=0`，或注释掉本工作流的 `schedule`。
 
 每天 UTC 02:00（北京 10:00）在 runner 上 `migrate → crawl → build`，把 `public/data/` 变更提交回 `main`，并触发 Pages 重新部署。
 
