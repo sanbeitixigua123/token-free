@@ -3,7 +3,7 @@
     {
       "value": "free_credit",
       "label": "免费额度",
-      "count": 10
+      "count": 11
     },
     {
       "value": "trial",
@@ -15,12 +15,17 @@
     {
       "value": "all",
       "label": "所有人",
-      "count": 9
+      "count": 10
     },
     {
       "value": "new_user",
       "label": "新用户",
-      "count": 3
+      "count": 2
+    },
+    {
+      "value": "startup",
+      "label": "初创团队",
+      "count": 1
     },
     {
       "value": "verified",
@@ -32,7 +37,7 @@
     {
       "value": "active",
       "label": "进行中",
-      "count": 10
+      "count": 11
     },
     {
       "value": "ended",
@@ -44,7 +49,7 @@
     {
       "value": "CN",
       "label": "国内",
-      "count": 10
+      "count": 11
     },
     {
       "value": "GLOBAL",
@@ -61,7 +66,7 @@
     {
       "value": "zhipu",
       "label": "智谱 AI",
-      "count": 2
+      "count": 3
     },
     {
       "value": "vercel-ai-gateway",
@@ -98,12 +103,12 @@
     {
       "value": "text-generation",
       "label": "文本生成",
-      "count": 2
+      "count": 3
     },
     {
       "value": "code-generation",
       "label": "代码生成",
-      "count": 2
+      "count": 3
     }
   ],
   "sorts": [
