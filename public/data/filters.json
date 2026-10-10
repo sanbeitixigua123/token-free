@@ -3,63 +3,48 @@
     {
       "value": "free_credit",
       "label": "免费额度",
-      "count": 17
+      "count": 10
     },
     {
       "value": "trial",
       "label": "免费试用",
-      "count": 7
+      "count": 2
     }
   ],
   "audiences": [
     {
       "value": "all",
       "label": "所有人",
-      "count": 11
+      "count": 9
     },
     {
       "value": "new_user",
       "label": "新用户",
-      "count": 10
-    },
-    {
-      "value": "open_source",
-      "label": "开源项目",
-      "count": 1
-    },
-    {
-      "value": "startup",
-      "label": "初创团队",
-      "count": 1
-    },
-    {
-      "value": "enterprise",
-      "label": "企业",
-      "count": 1
+      "count": 3
     },
     {
       "value": "verified",
       "label": "需实名/绑卡",
-      "count": 2
+      "count": 1
     }
   ],
   "statuses": [
     {
       "value": "active",
       "label": "进行中",
-      "count": 21
+      "count": 10
     },
     {
       "value": "ended",
       "label": "已结束",
-      "count": 3
+      "count": 2
     }
   ],
   "regions": [
     {
       "value": "CN",
       "label": "国内",
-      "count": 22
+      "count": 10
     },
     {
       "value": "GLOBAL",
@@ -69,16 +54,6 @@
   ],
   "providers": [
     {
-      "value": "bytedance-doubao",
-      "label": "字节豆包",
-      "count": 5
-    },
-    {
-      "value": "moonshot",
-      "label": "月之暗面 Kimi",
-      "count": 5
-    },
-    {
       "value": "deepseek",
       "label": "DeepSeek",
       "count": 3
@@ -86,16 +61,16 @@
     {
       "value": "zhipu",
       "label": "智谱 AI",
-      "count": 3
-    },
-    {
-      "value": "alibaba-qwen",
-      "label": "阿里通义千问",
       "count": 2
     },
     {
       "value": "vercel-ai-gateway",
       "label": "Vercel AI Gateway",
+      "count": 1
+    },
+    {
+      "value": "volcengine-ark",
+      "label": "火山引擎方舟",
       "count": 1
     },
     {
@@ -128,12 +103,12 @@
     {
       "value": "text-generation",
       "label": "文本生成",
-      "count": 3
+      "count": 2
     },
     {
       "value": "code-generation",
       "label": "代码生成",
-      "count": 3
+      "count": 2
     }
   ],
   "sorts": [
