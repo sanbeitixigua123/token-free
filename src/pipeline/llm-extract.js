@@ -115,6 +115,7 @@ export async function extractWithLLM(candidates, ctx) {
   const maxItems = cfg.maxItemsPerSource ?? 15;
   const batch = candidates.slice(0, maxItems);
   const out = [];
+  let parseFailures = 0;
 
   for (const [idx, cand] of batch.entries()) {
     if (credentialsInvalid) break; // 循环中途失效：立即停止剩余候选
@@ -123,7 +124,16 @@ export async function extractWithLLM(candidates, ctx) {
       const userPrompt = buildUserPrompt(cand, provider, source, refYear);
       const raw = await callChat(cfg, SYSTEM_PROMPT, userPrompt);
       const parsed = parseJsonLoose(raw);
-      if (!parsed || parsed.isActivity === false) continue;
+      if (!parsed || parsed.isActivity === false) {
+        // 思考型模型（如 deepseek-v4-flash-0731）会先消耗 max_tokens 预算在
+        // reasoning 上，正文 JSON 可能被截断 → 解析得 null。这类"静默丢弃"
+        // 此前完全不可见，这里给出可观测信号。
+        if (parsed === null && raw) {
+          parseFailures++;
+          log.debug(`LLM 返回无法解析为 JSON（可能被 max_tokens 截断）：${String(raw).slice(0, 80)}`);
+        }
+        continue;
+      }
 
       const item = postProcess(parsed, { provider, source, refYear, allowedHosts, cand });
       if (item) out.push(item);
@@ -142,6 +152,10 @@ export async function extractWithLLM(candidates, ctx) {
         log.warn(`LLM 抽取失败（${provider.slug} #${idx}）`, { err: err.message });
       }
     }
+  }
+  if (parseFailures > 0) {
+    log.warn(`本源有 ${parseFailures} 条候选的 LLM 返回无法解析（疑似思考内容挤占 max_tokens），` +
+      `如频繁出现请调大 settings.llm.maxTokens`);
   }
   return out;
 }
@@ -198,7 +212,10 @@ async function callChat(cfg, system, user) {
       body: JSON.stringify({
         model: cfg.model,
         temperature: 0,
-        max_tokens: 1200,
+        // 思考型模型（deepseek-v4-flash-0731 等）会先输出 reasoning 再给正文，
+        // max_tokens 是「思考+正文」的总预算：1200 时常只够思考，正文 JSON 被
+        // 截断后整条候选静默丢弃。默认放宽到 4000，并支持 settings.llm.maxTokens 覆盖。
+        max_tokens: cfg.maxTokens ?? 4000,
         // 关闭思考模式：GLM 默认会先输出大段 reasoning_content，
         // 实测既慢（7.8s vs 0.65s）又劣化抽取（title 会被返回成 null）。
         // 非 GLM 厂商会忽略该未知字段，故可常驻。详见文件头注释。
