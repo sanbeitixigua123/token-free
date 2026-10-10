@@ -1,5 +1,33 @@
 [
   {
+    "slug": "bytedance-doubao",
+    "name": "字节豆包",
+    "nameEn": "ByteDance Doubao",
+    "country": "CN",
+    "website": "https://www.volcengine.com/product/doubao",
+    "pricingUrl": "https://www.volcengine.com/docs/82379/1099320",
+    "announcementUrl": null,
+    "color": "#1664FF",
+    "cnAccessible": true,
+    "tier": 1,
+    "activityCount": 5,
+    "activeCount": 4
+  },
+  {
+    "slug": "moonshot",
+    "name": "月之暗面 Kimi",
+    "nameEn": "Moonshot AI",
+    "country": "CN",
+    "website": "https://www.moonshot.cn",
+    "pricingUrl": "https://platform.moonshot.cn/docs/pricing/chat",
+    "announcementUrl": null,
+    "color": "#0B0B0F",
+    "cnAccessible": true,
+    "tier": 1,
+    "activityCount": 5,
+    "activeCount": 5
+  },
+  {
     "slug": "deepseek",
     "name": "DeepSeek",
     "nameEn": "DeepSeek",
@@ -10,8 +38,8 @@
     "color": "#4D6BFE",
     "cnAccessible": true,
     "tier": 1,
-    "activityCount": 4,
-    "activeCount": 3
+    "activityCount": 3,
+    "activeCount": 2
   },
   {
     "slug": "zhipu",
@@ -25,6 +53,20 @@
     "cnAccessible": true,
     "tier": 1,
     "activityCount": 3,
+    "activeCount": 2
+  },
+  {
+    "slug": "alibaba-qwen",
+    "name": "阿里通义千问",
+    "nameEn": "Alibaba Qwen",
+    "country": "CN",
+    "website": "https://tongyi.aliyun.com",
+    "pricingUrl": "https://help.aliyun.com/zh/model-studio/models",
+    "announcementUrl": null,
+    "color": "#615CED",
+    "cnAccessible": true,
+    "tier": 1,
+    "activityCount": 2,
     "activeCount": 2
   },
   {
@@ -182,20 +224,6 @@
     "activeCount": 1
   },
   {
-    "slug": "bytedance-doubao",
-    "name": "字节豆包",
-    "nameEn": "ByteDance Doubao",
-    "country": "CN",
-    "website": "https://www.volcengine.com/product/doubao",
-    "pricingUrl": "https://www.volcengine.com/docs/82379/1099320",
-    "announcementUrl": null,
-    "color": "#1664FF",
-    "cnAccessible": true,
-    "tier": 1,
-    "activityCount": 0,
-    "activeCount": 1
-  },
-  {
     "slug": "kuaishou",
     "name": "快手可灵",
     "nameEn": "Kuaishou Kling AI",
@@ -224,20 +252,6 @@
     "activeCount": 1
   },
   {
-    "slug": "moonshot",
-    "name": "月之暗面 Kimi",
-    "nameEn": "Moonshot AI",
-    "country": "CN",
-    "website": "https://www.moonshot.cn",
-    "pricingUrl": "https://platform.moonshot.cn/docs/pricing/chat",
-    "announcementUrl": null,
-    "color": "#0B0B0F",
-    "cnAccessible": true,
-    "tier": 1,
-    "activityCount": 0,
-    "activeCount": 1
-  },
-  {
     "slug": "volcengine-ark",
     "name": "火山引擎方舟",
     "nameEn": "Volcengine Ark",
@@ -260,20 +274,6 @@
     "pricingUrl": "https://cloud.siliconflow.cn/",
     "announcementUrl": "https://cloud.siliconflow.cn/",
     "color": "#6E4AFF",
-    "cnAccessible": true,
-    "tier": 1,
-    "activityCount": 0,
-    "activeCount": 1
-  },
-  {
-    "slug": "alibaba-qwen",
-    "name": "阿里通义千问",
-    "nameEn": "Alibaba Qwen",
-    "country": "CN",
-    "website": "https://tongyi.aliyun.com",
-    "pricingUrl": "https://help.aliyun.com/zh/model-studio/models",
-    "announcementUrl": null,
-    "color": "#615CED",
     "cnAccessible": true,
     "tier": 1,
     "activityCount": 0,
