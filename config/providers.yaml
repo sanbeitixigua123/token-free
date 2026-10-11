@@ -866,9 +866,7 @@ providers:
     cn_accessible: true
     tier: 2
     sources:
-      # Discourse 论坛 RSS：免费额度活动首发高频区
-      - kind: announcement
-        url: https://linux.do/latest.rss
+      # linux.do RSS 已移除（Cloudflare 盾对数据中心 IP 全拦截，实测 CI/本地均超时）
       # V2EX 分享发现节点（服务端渲染 HTML，含活动/优惠帖）
       - kind: announcement
         url: https://www.v2ex.com/go/share
