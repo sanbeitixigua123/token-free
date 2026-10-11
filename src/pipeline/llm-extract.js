@@ -324,4 +324,4 @@ function safeHost(u) {
   try { return new URL(u).host.toLowerCase(); } catch { return ''; }
 }
 
-export { SYSTEM_PROMPT };
+export { SYSTEM_PROMPT, callChat };

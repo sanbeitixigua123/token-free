@@ -15,7 +15,8 @@
     "daily": "node src/jobs/daily-crawl.js && node src/jobs/archive.js && node src/export/build-static.js",
     "start": "node src/server.js",
     "serve": "node src/server.js",
-    "vapid": "node src/notify/push.js --generate-keys"
+    "vapid": "node src/notify/push.js --generate-keys",
+    "verify": "node src/jobs/verify-activities.js"
   },
   "dependencies": {
     "cheerio": "^1.0.0",

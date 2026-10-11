@@ -44,6 +44,19 @@ async function main() {
   const arch = archiveExpired(db, { afterDays: settings.archive?.afterDays ?? 30 });
   if (arch.archived) log.info(`归档 ${arch.archived} 条过期/已拒绝活动`);
 
+  // LLM 存活性核查：对在架活动逐条复查落地页，判定失效的置为 ended。
+  // 必须跑在 writeFeeds 之前——核查结果要反映进当天的数据导出。
+  // 失败不阻断主流程。
+  try {
+    const vcfg = settings.verify || {};
+    if (vcfg.enabled !== false) {
+      const { verifyActivities } = await import('../jobs/verify-activities.js');
+      await verifyActivities(db, settings, { limit: vcfg.maxItems ?? 25 });
+    }
+  } catch (err) {
+    log.warn('活动存活性核查失败（不影响抓取结果）', { err: err.message });
+  }
+
   // 推送通知（有新活动时）
   if (summary.itemsNew > 0) {
     try {

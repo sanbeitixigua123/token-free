@@ -25,6 +25,11 @@
   "archive": {
     "afterDays": 30
   },
+  "verify": {
+    "enabled": true,
+    "maxItems": 25,
+    "note": "每日对在架活动做 LLM 存活性核查：抓落地页让模型判断活动是否仍有效，失效的置 status_override='ended'（重抓指纹去重不覆盖 override），空 end_date 补今天以走归档生命周期。maxItems 为单轮核查上限（last_verified_at 最旧优先）。页面抓不到时只记时间不改状态——'抓不到'不等于'已结束'。"
+  },
   "review": {
     "autoApproveConfidence": 0.62,
     "pendingConfidence": 0.25,
