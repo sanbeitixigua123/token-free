@@ -11,10 +11,10 @@
 
 process.env.TOKENFREE_LOG_LEVEL ||= 'info';
 
-import { getDb } from '../db/db.js';
-import { loadSettings } from '../lib/config.js';
-import { callChat } from '../pipeline/llm-extract.js';
-import { createLogger } from '../lib/logger.js';
+import { getDb } from '../src/db/db.js';
+import { loadSettings } from '../src/lib/config.js';
+import { callChat } from '../src/pipeline/llm-extract.js';
+import { createLogger } from '../src/lib/logger.js';
 
 const log = createLogger('backfill');
 
