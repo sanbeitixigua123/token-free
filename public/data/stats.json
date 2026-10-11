@@ -5,18 +5,18 @@
   "ended": 2,
   "endingSoon": 0,
   "newToday": 12,
-  "providers": 9,
+  "providers": 8,
   "providersTracked": 51,
   "byStatus": {
     "active": 10,
     "upcoming": 0,
     "ended": 2
   },
-  "providerCount": 9,
+  "providerCount": 8,
   "lastRun": {
-    "finished_at": "2026-10-10 08:15:58",
+    "finished_at": "2026-10-11 08:31:02",
     "status": "partial",
-    "items_new": 22,
+    "items_new": 19,
     "sources_ok": 103,
     "sources_total": 105
   }

@@ -10,8 +10,8 @@
     "color": "#4D6BFE",
     "cnAccessible": true,
     "tier": 1,
-    "activityCount": 3,
-    "activeCount": 1
+    "activityCount": 4,
+    "activeCount": 2
   },
   {
     "slug": "zhipu",
@@ -37,20 +37,6 @@
     "announcementUrl": null,
     "color": "#000000",
     "cnAccessible": false,
-    "tier": 1,
-    "activityCount": 1,
-    "activeCount": 1
-  },
-  {
-    "slug": "volcengine-ark",
-    "name": "火山引擎方舟",
-    "nameEn": "Volcengine Ark",
-    "country": "CN",
-    "website": "https://www.volcengine.com",
-    "pricingUrl": "https://www.volcengine.com/docs/82379/1099320",
-    "announcementUrl": "https://www.volcengine.com/docs/82379/1099320",
-    "color": "#1664FF",
-    "cnAccessible": true,
     "tier": 1,
     "activityCount": 1,
     "activeCount": 1
@@ -246,6 +232,20 @@
     "pricingUrl": "https://platform.moonshot.cn/docs/pricing/chat",
     "announcementUrl": null,
     "color": "#0B0B0F",
+    "cnAccessible": true,
+    "tier": 1,
+    "activityCount": 0,
+    "activeCount": 1
+  },
+  {
+    "slug": "volcengine-ark",
+    "name": "火山引擎方舟",
+    "nameEn": "Volcengine Ark",
+    "country": "CN",
+    "website": "https://www.volcengine.com",
+    "pricingUrl": "https://www.volcengine.com/docs/82379/1099320",
+    "announcementUrl": "https://www.volcengine.com/docs/82379/1099320",
+    "color": "#1664FF",
     "cnAccessible": true,
     "tier": 1,
     "activityCount": 0,

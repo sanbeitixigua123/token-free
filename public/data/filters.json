@@ -3,24 +3,34 @@
     {
       "value": "free_credit",
       "label": "免费额度",
-      "count": 10
+      "count": 9
     },
     {
       "value": "trial",
       "label": "免费试用",
       "count": 2
+    },
+    {
+      "value": "student",
+      "label": "学生优惠",
+      "count": 1
     }
   ],
   "audiences": [
     {
       "value": "all",
       "label": "所有人",
-      "count": 9
+      "count": 8
     },
     {
       "value": "new_user",
       "label": "新用户",
-      "count": 3
+      "count": 4
+    },
+    {
+      "value": "student",
+      "label": "学生",
+      "count": 1
     },
     {
       "value": "verified",
@@ -56,7 +66,7 @@
     {
       "value": "deepseek",
       "label": "DeepSeek",
-      "count": 3
+      "count": 4
     },
     {
       "value": "zhipu",
@@ -66,11 +76,6 @@
     {
       "value": "vercel-ai-gateway",
       "label": "Vercel AI Gateway",
-      "count": 1
-    },
-    {
-      "value": "volcengine-ark",
-      "label": "火山引擎方舟",
       "count": 1
     },
     {
@@ -103,12 +108,12 @@
     {
       "value": "text-generation",
       "label": "文本生成",
-      "count": 2
+      "count": 3
     },
     {
       "value": "code-generation",
       "label": "代码生成",
-      "count": 2
+      "count": 3
     }
   ],
   "sorts": [
