@@ -3,34 +3,24 @@
     {
       "value": "free_credit",
       "label": "免费额度",
-      "count": 11
+      "count": 8
     },
     {
       "value": "trial",
       "label": "免费试用",
-      "count": 2
-    },
-    {
-      "value": "student",
-      "label": "学生优惠",
-      "count": 1
+      "count": 4
     }
   ],
   "audiences": [
     {
       "value": "all",
       "label": "所有人",
-      "count": 10
+      "count": 8
     },
     {
       "value": "new_user",
       "label": "新用户",
       "count": 4
-    },
-    {
-      "value": "student",
-      "label": "学生",
-      "count": 1
     },
     {
       "value": "verified",
@@ -42,19 +32,19 @@
     {
       "value": "active",
       "label": "进行中",
-      "count": 11
+      "count": 10
     },
     {
       "value": "ended",
       "label": "已结束",
-      "count": 3
+      "count": 2
     }
   ],
   "regions": [
     {
       "value": "CN",
       "label": "国内",
-      "count": 12
+      "count": 10
     },
     {
       "value": "GLOBAL",
@@ -69,18 +59,13 @@
       "count": 4
     },
     {
-      "value": "zhipu",
-      "label": "智谱 AI",
-      "count": 3
+      "value": "alibaba-qwen",
+      "label": "阿里通义千问",
+      "count": 2
     },
     {
       "value": "vercel-ai-gateway",
       "label": "Vercel AI Gateway",
-      "count": 1
-    },
-    {
-      "value": "bytedance-doubao",
-      "label": "字节豆包",
       "count": 1
     },
     {
@@ -113,12 +98,12 @@
     {
       "value": "text-generation",
       "label": "文本生成",
-      "count": 4
+      "count": 1
     },
     {
       "value": "code-generation",
       "label": "代码生成",
-      "count": 4
+      "count": 1
     }
   ],
   "sorts": [
