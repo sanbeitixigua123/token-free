@@ -1,107 +1,66 @@
 [
   {
-    "id": 15,
-    "fingerprint": "9d020a9f934ba9b7774f84dbe6eb9cd2",
+    "id": 13,
+    "fingerprint": "1f10c69d084cbe429900be3515e04cd7",
     "provider": {
-      "slug": "baidu-ernie",
-      "name": "百度文心",
-      "nameEn": "Baidu ERNIE",
-      "country": "CN",
-      "website": "https://yiyan.baidu.com",
-      "color": "#2932E1",
+      "slug": "github-student",
+      "name": "GitHub 学生开发者包",
+      "nameEn": "GitHub Student Developer Pack",
+      "country": "US",
+      "website": "https://education.github.com/pack",
+      "color": "#181717",
       "cnAccessible": true
     },
-    "title": "当前新用户注册百度千帆·大模型服务及Agent开发平台 ，实名认证后即送20元代金券！",
-    "summary": "当前新用户注册百度千帆·大模型服务及Agent开发平台 ，实名认证后即送20元代金券！全平台无门槛使用，有效期一个月。",
+    "title": "GitHub 学生开发者包：Stripe 25 美元赠金",
+    "hook": "GitHub 学生包送 25 美元 Stripe 赠金，适合学生开发者抵扣支付/账单费用，验证身份就能领。",
+    "howToClaim": "访问 education.github.com/pack 并完成学生身份验证后领取。",
+    "caveat": "需通过 GitHub 学生身份验证，赠金仅限 Stripe 产品费用抵扣。",
+    "feedback": {
+      "useful": 0,
+      "dead": 0
+    },
+    "summary": "GitHub 学生开发者包提供 25 美元 Stripe 赠金，用于抵扣 Stripe Payments、Billing 等产品费用，需学生身份验证。",
     "category": "free_credit",
     "categoryLabel": "免费额度",
     "benefit": {
-      "kind": "credit_cny",
-      "amount": 20,
-      "unit": "CNY",
-      "unitLabel": "元",
-      "text": "20元",
-      "display": "¥20"
+      "kind": "credit_usd",
+      "amount": 25,
+      "unit": "USD",
+      "unitLabel": "美元",
+      "text": "$25 in Stripe credits",
+      "display": "$25"
     },
     "audience": [
-      "new_user",
-      "verified"
+      "student"
     ],
     "audienceLabels": [
-      "新用户",
-      "需实名/绑卡"
+      "学生"
     ],
-    "audienceNote": "新用户、实名",
-    "region": "CN",
+    "audienceNote": "仅限学生，需通过 GitHub 学生开发者包验证。",
+    "region": "US",
     "requiresCard": false,
-    "requiresVerification": "identity",
+    "requiresVerification": "student_id",
     "startDate": null,
     "endDate": null,
     "isRecurring": null,
-    "claimUrl": "https://cloud.baidu.com/doc/qianfan/s/1mh4su5jg",
-    "sourceUrl": "https://cloud.baidu.com/doc/WENXINWORKSHOP/index.html",
-    "sourceExcerpt": "当前新用户注册百度千帆·大模型服务及Agent开发平台 ，实名认证后即送20元代金券！全平台无门槛使用，有效期一个月。\n模型服务\n应用开发\n组件广场\n系统管理",
-    "confidence": 0.89,
+    "claimUrl": "https://education.github.com/pack",
+    "sourceUrl": "https://education.github.com/pack",
+    "sourceExcerpt": "Get $25 in Stripe credits to offset fees on products including Stripe Payments, Billing, and more.",
+    "confidence": 0.9,
     "reviewStatus": "auto_ok",
     "status": "active",
     "statusLabel": "NEW",
     "daysLeft": null,
     "endingSoon": false,
     "isNew": true,
-    "createdAt": "2026-10-11 10:05:54",
-    "updatedAt": "2026-10-11 10:05:54",
-    "lastVerifiedAt": "2026-10-11 10:05:54",
+    "createdAt": "2026-10-11 11:14:11",
+    "updatedAt": "2026-10-11 11:14:11",
+    "lastVerifiedAt": "2026-10-11 19:14:30",
     "model": null,
     "endpoint": null
   },
   {
-    "id": 6,
-    "fingerprint": "3d3f05c87c03e16403ed70f2ea901bc6",
-    "provider": {
-      "slug": "alibaba-qwen",
-      "name": "阿里通义千问",
-      "nameEn": "Alibaba Qwen",
-      "country": "CN",
-      "website": "https://tongyi.aliyun.com",
-      "color": "#615CED",
-      "cnAccessible": true
-    },
-    "title": "阿里云百炼免费tokens领取及使用全攻略-阿里云开发者社区",
-    "summary": null,
-    "category": "trial",
-    "categoryLabel": "免费试用",
-    "benefit": null,
-    "audience": [
-      "new_user"
-    ],
-    "audienceLabels": [
-      "新用户"
-    ],
-    "audienceNote": "新用户",
-    "region": "CN",
-    "requiresCard": false,
-    "requiresVerification": null,
-    "startDate": null,
-    "endDate": null,
-    "isRecurring": null,
-    "claimUrl": "https://developer.aliyun.com/article/1722058",
-    "sourceUrl": null,
-    "sourceExcerpt": null,
-    "confidence": 0.89,
-    "reviewStatus": "auto_ok",
-    "status": "active",
-    "statusLabel": "NEW",
-    "daysLeft": null,
-    "endingSoon": false,
-    "isNew": true,
-    "createdAt": "2026-10-11 10:05:54",
-    "updatedAt": "2026-10-11 10:05:54",
-    "lastVerifiedAt": "2026-10-11 10:05:54",
-    "model": null,
-    "endpoint": null
-  },
-  {
-    "id": 8,
+    "id": 9,
     "fingerprint": "7d8d90b31b5778b2ac94630ee4c5fdb6",
     "provider": {
       "slug": "aliyun-bailian",
@@ -113,6 +72,13 @@
       "cnAccessible": true
     },
     "title": "百炼为新用户提供北京地域专属的新人免费额度，用于体验模型调用",
+    "hook": "阿里云百炼新用户可领北京地域免费额度，适合想试模型调用的新手，认证后注意防扣费。",
+    "howToClaim": "官网认证页领取，需先完成实名认证。",
+    "caveat": "未认证用户额度用完需认证充值才能继续；已认证用户额度用完自动转按量付费，可开启用完即停避免扣费。",
+    "feedback": {
+      "useful": 0,
+      "dead": 0
+    },
     "summary": "未认证用户免费额度用完后无法继续使用，需要完成认证并充值后方能继续按量付费。 已认证用户免费额度用完后自动转为按量付费，如需避免意外扣费，可开启免费额度用完即停功能，额度耗尽时服务自动停止。",
     "category": "trial",
     "categoryLabel": "免费试用",
@@ -140,43 +106,57 @@
     "daysLeft": null,
     "endingSoon": false,
     "isNew": true,
-    "createdAt": "2026-10-11 10:05:54",
-    "updatedAt": "2026-10-11 10:05:54",
-    "lastVerifiedAt": "2026-10-11 10:05:54",
+    "createdAt": "2026-10-11 11:14:11",
+    "updatedAt": "2026-10-11 11:14:11",
+    "lastVerifiedAt": "2026-10-11 19:14:22",
     "model": null,
     "endpoint": null
   },
   {
     "id": 7,
-    "fingerprint": "27e2f4f7f8b2754f34f6c73bd78d5176",
+    "fingerprint": "8190045498d521dc0655c3ace1b43693",
     "provider": {
-      "slug": "alibaba-qwen",
-      "name": "阿里通义千问",
-      "nameEn": "Alibaba Qwen",
+      "slug": "deepseek",
+      "name": "DeepSeek",
+      "nameEn": "DeepSeek",
       "country": "CN",
-      "website": "https://tongyi.aliyun.com",
-      "color": "#615CED",
+      "website": "https://www.deepseek.com",
+      "color": "#4D6BFE",
       "cnAccessible": true
     },
-    "title": "阿里云\"领1亿+免费 Tokens\"活动介绍：登录百炼平台即可享100万免费tokens，开启您的AI创想之旅",
+    "title": "登录 DeepSeekharness 桌面版，领 6 元赠金 - 前沿快讯 - LINUX DO",
+    "hook": null,
+    "howToClaim": null,
+    "caveat": null,
+    "feedback": {
+      "useful": 0,
+      "dead": 0
+    },
     "summary": null,
-    "category": "trial",
-    "categoryLabel": "免费试用",
-    "benefit": null,
+    "category": "free_credit",
+    "categoryLabel": "免费额度",
+    "benefit": {
+      "kind": "credit_cny",
+      "amount": 6,
+      "unit": "CNY",
+      "unitLabel": "元",
+      "text": "6 元",
+      "display": "¥6"
+    },
     "audience": [
-      "new_user"
+      "all"
     ],
     "audienceLabels": [
-      "新用户"
+      "所有人"
     ],
-    "audienceNote": "新用户",
+    "audienceNote": null,
     "region": "CN",
     "requiresCard": false,
     "requiresVerification": null,
     "startDate": null,
     "endDate": null,
     "isRecurring": null,
-    "claimUrl": "https://developer.aliyun.com/article/1758257",
+    "claimUrl": "https://linux.do/t/topic/2967070",
     "sourceUrl": null,
     "sourceExcerpt": null,
     "confidence": 0.83,
@@ -186,14 +166,14 @@
     "daysLeft": null,
     "endingSoon": false,
     "isNew": true,
-    "createdAt": "2026-10-11 10:05:54",
-    "updatedAt": "2026-10-11 10:05:54",
-    "lastVerifiedAt": "2026-10-11 10:05:54",
+    "createdAt": "2026-10-11 11:14:11",
+    "updatedAt": "2026-10-11 11:14:11",
+    "lastVerifiedAt": "2026-10-11 19:14:21",
     "model": null,
     "endpoint": null
   },
   {
-    "id": 1,
+    "id": 4,
     "fingerprint": "52388eed4d58d119a1a79a936014e042",
     "provider": {
       "slug": "deepseek",
@@ -205,6 +185,13 @@
       "cnAccessible": true
     },
     "title": "DeepSeek Harness 桌面端发布：6 元赠金领取与上手指南",
+    "hook": "DeepSeek Harness 桌面端发布，送6元赠金，适合想尝鲜AI工具的用户，值得领。",
+    "howToClaim": "访问领取页 https://www.denghy.cn/articles/deepseek-harness-desktop-launch 领取，具体截止时间未说明。",
+    "caveat": null,
+    "feedback": {
+      "useful": 0,
+      "dead": 0
+    },
     "summary": null,
     "category": "free_credit",
     "categoryLabel": "免费额度",
@@ -239,67 +226,14 @@
     "daysLeft": null,
     "endingSoon": false,
     "isNew": true,
-    "createdAt": "2026-10-11 10:05:54",
-    "updatedAt": "2026-10-11 10:05:54",
-    "lastVerifiedAt": "2026-10-11 10:05:54",
+    "createdAt": "2026-10-11 11:14:11",
+    "updatedAt": "2026-10-11 11:14:11",
+    "lastVerifiedAt": "2026-10-11 19:14:21",
     "model": null,
     "endpoint": null
   },
   {
-    "id": 4,
-    "fingerprint": "c712bb07b12450b911272f5f2e4a038e",
-    "provider": {
-      "slug": "deepseek",
-      "name": "DeepSeek",
-      "nameEn": "DeepSeek",
-      "country": "CN",
-      "website": "https://www.deepseek.com",
-      "color": "#4D6BFE",
-      "cnAccessible": true
-    },
-    "title": "DeepSeek 送福利：登录DeepSeek harness 桌面端，首次赠送6元赠金 - 福利羊毛 - LINUX DO",
-    "summary": null,
-    "category": "free_credit",
-    "categoryLabel": "免费额度",
-    "benefit": {
-      "kind": "credit_cny",
-      "amount": 6,
-      "unit": "CNY",
-      "unitLabel": "元",
-      "text": "6元",
-      "display": "¥6"
-    },
-    "audience": [
-      "all"
-    ],
-    "audienceLabels": [
-      "所有人"
-    ],
-    "audienceNote": null,
-    "region": "CN",
-    "requiresCard": false,
-    "requiresVerification": null,
-    "startDate": null,
-    "endDate": null,
-    "isRecurring": null,
-    "claimUrl": "https://linux.do/t/topic/2967596",
-    "sourceUrl": null,
-    "sourceExcerpt": null,
-    "confidence": 0.77,
-    "reviewStatus": "auto_ok",
-    "status": "active",
-    "statusLabel": "NEW",
-    "daysLeft": null,
-    "endingSoon": false,
-    "isNew": true,
-    "createdAt": "2026-10-11 10:05:54",
-    "updatedAt": "2026-10-11 10:05:54",
-    "lastVerifiedAt": "2026-10-11 10:05:54",
-    "model": null,
-    "endpoint": null
-  },
-  {
-    "id": 14,
+    "id": 24,
     "fingerprint": "b50602368423573b5e434e125089bfeb",
     "provider": {
       "slug": "minimax",
@@ -311,6 +245,13 @@
       "cnAccessible": true
     },
     "title": "HD 系列模型赠送 10 个快速克隆音色",
+    "hook": "HD系列模型送10个快速克隆音色，适合做语音合成的开发者，免费额度值得领。",
+    "howToClaim": "官网领取页 https://platform.minimaxi.com/document/price",
+    "caveat": null,
+    "feedback": {
+      "useful": 0,
+      "dead": 0
+    },
     "summary": "支持 T2A v2 / T2A async v2 接口RPM：200支持 HD 系列模型赠送 30 个快速克隆音色 支持 T2A v2 / T2A async v2 接口RPM：500支持 HD 系列模型赠送 300 个快速克隆音色",
     "category": "trial",
     "categoryLabel": "免费试用",
@@ -345,14 +286,14 @@
     "daysLeft": null,
     "endingSoon": false,
     "isNew": true,
-    "createdAt": "2026-10-11 10:05:54",
-    "updatedAt": "2026-10-11 10:05:54",
-    "lastVerifiedAt": "2026-10-11 10:05:54",
+    "createdAt": "2026-10-11 11:14:11",
+    "updatedAt": "2026-10-11 11:14:11",
+    "lastVerifiedAt": "2026-10-11 19:15:01",
     "model": null,
     "endpoint": null
   },
   {
-    "id": 11,
+    "id": 20,
     "fingerprint": "de9e5266ebe169d92b10c6a1f299d7d7",
     "provider": {
       "slug": "vercel-ai-gateway",
@@ -364,6 +305,13 @@
       "cnAccessible": false
     },
     "title": "Free and paid tiers",
+    "hook": "Vercel AI Gateway 每月送 $5 额度，适合用 AI API 的开发者，零加价，值得领。",
+    "howToClaim": "访问 https://vercel.com/docs/ai-gateway/pricing 领取，每月自动到账。",
+    "caveat": "仅限 Vercel 团队账户，免费额度每月 $5，超出需付费。",
+    "feedback": {
+      "useful": 0,
+      "dead": 0
+    },
     "summary": "Every Vercel team account gets access to both a free tier and a paid tier for AI Gateway Credits. For the paid tier, AI Gateway provides tokens with zero markup, including when you bring your own key.",
     "category": "free_credit",
     "categoryLabel": "免费额度",
@@ -398,9 +346,9 @@
     "daysLeft": null,
     "endingSoon": false,
     "isNew": true,
-    "createdAt": "2026-10-11 10:05:54",
-    "updatedAt": "2026-10-11 10:05:54",
-    "lastVerifiedAt": "2026-10-11 10:05:54",
+    "createdAt": "2026-10-11 11:14:11",
+    "updatedAt": "2026-10-11 11:14:11",
+    "lastVerifiedAt": "2026-10-11 19:14:47",
     "model": {
       "slug": "claude-sonnet-5",
       "name": "Claude Sonnet 5",
@@ -429,7 +377,247 @@
     }
   },
   {
+    "id": 19,
+    "fingerprint": "8a96ea96d962d804ce4fb2562eddd557",
+    "provider": {
+      "slug": "cloudflare-workers-ai",
+      "name": "Cloudflare Workers AI",
+      "nameEn": "Cloudflare Workers AI",
+      "country": "US",
+      "website": "https://developers.cloudflare.com/workers-ai/",
+      "color": "#F38020",
+      "cnAccessible": false
+    },
+    "title": "Cloudflare Workers AI 免费额度",
+    "hook": "每天1万额度免费跑AI模型，适合轻量调用，白嫖党可冲",
+    "howToClaim": "官网定价页查看，注册即享，每日UTC零点重置",
+    "caveat": "超出部分按量付费，需绑卡",
+    "feedback": {
+      "useful": 0,
+      "dead": 0
+    },
+    "summary": "Cloudflare Workers AI提供每日10,000 Neurons的免费使用额度，所有限制在UTC 00:00重置，超出部分需付费。",
+    "category": "free_credit",
+    "categoryLabel": "免费额度",
+    "benefit": {
+      "kind": "token",
+      "amount": 10000,
+      "unit": "token",
+      "unitLabel": "tokens",
+      "text": "10,000 Neurons per day",
+      "display": "1 万 tokens"
+    },
+    "audience": [
+      "all"
+    ],
+    "audienceLabels": [
+      "所有人"
+    ],
+    "audienceNote": null,
+    "region": "GLOBAL",
+    "requiresCard": false,
+    "requiresVerification": null,
+    "startDate": null,
+    "endDate": null,
+    "isRecurring": "daily",
+    "claimUrl": "https://developers.cloudflare.com/workers-ai/platform/pricing",
+    "sourceUrl": "https://developers.cloudflare.com/workers-ai/platform/pricing/",
+    "sourceExcerpt": "Our free allocation allows anyone to use a total of 10,000 Neurons per day at no charge.",
+    "confidence": 0.65,
+    "reviewStatus": "auto_ok",
+    "status": "active",
+    "statusLabel": "NEW",
+    "daysLeft": null,
+    "endingSoon": false,
+    "isNew": true,
+    "createdAt": "2026-10-11 11:14:11",
+    "updatedAt": "2026-10-11 11:14:11",
+    "lastVerifiedAt": "2026-10-11 19:14:44",
+    "model": null,
+    "endpoint": null
+  },
+  {
     "id": 17,
+    "fingerprint": "35c9fba894d77e5e252cd2c313413bcc",
+    "provider": {
+      "slug": "github-student",
+      "name": "GitHub 学生开发者包",
+      "nameEn": "GitHub Student Developer Pack",
+      "country": "US",
+      "website": "https://education.github.com/pack",
+      "color": "#181717",
+      "cnAccessible": true
+    },
+    "title": "Codédex Club 6个月免费会员",
+    "hook": "GitHub学生包免费送6个月Codédex Club高级会员，适合学编程的学生，白嫖不亏。",
+    "howToClaim": "通过GitHub学生开发者包认证后领取，入口：https://education.github.com/pack",
+    "caveat": "仅限认证学生，需先通过GitHub学生认证。",
+    "feedback": {
+      "useful": 0,
+      "dead": 0
+    },
+    "summary": "GitHub学生开发者包为认证学生提供6个月Codédex Club高级会员免费使用。",
+    "category": "student",
+    "categoryLabel": "学生优惠",
+    "benefit": {
+      "kind": "duration",
+      "amount": 6,
+      "unit": "month",
+      "unitLabel": "个月",
+      "text": "6 months of Codédex Club",
+      "display": "6 个月"
+    },
+    "audience": [
+      "student"
+    ],
+    "audienceLabels": [
+      "学生"
+    ],
+    "audienceNote": "Verified students",
+    "region": "GLOBAL",
+    "requiresCard": false,
+    "requiresVerification": "student_id",
+    "startDate": null,
+    "endDate": null,
+    "isRecurring": null,
+    "claimUrl": "https://education.github.com/pack",
+    "sourceUrl": "https://education.github.com/pack",
+    "sourceExcerpt": "Verified students receive 6 months of Codédex Club, a premium membership for free.",
+    "confidence": 0.65,
+    "reviewStatus": "auto_ok",
+    "status": "active",
+    "statusLabel": "NEW",
+    "daysLeft": null,
+    "endingSoon": false,
+    "isNew": true,
+    "createdAt": "2026-10-11 11:14:11",
+    "updatedAt": "2026-10-11 11:14:11",
+    "lastVerifiedAt": "2026-10-11 19:14:39",
+    "model": null,
+    "endpoint": null
+  },
+  {
+    "id": 15,
+    "fingerprint": "4ba6dec14af087a7de09528dec4199d6",
+    "provider": {
+      "slug": "github-student",
+      "name": "GitHub 学生开发者包",
+      "nameEn": "GitHub Student Developer Pack",
+      "country": "US",
+      "website": "https://education.github.com/pack",
+      "color": "#181717",
+      "cnAccessible": true
+    },
+    "title": "DataCamp 与 GitHub Education 合作：学生免费三个月",
+    "hook": "GitHub 学生包用户可免费领 DataCamp 三个月，适合学数据科学的同学，白嫖不亏。",
+    "howToClaim": "通过 GitHub Education 学生包页面（education.github.com/pack）领取，需用 GitHub 学生账号注册 DataCamp 订阅。",
+    "caveat": "仅限 GitHub 学生开发者，需验证学生身份；免费期结束后可能自动续费，注意取消订阅。",
+    "feedback": {
+      "useful": 0,
+      "dead": 0
+    },
+    "summary": "DataCamp 与 GitHub Education 合作，GitHub 学生开发者可免费获得三个月 DataCamp 订阅访问权限。",
+    "category": "trial",
+    "categoryLabel": "免费试用",
+    "benefit": {
+      "kind": "duration",
+      "amount": 3,
+      "unit": "month",
+      "unitLabel": "个月",
+      "text": "three months of free access",
+      "display": "3 个月"
+    },
+    "audience": [
+      "student"
+    ],
+    "audienceLabels": [
+      "学生"
+    ],
+    "audienceNote": "GitHub 学生账户持有者",
+    "region": "GLOBAL",
+    "requiresCard": false,
+    "requiresVerification": "github",
+    "startDate": null,
+    "endDate": null,
+    "isRecurring": null,
+    "claimUrl": "https://education.github.com/pack",
+    "sourceUrl": "https://education.github.com/pack",
+    "sourceExcerpt": "DataCamp has partnered with GitHub Education to offer three months of free access when you sign up for a DataCamp subscription with your GitHub student account.",
+    "confidence": 0.65,
+    "reviewStatus": "auto_ok",
+    "status": "active",
+    "statusLabel": "NEW",
+    "daysLeft": null,
+    "endingSoon": false,
+    "isNew": true,
+    "createdAt": "2026-10-11 11:14:11",
+    "updatedAt": "2026-10-11 11:14:11",
+    "lastVerifiedAt": "2026-10-11 19:14:35",
+    "model": null,
+    "endpoint": null
+  },
+  {
+    "id": 12,
+    "fingerprint": "5d555963647a712d844cf30c4ed6d83d",
+    "provider": {
+      "slug": "github-student",
+      "name": "GitHub 学生开发者包",
+      "nameEn": "GitHub Student Developer Pack",
+      "country": "US",
+      "website": "https://education.github.com/pack",
+      "color": "#181717",
+      "cnAccessible": true
+    },
+    "title": "GitHub 学生开发者包",
+    "hook": "学生党福利：GitHub 学生包送 VS 社区版、Pluralsight 课程和 Azure 200 美元首月额度，适合在校开发者白嫖。",
+    "howToClaim": "官网 education.github.com/pack 注册领取，需验证学生身份。",
+    "caveat": "Azure 额度仅限首月，且需绑定支付方式；仅限学生，非学生不可用。",
+    "feedback": {
+      "useful": 0,
+      "dead": 0
+    },
+    "summary": "GitHub 学生包提供 Visual Studio Community、Pluralsight 培训及 Azure 200 美元首月额度，适合学生开发者。",
+    "category": "student",
+    "categoryLabel": "学生优惠",
+    "benefit": {
+      "kind": "credit_usd",
+      "amount": 200,
+      "unit": "USD",
+      "unitLabel": "美元",
+      "text": "$200 credit for the 1st month",
+      "display": "$200"
+    },
+    "audience": [
+      "student"
+    ],
+    "audienceLabels": [
+      "学生"
+    ],
+    "audienceNote": "仅限学生",
+    "region": "US",
+    "requiresCard": false,
+    "requiresVerification": "student_id",
+    "startDate": null,
+    "endDate": null,
+    "isRecurring": null,
+    "claimUrl": "https://education.github.com/pack",
+    "sourceUrl": "https://education.github.com/pack",
+    "sourceExcerpt": "Visual Studio Community, Visual Studio Community for Mac, access to Pluralsight training, 1 free year of Azure services with $200 credit for the 1st month and more.",
+    "confidence": 0.65,
+    "reviewStatus": "auto_ok",
+    "status": "active",
+    "statusLabel": "NEW",
+    "daysLeft": null,
+    "endingSoon": false,
+    "isNew": true,
+    "createdAt": "2026-10-11 11:14:11",
+    "updatedAt": "2026-10-11 11:14:11",
+    "lastVerifiedAt": "2026-10-11 19:14:26",
+    "model": null,
+    "endpoint": null
+  },
+  {
+    "id": 27,
     "fingerprint": "84d78fb8852a482e9fa567c32d223e29",
     "provider": {
       "slug": "deepgram",
@@ -441,6 +629,13 @@
       "cnAccessible": false
     },
     "title": "Frequently Asked Questions",
+    "hook": "Deepgram 送 $0.0065 试用金，适合想试语音识别 API 的开发者，金额小但可体验。",
+    "howToClaim": "官网定价页领取，无明确截止日期。",
+    "caveat": "仅限按量付费账户，赠金可能需消费后才能使用，且不适用于 Growth 套餐。",
+    "feedback": {
+      "useful": 0,
+      "dead": 0
+    },
     "summary": "Managing your Deepgram Pay-As-You-Go credits: auto-load settings, refunds, and transfers At Deepgram, we offer a flexible pay-as-you-go service where customers can purchase credits for usage on our pl",
     "category": "free_credit",
     "categoryLabel": "免费额度",
@@ -475,14 +670,14 @@
     "daysLeft": null,
     "endingSoon": false,
     "isNew": true,
-    "createdAt": "2026-10-11 10:05:54",
-    "updatedAt": "2026-10-11 10:05:54",
-    "lastVerifiedAt": "2026-10-11 10:05:54",
+    "createdAt": "2026-10-11 11:14:11",
+    "updatedAt": "2026-10-11 11:14:11",
+    "lastVerifiedAt": "2026-10-11 19:15:19",
     "model": null,
     "endpoint": null
   },
   {
-    "id": 16,
+    "id": 26,
     "fingerprint": "7c38800a05076daf7fb454f64069193f",
     "provider": {
       "slug": "tencent-hunyuan",
@@ -494,6 +689,13 @@
       "cnAccessible": true
     },
     "title": "100万 tokens",
+    "hook": "腾讯云送100万token，一年有效，适合白嫖党试试水。",
+    "howToClaim": "官网领取页：https://cloud.tencent.com/document/product/1729/97731",
+    "caveat": "资源包1年内未用完则过期作废。",
+    "feedback": {
+      "useful": 0,
+      "dead": 0
+    },
     "summary": "100万 tokens。资源包有效期为1年，自开通服务之日起1年内若免费资源包未使用完，则过期作废。",
     "category": "free_credit",
     "categoryLabel": "免费额度",
@@ -528,14 +730,98 @@
     "daysLeft": null,
     "endingSoon": false,
     "isNew": true,
-    "createdAt": "2026-10-11 10:05:54",
-    "updatedAt": "2026-10-11 10:05:54",
-    "lastVerifiedAt": "2026-10-11 10:05:54",
+    "createdAt": "2026-10-11 11:14:11",
+    "updatedAt": "2026-10-11 11:14:11",
+    "lastVerifiedAt": "2026-10-11 19:15:17",
     "model": null,
     "endpoint": null
   },
   {
     "id": 3,
+    "fingerprint": "b1056efe9ebf34ebe17bf37b4f1be88e",
+    "provider": {
+      "slug": "zhipu",
+      "name": "智谱 AI",
+      "nameEn": "Zhipu AI",
+      "country": "CN",
+      "website": "https://www.z.ai",
+      "color": "#3B5BDB",
+      "cnAccessible": true
+    },
+    "title": "智谱 ZCode 周末活动：所有用户免费领 3 亿 GLM-5.3-Flash Token（2026-09-04-2026-09-07 新一轮",
+    "hook": null,
+    "howToClaim": null,
+    "caveat": null,
+    "feedback": {
+      "useful": 0,
+      "dead": 0
+    },
+    "summary": null,
+    "category": "free_credit",
+    "categoryLabel": "免费额度",
+    "benefit": {
+      "kind": "token",
+      "amount": 300000000,
+      "unit": "token",
+      "unitLabel": "tokens",
+      "text": "3 亿 GLM-5.3-Flash Token",
+      "display": "3 亿 tokens"
+    },
+    "audience": [
+      "all"
+    ],
+    "audienceLabels": [
+      "所有人"
+    ],
+    "audienceNote": null,
+    "region": "CN",
+    "requiresCard": false,
+    "requiresVerification": null,
+    "startDate": "2026-09-04",
+    "endDate": "2026-09-07",
+    "isRecurring": "weekly",
+    "claimUrl": "https://igetoken.com/deals/2026-08-zcode-weekend-300m",
+    "sourceUrl": null,
+    "sourceExcerpt": null,
+    "confidence": 0.95,
+    "reviewStatus": "auto_ok",
+    "status": "ended",
+    "statusLabel": "已结束",
+    "daysLeft": -34,
+    "endingSoon": false,
+    "isNew": true,
+    "createdAt": "2026-10-11 11:14:11",
+    "updatedAt": "2026-10-11 11:14:11",
+    "lastVerifiedAt": "2026-10-11 11:14:11",
+    "model": {
+      "slug": "glm-5-3-flash",
+      "name": "GLM-5.3-Flash",
+      "capability": "code-generation",
+      "capabilityLabel": "代码生成",
+      "capabilities": [
+        "code-generation",
+        "text-generation"
+      ],
+      "contextWindow": 1000000
+    },
+    "endpoint": {
+      "slug": "zhipu--glm-5-3-flash",
+      "quotaKind": "credits",
+      "quotaKindLabel": "赠送额度",
+      "quotaRpm": null,
+      "quotaRpd": null,
+      "quotaText": "官方开放平台新用户赠送额度",
+      "apiBase": "https://open.bigmodel.cn/api/paas/v4",
+      "score": null,
+      "requiresCard": false,
+      "cnAccessible": true,
+      "openaiCompatible": true,
+      "claimUrl": "https://open.bigmodel.cn",
+      "docsUrl": "https://z.ai"
+    }
+  },
+  {
+    "id": 6,
     "fingerprint": "a27230c4dacd3dbd23a5a12f814834d0",
     "provider": {
       "slug": "deepseek",
@@ -547,6 +833,13 @@
       "cnAccessible": true
     },
     "title": "DeepSeek 桌面版实测：免费送 6 元额度，能定时自动干活的 AI 助理来了",
+    "hook": "DeepSeek 桌面版送6元额度，适合想试AI定时助理的用户，白嫖可动手。",
+    "howToClaim": "通过知乎链接领取，具体截止时间未注明。",
+    "caveat": "额度仅6元，可能有限制，原文未提计费或资格例外。",
+    "feedback": {
+      "useful": 0,
+      "dead": 0
+    },
     "summary": null,
     "category": "free_credit",
     "categoryLabel": "免费额度",
@@ -581,14 +874,14 @@
     "daysLeft": -8,
     "endingSoon": false,
     "isNew": true,
-    "createdAt": "2026-10-11 10:05:54",
-    "updatedAt": "2026-10-11 10:05:54",
-    "lastVerifiedAt": "2026-10-11 10:05:54",
+    "createdAt": "2026-10-11 11:14:11",
+    "updatedAt": "2026-10-11 11:14:11",
+    "lastVerifiedAt": "2026-10-11 11:14:11",
     "model": null,
     "endpoint": null
   },
   {
-    "id": 2,
+    "id": 5,
     "fingerprint": "1db2eea9e3c5a19f1a3a8da937b09a3d",
     "provider": {
       "slug": "deepseek",
@@ -600,6 +893,13 @@
       "cnAccessible": true
     },
     "title": "DeepSeek Harness 桌面版 6 元赠金 登录即送 活动期 9 月 29 日至 10 月 6 日",
+    "hook": "DeepSeek Harness 桌面版登录即送6元赠金，适合想低成本体验AI编程工具的用户，活动期短，值得顺手领。",
+    "howToClaim": "访问领取页登录即可，活动期9月29日至10月6日。",
+    "caveat": null,
+    "feedback": {
+      "useful": 0,
+      "dead": 0
+    },
     "summary": null,
     "category": "free_credit",
     "categoryLabel": "免费额度",
@@ -634,10 +934,154 @@
     "daysLeft": -5,
     "endingSoon": false,
     "isNew": true,
-    "createdAt": "2026-10-11 10:05:54",
-    "updatedAt": "2026-10-11 10:05:54",
-    "lastVerifiedAt": "2026-10-11 10:05:54",
+    "createdAt": "2026-10-11 11:14:11",
+    "updatedAt": "2026-10-11 11:14:11",
+    "lastVerifiedAt": "2026-10-11 11:14:11",
     "model": null,
     "endpoint": null
+  },
+  {
+    "id": 25,
+    "fingerprint": "7d9cb86d9badb6823707aeec0fbfb2c7",
+    "provider": {
+      "slug": "baidu-ernie",
+      "name": "百度文心",
+      "nameEn": "Baidu ERNIE",
+      "country": "CN",
+      "website": "https://yiyan.baidu.com",
+      "color": "#2932E1",
+      "cnAccessible": true
+    },
+    "title": "新用户注册送20元代金券",
+    "hook": "百度千帆新用户注册实名后送20元代金券，全平台无门槛，适合想试水大模型API的开发者，一个月内有效。",
+    "howToClaim": "官网注册并实名认证后领取，链接：https://cloud.baidu.com/doc/qianfan/s/1mh4su5jg，有效期一个月。",
+    "caveat": null,
+    "feedback": {
+      "useful": 0,
+      "dead": 0
+    },
+    "summary": "百度千帆新用户注册并实名认证后，即送20元代金券，全平台无门槛使用，有效期一个月。",
+    "category": "free_credit",
+    "categoryLabel": "免费额度",
+    "benefit": {
+      "kind": "credit_cny",
+      "amount": 20,
+      "unit": "CNY",
+      "unitLabel": "元",
+      "text": "20元代金券",
+      "display": "¥20"
+    },
+    "audience": [
+      "new_user"
+    ],
+    "audienceLabels": [
+      "新用户"
+    ],
+    "audienceNote": "新用户且需实名认证",
+    "region": "CN",
+    "requiresCard": false,
+    "requiresVerification": "identity",
+    "startDate": null,
+    "endDate": "2026-10-11",
+    "isRecurring": null,
+    "claimUrl": "https://cloud.baidu.com/doc/qianfan/s/1mh4su5jg",
+    "sourceUrl": "https://cloud.baidu.com/doc/WENXINWORKSHOP/index.html",
+    "sourceExcerpt": "当前新用户注册百度千帆·大模型服务及Agent开发平台 ，实名认证后即送20元代金券！全平台无门槛使用，有效期一个月。",
+    "confidence": 0.95,
+    "reviewStatus": "auto_ok",
+    "status": "ended",
+    "statusLabel": "已结束",
+    "daysLeft": 0,
+    "endingSoon": true,
+    "isNew": true,
+    "createdAt": "2026-10-11 11:14:11",
+    "updatedAt": "2026-10-11 11:14:11",
+    "lastVerifiedAt": "2026-10-11 19:15:10",
+    "model": null,
+    "endpoint": null
+  },
+  {
+    "id": 2,
+    "fingerprint": "293e111a51450eddeaf6d22d83cf2d10",
+    "provider": {
+      "slug": "zhipu",
+      "name": "智谱 AI",
+      "nameEn": "Zhipu AI",
+      "country": "CN",
+      "website": "https://www.z.ai",
+      "color": "#3B5BDB",
+      "cnAccessible": true
+    },
+    "title": "GLM-5.3 × ZCode 免费周末：新用户送 1 亿 Token 领取攻略与日常指南 — Free AI API",
+    "hook": "GLM-5.3 新用户白嫖 1 亿 Token，适合想试大模型 API 的开发者，周末限时别错过。",
+    "howToClaim": "访问领取页 https://freeaiapi.org/zh-cn/articles/zcode-free-weekend-100m-tokens 按指引操作，周末活动需及时领取。",
+    "caveat": null,
+    "feedback": {
+      "useful": 0,
+      "dead": 0
+    },
+    "summary": null,
+    "category": "free_credit",
+    "categoryLabel": "免费额度",
+    "benefit": {
+      "kind": "token",
+      "amount": 100000000,
+      "unit": "token",
+      "unitLabel": "tokens",
+      "text": "1 亿 Token",
+      "display": "1 亿 tokens"
+    },
+    "audience": [
+      "new_user"
+    ],
+    "audienceLabels": [
+      "新用户"
+    ],
+    "audienceNote": "新用户",
+    "region": "CN",
+    "requiresCard": false,
+    "requiresVerification": null,
+    "startDate": null,
+    "endDate": "2026-10-11",
+    "isRecurring": null,
+    "claimUrl": "https://freeaiapi.org/zh-cn/articles/zcode-free-weekend-100m-tokens",
+    "sourceUrl": null,
+    "sourceExcerpt": null,
+    "confidence": 0.95,
+    "reviewStatus": "auto_ok",
+    "status": "ended",
+    "statusLabel": "已结束",
+    "daysLeft": 0,
+    "endingSoon": true,
+    "isNew": true,
+    "createdAt": "2026-10-11 11:14:11",
+    "updatedAt": "2026-10-11 11:14:11",
+    "lastVerifiedAt": "2026-10-11 19:14:15",
+    "model": {
+      "slug": "glm-5-3-flash",
+      "name": "GLM-5.3-Flash",
+      "capability": "code-generation",
+      "capabilityLabel": "代码生成",
+      "capabilities": [
+        "code-generation",
+        "text-generation"
+      ],
+      "contextWindow": 1000000
+    },
+    "endpoint": {
+      "slug": "zhipu--glm-5-3-flash",
+      "quotaKind": "credits",
+      "quotaKindLabel": "赠送额度",
+      "quotaRpm": null,
+      "quotaRpd": null,
+      "quotaText": "官方开放平台新用户赠送额度",
+      "apiBase": "https://open.bigmodel.cn/api/paas/v4",
+      "score": null,
+      "requiresCard": false,
+      "cnAccessible": true,
+      "openaiCompatible": true,
+      "claimUrl": "https://open.bigmodel.cn",
+      "docsUrl": "https://z.ai"
+    }
   }
 ]
