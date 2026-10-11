@@ -1,6 +1,6 @@
 [
   {
-    "id": 3,
+    "id": 4,
     "fingerprint": "df9da6d5f9c9679259322c71905fc4a4",
     "provider": {
       "slug": "zhipu",
@@ -48,9 +48,9 @@
     "daysLeft": null,
     "endingSoon": false,
     "isNew": true,
-    "createdAt": "2026-10-11 08:31:02",
-    "updatedAt": "2026-10-11 08:31:02",
-    "lastVerifiedAt": "2026-10-11 08:31:02",
+    "createdAt": "2026-10-11 09:52:23",
+    "updatedAt": "2026-10-11 09:52:23",
+    "lastVerifiedAt": "2026-10-11 09:52:23",
     "model": {
       "slug": "glm-5-3-flash",
       "name": "GLM-5.3-Flash",
@@ -125,9 +125,9 @@
     "daysLeft": null,
     "endingSoon": false,
     "isNew": true,
-    "createdAt": "2026-10-11 08:31:02",
-    "updatedAt": "2026-10-11 08:31:02",
-    "lastVerifiedAt": "2026-10-11 08:31:02",
+    "createdAt": "2026-10-11 09:52:23",
+    "updatedAt": "2026-10-11 09:52:23",
+    "lastVerifiedAt": "2026-10-11 09:52:23",
     "model": {
       "slug": "glm-5-3-flash",
       "name": "GLM-5.3-Flash",
@@ -156,7 +156,7 @@
     }
   },
   {
-    "id": 15,
+    "id": 19,
     "fingerprint": "9d020a9f934ba9b7774f84dbe6eb9cd2",
     "provider": {
       "slug": "baidu-ernie",
@@ -204,14 +204,14 @@
     "daysLeft": null,
     "endingSoon": false,
     "isNew": true,
-    "createdAt": "2026-10-11 08:31:02",
-    "updatedAt": "2026-10-11 08:31:02",
-    "lastVerifiedAt": "2026-10-11 08:31:02",
+    "createdAt": "2026-10-11 09:52:23",
+    "updatedAt": "2026-10-11 09:52:23",
+    "lastVerifiedAt": "2026-10-11 09:52:23",
     "model": null,
     "endpoint": null
   },
   {
-    "id": 8,
+    "id": 12,
     "fingerprint": "7d8d90b31b5778b2ac94630ee4c5fdb6",
     "provider": {
       "slug": "aliyun-bailian",
@@ -250,14 +250,14 @@
     "daysLeft": null,
     "endingSoon": false,
     "isNew": true,
-    "createdAt": "2026-10-11 08:31:02",
-    "updatedAt": "2026-10-11 08:31:02",
-    "lastVerifiedAt": "2026-10-11 08:31:02",
+    "createdAt": "2026-10-11 09:52:23",
+    "updatedAt": "2026-10-11 09:52:23",
+    "lastVerifiedAt": "2026-10-11 09:52:23",
     "model": null,
     "endpoint": null
   },
   {
-    "id": 4,
+    "id": 5,
     "fingerprint": "52388eed4d58d119a1a79a936014e042",
     "provider": {
       "slug": "deepseek",
@@ -303,14 +303,14 @@
     "daysLeft": null,
     "endingSoon": false,
     "isNew": true,
-    "createdAt": "2026-10-11 08:31:02",
-    "updatedAt": "2026-10-11 08:31:02",
-    "lastVerifiedAt": "2026-10-11 08:31:02",
+    "createdAt": "2026-10-11 09:52:23",
+    "updatedAt": "2026-10-11 09:52:23",
+    "lastVerifiedAt": "2026-10-11 09:52:23",
     "model": null,
     "endpoint": null
   },
   {
-    "id": 7,
+    "id": 8,
     "fingerprint": "c712bb07b12450b911272f5f2e4a038e",
     "provider": {
       "slug": "deepseek",
@@ -356,14 +356,14 @@
     "daysLeft": null,
     "endingSoon": false,
     "isNew": true,
-    "createdAt": "2026-10-11 08:31:02",
-    "updatedAt": "2026-10-11 08:31:02",
-    "lastVerifiedAt": "2026-10-11 08:31:02",
+    "createdAt": "2026-10-11 09:52:23",
+    "updatedAt": "2026-10-11 09:52:23",
+    "lastVerifiedAt": "2026-10-11 09:52:23",
     "model": null,
     "endpoint": null
   },
   {
-    "id": 14,
+    "id": 18,
     "fingerprint": "b50602368423573b5e434e125089bfeb",
     "provider": {
       "slug": "minimax",
@@ -409,14 +409,14 @@
     "daysLeft": null,
     "endingSoon": false,
     "isNew": true,
-    "createdAt": "2026-10-11 08:31:02",
-    "updatedAt": "2026-10-11 08:31:02",
-    "lastVerifiedAt": "2026-10-11 08:31:02",
+    "createdAt": "2026-10-11 09:52:23",
+    "updatedAt": "2026-10-11 09:52:23",
+    "lastVerifiedAt": "2026-10-11 09:52:23",
     "model": null,
     "endpoint": null
   },
   {
-    "id": 11,
+    "id": 15,
     "fingerprint": "de9e5266ebe169d92b10c6a1f299d7d7",
     "provider": {
       "slug": "vercel-ai-gateway",
@@ -462,9 +462,9 @@
     "daysLeft": null,
     "endingSoon": false,
     "isNew": true,
-    "createdAt": "2026-10-11 08:31:02",
-    "updatedAt": "2026-10-11 08:31:02",
-    "lastVerifiedAt": "2026-10-11 08:31:02",
+    "createdAt": "2026-10-11 09:52:23",
+    "updatedAt": "2026-10-11 09:52:23",
+    "lastVerifiedAt": "2026-10-11 09:52:23",
     "model": {
       "slug": "claude-sonnet-5",
       "name": "Claude Sonnet 5",
@@ -493,7 +493,60 @@
     }
   },
   {
-    "id": 17,
+    "id": 11,
+    "fingerprint": "9706383018296726cac5850b2f6d434f",
+    "provider": {
+      "slug": "bytedance-doubao",
+      "name": "字节豆包",
+      "nameEn": "ByteDance Doubao",
+      "country": "CN",
+      "website": "https://www.volcengine.com/product/doubao",
+      "color": "#1664FF",
+      "cnAccessible": true
+    },
+    "title": "web_fetch：限时免费​",
+    "summary": "视觉增强 Agent 调用搜索和视频合成工具产生的费用。​ 按 Agent 实际调用次数计费，按小时出账。​",
+    "category": "free_credit",
+    "categoryLabel": "免费额度",
+    "benefit": {
+      "kind": "credit_cny",
+      "amount": 0.02,
+      "unit": "CNY",
+      "unitLabel": "元",
+      "text": "0.02 元",
+      "display": "¥0.02"
+    },
+    "audience": [
+      "all"
+    ],
+    "audienceLabels": [
+      "所有人"
+    ],
+    "audienceNote": null,
+    "region": "CN",
+    "requiresCard": false,
+    "requiresVerification": null,
+    "startDate": null,
+    "endDate": null,
+    "isRecurring": null,
+    "claimUrl": "https://www.volcengine.com/docs/82379/1099320",
+    "sourceUrl": "https://www.volcengine.com/docs/82379/1099320",
+    "sourceExcerpt": "web_fetch：限时免费​\n​\n视觉增强 Agent 调用搜索和视频合成工具产生的费用。​\n按 Agent 实际调用次数计费，按小时出账。​\ngeneral_search：0.02 元/次​",
+    "confidence": 0.69,
+    "reviewStatus": "auto_ok",
+    "status": "active",
+    "statusLabel": "NEW",
+    "daysLeft": null,
+    "endingSoon": false,
+    "isNew": true,
+    "createdAt": "2026-10-11 09:52:23",
+    "updatedAt": "2026-10-11 09:52:23",
+    "lastVerifiedAt": "2026-10-11 09:52:23",
+    "model": null,
+    "endpoint": null
+  },
+  {
+    "id": 21,
     "fingerprint": "84d78fb8852a482e9fa567c32d223e29",
     "provider": {
       "slug": "deepgram",
@@ -539,14 +592,14 @@
     "daysLeft": null,
     "endingSoon": false,
     "isNew": true,
-    "createdAt": "2026-10-11 08:31:02",
-    "updatedAt": "2026-10-11 08:31:02",
-    "lastVerifiedAt": "2026-10-11 08:31:02",
+    "createdAt": "2026-10-11 09:52:23",
+    "updatedAt": "2026-10-11 09:52:23",
+    "lastVerifiedAt": "2026-10-11 09:52:23",
     "model": null,
     "endpoint": null
   },
   {
-    "id": 16,
+    "id": 20,
     "fingerprint": "7c38800a05076daf7fb454f64069193f",
     "provider": {
       "slug": "tencent-hunyuan",
@@ -592,14 +645,91 @@
     "daysLeft": null,
     "endingSoon": false,
     "isNew": true,
-    "createdAt": "2026-10-11 08:31:02",
-    "updatedAt": "2026-10-11 08:31:02",
-    "lastVerifiedAt": "2026-10-11 08:31:02",
+    "createdAt": "2026-10-11 09:52:23",
+    "updatedAt": "2026-10-11 09:52:23",
+    "lastVerifiedAt": "2026-10-11 09:52:23",
     "model": null,
     "endpoint": null
   },
   {
-    "id": 6,
+    "id": 3,
+    "fingerprint": "b1056efe9ebf34ebe17bf37b4f1be88e",
+    "provider": {
+      "slug": "zhipu",
+      "name": "智谱 AI",
+      "nameEn": "Zhipu AI",
+      "country": "CN",
+      "website": "https://www.z.ai",
+      "color": "#3B5BDB",
+      "cnAccessible": true
+    },
+    "title": "智谱 ZCode 周末活动：所有用户免费领 3 亿 GLM-5.3-Flash Token（2026-09-04-2026-09-07 新一轮",
+    "summary": null,
+    "category": "free_credit",
+    "categoryLabel": "免费额度",
+    "benefit": {
+      "kind": "token",
+      "amount": 300000000,
+      "unit": "token",
+      "unitLabel": "tokens",
+      "text": "3 亿 GLM-5.3-Flash Token",
+      "display": "3 亿 tokens"
+    },
+    "audience": [
+      "all"
+    ],
+    "audienceLabels": [
+      "所有人"
+    ],
+    "audienceNote": null,
+    "region": "CN",
+    "requiresCard": false,
+    "requiresVerification": null,
+    "startDate": "2026-09-04",
+    "endDate": "2026-09-07",
+    "isRecurring": "weekly",
+    "claimUrl": "https://igetoken.com/deals/2026-08-zcode-weekend-300m",
+    "sourceUrl": null,
+    "sourceExcerpt": null,
+    "confidence": 0.95,
+    "reviewStatus": "auto_ok",
+    "status": "ended",
+    "statusLabel": "已结束",
+    "daysLeft": -34,
+    "endingSoon": false,
+    "isNew": true,
+    "createdAt": "2026-10-11 09:52:23",
+    "updatedAt": "2026-10-11 09:52:23",
+    "lastVerifiedAt": "2026-10-11 09:52:23",
+    "model": {
+      "slug": "glm-5-3-flash",
+      "name": "GLM-5.3-Flash",
+      "capability": "code-generation",
+      "capabilityLabel": "代码生成",
+      "capabilities": [
+        "code-generation",
+        "text-generation"
+      ],
+      "contextWindow": 1000000
+    },
+    "endpoint": {
+      "slug": "zhipu--glm-5-3-flash",
+      "quotaKind": "credits",
+      "quotaKindLabel": "赠送额度",
+      "quotaRpm": null,
+      "quotaRpd": null,
+      "quotaText": "官方开放平台新用户赠送额度",
+      "apiBase": "https://open.bigmodel.cn/api/paas/v4",
+      "score": null,
+      "requiresCard": false,
+      "cnAccessible": true,
+      "openaiCompatible": true,
+      "claimUrl": "https://open.bigmodel.cn",
+      "docsUrl": "https://z.ai"
+    }
+  },
+  {
+    "id": 7,
     "fingerprint": "a27230c4dacd3dbd23a5a12f814834d0",
     "provider": {
       "slug": "deepseek",
@@ -645,14 +775,14 @@
     "daysLeft": -8,
     "endingSoon": false,
     "isNew": true,
-    "createdAt": "2026-10-11 08:31:02",
-    "updatedAt": "2026-10-11 08:31:02",
-    "lastVerifiedAt": "2026-10-11 08:31:02",
+    "createdAt": "2026-10-11 09:52:23",
+    "updatedAt": "2026-10-11 09:52:23",
+    "lastVerifiedAt": "2026-10-11 09:52:23",
     "model": null,
     "endpoint": null
   },
   {
-    "id": 5,
+    "id": 6,
     "fingerprint": "1db2eea9e3c5a19f1a3a8da937b09a3d",
     "provider": {
       "slug": "deepseek",
@@ -698,9 +828,9 @@
     "daysLeft": -5,
     "endingSoon": false,
     "isNew": true,
-    "createdAt": "2026-10-11 08:31:02",
-    "updatedAt": "2026-10-11 08:31:02",
-    "lastVerifiedAt": "2026-10-11 08:31:02",
+    "createdAt": "2026-10-11 09:52:23",
+    "updatedAt": "2026-10-11 09:52:23",
+    "lastVerifiedAt": "2026-10-11 09:52:23",
     "model": null,
     "endpoint": null
   }

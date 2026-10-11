@@ -3,7 +3,7 @@
     {
       "value": "free_credit",
       "label": "免费额度",
-      "count": 9
+      "count": 11
     },
     {
       "value": "trial",
@@ -20,7 +20,7 @@
     {
       "value": "all",
       "label": "所有人",
-      "count": 8
+      "count": 10
     },
     {
       "value": "new_user",
@@ -42,19 +42,19 @@
     {
       "value": "active",
       "label": "进行中",
-      "count": 10
+      "count": 11
     },
     {
       "value": "ended",
       "label": "已结束",
-      "count": 2
+      "count": 3
     }
   ],
   "regions": [
     {
       "value": "CN",
       "label": "国内",
-      "count": 10
+      "count": 12
     },
     {
       "value": "GLOBAL",
@@ -71,11 +71,16 @@
     {
       "value": "zhipu",
       "label": "智谱 AI",
-      "count": 2
+      "count": 3
     },
     {
       "value": "vercel-ai-gateway",
       "label": "Vercel AI Gateway",
+      "count": 1
+    },
+    {
+      "value": "bytedance-doubao",
+      "label": "字节豆包",
       "count": 1
     },
     {
@@ -108,12 +113,12 @@
     {
       "value": "text-generation",
       "label": "文本生成",
-      "count": 3
+      "count": 4
     },
     {
       "value": "code-generation",
       "label": "代码生成",
-      "count": 3
+      "count": 4
     }
   ],
   "sorts": [
