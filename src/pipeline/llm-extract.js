@@ -50,8 +50,11 @@ const SYSTEM_PROMPT = `你是一个严谨的信息抽取引擎，专门从网页
 {
   "isActivity": boolean,
   "title": string|null,            // 活动标题，原文措辞，≤80 字
+  "hook": string|null,             // 一句话人话描述：是什么+适合谁+值不值得动手，口语化，≤60 字
+  "howToClaim": string|null,       // 怎么领：入口与动作，含截止提醒（如"官网注册页领取，10-31前"），未知返回 null
+  "caveat": string|null,           // 坑与限制：资格例外/计费方式/稳定性风险（如"App Store 代扣不适用"），没有就返回 null
   "summary": string|null,          // 一句话概括，≤120 字
-  "category": "free_credit"|"trial"|"student"|"discount"|"refreshable"|null,
+  "category": "free_credit"|"trial"|"student"|"discount"|"refreshable"|"glitch"|null,
   "benefitKind": "token"|"credit_cny"|"credit_usd"|"duration"|"unlimited"|null,
   "benefitAmount": number|null,    // 归一化数值，如「1亿 Token」→ 100000000；「6元」→ 6
   "benefitUnit": "token"|"CNY"|"USD"|"day"|"month"|null,
@@ -293,6 +296,10 @@ function postProcess(p, { provider, source, refYear, allowedHosts, cand }) {
   return {
     providerSlug: provider.slug,
     title: cleanText(p.title || cand.title || '').slice(0, 150) || '未命名活动',
+    // 编辑化内容字段：给前端卡片直接用（hook 做主文案、caveat 做警示行）
+    hook: cleanText(p.hook || '').slice(0, 120) || null,
+    howToClaim: cleanText(p.howToClaim || '').slice(0, 120) || null,
+    caveat: cleanText(p.caveat || '').slice(0, 120) || null,
     summary: cleanText(p.summary || '').slice(0, 200) || null,
     category: p.category || 'free_credit',
     benefit: p.benefitKind

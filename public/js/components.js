@@ -80,7 +80,7 @@ export function statusBadge(a) {
 
 const CAT_COLOR = {
   free_credit: '#2563eb', trial: '#7c3aed', student: '#0891b2',
-  discount: '#ea580c', refreshable: '#16a34a',
+  discount: '#ea580c', refreshable: '#16a34a', glitch: '#d97706',
 };
 
 export function categoryBadge(a) {
@@ -122,12 +122,26 @@ export function activityCard(a) {
   else flags.push('无需绑卡');
   if (a.isRecurring) flags.push({ daily: '每日刷新', weekly: '每周刷新', monthly: '每月刷新' }[a.isRecurring]);
 
+  // 主文案优先用编辑化的 hook（人话描述），没有再退回抽取的 summary
+  const mainText = a.hook || a.summary || '';
+  // 核验结论：站点每日用 LLM 复核落地页，结论亮在卡片上（对齐 aipromonow 的
+  // "Verified by us"），分"仍有效/已结束"两种措辞；没有核查记录的不显示。
+  const verifyBadge = a.lastVerifiedAt && a.status === 'active'
+    ? `<span class="badge badge--ok badge--dot" title="我们于 ${esc(fmtDate(a.lastVerifiedAt))} 复核落地页，活动仍有效">已复核有效</span>`
+    : (a.lastVerifiedAt && a.status === 'ended'
+      ? `<span class="badge badge--warn badge--dot" title="我们于 ${esc(fmtDate(a.lastVerifiedAt))} 复核落地页，判定已失效">复核已失效</span>` : '');
+  // 社区反馈：≥2 票才展示，避免单条差评刷屏
+  const fb = a.feedback || { useful: 0, dead: 0 };
+  const fbBadge = (fb.useful + fb.dead) >= 2
+    ? `<span class="badge badge--neutral" title="社区用户反馈：${fb.useful} 人说有效，${fb.dead} 人说失效">社区 ${fb.useful}✓ / ${fb.dead}✗</span>` : '';
+
   return `
 <article class="card" style="--cat-color:${catColor}">
   <div class="card__top">
     <span class="card__provider">${providerDot(a)}${esc(a.provider?.name || '')}</span>
     ${categoryBadge(a)}
     ${a.isNew ? '<span class="badge badge--new">NEW</span>' : ''}
+    ${verifyBadge}
     <span class="card__status">${statusBadge(a)}</span>
   </div>
 
@@ -135,7 +149,9 @@ export function activityCard(a) {
     <a href="#/activity/${a.id}">${esc(a.title)}</a>
   </h3>
 
-  ${a.summary ? `<p class="card__summary">${esc(a.summary)}</p>` : ''}
+  ${mainText ? `<p class="card__summary">${esc(mainText)}</p>` : ''}
+  ${a.howToClaim ? `<p class="card__claim"><span aria-hidden="true">🧭</span> ${esc(a.howToClaim)}</p>` : ''}
+  ${a.caveat ? `<p class="card__caveat"><span aria-hidden="true">⚠️</span> ${esc(a.caveat)}</p>` : ''}
 
   <div class="card__meta">
     <span class="meta-item meta-item--benefit"><span aria-hidden="true">🎁</span> ${esc(benefitDisplay(a))}</span>
@@ -150,7 +166,12 @@ export function activityCard(a) {
   <div class="card__foot">
     <span title="来源"><span aria-hidden="true">📄</span> ${esc(a.provider?.name || '')}</span>
     <span title="最后核验"><span aria-hidden="true">✓</span> ${esc(relTime(a.lastVerifiedAt || a.updatedAt))}</span>
+    ${fbBadge}
     <span class="spacer"></span>
+    ${a.status === 'active' ? `<span class="fb-group">
+      <button class="btn btn--sm fb-btn" data-id="${a.id}" data-verdict="useful" title="我领到了/确实有效">有效</button>
+      <button class="btn btn--sm fb-btn" data-id="${a.id}" data-verdict="dead" title="已失效/领不到">失效</button>
+    </span>` : ''}
     <a class="btn btn--primary btn--sm" href="${esc(safeUrl(a.claimUrl))}" target="_blank" rel="noopener noreferrer">领取 →</a>
   </div>
 </article>`;

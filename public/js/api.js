@@ -497,6 +497,26 @@ export async function getRelays() {
   return { generatedAt: null, meta: { total: 0, online: 0, offline: 0, recommended: 0, sources: [] }, relays: [] };
 }
 
+/**
+ * 社区反馈：对单条活动投"有效/失效"票。
+ * 仅本地完整版（API 模式）可用；静态托管无后端，静默返回 null。
+ */
+export async function addFeedback(id, verdict) {
+  try {
+    const mode = await detectMode();
+    if (mode !== 'api') return null;
+    const res = await fetch('/api/feedback', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ id, verdict }),
+    });
+    if (!res.ok) return null;
+    return await res.json();
+  } catch {
+    return null;
+  }
+}
+
 export async function getFetchRuns(limit = 30) {
   const mode = await detectMode();
   if (mode !== 'api') return null;   // 静态站无抓取日志

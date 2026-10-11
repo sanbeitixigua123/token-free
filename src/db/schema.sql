@@ -202,6 +202,10 @@ CREATE TABLE IF NOT EXISTS activities (
   source_id             INTEGER REFERENCES sources(id),
   source_url            TEXT,
   source_excerpt        TEXT,
+  -- 编辑化内容字段（LLM 抽取/回填生成）：hook=人话描述，how_to_claim=领取方式，caveat=坑与限制
+  hook                  TEXT,
+  how_to_claim          TEXT,
+  caveat                TEXT,
   evidence_id           INTEGER REFERENCES raw_snapshots(id),
   confidence            REAL NOT NULL DEFAULT 0.5,
   -- extracted_by: 该条目由哪条路径产出（rule / search / llm / search+llm）。
@@ -237,6 +241,20 @@ CREATE TABLE IF NOT EXISTS change_history (
   changed_at  TEXT NOT NULL DEFAULT (datetime('now'))
 );
 CREATE INDEX IF NOT EXISTS idx_chg_act ON change_history(activity_id, changed_at DESC);
+
+-- ---------------- 社区反馈（用户对单条活动的"有效/失效"投票） ----------------
+-- 同 IP 每活动一条（重复提交覆盖为最新），≥2 条反馈才在前端展示，
+-- 避免"刷出来的信任"。NAT 入口下所有外网用户可能共享网关源 IP，
+-- 此时去重退化为"每活动只记一票"，属可接受的保守行为。
+CREATE TABLE IF NOT EXISTS activity_feedback (
+  id           INTEGER PRIMARY KEY,
+  activity_id  INTEGER NOT NULL REFERENCES activities(id) ON DELETE CASCADE,
+  verdict      TEXT NOT NULL CHECK (verdict IN ('useful','dead')),
+  ip_hash      TEXT NOT NULL,
+  created_at   TEXT NOT NULL DEFAULT (datetime('now','+8 hours')),
+  UNIQUE (activity_id, ip_hash)
+);
+CREATE INDEX IF NOT EXISTS idx_feedback_activity ON activity_feedback(activity_id);
 
 -- ---------------- 订阅（Web Push） ----------------
 CREATE TABLE IF NOT EXISTS subscriptions (

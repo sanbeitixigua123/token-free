@@ -105,6 +105,12 @@ async function processSource(db, ctx) {
   run(db, `UPDATE sources SET consecutive_failures=0, last_ok_at=datetime('now') WHERE id=?`, [source.id]);
   run(db, `UPDATE providers SET updated_at=datetime('now') WHERE id=?`, [provider.id]);
 
+  // RSS/Atom 源（linux.do、V2EX 订阅等）：不是 HTML，直接喂文本抽取会丢链接。
+  // 把 <item>/<entry> 转成 <h3>+<p>+<a> 内容块，复用既有候选发现与 LLM 抽取管线。
+  if (/<rss[\s>]|<feed[\s>]|<\?xml/i.test(page.html.slice(0, 300))) {
+    page.html = rssToHtml(page.html);
+  }
+
   // 保存原始证据
   const htmlPath = fetcher.saveHtml(source.url, page.html, runId, source.id, 1);
   const text = htmlToText(page.html, source.selector);
@@ -441,4 +447,48 @@ export async function runPipeline({ trigger = 'manual', onlyProvider = null, onP
   };
   log.info(`抓取结束 #${runId}：${status}，源 ${okCount}/${jobs.length}，发现 ${found}，新增 ${stats.new}，更新 ${stats.updated}，待审 ${stats.pending}`);
   return summary;
+}
+
+/**
+ * RSS/Atom → 简化 HTML。把 <item>/<entry> 转成
+ * `<h3>标题</h3><p>描述</p><p><a href="链接">原文链接</a></p>` 内容块，
+ * 让下游的候选发现（锚点/标题切分）与 LLM 抽取把订阅源当成普通页面处理。
+ * 没有解析出任何 item 时原样返回（让它走正常 HTML 路径或得到 0 候选）。
+ */
+function rssToHtml(xml) {
+  const blocks = [...String(xml).matchAll(/<(?:item|entry)[\s\S]*?<\/(?:item|entry)>/gi)];
+  if (!blocks.length) return xml;
+
+  const pickTag = (block, tag) => {
+    const m = block.match(new RegExp(`<${tag}(?:\s[^>]*)?>([\s\S]*?)<\/${tag}>`, 'i'));
+    if (!m) return '';
+    let v = m[1];
+    const cd = v.match(/<!\[CDATA\[([\s\S]*?)\]\]>/);
+    if (cd) v = cd[1];
+    return v.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
+  };
+  const pickAttr = (block, tag, attr) => {
+    const m = block.match(new RegExp(`<${tag}[^>]*\b${attr}=["']([^"']+)["']`, 'i'));
+    return m ? m[1].trim() : '';
+  };
+  const decode = (s) => String(s)
+    .replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&#x27;/g, "'");
+
+  const out = [];
+  for (const { 0: block } of blocks) {
+    const title = decode(pickTag(block, 'title'));
+    if (!title) continue;
+    const desc = decode(pickTag(block, 'description') || pickTag(block, 'summary') || pickTag(block, 'content'));
+    // RSS2 的 <link> 是文本，Atom 的 <link href="..."> 是属性；两式都解
+    let link = pickTag(block, 'link');
+    if (!/^https?:\/\//i.test(link)) link = pickAttr(block, 'link', 'href');
+    if (link && !/^https?:\/\//i.test(link)) link = '';
+    out.push(
+      `<h3>${title}</h3>`
+      + (desc ? `<p>${desc}</p>` : '')
+      + (link ? `<p><a href="${link}">原文链接：${link}</a></p>` : '')
+    );
+  }
+  return out.length ? out.join('\n') : xml;
 }

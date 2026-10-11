@@ -94,6 +94,11 @@ jobs:
         env:
           TOKENFREE_LOG_LEVEL: info
 
+      - name: 回填编辑化内容字段（存量活动生成 hook/怎么领/坑）
+        run: node scripts/backfill-content-fields.mjs
+        env:
+          TOKENFREE_LOG_LEVEL: info
+
       - name: 导出静态数据到 public/
         run: npm run build
 

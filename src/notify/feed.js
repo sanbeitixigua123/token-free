@@ -29,7 +29,7 @@ function esc(s) {
 
 const CATEGORY_LABEL = {
   free_credit: '免费额度', trial: '免费试用', student: '学生优惠',
-  discount: '折扣促销', refreshable: '周期刷新',
+  discount: '折扣促销', refreshable: '周期刷新', glitch: '异常价/Bug价',
 };
 const AUDIENCE_LABEL = {
   all: '所有人', new_user: '新用户', student: '学生', teacher: '教师',
@@ -85,6 +85,12 @@ export function serializeActivity(r) {
       cnAccessible: Number(r.cn_accessible) === 1,
     },
     title: r.title,
+    // 编辑化内容字段（LLM 抽取/回填产出，可能为 null：老数据未回填）
+    hook: r.hook || null,
+    howToClaim: r.how_to_claim || null,
+    caveat: r.caveat || null,
+    // 社区反馈计数（≥2 才在前端展示，见 components.js）
+    feedback: { useful: Number(r.fb_useful) || 0, dead: Number(r.fb_dead) || 0 },
     summary: r.summary,
     category: r.category,
     categoryLabel: CATEGORY_LABEL[r.category] || r.category,
@@ -315,12 +321,15 @@ export function buildDataFiles(db, settings = {}) {
   fs.mkdirSync(DATA_DIR, { recursive: true });
 
   const rows = all(db, `
-    SELECT * FROM v_activities
-    WHERE review_status IN ('auto_ok','approved')
+    SELECT v.*,
+      (SELECT COUNT(*) FROM activity_feedback f WHERE f.activity_id = v.id AND f.verdict = 'useful') AS fb_useful,
+      (SELECT COUNT(*) FROM activity_feedback f WHERE f.activity_id = v.id AND f.verdict = 'dead')   AS fb_dead
+    FROM v_activities v
+    WHERE v.review_status IN ('auto_ok','approved')
     ORDER BY
-      CASE status WHEN 'active' THEN 0 WHEN 'upcoming' THEN 1 ELSE 2 END,
-      COALESCE(end_date, '9999-12-31') ASC,
-      confidence DESC, id DESC
+      CASE v.status WHEN 'active' THEN 0 WHEN 'upcoming' THEN 1 ELSE 2 END,
+      COALESCE(v.end_date, '9999-12-31') ASC,
+      v.confidence DESC, v.id DESC
   `);
   const activities = rows.map(serializeActivity);
 

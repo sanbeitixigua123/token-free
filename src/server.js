@@ -805,6 +805,30 @@ async function handleApi(req, res, url) {
       return sendJson(res, { ok: true, activity: updated });
     }
 
+    // 社区反馈（公开接口）：用户对单条活动投"有效/失效"票。
+    // 同 IP 每活动一票（覆盖式），NAT 入口下可能退化为"每活动只记一票"，可接受。
+    if (req.method === 'POST' && p === '/api/feedback') {
+      const body = await readBody(req);
+      const id = parseInt(body.id, 10);
+      const verdict = body.verdict;
+      if (!Number.isInteger(id) || !['useful', 'dead'].includes(verdict)) {
+        return sendJson(res, { error: '参数无效：需要 id 与 verdict(useful|dead)' }, 400);
+      }
+      const exists = get(db, `SELECT id FROM activities WHERE id=? AND archived_at IS NULL`, [id]);
+      if (!exists) return sendJson(res, { error: '活动不存在或已归档' }, 404);
+      const ipHash = crypto.createHash('sha256')
+        .update(`${req.socket.remoteAddress || ''}|${req.headers['x-forwarded-for'] || ''}`)
+        .digest('hex').slice(0, 32);
+      run(db, `INSERT INTO activity_feedback (activity_id, verdict, ip_hash) VALUES (?,?,?)
+               ON CONFLICT(activity_id, ip_hash) DO UPDATE SET verdict=excluded.verdict, created_at=datetime('now','+8 hours')`,
+        [id, verdict, ipHash]);
+      const counts = get(db, `SELECT
+          COALESCE(SUM(CASE WHEN verdict='useful' THEN 1 ELSE 0 END), 0) AS useful,
+          COALESCE(SUM(CASE WHEN verdict='dead' THEN 1 ELSE 0 END), 0) AS dead
+        FROM activity_feedback WHERE activity_id=?`, [id]);
+      return sendJson(res, { ok: true, useful: counts.useful, dead: counts.dead });
+    }
+
     // 手动触发抓取（异步；写操作：需鉴权）
     if (req.method === 'POST' && p === '/api/crawl') {
       if (requireAdmin(req, res)) return;

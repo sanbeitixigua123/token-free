@@ -852,3 +852,23 @@ providers:
         url: https://klingai.kuaishou.com
       - kind: docs
         url: https://app.klingai.com/cn/dev/document-api
+
+  # —— 社区渠道（2026-10-11 新增）——
+  # 国内 AI 福利活动的首发地往往不是厂商官方页，而是社区。两类源都由 CI 抓取
+  #（境外/国内均可达），抽出的条目 claim 链接不在厂商白名单内会自动降置信度
+  # 进待审，由人工闸门兜底——与 aipromonow 的人工核验等价。
+  - slug: community
+    name_zh: 社区渠道
+    name_en: Community
+    country: CN
+    website: https://linux.do
+    brand_color: "#8b5cf6"
+    cn_accessible: true
+    tier: 2
+    sources:
+      # Discourse 论坛 RSS：免费额度活动首发高频区
+      - kind: announcement
+        url: https://linux.do/latest.rss
+      # V2EX 分享发现节点（服务端渲染 HTML，含活动/优惠帖）
+      - kind: announcement
+        url: https://www.v2ex.com/go/share

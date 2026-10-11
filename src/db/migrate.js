@@ -39,6 +39,8 @@ migrateSourcesForSearch(db);
 migrateActivitiesForExtractedBy(db);
 migrateActivitiesForEndpointModel(db);
 ensureThreeLayerTables(db);
+migrateActivitiesForContentFields(db);
+ensureFeedbackTable(db);
 
 /**
  * 给 activities 表补 extracted_by 列。
@@ -98,6 +100,32 @@ function ensureThreeLayerTables(db) {
   // applySchema 内部全是 IF NOT EXISTS，重复执行是安全的。
   applySchema(db);
   console.log(`[migrate] 已补建三层结构表：${need.join(', ')}`);
+}
+
+/**
+ * 给 activities 表补编辑化内容三列：hook（人话描述）/ how_to_claim（领取方式）/
+ * caveat（坑与限制）。由 LLM 抽取或回填脚本产出，前端卡片直接展示。
+ */
+function migrateActivitiesForContentFields(db) {
+  const cols = all(db, 'PRAGMA table_info(activities)');
+  if (!cols.length) return; // 全新库：schema.sql 已含这些列
+  const has = (n) => cols.some((c) => c.name === n);
+  if (has('hook') && has('how_to_claim') && has('caveat')) return; // 幂等
+  if (!has('hook')) db.exec('ALTER TABLE activities ADD COLUMN hook TEXT;');
+  if (!has('how_to_claim')) db.exec('ALTER TABLE activities ADD COLUMN how_to_claim TEXT;');
+  if (!has('caveat')) db.exec('ALTER TABLE activities ADD COLUMN caveat TEXT;');
+  console.log('[migrate] activities 表已升级：新增 hook / how_to_claim / caveat 列（编辑化内容）');
+}
+
+/**
+ * 确保社区反馈表存在（用户对单条活动投"有效/失效"票）。
+ * 老库（含 CI 的 actions/cache 持久化库）不会因 schema.sql 的 IF NOT EXISTS 自动补建。
+ */
+function ensureFeedbackTable(db) {
+  const has = all(db, `SELECT name FROM sqlite_master WHERE type='table' AND name='activity_feedback'`).length;
+  if (has) return; // 幂等
+  applySchema(db);
+  console.log('[migrate] 已补建社区反馈表 activity_feedback');
 }
 
 /**

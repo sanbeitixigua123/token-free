@@ -20,14 +20,14 @@ INSERT INTO activities (
   benefit_kind, benefit_amount, benefit_unit, benefit_text,
   audience, audience_note, region, requires_card, requires_verification,
   start_date, end_date, is_recurring, claim_url,
-  source_id, source_url, source_excerpt, evidence_id,
+  source_id, source_url, source_excerpt, hook, how_to_claim, caveat, evidence_id,
   confidence, extracted_by, review_status, model_id, endpoint_id, last_verified_at
 ) VALUES (
   ?,?,?,?,?,
   ?,?,?,?,
   ?,?,?,?,?,
   ?,?,?,?,
-  ?,?,?,?,
+  ?,?,?,?,?,?,?,?,
   ?,?,?,?,?,datetime('now')
 )`;
 
@@ -50,6 +50,7 @@ export function persistItems(db, items, { runId = null, providerIdBySlug, source
               audience=?, audience_note=?, region=?, requires_card=?, requires_verification=?,
               start_date=?, end_date=?, is_recurring=?, claim_url=?,
               source_id=?, source_url=?, source_excerpt=?,
+              hook=COALESCE(?, hook), how_to_claim=COALESCE(?, how_to_claim), caveat=COALESCE(?, caveat),
               confidence=?, extracted_by=?,
               model_id=?, endpoint_id=?,
               updated_at=datetime('now'), last_verified_at=datetime('now')
@@ -60,6 +61,8 @@ export function persistItems(db, items, { runId = null, providerIdBySlug, source
               JSON.stringify(it.audience), it.audienceNote, it.region, it.requiresCard, it.requiresVerification,
               it.startDate, it.endDate, it.isRecurring, it.claimUrl,
               sourceIdByUrl.get(it.sourceUrl) ?? existing.source_id, it.sourceUrl, it.sourceExcerpt,
+              // 编辑化内容字段：新抽取为空时保留库中已有值（回填脚本产出的不丢）
+              it.hook ?? null, it.howToClaim ?? null, it.caveat ?? null,
               it.confidence, it.extractedBy ?? existing.extracted_by ?? 'rule',
               // 关联字段：本次没匹配到（null）时保留库中已有值。
               // 理由：模型匹配依赖端点在库中的存在性，若某次端点临时被停用，
@@ -94,6 +97,7 @@ export function persistItems(db, items, { runId = null, providerIdBySlug, source
         JSON.stringify(it.audience), it.audienceNote, it.region, it.requiresCard, it.requiresVerification,
         it.startDate, it.endDate, it.isRecurring, it.claimUrl,
         sourceIdByUrl.get(it.sourceUrl) ?? null, it.sourceUrl, it.sourceExcerpt,
+        it.hook ?? null, it.howToClaim ?? null, it.caveat ?? null,
         evidenceIdBySource.get(it.sourceUrl) ?? null,
         it.confidence, it.extractedBy ?? 'rule', reviewStatus,
         it.modelId ?? null, it.endpointId ?? null,

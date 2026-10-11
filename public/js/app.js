@@ -32,6 +32,26 @@ import {
 const $app = document.getElementById('app');
 let currentState = {};
 
+// ---------------- 社区反馈（事件委托：卡片随路由反复重渲染） ----------------
+// 点击卡片上的"有效/失效"→ 投票 → 就地更新计数徽章（≥2 票才显示，见 components.js）。
+// 静态托管下 api.addFeedback 返回 null，按钮无效但不报错。
+document.addEventListener('click', async (e) => {
+  const btn = e.target.closest('.fb-btn');
+  if (!btn) return;
+  e.preventDefault();
+  const group = btn.closest('.fb-group');
+  if (!group || group.dataset.busy) return;
+  group.dataset.busy = '1';
+  group.querySelectorAll('.fb-btn').forEach((b) => { b.disabled = true; });
+  const res = await api.addFeedback(parseInt(btn.dataset.id, 10), btn.dataset.verdict);
+  if (res && res.ok) {
+    const badge = btn.closest('.card')?.querySelector('.fb-badge');
+    if (badge && res.useful + res.dead >= 2) badge.textContent = `社区 ${res.useful}✓ / ${res.dead}✗`;
+  }
+  group.querySelectorAll('.fb-btn').forEach((b) => { b.disabled = false; });
+  delete group.dataset.busy;
+});
+
 // ---------------- 路由 ----------------
 
 function parseHash() {

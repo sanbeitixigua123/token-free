@@ -884,3 +884,16 @@ code, .mono { font-family: var(--mono); font-size: 0.9em; }
 .relay-bonus { font-size: 13.5px; font-weight: 600; color: #15803d; margin-top: 8px; }
 .relay-models { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; align-items: center; }
 .relay-anno { font-size: 12.5px; padding: 8px 12px; margin-top: 10px; }
+
+/* ===== 编辑化内容字段 + 社区反馈 ===== */
+.card__claim {
+  font-size: 13px; color: var(--text-muted); margin-top: 8px;
+  display: flex; gap: 6px; align-items: baseline;
+}
+.card__caveat {
+  font-size: 12.5px; color: #b45309; background: rgba(217, 119, 6, .08);
+  border-left: 3px solid #d97706; padding: 6px 10px; margin-top: 8px;
+  border-radius: 0 8px 8px 0; line-height: 1.6;
+}
+.fb-group { display: inline-flex; gap: 6px; }
+.fb-btn.is-voted, .fb-btn:active { border-color: var(--accent, #2563eb); color: var(--accent, #2563eb); }
