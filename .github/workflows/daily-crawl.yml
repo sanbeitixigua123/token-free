@@ -93,11 +93,13 @@ jobs:
           fi
         env:
           TOKENFREE_LOG_LEVEL: info
+          TOKENFREE_LLM_API_KEY: ${{ secrets.TOKENFREE_LLM_API_KEY }}
 
       - name: 回填编辑化内容字段（存量活动生成 hook/怎么领/坑）
         run: node scripts/backfill-content-fields.mjs
         env:
           TOKENFREE_LOG_LEVEL: info
+          TOKENFREE_LLM_API_KEY: ${{ secrets.TOKENFREE_LLM_API_KEY }}
 
       - name: 导出静态数据到 public/
         run: npm run build
