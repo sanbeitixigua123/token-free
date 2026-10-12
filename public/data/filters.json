@@ -3,7 +3,7 @@
     {
       "value": "free_credit",
       "label": "免费额度",
-      "count": 12
+      "count": 9
     },
     {
       "value": "trial",
@@ -20,53 +20,53 @@
     {
       "value": "all",
       "label": "所有人",
-      "count": 10
+      "count": 8
     },
     {
       "value": "new_user",
       "label": "新用户",
-      "count": 3
+      "count": 4
     },
     {
       "value": "student",
       "label": "学生",
-      "count": 4
+      "count": 3
     }
   ],
   "statuses": [
     {
       "value": "active",
       "label": "进行中",
-      "count": 12
+      "count": 11
     },
     {
       "value": "ended",
       "label": "已结束",
-      "count": 5
+      "count": 3
     }
   ],
   "regions": [
     {
       "value": "CN",
       "label": "国内",
-      "count": 10
+      "count": 9
     },
     {
       "value": "GLOBAL",
       "label": "海外",
-      "count": 7
+      "count": 5
     }
   ],
   "providers": [
     {
       "value": "deepseek",
       "label": "DeepSeek",
-      "count": 4
+      "count": 3
     },
     {
       "value": "github-student",
       "label": "GitHub 学生开发者包",
-      "count": 4
+      "count": 2
     },
     {
       "value": "zhipu",

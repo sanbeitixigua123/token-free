@@ -10,8 +10,8 @@
     "color": "#4D6BFE",
     "cnAccessible": true,
     "tier": 1,
-    "activityCount": 4,
-    "activeCount": 2
+    "activityCount": 3,
+    "activeCount": 1
   },
   {
     "slug": "github-student",
@@ -24,8 +24,8 @@
     "color": "#181717",
     "cnAccessible": true,
     "tier": 1,
-    "activityCount": 4,
-    "activeCount": 4
+    "activityCount": 2,
+    "activeCount": 2
   },
   {
     "slug": "zhipu",
@@ -39,7 +39,7 @@
     "cnAccessible": true,
     "tier": 1,
     "activityCount": 2,
-    "activeCount": 1
+    "activeCount": 2
   },
   {
     "slug": "cloudflare-workers-ai",
