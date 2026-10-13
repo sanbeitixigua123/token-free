@@ -39,7 +39,7 @@
     "cnAccessible": true,
     "tier": 1,
     "activityCount": 2,
-    "activeCount": 2
+    "activeCount": 1
   },
   {
     "slug": "cloudflare-workers-ai",
@@ -65,6 +65,20 @@
     "announcementUrl": null,
     "color": "#000000",
     "cnAccessible": false,
+    "tier": 1,
+    "activityCount": 1,
+    "activeCount": 1
+  },
+  {
+    "slug": "bytedance-doubao",
+    "name": "字节豆包",
+    "nameEn": "ByteDance Doubao",
+    "country": "CN",
+    "website": "https://www.volcengine.com/product/doubao",
+    "pricingUrl": "https://www.volcengine.com/docs/82379/1099320",
+    "announcementUrl": null,
+    "color": "#1664FF",
+    "cnAccessible": true,
     "tier": 1,
     "activityCount": 1,
     "activeCount": 1
@@ -182,20 +196,6 @@
     "activeCount": 1
   },
   {
-    "slug": "bytedance-doubao",
-    "name": "字节豆包",
-    "nameEn": "ByteDance Doubao",
-    "country": "CN",
-    "website": "https://www.volcengine.com/product/doubao",
-    "pricingUrl": "https://www.volcengine.com/docs/82379/1099320",
-    "announcementUrl": null,
-    "color": "#1664FF",
-    "cnAccessible": true,
-    "tier": 1,
-    "activityCount": 0,
-    "activeCount": 1
-  },
-  {
     "slug": "kuaishou",
     "name": "快手可灵",
     "nameEn": "Kuaishou Kling AI",
@@ -304,8 +304,8 @@
     "color": "#13EF93",
     "cnAccessible": false,
     "tier": 2,
-    "activityCount": 1,
-    "activeCount": 1
+    "activityCount": 2,
+    "activeCount": 2
   },
   {
     "slug": "minimax",

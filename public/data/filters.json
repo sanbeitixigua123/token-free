@@ -3,58 +3,68 @@
     {
       "value": "free_credit",
       "label": "免费额度",
-      "count": 9
+      "count": 11
     },
     {
       "value": "trial",
       "label": "免费试用",
-      "count": 3
+      "count": 2
     },
     {
       "value": "student",
       "label": "学生优惠",
       "count": 2
+    },
+    {
+      "value": "discount",
+      "label": "折扣促销",
+      "count": 1
     }
   ],
   "audiences": [
     {
       "value": "all",
       "label": "所有人",
-      "count": 8
+      "count": 11
     },
     {
       "value": "new_user",
       "label": "新用户",
-      "count": 4
+      "count": 2
     },
     {
       "value": "student",
       "label": "学生",
-      "count": 3
+      "count": 2
+    },
+    {
+      "value": "startup",
+      "label": "初创团队",
+      "count": 1
     }
   ],
   "statuses": [
     {
       "value": "active",
       "label": "进行中",
-      "count": 11
+      "count": 12
     },
     {
       "value": "ended",
       "label": "已结束",
-      "count": 3
+      "count": 4
     }
   ],
   "regions": [
     {
       "value": "CN",
       "label": "国内",
-      "count": 9
+      "count": 10
     },
     {
       "value": "GLOBAL",
       "label": "海外",
-      "count": 5
+      "count": 6
     }
   ],
   "providers": [
@@ -84,6 +94,11 @@
       "count": 1
     },
     {
+      "value": "bytedance-doubao",
+      "label": "字节豆包",
+      "count": 1
+    },
+    {
       "value": "aliyun-bailian",
       "label": "阿里云百炼",
       "count": 1
@@ -91,7 +106,7 @@
     {
       "value": "deepgram",
       "label": "Deepgram",
-      "count": 1
+      "count": 2
     },
     {
       "value": "minimax",
