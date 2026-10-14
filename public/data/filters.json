@@ -3,43 +3,38 @@
     {
       "value": "free_credit",
       "label": "免费额度",
-      "count": 11
+      "count": 10
     },
     {
       "value": "trial",
       "label": "免费试用",
-      "count": 2
+      "count": 3
     },
     {
       "value": "student",
       "label": "学生优惠",
-      "count": 2
-    },
-    {
-      "value": "discount",
-      "label": "折扣促销",
-      "count": 1
+      "count": 4
     }
   ],
   "audiences": [
     {
       "value": "all",
       "label": "所有人",
-      "count": 11
+      "count": 9
     },
     {
       "value": "new_user",
       "label": "新用户",
-      "count": 2
+      "count": 3
     },
     {
       "value": "student",
       "label": "学生",
-      "count": 2
+      "count": 5
     },
     {
-      "value": "startup",
-      "label": "初创团队",
+      "value": "open_source",
+      "label": "开源项目",
       "count": 1
     }
   ],
@@ -52,14 +47,14 @@
     {
       "value": "ended",
       "label": "已结束",
-      "count": 4
+      "count": 5
     }
   ],
   "regions": [
     {
       "value": "CN",
       "label": "国内",
-      "count": 10
+      "count": 11
     },
     {
       "value": "GLOBAL",
@@ -69,14 +64,14 @@
   ],
   "providers": [
     {
+      "value": "github-student",
+      "label": "GitHub 学生开发者包",
+      "count": 4
+    },
+    {
       "value": "deepseek",
       "label": "DeepSeek",
       "count": 3
-    },
-    {
-      "value": "github-student",
-      "label": "GitHub 学生开发者包",
-      "count": 2
     },
     {
       "value": "zhipu",
@@ -89,24 +84,19 @@
       "count": 1
     },
     {
-      "value": "vercel-ai-gateway",
-      "label": "Vercel AI Gateway",
-      "count": 1
-    },
-    {
-      "value": "bytedance-doubao",
-      "label": "字节豆包",
-      "count": 1
-    },
-    {
       "value": "aliyun-bailian",
       "label": "阿里云百炼",
       "count": 1
     },
     {
+      "value": "community",
+      "label": "社区渠道",
+      "count": 2
+    },
+    {
       "value": "deepgram",
       "label": "Deepgram",
-      "count": 2
+      "count": 1
     },
     {
       "value": "minimax",
@@ -128,12 +118,12 @@
     {
       "value": "text-generation",
       "label": "文本生成",
-      "count": 3
+      "count": 2
     },
     {
       "value": "code-generation",
       "label": "代码生成",
-      "count": 3
+      "count": 2
     }
   ],
   "sorts": [
