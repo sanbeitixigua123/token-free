@@ -3,7 +3,7 @@
     {
       "value": "free_credit",
       "label": "免费额度",
-      "count": 10
+      "count": 11
     },
     {
       "value": "trial",
@@ -13,53 +13,48 @@
     {
       "value": "student",
       "label": "学生优惠",
-      "count": 4
+      "count": 3
     }
   ],
   "audiences": [
     {
       "value": "all",
       "label": "所有人",
-      "count": 9
+      "count": 11
     },
     {
       "value": "new_user",
       "label": "新用户",
-      "count": 3
+      "count": 2
     },
     {
       "value": "student",
       "label": "学生",
-      "count": 5
-    },
-    {
-      "value": "open_source",
-      "label": "开源项目",
-      "count": 1
+      "count": 4
     }
   ],
   "statuses": [
     {
       "value": "active",
       "label": "进行中",
-      "count": 12
+      "count": 14
     },
     {
       "value": "ended",
       "label": "已结束",
-      "count": 5
+      "count": 3
     }
   ],
   "regions": [
     {
       "value": "CN",
       "label": "国内",
-      "count": 11
+      "count": 10
     },
     {
       "value": "GLOBAL",
       "label": "海外",
-      "count": 6
+      "count": 7
     }
   ],
   "providers": [
@@ -74,13 +69,18 @@
       "count": 3
     },
     {
-      "value": "zhipu",
-      "label": "智谱 AI",
-      "count": 2
-    },
-    {
       "value": "cloudflare-workers-ai",
       "label": "Cloudflare Workers AI",
+      "count": 1
+    },
+    {
+      "value": "vercel-ai-gateway",
+      "label": "Vercel AI Gateway",
+      "count": 1
+    },
+    {
+      "value": "zhipu",
+      "label": "智谱 AI",
       "count": 1
     },
     {

@@ -28,20 +28,6 @@
     "activeCount": 1
   },
   {
-    "slug": "zhipu",
-    "name": "智谱 AI",
-    "nameEn": "Zhipu AI",
-    "country": "CN",
-    "website": "https://www.z.ai",
-    "pricingUrl": "https://open.bigmodel.cn/pricing",
-    "announcementUrl": "https://www.z.ai/blog",
-    "color": "#3B5BDB",
-    "cnAccessible": true,
-    "tier": 1,
-    "activityCount": 2,
-    "activeCount": 1
-  },
-  {
     "slug": "cloudflare-workers-ai",
     "name": "Cloudflare Workers AI",
     "nameEn": "Cloudflare Workers AI",
@@ -54,6 +40,34 @@
     "tier": 1,
     "activityCount": 1,
     "activeCount": 1
+  },
+  {
+    "slug": "vercel-ai-gateway",
+    "name": "Vercel AI Gateway",
+    "nameEn": "Vercel AI Gateway",
+    "country": "US",
+    "website": "https://vercel.com/ai",
+    "pricingUrl": "https://vercel.com/docs/ai-gateway/pricing",
+    "announcementUrl": null,
+    "color": "#000000",
+    "cnAccessible": false,
+    "tier": 1,
+    "activityCount": 1,
+    "activeCount": 1
+  },
+  {
+    "slug": "zhipu",
+    "name": "智谱 AI",
+    "nameEn": "Zhipu AI",
+    "country": "CN",
+    "website": "https://www.z.ai",
+    "pricingUrl": "https://open.bigmodel.cn/pricing",
+    "announcementUrl": "https://www.z.ai/blog",
+    "color": "#3B5BDB",
+    "cnAccessible": true,
+    "tier": 1,
+    "activityCount": 1,
+    "activeCount": 0
   },
   {
     "slug": "aliyun-bailian",
@@ -134,20 +148,6 @@
     "pricingUrl": "https://platform.openai.com/docs/pricing",
     "announcementUrl": null,
     "color": "#10A37F",
-    "cnAccessible": false,
-    "tier": 1,
-    "activityCount": 0,
-    "activeCount": 1
-  },
-  {
-    "slug": "vercel-ai-gateway",
-    "name": "Vercel AI Gateway",
-    "nameEn": "Vercel AI Gateway",
-    "country": "US",
-    "website": "https://vercel.com/ai",
-    "pricingUrl": "https://vercel.com/docs/ai-gateway/pricing",
-    "announcementUrl": null,
-    "color": "#000000",
     "cnAccessible": false,
     "tier": 1,
     "activityCount": 0,
