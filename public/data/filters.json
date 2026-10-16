@@ -3,7 +3,7 @@
     {
       "value": "free_credit",
       "label": "免费额度",
-      "count": 11
+      "count": 9
     },
     {
       "value": "trial",
@@ -13,48 +13,53 @@
     {
       "value": "student",
       "label": "学生优惠",
-      "count": 3
+      "count": 4
+    },
+    {
+      "value": "discount",
+      "label": "折扣促销",
+      "count": 1
     }
   ],
   "audiences": [
     {
       "value": "all",
       "label": "所有人",
-      "count": 11
+      "count": 10
     },
     {
       "value": "new_user",
       "label": "新用户",
-      "count": 2
+      "count": 3
     },
     {
       "value": "student",
       "label": "学生",
-      "count": 4
+      "count": 5
     }
   ],
   "statuses": [
     {
       "value": "active",
       "label": "进行中",
-      "count": 14
+      "count": 13
     },
     {
       "value": "ended",
       "label": "已结束",
-      "count": 3
+      "count": 4
     }
   ],
   "regions": [
     {
       "value": "CN",
       "label": "国内",
-      "count": 10
+      "count": 9
     },
     {
       "value": "GLOBAL",
       "label": "海外",
-      "count": 7
+      "count": 8
     }
   ],
   "providers": [
@@ -69,6 +74,11 @@
       "count": 3
     },
     {
+      "value": "zhipu",
+      "label": "智谱 AI",
+      "count": 2
+    },
+    {
       "value": "cloudflare-workers-ai",
       "label": "Cloudflare Workers AI",
       "count": 1
@@ -79,24 +89,14 @@
       "count": 1
     },
     {
-      "value": "zhipu",
-      "label": "智谱 AI",
-      "count": 1
-    },
-    {
       "value": "aliyun-bailian",
       "label": "阿里云百炼",
       "count": 1
     },
     {
-      "value": "community",
-      "label": "社区渠道",
-      "count": 2
-    },
-    {
       "value": "deepgram",
       "label": "Deepgram",
-      "count": 1
+      "count": 2
     },
     {
       "value": "minimax",
@@ -118,12 +118,12 @@
     {
       "value": "text-generation",
       "label": "文本生成",
-      "count": 2
+      "count": 3
     },
     {
       "value": "code-generation",
       "label": "代码生成",
-      "count": 2
+      "count": 3
     }
   ],
   "sorts": [
