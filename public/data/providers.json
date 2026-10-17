@@ -1,5 +1,19 @@
 [
   {
+    "slug": "deepseek",
+    "name": "DeepSeek",
+    "nameEn": "DeepSeek",
+    "country": "CN",
+    "website": "https://www.deepseek.com",
+    "pricingUrl": "https://api-docs.deepseek.com/quick_start/pricing",
+    "announcementUrl": "https://api-docs.deepseek.com/news",
+    "color": "#4D6BFE",
+    "cnAccessible": true,
+    "tier": 1,
+    "activityCount": 4,
+    "activeCount": 2
+  },
+  {
     "slug": "github-student",
     "name": "GitHub 学生开发者包",
     "nameEn": "GitHub Student Developer Pack",
@@ -14,20 +28,6 @@
     "activeCount": 4
   },
   {
-    "slug": "deepseek",
-    "name": "DeepSeek",
-    "nameEn": "DeepSeek",
-    "country": "CN",
-    "website": "https://www.deepseek.com",
-    "pricingUrl": "https://api-docs.deepseek.com/quick_start/pricing",
-    "announcementUrl": "https://api-docs.deepseek.com/news",
-    "color": "#4D6BFE",
-    "cnAccessible": true,
-    "tier": 1,
-    "activityCount": 3,
-    "activeCount": 1
-  },
-  {
     "slug": "zhipu",
     "name": "智谱 AI",
     "nameEn": "Zhipu AI",
@@ -38,8 +38,8 @@
     "color": "#3B5BDB",
     "cnAccessible": true,
     "tier": 1,
-    "activityCount": 2,
-    "activeCount": 1
+    "activityCount": 3,
+    "activeCount": 2
   },
   {
     "slug": "cloudflare-workers-ai",
@@ -304,8 +304,8 @@
     "color": "#13EF93",
     "cnAccessible": false,
     "tier": 2,
-    "activityCount": 2,
-    "activeCount": 2
+    "activityCount": 1,
+    "activeCount": 1
   },
   {
     "slug": "minimax",
