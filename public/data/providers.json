@@ -11,7 +11,7 @@
     "cnAccessible": true,
     "tier": 1,
     "activityCount": 4,
-    "activeCount": 2
+    "activeCount": 1
   },
   {
     "slug": "github-student",
@@ -24,8 +24,8 @@
     "color": "#181717",
     "cnAccessible": true,
     "tier": 1,
-    "activityCount": 4,
-    "activeCount": 4
+    "activityCount": 3,
+    "activeCount": 3
   },
   {
     "slug": "zhipu",
@@ -38,8 +38,8 @@
     "color": "#3B5BDB",
     "cnAccessible": true,
     "tier": 1,
-    "activityCount": 3,
-    "activeCount": 2
+    "activityCount": 2,
+    "activeCount": 1
   },
   {
     "slug": "cloudflare-workers-ai",
@@ -65,6 +65,20 @@
     "announcementUrl": null,
     "color": "#000000",
     "cnAccessible": false,
+    "tier": 1,
+    "activityCount": 1,
+    "activeCount": 1
+  },
+  {
+    "slug": "zhipu-zcode",
+    "name": "智谱 ZCode",
+    "nameEn": "Zhipu ZCode",
+    "country": "CN",
+    "website": "https://www.zhipuai.cn",
+    "pricingUrl": "https://www.zhipuai.cn/blog",
+    "announcementUrl": "https://docs.bigmodel.cn/cn/update/new-releases",
+    "color": "#3B5BDB",
+    "cnAccessible": true,
     "tier": 1,
     "activityCount": 1,
     "activeCount": 1
@@ -204,20 +218,6 @@
     "pricingUrl": null,
     "announcementUrl": null,
     "color": "#ff5000",
-    "cnAccessible": true,
-    "tier": 1,
-    "activityCount": 0,
-    "activeCount": 1
-  },
-  {
-    "slug": "zhipu-zcode",
-    "name": "智谱 ZCode",
-    "nameEn": "Zhipu ZCode",
-    "country": "CN",
-    "website": "https://www.zhipuai.cn",
-    "pricingUrl": "https://www.zhipuai.cn/blog",
-    "announcementUrl": "https://docs.bigmodel.cn/cn/update/new-releases",
-    "color": "#3B5BDB",
     "cnAccessible": true,
     "tier": 1,
     "activityCount": 0,
