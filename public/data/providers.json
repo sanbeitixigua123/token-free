@@ -1,19 +1,5 @@
 [
   {
-    "slug": "deepseek",
-    "name": "DeepSeek",
-    "nameEn": "DeepSeek",
-    "country": "CN",
-    "website": "https://www.deepseek.com",
-    "pricingUrl": "https://api-docs.deepseek.com/quick_start/pricing",
-    "announcementUrl": "https://api-docs.deepseek.com/news",
-    "color": "#4D6BFE",
-    "cnAccessible": true,
-    "tier": 1,
-    "activityCount": 4,
-    "activeCount": 1
-  },
-  {
     "slug": "github-student",
     "name": "GitHub 学生开发者包",
     "nameEn": "GitHub Student Developer Pack",
@@ -24,8 +10,22 @@
     "color": "#181717",
     "cnAccessible": true,
     "tier": 1,
+    "activityCount": 4,
+    "activeCount": 4
+  },
+  {
+    "slug": "deepseek",
+    "name": "DeepSeek",
+    "nameEn": "DeepSeek",
+    "country": "CN",
+    "website": "https://www.deepseek.com",
+    "pricingUrl": "https://api-docs.deepseek.com/quick_start/pricing",
+    "announcementUrl": "https://api-docs.deepseek.com/news",
+    "color": "#4D6BFE",
+    "cnAccessible": true,
+    "tier": 1,
     "activityCount": 3,
-    "activeCount": 3
+    "activeCount": 1
   },
   {
     "slug": "zhipu",
@@ -65,20 +65,6 @@
     "announcementUrl": null,
     "color": "#000000",
     "cnAccessible": false,
-    "tier": 1,
-    "activityCount": 1,
-    "activeCount": 1
-  },
-  {
-    "slug": "zhipu-zcode",
-    "name": "智谱 ZCode",
-    "nameEn": "Zhipu ZCode",
-    "country": "CN",
-    "website": "https://www.zhipuai.cn",
-    "pricingUrl": "https://www.zhipuai.cn/blog",
-    "announcementUrl": "https://docs.bigmodel.cn/cn/update/new-releases",
-    "color": "#3B5BDB",
-    "cnAccessible": true,
     "tier": 1,
     "activityCount": 1,
     "activeCount": 1
@@ -218,6 +204,20 @@
     "pricingUrl": null,
     "announcementUrl": null,
     "color": "#ff5000",
+    "cnAccessible": true,
+    "tier": 1,
+    "activityCount": 0,
+    "activeCount": 1
+  },
+  {
+    "slug": "zhipu-zcode",
+    "name": "智谱 ZCode",
+    "nameEn": "Zhipu ZCode",
+    "country": "CN",
+    "website": "https://www.zhipuai.cn",
+    "pricingUrl": "https://www.zhipuai.cn/blog",
+    "announcementUrl": "https://docs.bigmodel.cn/cn/update/new-releases",
+    "color": "#3B5BDB",
     "cnAccessible": true,
     "tier": 1,
     "activityCount": 0,

@@ -3,41 +3,46 @@
     {
       "value": "free_credit",
       "label": "免费额度",
-      "count": 12
+      "count": 8
     },
     {
       "value": "trial",
       "label": "免费试用",
-      "count": 3
+      "count": 4
     },
     {
       "value": "student",
       "label": "学生优惠",
-      "count": 2
+      "count": 4
     }
   ],
   "audiences": [
     {
       "value": "all",
       "label": "所有人",
-      "count": 10
+      "count": 8
     },
     {
       "value": "new_user",
       "label": "新用户",
-      "count": 4
+      "count": 3
     },
     {
       "value": "student",
       "label": "学生",
-      "count": 3
+      "count": 5
+    },
+    {
+      "value": "open_source",
+      "label": "开源项目",
+      "count": 1
     }
   ],
   "statuses": [
     {
       "value": "active",
       "label": "进行中",
-      "count": 13
+      "count": 12
     },
     {
       "value": "ended",
@@ -49,23 +54,23 @@
     {
       "value": "CN",
       "label": "国内",
-      "count": 11
+      "count": 9
     },
     {
       "value": "GLOBAL",
       "label": "海外",
-      "count": 6
+      "count": 7
     }
   ],
   "providers": [
     {
-      "value": "deepseek",
-      "label": "DeepSeek",
+      "value": "github-student",
+      "label": "GitHub 学生开发者包",
       "count": 4
     },
     {
-      "value": "github-student",
-      "label": "GitHub 学生开发者包",
+      "value": "deepseek",
+      "label": "DeepSeek",
       "count": 3
     },
     {
@@ -81,11 +86,6 @@
     {
       "value": "vercel-ai-gateway",
       "label": "Vercel AI Gateway",
-      "count": 1
-    },
-    {
-      "value": "zhipu-zcode",
-      "label": "智谱 ZCode",
       "count": 1
     },
     {
@@ -118,12 +118,12 @@
     {
       "value": "text-generation",
       "label": "文本生成",
-      "count": 2
+      "count": 3
     },
     {
       "value": "code-generation",
       "label": "代码生成",
-      "count": 2
+      "count": 3
     }
   ],
   "sorts": [
