@@ -1,5 +1,19 @@
 [
   {
+    "slug": "deepseek",
+    "name": "DeepSeek",
+    "nameEn": "DeepSeek",
+    "country": "CN",
+    "website": "https://www.deepseek.com",
+    "pricingUrl": "https://api-docs.deepseek.com/quick_start/pricing",
+    "announcementUrl": "https://api-docs.deepseek.com/news",
+    "color": "#4D6BFE",
+    "cnAccessible": true,
+    "tier": 1,
+    "activityCount": 4,
+    "activeCount": 2
+  },
+  {
     "slug": "github-student",
     "name": "GitHub 学生开发者包",
     "nameEn": "GitHub Student Developer Pack",
@@ -14,20 +28,6 @@
     "activeCount": 4
   },
   {
-    "slug": "deepseek",
-    "name": "DeepSeek",
-    "nameEn": "DeepSeek",
-    "country": "CN",
-    "website": "https://www.deepseek.com",
-    "pricingUrl": "https://api-docs.deepseek.com/quick_start/pricing",
-    "announcementUrl": "https://api-docs.deepseek.com/news",
-    "color": "#4D6BFE",
-    "cnAccessible": true,
-    "tier": 1,
-    "activityCount": 3,
-    "activeCount": 1
-  },
-  {
     "slug": "zhipu",
     "name": "智谱 AI",
     "nameEn": "Zhipu AI",
@@ -38,8 +38,22 @@
     "color": "#3B5BDB",
     "cnAccessible": true,
     "tier": 1,
-    "activityCount": 2,
+    "activityCount": 3,
     "activeCount": 1
+  },
+  {
+    "slug": "volcengine-ark",
+    "name": "火山引擎方舟",
+    "nameEn": "Volcengine Ark",
+    "country": "CN",
+    "website": "https://www.volcengine.com",
+    "pricingUrl": "https://www.volcengine.com/docs/82379/1099320",
+    "announcementUrl": "https://www.volcengine.com/docs/82379/1099320",
+    "color": "#1664FF",
+    "cnAccessible": true,
+    "tier": 1,
+    "activityCount": 2,
+    "activeCount": 2
   },
   {
     "slug": "cloudflare-workers-ai",
@@ -65,6 +79,20 @@
     "announcementUrl": null,
     "color": "#000000",
     "cnAccessible": false,
+    "tier": 1,
+    "activityCount": 1,
+    "activeCount": 1
+  },
+  {
+    "slug": "zhipu-zcode",
+    "name": "智谱 ZCode",
+    "nameEn": "Zhipu ZCode",
+    "country": "CN",
+    "website": "https://www.zhipuai.cn",
+    "pricingUrl": "https://www.zhipuai.cn/blog",
+    "announcementUrl": "https://docs.bigmodel.cn/cn/update/new-releases",
+    "color": "#3B5BDB",
+    "cnAccessible": true,
     "tier": 1,
     "activityCount": 1,
     "activeCount": 1
@@ -210,20 +238,6 @@
     "activeCount": 1
   },
   {
-    "slug": "zhipu-zcode",
-    "name": "智谱 ZCode",
-    "nameEn": "Zhipu ZCode",
-    "country": "CN",
-    "website": "https://www.zhipuai.cn",
-    "pricingUrl": "https://www.zhipuai.cn/blog",
-    "announcementUrl": "https://docs.bigmodel.cn/cn/update/new-releases",
-    "color": "#3B5BDB",
-    "cnAccessible": true,
-    "tier": 1,
-    "activityCount": 0,
-    "activeCount": 1
-  },
-  {
     "slug": "moonshot",
     "name": "月之暗面 Kimi",
     "nameEn": "Moonshot AI",
@@ -232,20 +246,6 @@
     "pricingUrl": "https://platform.moonshot.cn/docs/pricing/chat",
     "announcementUrl": null,
     "color": "#0B0B0F",
-    "cnAccessible": true,
-    "tier": 1,
-    "activityCount": 0,
-    "activeCount": 1
-  },
-  {
-    "slug": "volcengine-ark",
-    "name": "火山引擎方舟",
-    "nameEn": "Volcengine Ark",
-    "country": "CN",
-    "website": "https://www.volcengine.com",
-    "pricingUrl": "https://www.volcengine.com/docs/82379/1099320",
-    "announcementUrl": "https://www.volcengine.com/docs/82379/1099320",
-    "color": "#1664FF",
     "cnAccessible": true,
     "tier": 1,
     "activityCount": 0,
@@ -304,8 +304,8 @@
     "color": "#13EF93",
     "cnAccessible": false,
     "tier": 2,
-    "activityCount": 1,
-    "activeCount": 1
+    "activityCount": 2,
+    "activeCount": 2
   },
   {
     "slug": "minimax",
