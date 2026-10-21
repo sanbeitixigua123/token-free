@@ -3,21 +3,21 @@
     {
       "value": "free_credit",
       "label": "免费额度",
-      "count": 13
+      "count": 10
     },
     {
       "value": "trial",
       "label": "免费试用",
-      "count": 4
+      "count": 2
     },
     {
       "value": "student",
       "label": "学生优惠",
-      "count": 4
+      "count": 2
     },
     {
-      "value": "discount",
-      "label": "折扣促销",
+      "value": "refreshable",
+      "label": "周期刷新",
       "count": 1
     }
   ],
@@ -25,21 +25,21 @@
     {
       "value": "all",
       "label": "所有人",
-      "count": 12
+      "count": 10
     },
     {
       "value": "new_user",
       "label": "新用户",
-      "count": 5
+      "count": 4
     },
     {
       "value": "student",
       "label": "学生",
-      "count": 5
+      "count": 2
     },
     {
-      "value": "open_source",
-      "label": "开源项目",
+      "value": "verified",
+      "label": "需实名/绑卡",
       "count": 1
     }
   ],
@@ -47,7 +47,7 @@
     {
       "value": "active",
       "label": "进行中",
-      "count": 17
+      "count": 10
     },
     {
       "value": "ended",
@@ -59,33 +59,23 @@
     {
       "value": "CN",
       "label": "国内",
-      "count": 14
+      "count": 11
     },
     {
       "value": "GLOBAL",
       "label": "海外",
-      "count": 8
+      "count": 4
     }
   ],
   "providers": [
     {
       "value": "deepseek",
       "label": "DeepSeek",
-      "count": 4
-    },
-    {
-      "value": "github-student",
-      "label": "GitHub 学生开发者包",
-      "count": 4
+      "count": 3
     },
     {
       "value": "zhipu",
       "label": "智谱 AI",
-      "count": 3
-    },
-    {
-      "value": "volcengine-ark",
-      "label": "火山引擎方舟",
       "count": 2
     },
     {
@@ -94,13 +84,13 @@
       "count": 1
     },
     {
-      "value": "vercel-ai-gateway",
-      "label": "Vercel AI Gateway",
+      "value": "github-student",
+      "label": "GitHub 学生开发者包",
       "count": 1
     },
     {
-      "value": "zhipu-zcode",
-      "label": "智谱 ZCode",
+      "value": "vercel-ai-gateway",
+      "label": "Vercel AI Gateway",
       "count": 1
     },
     {
@@ -109,9 +99,14 @@
       "count": 1
     },
     {
+      "value": "baidu-ernie",
+      "label": "百度文心",
+      "count": 2
+    },
+    {
       "value": "deepgram",
       "label": "Deepgram",
-      "count": 2
+      "count": 1
     },
     {
       "value": "minimax",
@@ -119,8 +114,8 @@
       "count": 1
     },
     {
-      "value": "baidu-ernie",
-      "label": "百度文心",
+      "value": "community",
+      "label": "社区渠道",
       "count": 1
     },
     {
@@ -133,12 +128,12 @@
     {
       "value": "text-generation",
       "label": "文本生成",
-      "count": 4
+      "count": 3
     },
     {
       "value": "code-generation",
       "label": "代码生成",
-      "count": 4
+      "count": 3
     }
   ],
   "sorts": [

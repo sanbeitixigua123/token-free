@@ -10,22 +10,8 @@
     "color": "#4D6BFE",
     "cnAccessible": true,
     "tier": 1,
-    "activityCount": 4,
-    "activeCount": 2
-  },
-  {
-    "slug": "github-student",
-    "name": "GitHub 学生开发者包",
-    "nameEn": "GitHub Student Developer Pack",
-    "country": "US",
-    "website": "https://education.github.com/pack",
-    "pricingUrl": "https://education.github.com/pack",
-    "announcementUrl": "https://education.github.com/pack",
-    "color": "#181717",
-    "cnAccessible": true,
-    "tier": 1,
-    "activityCount": 4,
-    "activeCount": 4
+    "activityCount": 3,
+    "activeCount": 1
   },
   {
     "slug": "zhipu",
@@ -38,22 +24,8 @@
     "color": "#3B5BDB",
     "cnAccessible": true,
     "tier": 1,
-    "activityCount": 3,
-    "activeCount": 1
-  },
-  {
-    "slug": "volcengine-ark",
-    "name": "火山引擎方舟",
-    "nameEn": "Volcengine Ark",
-    "country": "CN",
-    "website": "https://www.volcengine.com",
-    "pricingUrl": "https://www.volcengine.com/docs/82379/1099320",
-    "announcementUrl": "https://www.volcengine.com/docs/82379/1099320",
-    "color": "#1664FF",
-    "cnAccessible": true,
-    "tier": 1,
     "activityCount": 2,
-    "activeCount": 2
+    "activeCount": 1
   },
   {
     "slug": "cloudflare-workers-ai",
@@ -70,6 +42,20 @@
     "activeCount": 1
   },
   {
+    "slug": "github-student",
+    "name": "GitHub 学生开发者包",
+    "nameEn": "GitHub Student Developer Pack",
+    "country": "US",
+    "website": "https://education.github.com/pack",
+    "pricingUrl": "https://education.github.com/pack",
+    "announcementUrl": "https://education.github.com/pack",
+    "color": "#181717",
+    "cnAccessible": true,
+    "tier": 1,
+    "activityCount": 1,
+    "activeCount": 1
+  },
+  {
     "slug": "vercel-ai-gateway",
     "name": "Vercel AI Gateway",
     "nameEn": "Vercel AI Gateway",
@@ -79,20 +65,6 @@
     "announcementUrl": null,
     "color": "#000000",
     "cnAccessible": false,
-    "tier": 1,
-    "activityCount": 1,
-    "activeCount": 1
-  },
-  {
-    "slug": "zhipu-zcode",
-    "name": "智谱 ZCode",
-    "nameEn": "Zhipu ZCode",
-    "country": "CN",
-    "website": "https://www.zhipuai.cn",
-    "pricingUrl": "https://www.zhipuai.cn/blog",
-    "announcementUrl": "https://docs.bigmodel.cn/cn/update/new-releases",
-    "color": "#3B5BDB",
-    "cnAccessible": true,
     "tier": 1,
     "activityCount": 1,
     "activeCount": 1
@@ -238,6 +210,20 @@
     "activeCount": 1
   },
   {
+    "slug": "zhipu-zcode",
+    "name": "智谱 ZCode",
+    "nameEn": "Zhipu ZCode",
+    "country": "CN",
+    "website": "https://www.zhipuai.cn",
+    "pricingUrl": "https://www.zhipuai.cn/blog",
+    "announcementUrl": "https://docs.bigmodel.cn/cn/update/new-releases",
+    "color": "#3B5BDB",
+    "cnAccessible": true,
+    "tier": 1,
+    "activityCount": 0,
+    "activeCount": 1
+  },
+  {
     "slug": "moonshot",
     "name": "月之暗面 Kimi",
     "nameEn": "Moonshot AI",
@@ -246,6 +232,20 @@
     "pricingUrl": "https://platform.moonshot.cn/docs/pricing/chat",
     "announcementUrl": null,
     "color": "#0B0B0F",
+    "cnAccessible": true,
+    "tier": 1,
+    "activityCount": 0,
+    "activeCount": 1
+  },
+  {
+    "slug": "volcengine-ark",
+    "name": "火山引擎方舟",
+    "nameEn": "Volcengine Ark",
+    "country": "CN",
+    "website": "https://www.volcengine.com",
+    "pricingUrl": "https://www.volcengine.com/docs/82379/1099320",
+    "announcementUrl": "https://www.volcengine.com/docs/82379/1099320",
+    "color": "#1664FF",
     "cnAccessible": true,
     "tier": 1,
     "activityCount": 0,
@@ -294,6 +294,20 @@
     "activeCount": 1
   },
   {
+    "slug": "baidu-ernie",
+    "name": "百度文心",
+    "nameEn": "Baidu ERNIE",
+    "country": "CN",
+    "website": "https://yiyan.baidu.com",
+    "pricingUrl": "https://cloud.baidu.com/doc/WENXINWORKSHOP/index.html",
+    "announcementUrl": null,
+    "color": "#2932E1",
+    "cnAccessible": true,
+    "tier": 2,
+    "activityCount": 2,
+    "activeCount": 2
+  },
+  {
     "slug": "deepgram",
     "name": "Deepgram",
     "nameEn": "Deepgram",
@@ -304,8 +318,8 @@
     "color": "#13EF93",
     "cnAccessible": false,
     "tier": 2,
-    "activityCount": 2,
-    "activeCount": 2
+    "activityCount": 1,
+    "activeCount": 1
   },
   {
     "slug": "minimax",
@@ -322,14 +336,14 @@
     "activeCount": 1
   },
   {
-    "slug": "baidu-ernie",
-    "name": "百度文心",
-    "nameEn": "Baidu ERNIE",
+    "slug": "community",
+    "name": "社区渠道",
+    "nameEn": "Community",
     "country": "CN",
-    "website": "https://yiyan.baidu.com",
-    "pricingUrl": "https://cloud.baidu.com/doc/WENXINWORKSHOP/index.html",
+    "website": "https://linux.do",
+    "pricingUrl": null,
     "announcementUrl": null,
-    "color": "#2932E1",
+    "color": "#8b5cf6",
     "cnAccessible": true,
     "tier": 2,
     "activityCount": 1,
@@ -540,20 +554,6 @@
     "pricingUrl": "https://comate.baidu.com/",
     "announcementUrl": "https://comate.baidu.com/",
     "color": "#2932E1",
-    "cnAccessible": true,
-    "tier": 2,
-    "activityCount": 0,
-    "activeCount": 1
-  },
-  {
-    "slug": "community",
-    "name": "社区渠道",
-    "nameEn": "Community",
-    "country": "CN",
-    "website": "https://linux.do",
-    "pricingUrl": null,
-    "announcementUrl": null,
-    "color": "#8b5cf6",
     "cnAccessible": true,
     "tier": 2,
     "activityCount": 0,
