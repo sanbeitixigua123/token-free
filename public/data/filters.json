@@ -8,7 +8,7 @@
     {
       "value": "trial",
       "label": "免费试用",
-      "count": 2
+      "count": 3
     },
     {
       "value": "student",
@@ -38,6 +38,11 @@
       "count": 2
     },
     {
+      "value": "open_source",
+      "label": "开源项目",
+      "count": 1
+    },
+    {
       "value": "verified",
       "label": "需实名/绑卡",
       "count": 1
@@ -47,12 +52,12 @@
     {
       "value": "active",
       "label": "进行中",
-      "count": 10
+      "count": 12
     },
     {
       "value": "ended",
       "label": "已结束",
-      "count": 5
+      "count": 4
     }
   ],
   "regions": [
@@ -64,18 +69,18 @@
     {
       "value": "GLOBAL",
       "label": "海外",
-      "count": 4
+      "count": 5
     }
   ],
   "providers": [
     {
-      "value": "deepseek",
-      "label": "DeepSeek",
+      "value": "zhipu",
+      "label": "智谱 AI",
       "count": 3
     },
     {
-      "value": "zhipu",
-      "label": "智谱 AI",
+      "value": "deepseek",
+      "label": "DeepSeek",
       "count": 2
     },
     {
@@ -99,14 +104,14 @@
       "count": 1
     },
     {
-      "value": "baidu-ernie",
-      "label": "百度文心",
+      "value": "deepgram",
+      "label": "Deepgram",
       "count": 2
     },
     {
-      "value": "deepgram",
-      "label": "Deepgram",
-      "count": 1
+      "value": "baidu-ernie",
+      "label": "百度文心",
+      "count": 2
     },
     {
       "value": "minimax",
@@ -128,12 +133,12 @@
     {
       "value": "text-generation",
       "label": "文本生成",
-      "count": 3
+      "count": 4
     },
     {
       "value": "code-generation",
       "label": "代码生成",
-      "count": 3
+      "count": 4
     }
   ],
   "sorts": [

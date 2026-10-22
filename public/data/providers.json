@@ -1,19 +1,5 @@
 [
   {
-    "slug": "deepseek",
-    "name": "DeepSeek",
-    "nameEn": "DeepSeek",
-    "country": "CN",
-    "website": "https://www.deepseek.com",
-    "pricingUrl": "https://api-docs.deepseek.com/quick_start/pricing",
-    "announcementUrl": "https://api-docs.deepseek.com/news",
-    "color": "#4D6BFE",
-    "cnAccessible": true,
-    "tier": 1,
-    "activityCount": 3,
-    "activeCount": 1
-  },
-  {
     "slug": "zhipu",
     "name": "智谱 AI",
     "nameEn": "Zhipu AI",
@@ -22,6 +8,20 @@
     "pricingUrl": "https://open.bigmodel.cn/pricing",
     "announcementUrl": "https://www.z.ai/blog",
     "color": "#3B5BDB",
+    "cnAccessible": true,
+    "tier": 1,
+    "activityCount": 3,
+    "activeCount": 1
+  },
+  {
+    "slug": "deepseek",
+    "name": "DeepSeek",
+    "nameEn": "DeepSeek",
+    "country": "CN",
+    "website": "https://www.deepseek.com",
+    "pricingUrl": "https://api-docs.deepseek.com/quick_start/pricing",
+    "announcementUrl": "https://api-docs.deepseek.com/news",
+    "color": "#4D6BFE",
     "cnAccessible": true,
     "tier": 1,
     "activityCount": 2,
@@ -294,6 +294,20 @@
     "activeCount": 1
   },
   {
+    "slug": "deepgram",
+    "name": "Deepgram",
+    "nameEn": "Deepgram",
+    "country": "US",
+    "website": "https://deepgram.com",
+    "pricingUrl": "https://deepgram.com/pricing",
+    "announcementUrl": null,
+    "color": "#13EF93",
+    "cnAccessible": false,
+    "tier": 2,
+    "activityCount": 2,
+    "activeCount": 2
+  },
+  {
     "slug": "baidu-ernie",
     "name": "百度文心",
     "nameEn": "Baidu ERNIE",
@@ -306,20 +320,6 @@
     "tier": 2,
     "activityCount": 2,
     "activeCount": 2
-  },
-  {
-    "slug": "deepgram",
-    "name": "Deepgram",
-    "nameEn": "Deepgram",
-    "country": "US",
-    "website": "https://deepgram.com",
-    "pricingUrl": "https://deepgram.com/pricing",
-    "announcementUrl": null,
-    "color": "#13EF93",
-    "cnAccessible": false,
-    "tier": 2,
-    "activityCount": 1,
-    "activeCount": 1
   },
   {
     "slug": "minimax",
