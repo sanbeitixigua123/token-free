@@ -3,17 +3,17 @@
     {
       "value": "free_credit",
       "label": "免费额度",
-      "count": 10
+      "count": 44
     },
     {
       "value": "trial",
       "label": "免费试用",
-      "count": 3
+      "count": 20
     },
     {
       "value": "student",
       "label": "学生优惠",
-      "count": 2
+      "count": 12
     },
     {
       "value": "refreshable",
@@ -25,83 +25,178 @@
     {
       "value": "all",
       "label": "所有人",
-      "count": 10
+      "count": 34
     },
     {
       "value": "new_user",
       "label": "新用户",
-      "count": 4
+      "count": 26
     },
     {
       "value": "student",
       "label": "学生",
-      "count": 2
+      "count": 12
     },
     {
       "value": "open_source",
       "label": "开源项目",
+      "count": 4
+    },
+    {
+      "value": "startup",
+      "label": "初创团队",
       "count": 1
+    },
+    {
+      "value": "enterprise",
+      "label": "企业",
+      "count": 5
     },
     {
       "value": "verified",
       "label": "需实名/绑卡",
-      "count": 1
+      "count": 4
     }
   ],
   "statuses": [
     {
       "value": "active",
       "label": "进行中",
-      "count": 12
+      "count": 64
     },
     {
       "value": "ended",
       "label": "已结束",
-      "count": 4
+      "count": 13
     }
   ],
   "regions": [
     {
       "value": "CN",
       "label": "国内",
-      "count": 11
+      "count": 56
     },
     {
       "value": "GLOBAL",
       "label": "海外",
-      "count": 5
+      "count": 21
     }
   ],
   "providers": [
     {
-      "value": "zhipu",
-      "label": "智谱 AI",
-      "count": 3
+      "value": "moonshot",
+      "label": "月之暗面 Kimi",
+      "count": 5
+    },
+    {
+      "value": "siliconflow",
+      "label": "硅基流动 SiliconFlow",
+      "count": 5
+    },
+    {
+      "value": "bytedance-doubao",
+      "label": "字节豆包",
+      "count": 4
+    },
+    {
+      "value": "zhipu-zcode",
+      "label": "智谱 ZCode",
+      "count": 4
     },
     {
       "value": "deepseek",
       "label": "DeepSeek",
-      "count": 2
-    },
-    {
-      "value": "cloudflare-workers-ai",
-      "label": "Cloudflare Workers AI",
-      "count": 1
+      "count": 3
     },
     {
       "value": "github-student",
       "label": "GitHub 学生开发者包",
-      "count": 1
+      "count": 3
     },
     {
-      "value": "vercel-ai-gateway",
-      "label": "Vercel AI Gateway",
-      "count": 1
+      "value": "trae",
+      "label": "字节 Trae",
+      "count": 3
+    },
+    {
+      "value": "volcengine-ark",
+      "label": "火山引擎方舟",
+      "count": 3
     },
     {
       "value": "aliyun-bailian",
       "label": "阿里云百炼",
+      "count": 3
+    },
+    {
+      "value": "cloudflare-workers-ai",
+      "label": "Cloudflare Workers AI",
+      "count": 2
+    },
+    {
+      "value": "openai",
+      "label": "OpenAI",
+      "count": 2
+    },
+    {
+      "value": "vercel-ai-gateway",
+      "label": "Vercel AI Gateway",
+      "count": 2
+    },
+    {
+      "value": "vultr",
+      "label": "Vultr",
+      "count": 2
+    },
+    {
+      "value": "zhipu",
+      "label": "智谱 AI",
+      "count": 2
+    },
+    {
+      "value": "alibaba-qwen",
+      "label": "阿里通义千问",
+      "count": 2
+    },
+    {
+      "value": "aliyun-lingma",
+      "label": "阿里通义灵码",
+      "count": 2
+    },
+    {
+      "value": "github-copilot",
+      "label": "GitHub Copilot",
       "count": 1
+    },
+    {
+      "value": "google",
+      "label": "Google",
+      "count": 1
+    },
+    {
+      "value": "minimax",
+      "label": "MiniMax 稀宇科技",
+      "count": 5
+    },
+    {
+      "value": "baidu-ernie",
+      "label": "百度文心",
+      "count": 4
+    },
+    {
+      "value": "tencent-hunyuan",
+      "label": "腾讯混元",
+      "count": 4
+    },
+    {
+      "value": "qoder",
+      "label": "阿里 Qoder",
+      "count": 4
+    },
+    {
+      "value": "xai",
+      "label": "xAI",
+      "count": 3
     },
     {
       "value": "deepgram",
@@ -109,23 +204,23 @@
       "count": 2
     },
     {
-      "value": "baidu-ernie",
-      "label": "百度文心",
+      "value": "windsurf",
+      "label": "Windsurf",
       "count": 2
     },
     {
-      "value": "minimax",
-      "label": "MiniMax 稀宇科技",
+      "value": "baidu-comate",
+      "label": "百度文心快码 Comate",
+      "count": 2
+    },
+    {
+      "value": "cursor",
+      "label": "Cursor",
       "count": 1
     },
     {
-      "value": "community",
-      "label": "社区渠道",
-      "count": 1
-    },
-    {
-      "value": "tencent-hunyuan",
-      "label": "腾讯混元",
+      "value": "tencent-codebuddy",
+      "label": "腾讯 CodeBuddy",
       "count": 1
     }
   ],
@@ -133,12 +228,17 @@
     {
       "value": "text-generation",
       "label": "文本生成",
-      "count": 4
+      "count": 6
     },
     {
       "value": "code-generation",
       "label": "代码生成",
-      "count": 4
+      "count": 6
+    },
+    {
+      "value": "video-generation",
+      "label": "视频生成",
+      "count": 1
     }
   ],
   "sorts": [
