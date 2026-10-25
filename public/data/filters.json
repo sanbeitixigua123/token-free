@@ -13,6 +13,11 @@
     {
       "value": "student",
       "label": "学生优惠",
+      "count": 2
+    },
+    {
+      "value": "refreshable",
+      "label": "周期刷新",
       "count": 1
     }
   ],
@@ -20,17 +25,17 @@
     {
       "value": "all",
       "label": "所有人",
-      "count": 9
+      "count": 10
     },
     {
       "value": "new_user",
       "label": "新用户",
-      "count": 4
+      "count": 5
     },
     {
       "value": "student",
       "label": "学生",
-      "count": 1
+      "count": 2
     },
     {
       "value": "open_source",
@@ -47,7 +52,7 @@
     {
       "value": "active",
       "label": "进行中",
-      "count": 10
+      "count": 12
     },
     {
       "value": "ended",
@@ -59,12 +64,12 @@
     {
       "value": "CN",
       "label": "国内",
-      "count": 12
+      "count": 13
     },
     {
       "value": "GLOBAL",
       "label": "海外",
-      "count": 3
+      "count": 4
     }
   ],
   "providers": [
@@ -76,7 +81,12 @@
     {
       "value": "zhipu",
       "label": "智谱 AI",
-      "count": 2
+      "count": 3
+    },
+    {
+      "value": "cloudflare-workers-ai",
+      "label": "Cloudflare Workers AI",
+      "count": 1
     },
     {
       "value": "github-student",
@@ -118,12 +128,12 @@
     {
       "value": "text-generation",
       "label": "文本生成",
-      "count": 3
+      "count": 4
     },
     {
       "value": "code-generation",
       "label": "代码生成",
-      "count": 3
+      "count": 4
     }
   ],
   "sorts": [

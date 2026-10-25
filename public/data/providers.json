@@ -11,7 +11,7 @@
     "cnAccessible": true,
     "tier": 1,
     "activityCount": 4,
-    "activeCount": 1
+    "activeCount": 2
   },
   {
     "slug": "zhipu",
@@ -24,7 +24,21 @@
     "color": "#3B5BDB",
     "cnAccessible": true,
     "tier": 1,
-    "activityCount": 2,
+    "activityCount": 3,
+    "activeCount": 1
+  },
+  {
+    "slug": "cloudflare-workers-ai",
+    "name": "Cloudflare Workers AI",
+    "nameEn": "Cloudflare Workers AI",
+    "country": "US",
+    "website": "https://developers.cloudflare.com/workers-ai/",
+    "pricingUrl": "https://developers.cloudflare.com/workers-ai/platform/pricing/",
+    "announcementUrl": null,
+    "color": "#F38020",
+    "cnAccessible": false,
+    "tier": 1,
+    "activityCount": 1,
     "activeCount": 1
   },
   {
@@ -78,20 +92,6 @@
     "pricingUrl": "https://www.anthropic.com/pricing",
     "announcementUrl": null,
     "color": "#D97757",
-    "cnAccessible": false,
-    "tier": 1,
-    "activityCount": 0,
-    "activeCount": 1
-  },
-  {
-    "slug": "cloudflare-workers-ai",
-    "name": "Cloudflare Workers AI",
-    "nameEn": "Cloudflare Workers AI",
-    "country": "US",
-    "website": "https://developers.cloudflare.com/workers-ai/",
-    "pricingUrl": "https://developers.cloudflare.com/workers-ai/platform/pricing/",
-    "announcementUrl": null,
-    "color": "#F38020",
     "cnAccessible": false,
     "tier": 1,
     "activityCount": 0,
