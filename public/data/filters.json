@@ -3,7 +3,7 @@
     {
       "value": "free_credit",
       "label": "免费额度",
-      "count": 11
+      "count": 12
     },
     {
       "value": "trial",
@@ -14,11 +14,6 @@
       "value": "student",
       "label": "学生优惠",
       "count": 2
-    },
-    {
-      "value": "refreshable",
-      "label": "周期刷新",
-      "count": 1
     }
   ],
   "audiences": [
@@ -52,24 +47,24 @@
     {
       "value": "active",
       "label": "进行中",
-      "count": 12
+      "count": 13
     },
     {
       "value": "ended",
       "label": "已结束",
-      "count": 5
+      "count": 4
     }
   ],
   "regions": [
     {
       "value": "CN",
       "label": "国内",
-      "count": 13
+      "count": 14
     },
     {
       "value": "GLOBAL",
       "label": "海外",
-      "count": 4
+      "count": 3
     }
   ],
   "providers": [
@@ -82,11 +77,6 @@
       "value": "zhipu",
       "label": "智谱 AI",
       "count": 3
-    },
-    {
-      "value": "cloudflare-workers-ai",
-      "label": "Cloudflare Workers AI",
-      "count": 1
     },
     {
       "value": "github-student",
@@ -119,6 +109,11 @@
       "count": 1
     },
     {
+      "value": "community",
+      "label": "社区渠道",
+      "count": 1
+    },
+    {
       "value": "tencent-hunyuan",
       "label": "腾讯混元",
       "count": 1
@@ -128,12 +123,17 @@
     {
       "value": "text-generation",
       "label": "文本生成",
-      "count": 4
+      "count": 3
     },
     {
       "value": "code-generation",
       "label": "代码生成",
-      "count": 4
+      "count": 3
+    },
+    {
+      "value": "video-generation",
+      "label": "视频生成",
+      "count": 1
     }
   ],
   "sorts": [
