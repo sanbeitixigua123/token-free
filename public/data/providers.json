@@ -10,7 +10,7 @@
     "color": "#4D6BFE",
     "cnAccessible": true,
     "tier": 1,
-    "activityCount": 4,
+    "activityCount": 3,
     "activeCount": 2
   },
   {
@@ -26,6 +26,20 @@
     "tier": 1,
     "activityCount": 3,
     "activeCount": 2
+  },
+  {
+    "slug": "cloudflare-workers-ai",
+    "name": "Cloudflare Workers AI",
+    "nameEn": "Cloudflare Workers AI",
+    "country": "US",
+    "website": "https://developers.cloudflare.com/workers-ai/",
+    "pricingUrl": "https://developers.cloudflare.com/workers-ai/platform/pricing/",
+    "announcementUrl": null,
+    "color": "#F38020",
+    "cnAccessible": false,
+    "tier": 1,
+    "activityCount": 1,
+    "activeCount": 1
   },
   {
     "slug": "github-student",
@@ -78,20 +92,6 @@
     "pricingUrl": "https://www.anthropic.com/pricing",
     "announcementUrl": null,
     "color": "#D97757",
-    "cnAccessible": false,
-    "tier": 1,
-    "activityCount": 0,
-    "activeCount": 1
-  },
-  {
-    "slug": "cloudflare-workers-ai",
-    "name": "Cloudflare Workers AI",
-    "nameEn": "Cloudflare Workers AI",
-    "country": "US",
-    "website": "https://developers.cloudflare.com/workers-ai/",
-    "pricingUrl": "https://developers.cloudflare.com/workers-ai/platform/pricing/",
-    "announcementUrl": null,
-    "color": "#F38020",
     "cnAccessible": false,
     "tier": 1,
     "activityCount": 0,
@@ -336,20 +336,6 @@
     "activeCount": 1
   },
   {
-    "slug": "community",
-    "name": "社区渠道",
-    "nameEn": "Community",
-    "country": "CN",
-    "website": "https://linux.do",
-    "pricingUrl": null,
-    "announcementUrl": null,
-    "color": "#8b5cf6",
-    "cnAccessible": true,
-    "tier": 2,
-    "activityCount": 1,
-    "activeCount": 1
-  },
-  {
     "slug": "tencent-hunyuan",
     "name": "腾讯混元",
     "nameEn": "Tencent Hunyuan",
@@ -554,6 +540,20 @@
     "pricingUrl": "https://comate.baidu.com/",
     "announcementUrl": "https://comate.baidu.com/",
     "color": "#2932E1",
+    "cnAccessible": true,
+    "tier": 2,
+    "activityCount": 0,
+    "activeCount": 1
+  },
+  {
+    "slug": "community",
+    "name": "社区渠道",
+    "nameEn": "Community",
+    "country": "CN",
+    "website": "https://linux.do",
+    "pricingUrl": null,
+    "announcementUrl": null,
+    "color": "#8b5cf6",
     "cnAccessible": true,
     "tier": 2,
     "activityCount": 0,
