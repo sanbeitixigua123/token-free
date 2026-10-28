@@ -8,12 +8,12 @@
     {
       "value": "trial",
       "label": "免费试用",
-      "count": 2
+      "count": 3
     },
     {
       "value": "student",
       "label": "学生优惠",
-      "count": 2
+      "count": 1
     },
     {
       "value": "refreshable",
@@ -25,17 +25,22 @@
     {
       "value": "all",
       "label": "所有人",
-      "count": 9
+      "count": 10
     },
     {
       "value": "new_user",
       "label": "新用户",
-      "count": 6
+      "count": 4
     },
     {
       "value": "student",
       "label": "学生",
-      "count": 2
+      "count": 1
+    },
+    {
+      "value": "open_source",
+      "label": "开源项目",
+      "count": 1
     },
     {
       "value": "verified",
@@ -47,12 +52,12 @@
     {
       "value": "active",
       "label": "进行中",
-      "count": 12
+      "count": 13
     },
     {
       "value": "ended",
       "label": "已结束",
-      "count": 4
+      "count": 3
     }
   ],
   "regions": [
@@ -71,12 +76,12 @@
     {
       "value": "deepseek",
       "label": "DeepSeek",
-      "count": 3
+      "count": 4
     },
     {
       "value": "zhipu",
       "label": "智谱 AI",
-      "count": 3
+      "count": 2
     },
     {
       "value": "cloudflare-workers-ai",
@@ -123,17 +128,12 @@
     {
       "value": "text-generation",
       "label": "文本生成",
-      "count": 2
+      "count": 3
     },
     {
       "value": "code-generation",
       "label": "代码生成",
-      "count": 2
-    },
-    {
-      "value": "video-generation",
-      "label": "视频生成",
-      "count": 1
+      "count": 3
     }
   ],
   "sorts": [

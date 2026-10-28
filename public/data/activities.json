@@ -1,6 +1,66 @@
 [
   {
-    "id": 6,
+    "id": 5,
+    "fingerprint": "e3bdf18dd47ebd24eb86996670e9cb13",
+    "provider": {
+      "slug": "deepseek",
+      "name": "DeepSeek",
+      "nameEn": "DeepSeek",
+      "country": "CN",
+      "website": "https://www.deepseek.com",
+      "color": "#4D6BFE",
+      "cnAccessible": true
+    },
+    "title": "登录就送6块钱：DeepSeek Harness这笔赠金怎么领、怎么花",
+    "hook": null,
+    "howToClaim": null,
+    "caveat": null,
+    "feedback": {
+      "useful": 0,
+      "dead": 0
+    },
+    "summary": null,
+    "category": "free_credit",
+    "categoryLabel": "免费额度",
+    "benefit": {
+      "kind": "credit_cny",
+      "amount": 6,
+      "unit": "CNY",
+      "unitLabel": "元",
+      "text": "6块钱",
+      "display": "¥6"
+    },
+    "audience": [
+      "all"
+    ],
+    "audienceLabels": [
+      "所有人"
+    ],
+    "audienceNote": null,
+    "region": "CN",
+    "requiresCard": false,
+    "requiresVerification": null,
+    "startDate": null,
+    "endDate": "2026-10-28",
+    "isRecurring": null,
+    "claimUrl": "https://zhuanlan.zhihu.com/p/2096531512464241704",
+    "sourceUrl": null,
+    "sourceExcerpt": null,
+    "confidence": 0.93,
+    "reviewStatus": "auto_ok",
+    "status": "active",
+    "statusLabel": "NEW",
+    "daysLeft": 0,
+    "endingSoon": true,
+    "isNew": true,
+    "createdAt": "2026-10-28 08:10:36",
+    "updatedAt": "2026-10-28 08:10:36",
+    "lastVerifiedAt": "2026-10-28 16:10:43",
+    "model": null,
+    "endpoint": null
+  },
+  {
+    "id": 4,
     "fingerprint": "d119a23d3ba542e85b1831a161ddf895",
     "provider": {
       "slug": "deepseek",
@@ -12,9 +72,9 @@
       "cnAccessible": true
     },
     "title": "DeepSeek Harness 6 元赠金再次开放 登录桌面版即送 到账后 7 天内有效 | AI Promo Now",
-    "hook": "DeepSeek Harness 桌面版登录就送 6 元赠金，想低成本试用的人可以顺手领一下。",
-    "howToClaim": "登录 DeepSeek Harness 桌面版即可领取，领取页：https://www.aipromonow.com/promos/deepseek-harness-6-rmb-credit-oct17-2026",
-    "caveat": "赠金到账后 7 天内有效，过期作废。",
+    "hook": "DeepSeek Harness 又送 6 元赠金，登录桌面版就能领，想白嫖试用的可以顺手拿一下。",
+    "howToClaim": "登录 DeepSeek Harness 桌面版即可领取，赠金到账后 7 天内有效。",
+    "caveat": "赠金到账后仅 7 天有效，过期作废。",
     "feedback": {
       "useful": 0,
       "dead": 0
@@ -53,100 +113,14 @@
     "daysLeft": null,
     "endingSoon": false,
     "isNew": true,
-    "createdAt": "2026-10-27 07:38:39",
-    "updatedAt": "2026-10-27 07:38:39",
-    "lastVerifiedAt": "2026-10-27 15:39:36",
+    "createdAt": "2026-10-28 08:10:36",
+    "updatedAt": "2026-10-28 08:10:36",
+    "lastVerifiedAt": "2026-10-28 16:10:42",
     "model": null,
     "endpoint": null
   },
   {
-    "id": 1,
-    "fingerprint": "df9da6d5f9c9679259322c71905fc4a4",
-    "provider": {
-      "slug": "zhipu",
-      "name": "智谱 AI",
-      "nameEn": "Zhipu AI",
-      "country": "CN",
-      "website": "https://www.z.ai",
-      "color": "#3B5BDB",
-      "cnAccessible": true
-    },
-    "title": "智谱ZCode新用户福利：1亿GLM-5.3 token免费领，体验顶级代码生成 - CSDN文库",
-    "hook": "智谱ZCode新用户可领1亿GLM-5.3 token，适合想试代码生成的开发者，值得一领。",
-    "howToClaim": "通过CSDN文库领取页（https://wenku.csdn.net/column/709nzhin46s）领取，原文未写截止时间。",
-    "caveat": null,
-    "feedback": {
-      "useful": 0,
-      "dead": 0
-    },
-    "summary": null,
-    "category": "student",
-    "categoryLabel": "学生优惠",
-    "benefit": {
-      "kind": "token",
-      "amount": 100000000,
-      "unit": "token",
-      "unitLabel": "tokens",
-      "text": "1亿GLM-5.3 token",
-      "display": "1 亿 tokens"
-    },
-    "audience": [
-      "new_user",
-      "student"
-    ],
-    "audienceLabels": [
-      "新用户",
-      "学生"
-    ],
-    "audienceNote": "新用户、学生",
-    "region": "CN",
-    "requiresCard": false,
-    "requiresVerification": "student_id",
-    "startDate": null,
-    "endDate": null,
-    "isRecurring": null,
-    "claimUrl": "https://wenku.csdn.net/column/709nzhin46s",
-    "sourceUrl": null,
-    "sourceExcerpt": null,
-    "confidence": 0.95,
-    "reviewStatus": "auto_ok",
-    "status": "active",
-    "statusLabel": "NEW",
-    "daysLeft": null,
-    "endingSoon": false,
-    "isNew": true,
-    "createdAt": "2026-10-27 07:38:39",
-    "updatedAt": "2026-10-27 07:38:39",
-    "lastVerifiedAt": "2026-10-27 15:38:50",
-    "model": {
-      "slug": "glm-5-3-flash",
-      "name": "GLM-5.3-Flash",
-      "capability": "code-generation",
-      "capabilityLabel": "代码生成",
-      "capabilities": [
-        "code-generation",
-        "text-generation"
-      ],
-      "contextWindow": 1000000
-    },
-    "endpoint": {
-      "slug": "zhipu--glm-5-3-flash",
-      "quotaKind": "credits",
-      "quotaKindLabel": "赠送额度",
-      "quotaRpm": null,
-      "quotaRpd": null,
-      "quotaText": "官方开放平台新用户赠送额度",
-      "apiBase": "https://open.bigmodel.cn/api/paas/v4",
-      "score": null,
-      "requiresCard": false,
-      "cnAccessible": true,
-      "openaiCompatible": true,
-      "claimUrl": "https://open.bigmodel.cn",
-      "docsUrl": "https://z.ai"
-    }
-  },
-  {
-    "id": 23,
+    "id": 21,
     "fingerprint": "9d020a9f934ba9b7774f84dbe6eb9cd2",
     "provider": {
       "slug": "baidu-ernie",
@@ -158,9 +132,9 @@
       "cnAccessible": true
     },
     "title": "当前新用户注册百度千帆·大模型服务及Agent开发平台 ，实名认证后即送20元代金券！",
-    "hook": "百度千帆新用户注册并实名认证就送20元代金券，全平台无门槛，想试大模型或Agent开发的可以顺手领。",
-    "howToClaim": "在百度千帆平台注册新账号并完成实名认证，即可领取20元代金券，领取页：https://cloud.baidu.com/doc/qianfan/s/1mh4su5jg",
-    "caveat": "仅限新用户，需实名认证；代金券有效期一个月，过期作废。",
+    "hook": "百度千帆新用户注册并实名认证就送20元代金券，全平台无门槛，想试大模型开发的可以顺手领。",
+    "howToClaim": "在百度千帆平台注册新账号并完成实名认证，领取页：https://cloud.baidu.com/doc/qianfan/s/1mh4su5jg",
+    "caveat": "仅限新用户，代金券有效期一个月，过期作废。",
     "feedback": {
       "useful": 0,
       "dead": 0
@@ -201,9 +175,9 @@
     "daysLeft": null,
     "endingSoon": false,
     "isNew": true,
-    "createdAt": "2026-10-27 07:38:39",
-    "updatedAt": "2026-10-27 07:38:39",
-    "lastVerifiedAt": "2026-10-27 15:41:34",
+    "createdAt": "2026-10-28 08:10:36",
+    "updatedAt": "2026-10-28 08:10:36",
+    "lastVerifiedAt": "2026-10-28 16:12:42",
     "model": null,
     "endpoint": null
   },
@@ -254,14 +228,14 @@
     "daysLeft": null,
     "endingSoon": false,
     "isNew": true,
-    "createdAt": "2026-10-27 07:38:39",
-    "updatedAt": "2026-10-27 07:38:39",
-    "lastVerifiedAt": "2026-10-27 15:39:36",
+    "createdAt": "2026-10-28 08:10:36",
+    "updatedAt": "2026-10-28 08:10:36",
+    "lastVerifiedAt": "2026-10-28 16:10:50",
     "model": null,
     "endpoint": null
   },
   {
-    "id": 5,
+    "id": 6,
     "fingerprint": "52388eed4d58d119a1a79a936014e042",
     "provider": {
       "slug": "deepseek",
@@ -273,8 +247,8 @@
       "cnAccessible": true
     },
     "title": "DeepSeek Harness 桌面端发布：6 元赠金领取与上手指南",
-    "hook": "DeepSeek Harness 桌面端上线，送 6 元赠金，想尝鲜桌面 AI 工具的人可以顺手领一下。",
-    "howToClaim": "在 https://www.denghy.cn/articles/deepseek-harness-desktop-launch 领取，原文未写截止时间。",
+    "hook": "DeepSeek Harness 桌面端发布，送 6 元赠金，想尝鲜桌面 AI 工具的人可以顺手领一下。",
+    "howToClaim": "在领取页 https://www.denghy.cn/articles/deepseek-harness-desktop-launch 领取，原文未写截止时间。",
     "caveat": null,
     "feedback": {
       "useful": 0,
@@ -314,15 +288,15 @@
     "daysLeft": null,
     "endingSoon": false,
     "isNew": true,
-    "createdAt": "2026-10-27 07:38:39",
-    "updatedAt": "2026-10-27 07:38:39",
-    "lastVerifiedAt": "2026-10-27 15:39:30",
+    "createdAt": "2026-10-28 08:10:36",
+    "updatedAt": "2026-10-28 08:10:36",
+    "lastVerifiedAt": "2026-10-28 16:10:49",
     "model": null,
     "endpoint": null
   },
   {
-    "id": 3,
-    "fingerprint": "f753a5fec379746f2b4f2b89b14392be",
+    "id": 2,
+    "fingerprint": "ff2bfa7909e10a7ef575aae24683adb3",
     "provider": {
       "slug": "zhipu",
       "name": "智谱 AI",
@@ -332,9 +306,9 @@
       "color": "#3B5BDB",
       "cnAccessible": true
     },
-    "title": "赛博领鸡蛋：智谱 ZCode 1024 程序员节免费送 5 亿 Tokens｜现在领，周末用",
-    "hook": "智谱 ZCode 1024 程序员节免费送 5 亿 Tokens，写代码的可以领来周末试试。",
-    "howToClaim": "通过领取页 https://www.appinn.com/zcode-1024-free-500-million-tokens 领取",
+    "title": "ZCode 每天免费送 3 亿 GLM-5.3-Flash Tokens! | AI Promo Now",
+    "hook": "ZCode 每天免费送 3 亿 GLM-5.3-Flash Tokens，想低成本试 GLM 新模型的人可以看看。",
+    "howToClaim": "通过活动领取页 https://www.aipromonow.com/promos/zcode-global-build-glm53-flash-3e8-oct27-2026 领取",
     "caveat": null,
     "feedback": {
       "useful": 0,
@@ -345,11 +319,11 @@
     "categoryLabel": "免费额度",
     "benefit": {
       "kind": "token",
-      "amount": 500000000,
+      "amount": 300000000,
       "unit": "token",
       "unitLabel": "tokens",
-      "text": "5 亿 Token",
-      "display": "5 亿 tokens"
+      "text": "3 亿 GLM-5.3-Flash Token",
+      "display": "3 亿 tokens"
     },
     "audience": [
       "all"
@@ -363,37 +337,38 @@
     "requiresVerification": null,
     "startDate": null,
     "endDate": null,
-    "isRecurring": null,
-    "claimUrl": "https://www.appinn.com/zcode-1024-free-500-million-tokens",
+    "isRecurring": "daily",
+    "claimUrl": "https://www.aipromonow.com/promos/zcode-global-build-glm53-flash-3e8-oct27-2026",
     "sourceUrl": null,
     "sourceExcerpt": null,
-    "confidence": 0.77,
+    "confidence": 0.83,
     "reviewStatus": "auto_ok",
     "status": "active",
     "statusLabel": "NEW",
     "daysLeft": null,
     "endingSoon": false,
     "isNew": true,
-    "createdAt": "2026-10-27 07:38:39",
-    "updatedAt": "2026-10-27 07:38:39",
-    "lastVerifiedAt": "2026-10-27 15:38:54",
+    "createdAt": "2026-10-28 08:10:36",
+    "updatedAt": "2026-10-28 08:10:36",
+    "lastVerifiedAt": "2026-10-28 16:10:39",
     "model": {
-      "slug": "cogvideox-5",
-      "name": "CogVideoX 5",
-      "capability": "video-generation",
-      "capabilityLabel": "视频生成",
+      "slug": "glm-5-3-flash",
+      "name": "GLM-5.3-Flash",
+      "capability": "code-generation",
+      "capabilityLabel": "代码生成",
       "capabilities": [
-        "video-generation"
+        "code-generation",
+        "text-generation"
       ],
-      "contextWindow": null
+      "contextWindow": 1000000
     },
     "endpoint": {
-      "slug": "zhipu--cogvideox-5",
-      "quotaKind": "free_tier",
-      "quotaKindLabel": "免费档位",
+      "slug": "zhipu--glm-5-3-flash",
+      "quotaKind": "credits",
+      "quotaKindLabel": "赠送额度",
       "quotaRpm": null,
       "quotaRpd": null,
-      "quotaText": "CogVideoX 开源模型可在智谱开放平台免费试用",
+      "quotaText": "官方开放平台新用户赠送额度",
       "apiBase": "https://open.bigmodel.cn/api/paas/v4",
       "score": null,
       "requiresCard": false,
@@ -404,7 +379,67 @@
     }
   },
   {
-    "id": 22,
+    "id": 15,
+    "fingerprint": "0a575c8306155dcbd83bc50318efd546",
+    "provider": {
+      "slug": "cloudflare-workers-ai",
+      "name": "Cloudflare Workers AI",
+      "nameEn": "Cloudflare Workers AI",
+      "country": "US",
+      "website": "https://developers.cloudflare.com/workers-ai/",
+      "color": "#F38020",
+      "cnAccessible": false
+    },
+    "title": "Free allocation: 10,000 Neurons per day",
+    "hook": "Cloudflare Workers AI 每天送 1 万 Neurons 免费额度，想低成本试跑 AI 推理的开发者可以顺手用。",
+    "howToClaim": "在 Cloudflare Workers AI 定价页查看并开通，额度每日 UTC 00:00 自动重置",
+    "caveat": "免费额度仅每日 1 万 Neurons，超出部分需付费",
+    "feedback": {
+      "useful": 0,
+      "dead": 0
+    },
+    "summary": "Cloudflare Workers AI为所有用户提供每日10,000 Neurons的免费额度，超出后需付费，额度每日UTC 00:00重置。",
+    "category": "refreshable",
+    "categoryLabel": "周期刷新",
+    "benefit": {
+      "kind": "unlimited",
+      "amount": 10000,
+      "unit": null,
+      "unitLabel": "",
+      "text": "10,000 Neurons per day at no charge",
+      "display": "10000 "
+    },
+    "audience": [
+      "all"
+    ],
+    "audienceLabels": [
+      "所有人"
+    ],
+    "audienceNote": "anyone",
+    "region": "GLOBAL",
+    "requiresCard": false,
+    "requiresVerification": null,
+    "startDate": null,
+    "endDate": null,
+    "isRecurring": "daily",
+    "claimUrl": "https://developers.cloudflare.com/workers-ai/platform/pricing",
+    "sourceUrl": "https://developers.cloudflare.com/workers-ai/platform/pricing/",
+    "sourceExcerpt": "Our free allocation allows anyone to use a total of 10,000 Neurons per day at no charge.",
+    "confidence": 0.8,
+    "reviewStatus": "auto_ok",
+    "status": "active",
+    "statusLabel": "NEW",
+    "daysLeft": null,
+    "endingSoon": false,
+    "isNew": true,
+    "createdAt": "2026-10-28 08:10:36",
+    "updatedAt": "2026-10-28 08:10:36",
+    "lastVerifiedAt": "2026-10-28 16:11:15",
+    "model": null,
+    "endpoint": null
+  },
+  {
+    "id": 20,
     "fingerprint": "b50602368423573b5e434e125089bfeb",
     "provider": {
       "slug": "minimax",
@@ -416,9 +451,9 @@
       "cnAccessible": true
     },
     "title": "HD 系列模型赠送 10 个快速克隆音色",
-    "hook": "MiniMax HD 系列模型送快速克隆音色，做语音合成的开发者可以顺手领，额度按档位给。",
-    "howToClaim": "在 https://platform.minimaxi.com/document/price 领取页获取，原文未写截止时间。",
-    "caveat": "赠送数量随档位不同（10/30/300 个），RPM 也分 60/200/500 档，具体资格与计费方式原文未说明。",
+    "hook": "HD系列模型用户可免费领10个快速克隆音色，做语音合成的开发者值得顺手领。",
+    "howToClaim": "在 https://platform.minimaxi.com/document/price 领取页领取",
+    "caveat": null,
     "feedback": {
       "useful": 0,
       "dead": 0
@@ -457,14 +492,14 @@
     "daysLeft": null,
     "endingSoon": false,
     "isNew": true,
-    "createdAt": "2026-10-27 07:38:39",
-    "updatedAt": "2026-10-27 07:38:39",
-    "lastVerifiedAt": "2026-10-27 15:41:17",
+    "createdAt": "2026-10-28 08:10:36",
+    "updatedAt": "2026-10-28 08:10:36",
+    "lastVerifiedAt": "2026-10-28 16:12:28",
     "model": null,
     "endpoint": null
   },
   {
-    "id": 21,
+    "id": 19,
     "fingerprint": "7c414ceb962a393efbd2d307408d055c",
     "provider": {
       "slug": "minimax",
@@ -477,8 +512,8 @@
     },
     "title": "输入图片每张超出免费额度后",
     "hook": "MiniMax-H3 画质优先，适合高品质视频创作，输入图片超出免费额度后每张 ¥0.80，值不值得看用量。",
-    "howToClaim": "在 https://platform.minimaxi.com/document/price 查看价格页，原文未写领取动作和截止时间。",
-    "caveat": "仅输入图片超出免费额度后按每张 ¥0.80 计费，原文未提其他资格限制。",
+    "howToClaim": "在 https://platform.minimaxi.com/document/price 查看价格页领取，原文未写截止时间。",
+    "caveat": "仅输入图片超出免费额度后按每张 ¥0.80 计费，原文未提其他限制。",
     "feedback": {
       "useful": 0,
       "dead": 0
@@ -517,14 +552,14 @@
     "daysLeft": null,
     "endingSoon": false,
     "isNew": true,
-    "createdAt": "2026-10-27 07:38:39",
-    "updatedAt": "2026-10-27 07:38:39",
-    "lastVerifiedAt": "2026-10-27 15:40:34",
+    "createdAt": "2026-10-28 08:10:36",
+    "updatedAt": "2026-10-28 08:10:36",
+    "lastVerifiedAt": "2026-10-28 16:12:11",
     "model": null,
     "endpoint": null
   },
   {
-    "id": 18,
+    "id": 16,
     "fingerprint": "de9e5266ebe169d92b10c6a1f299d7d7",
     "provider": {
       "slug": "vercel-ai-gateway",
@@ -536,9 +571,9 @@
       "cnAccessible": false
     },
     "title": "Free and paid tiers",
-    "hook": "Vercel 团队账号每月送 5 美元 AI Gateway 额度，用量不大的开发者可以顺手领来跑模型。",
-    "howToClaim": "在 Vercel 团队账号下开通 AI Gateway，每月自动获得 $5 额度，详情见 https://vercel.com/docs/ai-gateway/pricing",
-    "caveat": "需有 Vercel 团队账号；免费额度每月仅 $5，付费层按 token 原价零加价计费，用超需自付。",
+    "hook": "Vercel 团队账号每月送 5 美元 AI Gateway 额度，用量小的开发者可以顺手领一下。",
+    "howToClaim": "在 Vercel 团队账号的 AI Gateway 中开通，领取页：https://vercel.com/docs/ai-gateway/pricing",
+    "caveat": "需有 Vercel 团队账号；免费额度每月 5 美元，付费层按 token 原价计费、零加价，自带 key 也一样。",
     "feedback": {
       "useful": 0,
       "dead": 0
@@ -577,9 +612,9 @@
     "daysLeft": null,
     "endingSoon": false,
     "isNew": true,
-    "createdAt": "2026-10-27 07:38:39",
-    "updatedAt": "2026-10-27 07:38:39",
-    "lastVerifiedAt": "2026-10-27 15:40:22",
+    "createdAt": "2026-10-28 08:10:36",
+    "updatedAt": "2026-10-28 08:10:36",
+    "lastVerifiedAt": "2026-10-28 16:12:01",
     "model": {
       "slug": "claude-sonnet-5",
       "name": "Claude Sonnet 5",
@@ -608,67 +643,7 @@
     }
   },
   {
-    "id": 17,
-    "fingerprint": "df8abc22396a4f7296d421975101903b",
-    "provider": {
-      "slug": "cloudflare-workers-ai",
-      "name": "Cloudflare Workers AI",
-      "nameEn": "Cloudflare Workers AI",
-      "country": "US",
-      "website": "https://developers.cloudflare.com/workers-ai/",
-      "color": "#F38020",
-      "cnAccessible": false
-    },
-    "title": "Free allocation",
-    "hook": "Cloudflare Workers AI 每天送 1 万 Neurons 免费额度，想低成本试 AI 推理的开发者可以顺手用。",
-    "howToClaim": "在 Cloudflare Workers AI 定价页了解并开通使用，每日额度自动生效",
-    "caveat": "超出免费额度需订阅 Workers Paid 付费；免费额度按天计算，不累积",
-    "feedback": {
-      "useful": 0,
-      "dead": 0
-    },
-    "summary": "Cloudflare Workers AI提供每日10,000 Neurons的免费额度，任何人可用，超出部分需付费订阅Workers Paid。",
-    "category": "refreshable",
-    "categoryLabel": "周期刷新",
-    "benefit": {
-      "kind": "unlimited",
-      "amount": 10000,
-      "unit": null,
-      "unitLabel": "",
-      "text": "10,000 Neurons per day at no charge",
-      "display": "10000 "
-    },
-    "audience": [
-      "all"
-    ],
-    "audienceLabels": [
-      "所有人"
-    ],
-    "audienceNote": "anyone",
-    "region": "GLOBAL",
-    "requiresCard": false,
-    "requiresVerification": null,
-    "startDate": null,
-    "endDate": null,
-    "isRecurring": "daily",
-    "claimUrl": "https://developers.cloudflare.com/workers-ai/platform/pricing",
-    "sourceUrl": "https://developers.cloudflare.com/workers-ai/platform/pricing/",
-    "sourceExcerpt": "Our free allocation allows anyone to use a total of 10,000 Neurons per day at no charge.",
-    "confidence": 0.65,
-    "reviewStatus": "auto_ok",
-    "status": "active",
-    "statusLabel": "NEW",
-    "daysLeft": null,
-    "endingSoon": false,
-    "isNew": true,
-    "createdAt": "2026-10-27 07:38:39",
-    "updatedAt": "2026-10-27 07:38:39",
-    "lastVerifiedAt": "2026-10-27 15:40:18",
-    "model": null,
-    "endpoint": null
-  },
-  {
-    "id": 13,
+    "id": 11,
     "fingerprint": "c77e5e703839db20686c9b3df8160d74",
     "provider": {
       "slug": "github-student",
@@ -680,9 +655,9 @@
       "cnAccessible": true
     },
     "title": "DataCamp 三个月免费访问",
-    "hook": "GitHub 学生账号可免费领 DataCamp 三个月，学数据技能的学生值得顺手薅。",
-    "howToClaim": "在 GitHub Education 礼包页（education.github.com/pack）用 GitHub 学生账号订阅 DataCamp 领取",
-    "caveat": "仅限 GitHub 学生账号，需订阅 DataCamp 才能享受三个月免费",
+    "hook": "GitHub 学生账号能白嫖 DataCamp 三个月，学数据分析的在校生值得顺手领一下。",
+    "howToClaim": "在 GitHub Education 礼包页（education.github.com/pack）用学生账号订阅 DataCamp，领取三个月免费访问。",
+    "caveat": "仅限 GitHub 学生账号，且需订阅 DataCamp；原文未说明到期后是否自动续费扣款。",
     "feedback": {
       "useful": 0,
       "dead": 0
@@ -721,14 +696,74 @@
     "daysLeft": null,
     "endingSoon": false,
     "isNew": true,
-    "createdAt": "2026-10-27 07:38:39",
-    "updatedAt": "2026-10-27 07:38:39",
-    "lastVerifiedAt": "2026-10-27 15:39:41",
+    "createdAt": "2026-10-28 08:10:36",
+    "updatedAt": "2026-10-28 08:10:36",
+    "lastVerifiedAt": "2026-10-28 16:11:04",
     "model": null,
     "endpoint": null
   },
   {
-    "id": 25,
+    "id": 31,
+    "fingerprint": "84d78fb8852a482e9fa567c32d223e29",
+    "provider": {
+      "slug": "deepgram",
+      "name": "Deepgram",
+      "nameEn": "Deepgram",
+      "country": "US",
+      "website": "https://deepgram.com",
+      "color": "#13EF93",
+      "cnAccessible": false
+    },
+    "title": "Frequently Asked Questions",
+    "hook": "Deepgram 按量付费送 $0.0065 额度，适合想试实时语音识别的开发者，金额很小，试水可以别指望省钱。",
+    "howToClaim": "在 https://deepgram.com/pricing 领取",
+    "caveat": null,
+    "feedback": {
+      "useful": 0,
+      "dead": 0
+    },
+    "summary": "Managing your Deepgram Pay-As-You-Go credits: auto-load settings, refunds, and transfers At Deepgram, we offer a flexible pay-as-you-go service where customers can purchase credits for usage on our pl",
+    "category": "free_credit",
+    "categoryLabel": "免费额度",
+    "benefit": {
+      "kind": "credit_usd",
+      "amount": 0.0065,
+      "unit": "USD",
+      "unitLabel": "美元",
+      "text": "$0.0065",
+      "display": "$0.01"
+    },
+    "audience": [
+      "all"
+    ],
+    "audienceLabels": [
+      "所有人"
+    ],
+    "audienceNote": null,
+    "region": "GLOBAL",
+    "requiresCard": false,
+    "requiresVerification": null,
+    "startDate": null,
+    "endDate": null,
+    "isRecurring": null,
+    "claimUrl": "https://deepgram.com/pricing",
+    "sourceUrl": "https://deepgram.com/pricing",
+    "sourceExcerpt": "Managing your Deepgram Pay-As-You-Go credits: auto-load settings, refunds, and transfers\nAt Deepgram, we offer a flexible pay-as-you-go service where customers can purchase credits for usage on our platform. Our goal is to provide transparency and flexibility, while ensuring that you have full control over your account and payments.\nModel | Pay As You Go | Growth\nFlux EnglishiConversational speech recognition for real-time voice agents with built-in turn detection, natural interruption handling,",
+    "confidence": 0.64,
+    "reviewStatus": "auto_ok",
+    "status": "active",
+    "statusLabel": "NEW",
+    "daysLeft": null,
+    "endingSoon": false,
+    "isNew": true,
+    "createdAt": "2026-10-28 08:10:36",
+    "updatedAt": "2026-10-28 08:10:36",
+    "lastVerifiedAt": "2026-10-28 16:14:01",
+    "model": null,
+    "endpoint": null
+  },
+  {
+    "id": 23,
     "fingerprint": "7c38800a05076daf7fb454f64069193f",
     "provider": {
       "slug": "tencent-hunyuan",
@@ -741,8 +776,8 @@
     },
     "title": "100万 tokens",
     "hook": "腾讯送100万tokens，有效期1年，适合想低成本试大模型API的开发者，值得领。",
-    "howToClaim": "在腾讯云领取页 https://cloud.tencent.com/document/product/1729/97731 开通服务领取",
-    "caveat": "资源包自开通起1年内有效，未用完过期作废",
+    "howToClaim": "在腾讯云领取页 https://cloud.tencent.com/document/product/1729/97731 开通服务领取，原文未写截止时间。",
+    "caveat": "资源包自开通起1年内有效，未用完过期作废。",
     "feedback": {
       "useful": 0,
       "dead": 0
@@ -781,15 +816,15 @@
     "daysLeft": null,
     "endingSoon": false,
     "isNew": true,
-    "createdAt": "2026-10-27 07:38:39",
-    "updatedAt": "2026-10-27 07:38:39",
-    "lastVerifiedAt": "2026-10-27 15:42:02",
+    "createdAt": "2026-10-28 08:10:36",
+    "updatedAt": "2026-10-28 08:10:36",
+    "lastVerifiedAt": "2026-10-28 16:13:38",
     "model": null,
     "endpoint": null
   },
   {
-    "id": 2,
-    "fingerprint": "b4f64c82a726ecfca78f8e1b04ced8a2",
+    "id": 1,
+    "fingerprint": "5becd1d1ce45eab8a43221224d6886f3",
     "provider": {
       "slug": "zhipu",
       "name": "智谱 AI",
@@ -799,7 +834,7 @@
       "color": "#3B5BDB",
       "cnAccessible": true
     },
-    "title": "智谱AI（BigModel） 免费 Token 领取攻略（2026 最新） | iGetoken",
+    "title": "智谱 ZCode 第二批限免 1 亿 Token：今日开源 + 安全整改通过，国内开发者零成本接入 GLM-5.3",
     "hook": null,
     "howToClaim": null,
     "caveat": null,
@@ -808,44 +843,68 @@
       "dead": 0
     },
     "summary": null,
-    "category": "free_credit",
-    "categoryLabel": "免费额度",
+    "category": "trial",
+    "categoryLabel": "免费试用",
     "benefit": {
       "kind": "token",
-      "amount": 20000000,
+      "amount": 100000000,
       "unit": "token",
       "unitLabel": "tokens",
-      "text": "2000 万 Token",
-      "display": "2000 万 tokens"
+      "text": "1 亿 Token",
+      "display": "1 亿 tokens"
     },
     "audience": [
-      "new_user"
+      "open_source"
     ],
     "audienceLabels": [
-      "新用户"
+      "开源项目"
     ],
-    "audienceNote": "新用户",
+    "audienceNote": "开源",
     "region": "CN",
     "requiresCard": false,
     "requiresVerification": null,
     "startDate": null,
-    "endDate": "2026-09-22",
+    "endDate": "2026-09-21",
     "isRecurring": null,
-    "claimUrl": "https://igetoken.com/models/zhipu",
+    "claimUrl": "https://blog.zzcxin.cn/posts/zcode-second-batch-100-million-tokens-free-september-2026.html",
     "sourceUrl": null,
     "sourceExcerpt": null,
     "confidence": 1,
     "reviewStatus": "auto_ok",
     "status": "ended",
     "statusLabel": "已结束",
-    "daysLeft": -35,
+    "daysLeft": -37,
     "endingSoon": false,
     "isNew": true,
-    "createdAt": "2026-10-27 07:38:39",
-    "updatedAt": "2026-10-27 07:38:39",
-    "lastVerifiedAt": "2026-10-27 07:38:39",
-    "model": null,
-    "endpoint": null
+    "createdAt": "2026-10-28 08:10:36",
+    "updatedAt": "2026-10-28 08:10:36",
+    "lastVerifiedAt": "2026-10-28 08:10:36",
+    "model": {
+      "slug": "glm-5-3-flash",
+      "name": "GLM-5.3-Flash",
+      "capability": "code-generation",
+      "capabilityLabel": "代码生成",
+      "capabilities": [
+        "code-generation",
+        "text-generation"
+      ],
+      "contextWindow": 1000000
+    },
+    "endpoint": {
+      "slug": "zhipu--glm-5-3-flash",
+      "quotaKind": "credits",
+      "quotaKindLabel": "赠送额度",
+      "quotaRpm": null,
+      "quotaRpd": null,
+      "quotaText": "官方开放平台新用户赠送额度",
+      "apiBase": "https://open.bigmodel.cn/api/paas/v4",
+      "score": null,
+      "requiresCard": false,
+      "cnAccessible": true,
+      "openaiCompatible": true,
+      "claimUrl": "https://open.bigmodel.cn",
+      "docsUrl": "https://z.ai"
+    }
   },
   {
     "id": 7,
@@ -898,18 +957,18 @@
     "reviewStatus": "auto_ok",
     "status": "ended",
     "statusLabel": "已结束",
-    "daysLeft": -24,
+    "daysLeft": -25,
     "endingSoon": false,
     "isNew": true,
-    "createdAt": "2026-10-27 07:38:39",
-    "updatedAt": "2026-10-27 07:38:39",
-    "lastVerifiedAt": "2026-10-27 07:38:39",
+    "createdAt": "2026-10-28 08:10:36",
+    "updatedAt": "2026-10-28 08:10:36",
+    "lastVerifiedAt": "2026-10-28 08:10:36",
     "model": null,
     "endpoint": null
   },
   {
-    "id": 24,
-    "fingerprint": "cfbe38cea5f44b3dcdd5ac4ecf0bb19d",
+    "id": 22,
+    "fingerprint": "e8d7a1bd32f9fbb0b18dbb86d224064c",
     "provider": {
       "slug": "baidu-ernie",
       "name": "百度文心",
@@ -919,9 +978,9 @@
       "color": "#2932E1",
       "cnAccessible": true
     },
-    "title": "新用户注册百度千帆送20元代金券",
-    "hook": "百度千帆新用户注册并实名认证就送20元无门槛代金券，想低成本试大模型API的可以顺手领。",
-    "howToClaim": "在百度千帆平台注册新账号并完成实名认证，代金券即到账，领取页：https://cloud.baidu.com/doc/wenxinworkshop/index.html",
+    "title": "新用户注册百度千帆·大模型服务及Agent开发平台，实名认证后即送20元代金券",
+    "hook": "百度千帆新用户注册并实名认证就送20元无门槛代金券，想低成本试大模型和Agent开发的可以顺手领。",
+    "howToClaim": "在百度千帆平台注册新账号并完成实名认证，领取入口见 https://cloud.baidu.com/doc/wenxinworkshop/index.html",
     "caveat": "仅限新用户，需实名认证；代金券有效期一个月，过期作废。",
     "feedback": {
       "useful": 0,
@@ -935,7 +994,7 @@
       "amount": 20,
       "unit": "CNY",
       "unitLabel": "元",
-      "text": "实名认证后即送20元代金券！全平台无门槛使用，有效期一个月",
+      "text": "20元代金券",
       "display": "¥20"
     },
     "audience": [
@@ -949,7 +1008,7 @@
     "requiresCard": false,
     "requiresVerification": "identity",
     "startDate": null,
-    "endDate": "2026-10-27",
+    "endDate": "2026-10-28",
     "isRecurring": null,
     "claimUrl": "https://cloud.baidu.com/doc/wenxinworkshop/index.html",
     "sourceUrl": "https://cloud.baidu.com/doc/WENXINWORKSHOP/index.html",
@@ -961,69 +1020,9 @@
     "daysLeft": 0,
     "endingSoon": true,
     "isNew": true,
-    "createdAt": "2026-10-27 07:38:39",
-    "updatedAt": "2026-10-27 07:38:39",
-    "lastVerifiedAt": "2026-10-27 15:41:37",
-    "model": null,
-    "endpoint": null
-  },
-  {
-    "id": 33,
-    "fingerprint": "84d78fb8852a482e9fa567c32d223e29",
-    "provider": {
-      "slug": "deepgram",
-      "name": "Deepgram",
-      "nameEn": "Deepgram",
-      "country": "US",
-      "website": "https://deepgram.com",
-      "color": "#13EF93",
-      "cnAccessible": false
-    },
-    "title": "Frequently Asked Questions",
-    "hook": "Deepgram 按量付费送 $0.0065 额度，适合想试实时语音识别的开发者，金额很小，试水可以别指望省钱。",
-    "howToClaim": "在 https://deepgram.com/pricing 领取",
-    "caveat": null,
-    "feedback": {
-      "useful": 0,
-      "dead": 0
-    },
-    "summary": "Managing your Deepgram Pay-As-You-Go credits: auto-load settings, refunds, and transfers At Deepgram, we offer a flexible pay-as-you-go service where customers can purchase credits for usage on our pl",
-    "category": "free_credit",
-    "categoryLabel": "免费额度",
-    "benefit": {
-      "kind": "credit_usd",
-      "amount": 0.0065,
-      "unit": "USD",
-      "unitLabel": "美元",
-      "text": "$0.0065",
-      "display": "$0.01"
-    },
-    "audience": [
-      "all"
-    ],
-    "audienceLabels": [
-      "所有人"
-    ],
-    "audienceNote": null,
-    "region": "GLOBAL",
-    "requiresCard": false,
-    "requiresVerification": null,
-    "startDate": null,
-    "endDate": "2026-10-27",
-    "isRecurring": null,
-    "claimUrl": "https://deepgram.com/pricing",
-    "sourceUrl": "https://deepgram.com/pricing",
-    "sourceExcerpt": "Managing your Deepgram Pay-As-You-Go credits: auto-load settings, refunds, and transfers\nAt Deepgram, we offer a flexible pay-as-you-go service where customers can purchase credits for usage on our platform. Our goal is to provide transparency and flexibility, while ensuring that you have full control over your account and payments.\nModel | Pay As You Go | Growth\nFlux EnglishiConversational speech recognition for real-time voice agents with built-in turn detection, natural interruption handling,",
-    "confidence": 0.64,
-    "reviewStatus": "auto_ok",
-    "status": "ended",
-    "statusLabel": "已结束",
-    "daysLeft": 0,
-    "endingSoon": true,
-    "isNew": true,
-    "createdAt": "2026-10-27 07:38:39",
-    "updatedAt": "2026-10-27 07:38:39",
-    "lastVerifiedAt": "2026-10-27 15:43:09",
+    "createdAt": "2026-10-28 08:10:36",
+    "updatedAt": "2026-10-28 08:10:36",
+    "lastVerifiedAt": "2026-10-28 16:12:59",
     "model": null,
     "endpoint": null
   }

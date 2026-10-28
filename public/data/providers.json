@@ -10,8 +10,8 @@
     "color": "#4D6BFE",
     "cnAccessible": true,
     "tier": 1,
-    "activityCount": 3,
-    "activeCount": 2
+    "activityCount": 4,
+    "activeCount": 3
   },
   {
     "slug": "zhipu",
@@ -24,8 +24,8 @@
     "color": "#3B5BDB",
     "cnAccessible": true,
     "tier": 1,
-    "activityCount": 3,
-    "activeCount": 2
+    "activityCount": 2,
+    "activeCount": 1
   },
   {
     "slug": "cloudflare-workers-ai",
