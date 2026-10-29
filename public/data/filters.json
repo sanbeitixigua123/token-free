@@ -3,17 +3,17 @@
     {
       "value": "free_credit",
       "label": "免费额度",
-      "count": 11
+      "count": 12
     },
     {
       "value": "trial",
       "label": "免费试用",
-      "count": 3
+      "count": 4
     },
     {
       "value": "student",
       "label": "学生优惠",
-      "count": 1
+      "count": 2
     },
     {
       "value": "refreshable",
@@ -25,22 +25,22 @@
     {
       "value": "all",
       "label": "所有人",
-      "count": 10
+      "count": 9
     },
     {
       "value": "new_user",
       "label": "新用户",
-      "count": 4
+      "count": 7
     },
     {
       "value": "student",
       "label": "学生",
-      "count": 1
+      "count": 2
     },
     {
       "value": "open_source",
       "label": "开源项目",
-      "count": 1
+      "count": 2
     },
     {
       "value": "verified",
@@ -52,31 +52,31 @@
     {
       "value": "active",
       "label": "进行中",
-      "count": 13
+      "count": 15
     },
     {
       "value": "ended",
       "label": "已结束",
-      "count": 3
+      "count": 4
     }
   ],
   "regions": [
     {
       "value": "CN",
       "label": "国内",
-      "count": 12
+      "count": 16
     },
     {
       "value": "GLOBAL",
       "label": "海外",
-      "count": 4
+      "count": 3
     }
   ],
   "providers": [
     {
       "value": "deepseek",
       "label": "DeepSeek",
-      "count": 4
+      "count": 5
     },
     {
       "value": "zhipu",
@@ -89,13 +89,18 @@
       "count": 1
     },
     {
-      "value": "github-student",
-      "label": "GitHub 学生开发者包",
+      "value": "vercel-ai-gateway",
+      "label": "Vercel AI Gateway",
       "count": 1
     },
     {
-      "value": "vercel-ai-gateway",
-      "label": "Vercel AI Gateway",
+      "value": "bytedance-doubao",
+      "label": "字节豆包",
+      "count": 1
+    },
+    {
+      "value": "volcengine-ark",
+      "label": "火山引擎方舟",
       "count": 1
     },
     {
@@ -119,6 +124,11 @@
       "count": 1
     },
     {
+      "value": "community",
+      "label": "社区渠道",
+      "count": 1
+    },
+    {
       "value": "tencent-hunyuan",
       "label": "腾讯混元",
       "count": 1
@@ -134,6 +144,16 @@
       "value": "code-generation",
       "label": "代码生成",
       "count": 3
+    },
+    {
+      "value": "video-generation",
+      "label": "视频生成",
+      "count": 1
+    },
+    {
+      "value": "speech-to-text",
+      "label": "语音识别",
+      "count": 1
     }
   ],
   "sorts": [
