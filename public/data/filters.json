@@ -8,7 +8,7 @@
     {
       "value": "trial",
       "label": "免费试用",
-      "count": 4
+      "count": 3
     },
     {
       "value": "student",
@@ -25,12 +25,12 @@
     {
       "value": "all",
       "label": "所有人",
-      "count": 9
+      "count": 10
     },
     {
       "value": "new_user",
       "label": "新用户",
-      "count": 7
+      "count": 6
     },
     {
       "value": "student",
@@ -40,7 +40,7 @@
     {
       "value": "open_source",
       "label": "开源项目",
-      "count": 2
+      "count": 1
     },
     {
       "value": "verified",
@@ -52,7 +52,7 @@
     {
       "value": "active",
       "label": "进行中",
-      "count": 15
+      "count": 14
     },
     {
       "value": "ended",
@@ -64,19 +64,19 @@
     {
       "value": "CN",
       "label": "国内",
-      "count": 16
+      "count": 14
     },
     {
       "value": "GLOBAL",
       "label": "海外",
-      "count": 3
+      "count": 4
     }
   ],
   "providers": [
     {
       "value": "deepseek",
       "label": "DeepSeek",
-      "count": 5
+      "count": 4
     },
     {
       "value": "zhipu",
@@ -86,6 +86,11 @@
     {
       "value": "cloudflare-workers-ai",
       "label": "Cloudflare Workers AI",
+      "count": 1
+    },
+    {
+      "value": "github-student",
+      "label": "GitHub 学生开发者包",
       "count": 1
     },
     {
@@ -124,11 +129,6 @@
       "count": 1
     },
     {
-      "value": "community",
-      "label": "社区渠道",
-      "count": 1
-    },
-    {
       "value": "tencent-hunyuan",
       "label": "腾讯混元",
       "count": 1
@@ -138,17 +138,17 @@
     {
       "value": "text-generation",
       "label": "文本生成",
-      "count": 3
+      "count": 2
     },
     {
       "value": "code-generation",
       "label": "代码生成",
-      "count": 3
+      "count": 2
     },
     {
       "value": "video-generation",
       "label": "视频生成",
-      "count": 1
+      "count": 2
     },
     {
       "value": "speech-to-text",
