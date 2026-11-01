@@ -3,17 +3,17 @@
     {
       "value": "free_credit",
       "label": "免费额度",
-      "count": 13
+      "count": 14
     },
     {
       "value": "trial",
       "label": "免费试用",
-      "count": 3
+      "count": 2
     },
     {
       "value": "student",
       "label": "学生优惠",
-      "count": 2
+      "count": 1
     },
     {
       "value": "refreshable",
@@ -25,17 +25,17 @@
     {
       "value": "all",
       "label": "所有人",
-      "count": 11
+      "count": 12
     },
     {
       "value": "new_user",
       "label": "新用户",
-      "count": 7
+      "count": 5
     },
     {
       "value": "student",
       "label": "学生",
-      "count": 2
+      "count": 1
     },
     {
       "value": "verified",
@@ -47,19 +47,19 @@
     {
       "value": "active",
       "label": "进行中",
-      "count": 14
+      "count": 12
     },
     {
       "value": "ended",
       "label": "已结束",
-      "count": 5
+      "count": 6
     }
   ],
   "regions": [
     {
       "value": "CN",
       "label": "国内",
-      "count": 15
+      "count": 14
     },
     {
       "value": "GLOBAL",
@@ -71,12 +71,7 @@
     {
       "value": "deepseek",
       "label": "DeepSeek",
-      "count": 4
-    },
-    {
-      "value": "zhipu",
-      "label": "智谱 AI",
-      "count": 3
+      "count": 5
     },
     {
       "value": "cloudflare-workers-ai",
@@ -96,6 +91,11 @@
     {
       "value": "bytedance-doubao",
       "label": "字节豆包",
+      "count": 1
+    },
+    {
+      "value": "zhipu",
+      "label": "智谱 AI",
       "count": 1
     },
     {
@@ -143,7 +143,7 @@
     {
       "value": "video-generation",
       "label": "视频生成",
-      "count": 2
+      "count": 1
     },
     {
       "value": "speech-to-text",

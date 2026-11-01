@@ -10,22 +10,8 @@
     "color": "#4D6BFE",
     "cnAccessible": true,
     "tier": 1,
-    "activityCount": 4,
-    "activeCount": 3
-  },
-  {
-    "slug": "zhipu",
-    "name": "智谱 AI",
-    "nameEn": "Zhipu AI",
-    "country": "CN",
-    "website": "https://www.z.ai",
-    "pricingUrl": "https://open.bigmodel.cn/pricing",
-    "announcementUrl": "https://www.z.ai/blog",
-    "color": "#3B5BDB",
-    "cnAccessible": true,
-    "tier": 1,
-    "activityCount": 3,
-    "activeCount": 3
+    "activityCount": 5,
+    "activeCount": 2
   },
   {
     "slug": "cloudflare-workers-ai",
@@ -78,6 +64,20 @@
     "pricingUrl": "https://www.volcengine.com/docs/82379/1099320",
     "announcementUrl": null,
     "color": "#1664FF",
+    "cnAccessible": true,
+    "tier": 1,
+    "activityCount": 1,
+    "activeCount": 1
+  },
+  {
+    "slug": "zhipu",
+    "name": "智谱 AI",
+    "nameEn": "Zhipu AI",
+    "country": "CN",
+    "website": "https://www.z.ai",
+    "pricingUrl": "https://open.bigmodel.cn/pricing",
+    "announcementUrl": "https://www.z.ai/blog",
+    "color": "#3B5BDB",
     "cnAccessible": true,
     "tier": 1,
     "activityCount": 1,
