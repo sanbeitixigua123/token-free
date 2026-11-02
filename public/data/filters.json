@@ -3,7 +3,7 @@
     {
       "value": "free_credit",
       "label": "免费额度",
-      "count": 14
+      "count": 12
     },
     {
       "value": "trial",
@@ -25,16 +25,21 @@
     {
       "value": "all",
       "label": "所有人",
-      "count": 12
+      "count": 10
     },
     {
       "value": "new_user",
       "label": "新用户",
-      "count": 5
+      "count": 4
     },
     {
       "value": "student",
       "label": "学生",
+      "count": 1
+    },
+    {
+      "value": "open_source",
+      "label": "开源项目",
       "count": 1
     },
     {
@@ -47,7 +52,7 @@
     {
       "value": "active",
       "label": "进行中",
-      "count": 12
+      "count": 10
     },
     {
       "value": "ended",
@@ -59,7 +64,7 @@
     {
       "value": "CN",
       "label": "国内",
-      "count": 14
+      "count": 12
     },
     {
       "value": "GLOBAL",
@@ -71,7 +76,12 @@
     {
       "value": "deepseek",
       "label": "DeepSeek",
-      "count": 5
+      "count": 4
+    },
+    {
+      "value": "zhipu",
+      "label": "智谱 AI",
+      "count": 2
     },
     {
       "value": "cloudflare-workers-ai",
@@ -89,23 +99,8 @@
       "count": 1
     },
     {
-      "value": "bytedance-doubao",
-      "label": "字节豆包",
-      "count": 1
-    },
-    {
-      "value": "zhipu",
-      "label": "智谱 AI",
-      "count": 1
-    },
-    {
       "value": "volcengine-ark",
       "label": "火山引擎方舟",
-      "count": 1
-    },
-    {
-      "value": "aliyun-bailian",
-      "label": "阿里云百炼",
       "count": 1
     },
     {
@@ -133,17 +128,12 @@
     {
       "value": "text-generation",
       "label": "文本生成",
-      "count": 2
+      "count": 3
     },
     {
       "value": "code-generation",
       "label": "代码生成",
-      "count": 2
-    },
-    {
-      "value": "video-generation",
-      "label": "视频生成",
-      "count": 1
+      "count": 3
     },
     {
       "value": "speech-to-text",
