@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-11-07T13:14:13.003Z",
+  "generatedAt": "2026-11-07T21:57:12.722Z",
   "meta": {
-    "total": 76,
-    "online": 19,
-    "offline": 2,
+    "total": 117,
+    "online": 63,
+    "offline": 1,
     "recommended": 0,
     "sources": [
       {
@@ -15,8 +15,8 @@
       {
         "repo": "wynx1123/ai-welfare-hub",
         "ok": true,
-        "sites": 19,
-        "live": 19
+        "sites": 58,
+        "live": 58
       },
       {
         "repo": "1sh1ro/ai-api-zhongzhuan",
@@ -27,6 +27,403 @@
     ]
   },
   "relays": [
+    {
+      "id": "100xlabs",
+      "name": "100xLabs",
+      "subtitle": "百倍公益站 · 签到日 $200 递增至 $888，专供 Claude Opus 系",
+      "homeUrl": "https://sub.100xlabs.space/",
+      "signupUrl": "https://sub.100xlabs.space/",
+      "docsUrl": null,
+      "recommended": false,
+      "bonus": "每日签到 $200",
+      "tags": [
+        "公益站",
+        "每日签到",
+        "Claude",
+        "Anthropic 兼容",
+        "Claude Code"
+      ],
+      "highlights": [
+        "额度靠「每日签到 + 兑换码」领取：第 1 天 $200 逐日递增到第 7 天 $888（北京时间、7 天一轮）",
+        "端点走 Anthropic 兼容协议，填进 Claude Code 直接白嫖 Claude Opus 4.6 / 4.7 / 4.8"
+      ],
+      "caveats": "无注册礼包，初始额度从首日签到开始",
+      "online": true,
+      "latencyMs": 242,
+      "checkedAt": "2026-11-07T21:19:39.805Z",
+      "models": null,
+      "modelsCount": 0,
+      "modelsNote": null,
+      "announcement": null,
+      "mirror": null,
+      "source": "wynx1123/ai-welfare-hub",
+      "sources": [
+        "wynx1123/ai-welfare-hub"
+      ]
+    },
+    {
+      "id": "88888-ai",
+      "name": "88888 AI",
+      "subtitle": "注册送 $100 支持临时邮箱 · 按次计费近免费，国产模型一条龙",
+      "homeUrl": "https://88888.qzz.io/",
+      "signupUrl": "https://88888.qzz.io/",
+      "docsUrl": null,
+      "recommended": false,
+      "bonus": "注册送 $100",
+      "tags": [
+        "公益站",
+        "注册送额度",
+        "按次计费",
+        "DeepSeek",
+        "GLM",
+        "Kimi"
+      ],
+      "highlights": [
+        "注册就送 $100，支持临时邮箱注册、门槛极低",
+        "模型按「次」计费、几乎免费：Deepseek-v4-flash / v4-pro $0.000/次（白送），GLM5.1、Kimi-k2.6、MiniMax-m3、Qwen-3.5、step-3.7-flash 均 $0.001/次"
+      ],
+      "caveats": "GLM4.7 / GLM5 上游已下线，调不通属于正常现象",
+      "online": true,
+      "latencyMs": 850,
+      "checkedAt": "2026-11-07T21:19:37.278Z",
+      "models": null,
+      "modelsCount": 0,
+      "modelsNote": null,
+      "announcement": null,
+      "mirror": null,
+      "source": "wynx1123/ai-welfare-hub",
+      "sources": [
+        "wynx1123/ai-welfare-hub"
+      ]
+    },
+    {
+      "id": "ai-baipiao-co",
+      "name": "白嫖福利站",
+      "subtitle": "白嫖 BaiPiao 官方福利站 · 每日签到随机 $1–$100，账号密码即注",
+      "homeUrl": "https://ai.baipiao.co/",
+      "signupUrl": "https://ai.baipiao.co/",
+      "docsUrl": null,
+      "recommended": false,
+      "bonus": null,
+      "tags": [
+        "公益站",
+        "每日签到",
+        "兑换码",
+        "DeepSeek",
+        "MiniMax",
+        "GLM"
+      ],
+      "highlights": [
+        "每天签到随机送 $1–$100，不定期在白嫖社区发兑换码",
+        "账号密码即可注册，当前无需邮箱验证"
+      ],
+      "caveats": "公开菜单仅 6 个模型，后续增减和实际可调用状态以控制台为准",
+      "online": true,
+      "latencyMs": 156,
+      "checkedAt": "2026-11-07T21:19:29.606Z",
+      "models": null,
+      "modelsCount": 0,
+      "modelsNote": null,
+      "announcement": null,
+      "mirror": null,
+      "source": "wynx1123/ai-welfare-hub",
+      "sources": [
+        "wynx1123/ai-welfare-hub"
+      ]
+    },
+    {
+      "id": "bohe",
+      "name": "薄荷公益站",
+      "subtitle": "LinuxDo 授权注册送 25 点 · 转盘签到续额度，附 Gemini Antigravity 渠道",
+      "homeUrl": "https://x666.me/",
+      "signupUrl": "https://x666.me/",
+      "docsUrl": null,
+      "recommended": false,
+      "bonus": "注册送 $25 · 邀请得 $25",
+      "tags": [
+        "公益站",
+        "LinuxDO",
+        "每日签到",
+        "转盘抽奖",
+        "Gemini",
+        "Antigravity"
+      ],
+      "highlights": [
+        "LinuxDo 授权注册直接到手 25 点，邀请注册则双方各 +25 点",
+        "每天 8 点在签到站 qd.x666.me 刷新转盘，转一次盘领额度；up.x666.me 可查星级与升级进度"
+      ],
+      "caveats": "主站与签到站、星级站是三套联动入口，签到所得与主站额度联动以站内规则为准",
+      "online": true,
+      "latencyMs": 396,
+      "checkedAt": "2026-11-07T21:19:36.114Z",
+      "models": [
+        "grok-4.5",
+        "grok-4.7-build-fast",
+        "grok-4.6",
+        "glm-4.5-flash",
+        "grok-4.7",
+        "minimax-m3.1-flash"
+      ],
+      "modelsCount": 6,
+      "modelsNote": null,
+      "announcement": {
+        "date": null,
+        "text": "老黄渠道模型名取消重定向，因为确实有点拉了太慢了，大家自己辨别"
+      },
+      "mirror": null,
+      "source": "wynx1123/ai-welfare-hub",
+      "sources": [
+        "wynx1123/ai-welfare-hub"
+      ],
+      "loginMethods": [
+        "LinuxDO OAuth"
+      ],
+      "checkinEnabled": false
+    },
+    {
+      "id": "chuyel-furry",
+      "name": "初叶 Furry API",
+      "subtitle": "按「次」计费的公益站 · 每日签到发代币，约可换 50–200 次调用",
+      "homeUrl": "https://ai.chuyel.top/",
+      "signupUrl": "https://ai.chuyel.top/sign-up",
+      "docsUrl": null,
+      "recommended": false,
+      "bonus": "每日签到 $10",
+      "tags": [
+        "公益站",
+        "按次计费",
+        "每日签到",
+        "生图"
+      ],
+      "highlights": [
+        "计费按次数不按 token：每天签到发 10 代币左右，约合 50–200 次调用，还能生图",
+        "New API 系面板（v1.0.0-rc.24），注册与签到均开放，支持生图模型"
+      ],
+      "caveats": "代币是站内计费单位，具体换算以站内说明为准",
+      "online": true,
+      "latencyMs": 1681,
+      "checkedAt": "2026-11-07T21:19:31.498Z",
+      "models": [
+        "Qwen3-0.6B",
+        "glm-5.3-flash-thinking",
+        "grok-imagine-image-2.0",
+        "MiniMaxAI/MiniMax-M2.7",
+        "Qwen3-8B",
+        "（掺水）claude-fable-5",
+        "gemini-2.5-flash-lite",
+        "deepseek-v4.5-Lite"
+      ],
+      "modelsCount": 80,
+      "modelsNote": null,
+      "announcement": {
+        "date": null,
+        "text": "复活一下玩玩，规则还是一样"
+      },
+      "mirror": null,
+      "source": "wynx1123/ai-welfare-hub",
+      "sources": [
+        "wynx1123/ai-welfare-hub"
+      ],
+      "registerOpen": true,
+      "loginMethods": [
+        "OIDC",
+        "邮箱 + 密码"
+      ],
+      "checkinEnabled": true
+    },
+    {
+      "id": "aisz-nexus",
+      "name": "词元枢阁 Token Nexus",
+      "subtitle": "GPT / Gemini / Grok chat 模型长期免费 · 综合倍率 0.1",
+      "homeUrl": "https://api.aisz.mom/",
+      "signupUrl": "https://api.aisz.mom/register",
+      "docsUrl": null,
+      "recommended": false,
+      "bonus": null,
+      "tags": [
+        "公益站",
+        "免费模型",
+        "超低倍率",
+        "GPT",
+        "Gemini",
+        "Grok"
+      ],
+      "highlights": [
+        "GPT / Gemini / Grok 的 chat 模型长期在免费区挂着，直接调",
+        "综合倍率 0.1 偏低，不定期放 0.01 超低倍率活动"
+      ],
+      "caveats": "免费清单与活动倍率以站内当下为准",
+      "online": true,
+      "latencyMs": 520,
+      "checkedAt": "2026-11-07T21:19:39.930Z",
+      "models": [
+        "gpt-5.6-luna",
+        "codex-auto-review",
+        "gpt-5.3-codex-spark",
+        "gemini-3.8-flash",
+        "claude-haiku-4-5-20251001",
+        "gemini-3.8-flash-low",
+        "claude-sonnet-5",
+        "grok-4.6"
+      ],
+      "modelsCount": 26,
+      "modelsNote": null,
+      "announcement": {
+        "date": null,
+        "text": "【GPT / Claude 分组更名通知】\n\n为统一分组命名，本站已启用新版分组。\n\n旧分组将于今天（10月10日）晚上 22:00（北京时间）删除，请提前将 API 令牌（Token）的分组切换到对应的新分组，避免影响调用。\n\n一、GPT 分组对应关系\n\n…"
+      },
+      "mirror": null,
+      "source": "wynx1123/ai-welfare-hub",
+      "sources": [
+        "wynx1123/ai-welfare-hub"
+      ],
+      "registerOpen": true,
+      "loginMethods": [
+        "邮箱验证",
+        "邮箱 + 密码"
+      ],
+      "checkinEnabled": false
+    },
+    {
+      "id": "dabaifan",
+      "name": "大白饭公益站",
+      "subtitle": "分组低价公益中转 · default 组 0.08 倍率，注册送 $2 + 每日签到",
+      "homeUrl": "https://newapi.hkkkj.qzz.io/",
+      "signupUrl": "https://newapi.hkkkj.qzz.io/sign-up",
+      "docsUrl": null,
+      "recommended": false,
+      "bonus": "注册送 $2 · 每日签到 $1",
+      "tags": [
+        "公益站",
+        "免费额度",
+        "每日签到",
+        "DeepSeek",
+        "GLM",
+        "Qwen"
+      ],
+      "highlights": [
+        "注册送 $2，每日签到最高再领 $1，站内开着 checkin",
+        "default 组倍率 0.08、gemini 组 0.12、claude 组 0.75，另有一整组 NIM 模型倍率为 0 直接免费"
+      ],
+      "caveats": "一把 key 只对应一个分组，建密钥时选错分组直接影响花费",
+      "online": true,
+      "latencyMs": 330,
+      "checkedAt": "2026-11-07T21:19:27.696Z",
+      "models": [
+        "gemini-3.1-flash-image",
+        "gemini-3.8-flash-high",
+        "freeai/deepseek-r1",
+        "freeai/deepseek-r1-7b",
+        "gemini-auto",
+        "ovh/qwen3-embedding-8b",
+        "ovh/qwen3.5-397b-a17b",
+        "ovh/qwen3.6-27b"
+      ],
+      "modelsCount": 48,
+      "modelsNote": null,
+      "announcement": {
+        "date": null,
+        "text": "我们监测到一些异常用户行为，并对相应账号及ip实施了封禁，为确保正常用户的使用和缓解服务器压力，我们可能会对未加入交流群和未曾调用过的用户实施封禁。\n同时，站点将加入ai异常监测，如果有以下行为，可能会被判为异常用户：\n1.短时多ip使用的；\n2.多次长输入…"
+      },
+      "mirror": null,
+      "source": "wynx1123/ai-welfare-hub",
+      "sources": [
+        "wynx1123/ai-welfare-hub"
+      ],
+      "registerOpen": true,
+      "loginMethods": [
+        "邮箱验证",
+        "邮箱 + 密码"
+      ],
+      "checkinEnabled": true
+    },
+    {
+      "id": "hajimao",
+      "name": "哈基猫API",
+      "subtitle": "超低分组倍率公益站 · kimi-k3 组 0.0101 倍率，登录送钱签到续",
+      "homeUrl": "https://hjmapi.923578.xyz/",
+      "signupUrl": "https://hjmapi.923578.xyz/register",
+      "docsUrl": null,
+      "recommended": false,
+      "bonus": null,
+      "tags": [
+        "公益站",
+        "超低倍率",
+        "每日签到",
+        "Kimi",
+        "GPT",
+        "Claude"
+      ],
+      "highlights": [
+        "kimi0.01 组倍率仅 0.0101（kimi-k3），openai低价 组 0.1（GPT-5.5/5.6/6 系），Claude 组 0.2",
+        "登录送 ¥0.2、每日签到再领 ¥0.01–0.2，配合低倍率能薅很久"
+      ],
+      "caveats": "赠送金额以人民币口径描述且数额较小，按量模型选择比价更重要",
+      "online": true,
+      "latencyMs": 503,
+      "checkedAt": "2026-11-07T21:19:35.111Z",
+      "models": [
+        "minimax-m3.1-flash",
+        "qwen3.8-max",
+        "grok-imagine-image",
+        "grok-imagine-video-1.5",
+        "deepseek-v4.1-flash",
+        "gemini-3.8-flash",
+        "glm-5.3-flash",
+        "grok-4.5"
+      ],
+      "modelsCount": 32,
+      "modelsNote": null,
+      "announcement": {
+        "date": null,
+        "text": "取消deepseek-v4.1-flash的0.2倍率服务，由于上游问题仅有0.5x\n\ndeepseek-v4.1-flash-1017保留0.15x不影响调用"
+      },
+      "mirror": null,
+      "source": "wynx1123/ai-welfare-hub",
+      "sources": [
+        "wynx1123/ai-welfare-hub"
+      ],
+      "registerOpen": true,
+      "loginMethods": [
+        "GitHub OAuth",
+        "邮箱验证",
+        "邮箱 + 密码"
+      ],
+      "checkinEnabled": true
+    },
+    {
+      "id": "hybgzs",
+      "name": "黑与白公益站",
+      "subtitle": "福利站大转盘 + 盲盒 + 农场攒额度 · 主站 API 网关",
+      "homeUrl": "https://ai.hybgzs.com/",
+      "signupUrl": "https://ai.hybgzs.com/",
+      "docsUrl": null,
+      "recommended": false,
+      "bonus": null,
+      "tags": [
+        "公益站",
+        "兑换码",
+        "签到玩法",
+        "RPM 提升"
+      ],
+      "highlights": [
+        "额度耗尽可到福利站 cdk.hybgzs.com 玩「每日签到 · 大转盘抽奖 · 集换式卡牌 · 惊喜盲盒 · 轻松农场」，攒够自动回流主站账户",
+        "另有 status.hybgzs.com 独立状态页"
+      ],
+      "caveats": "公益线路、额度靠游戏化任务攒，反诈骗声明原文：「本服务完全免费。任何充值请求均为诈骗」",
+      "online": true,
+      "latencyMs": 145,
+      "checkedAt": "2026-11-07T21:19:35.272Z",
+      "models": null,
+      "modelsCount": 0,
+      "modelsNote": null,
+      "announcement": null,
+      "mirror": null,
+      "source": "wynx1123/ai-welfare-hub",
+      "sources": [
+        "wynx1123/ai-welfare-hub"
+      ]
+    },
     {
       "id": "hcnsec",
       "name": "幻城网安",
@@ -48,8 +445,8 @@
       ],
       "caveats": "免费用户与 SVIP 速率差异大；模型上下架较频繁，以站内公告为准",
       "online": true,
-      "latencyMs": 3780,
-      "checkedAt": "2026-11-05T05:27:02.260Z",
+      "latencyMs": 922,
+      "checkedAt": "2026-11-07T21:19:25.308Z",
       "models": null,
       "modelsCount": 0,
       "modelsNote": null,
@@ -65,6 +462,358 @@
       "registerOpen": true,
       "loginMethods": [
         "邮箱验证",
+        "邮箱 + 密码"
+      ],
+      "checkinEnabled": true
+    },
+    {
+      "id": "juziai",
+      "name": "橘子API",
+      "subtitle": "注册送 $50 + 每日签到的公益聚合站",
+      "homeUrl": "https://api.juziai.cc/",
+      "signupUrl": "https://api.juziai.cc/register",
+      "docsUrl": null,
+      "recommended": false,
+      "bonus": "注册送 $50",
+      "tags": [
+        "公益站",
+        "注册送额度",
+        "每日签到",
+        "聚合"
+      ],
+      "highlights": [
+        "注册直接到账 $50（固定额度，非随机），按量计费",
+        "另有每日签到继续加额度，签到功能当前开放"
+      ],
+      "caveats": "805 公益线路、上游共享，模型与倍率以站内定价页为准",
+      "online": true,
+      "latencyMs": 628,
+      "checkedAt": "2026-11-07T21:19:36.101Z",
+      "models": [
+        "[kiro]claude-sonnet-4-6-thinking",
+        "[次1]deepseek-v4.1-flash-1017",
+        "[次1]glm-5.2",
+        "[次]deepseek-v4-pro-0813",
+        "[量]gpt-5.5",
+        "gemini-3.1-pro-preview",
+        "[aistudio]gemini-4-argon",
+        "[ais逆-思考优化]gemini-3.7-flash-high"
+      ],
+      "modelsCount": 80,
+      "modelsNote": null,
+      "announcement": {
+        "date": null,
+        "text": "【服务故障与恢复说明】\n\n各位用户：\n\n今日 20:35 - 23:45（北京时间）期间，橘子站出现访问异常，部分请求超时、无法正常返回。给大家带来的不便，我们深表歉意。\n\n【故障原因】\n\n经排查，本次故障系服务器厂商母机网络负载异常、出现严重丢包所致。受影…"
+      },
+      "mirror": null,
+      "source": "wynx1123/ai-welfare-hub",
+      "sources": [
+        "wynx1123/ai-welfare-hub"
+      ],
+      "registerOpen": true,
+      "loginMethods": [
+        "邮箱验证",
+        "邮箱 + 密码"
+      ],
+      "checkinEnabled": true
+    },
+    {
+      "id": "aiyiwei",
+      "name": "聚合 API（aiyiwei）",
+      "subtitle": "签到日送约 $0.3 · 综合倍率 0.2–0.8 的聚合中转",
+      "homeUrl": "https://aiyiwei.vip/",
+      "signupUrl": "https://aiyiwei.vip/register",
+      "docsUrl": null,
+      "recommended": false,
+      "bonus": null,
+      "tags": [
+        "公益站",
+        "每日签到",
+        "超低倍率",
+        "聚合"
+      ],
+      "highlights": [
+        "每天签到发 $0.3 左右，积少成多",
+        "综合倍率 0.2–0.8，按量花比一般站省"
+      ],
+      "caveats": "签到金额小，适合按量低频用",
+      "online": true,
+      "latencyMs": 251,
+      "checkedAt": "2026-11-07T21:19:38.841Z",
+      "models": null,
+      "modelsCount": 0,
+      "modelsNote": null,
+      "announcement": {
+        "date": null,
+        "text": "同步官方价格：deepseek-v4-pro  deepseek-v4-flash"
+      },
+      "mirror": null,
+      "source": "wynx1123/ai-welfare-hub",
+      "sources": [
+        "wynx1123/ai-welfare-hub"
+      ],
+      "loginMethods": [
+        "GitHub OAuth",
+        "LinuxDO OAuth",
+        "邮箱验证"
+      ],
+      "checkinEnabled": true
+    },
+    {
+      "id": "muyuan",
+      "name": "君の公益",
+      "subtitle": "LinuxDo 个人公益网关 · 只认 Codex CLI / Claude Code CLI，签到看资源",
+      "homeUrl": "https://muyuan.do/",
+      "signupUrl": "https://muyuan.do/",
+      "docsUrl": null,
+      "recommended": false,
+      "bonus": null,
+      "tags": [
+        "公益站",
+        "每日签到",
+        "Codex CLI",
+        "Claude Code CLI",
+        "LinuxDO",
+        "LDC 充值"
+      ],
+      "highlights": [
+        "linux.do 老哥个人维护的 New API 网关，签到功能常开、额度按 USD 显示，数额随资源浮动",
+        "实测确认 OpenAI 兼容 /v1/chat/completions 可用，账号密码 / LinuxDO / Passkey 均可注册（门槛随资源调整）"
+      ],
+      "caveats": "只允许 Codex CLI 或 Claude Code CLI 调用，不支持 SDK / 脚本裸连，网页聊天走不通",
+      "online": true,
+      "latencyMs": 346,
+      "checkedAt": "2026-11-07T21:19:33.215Z",
+      "models": null,
+      "modelsCount": 0,
+      "modelsNote": null,
+      "announcement": null,
+      "mirror": null,
+      "source": "wynx1123/ai-welfare-hub",
+      "sources": [
+        "wynx1123/ai-welfare-hub",
+        "1sh1ro/ai-api-zhongzhuan"
+      ]
+    },
+    {
+      "id": "laisiai",
+      "name": "莱斯超级API",
+      "subtitle": "注册送 6.6M 输入 token · 每日签到再补 2.3M，Mistral / Gemini / DeepSeek 系可用",
+      "homeUrl": "https://laisiai.tw.cpolar.io/",
+      "signupUrl": "https://laisiai.tw.cpolar.io/register",
+      "docsUrl": null,
+      "recommended": false,
+      "bonus": null,
+      "tags": [
+        "公益站",
+        "注册送额度",
+        "每日签到",
+        "GPT",
+        "Gemini",
+        "DeepSeek"
+      ],
+      "highlights": [
+        "注册赠送 6.6M 输入 + 4.4M 输出 token 额度，签到日均再补 2.3M 输入 + 1.5M 输出",
+        "模型覆盖 Mistral、GPT 5.4、Gemini 3.1 / 2.5、DeepSeek、千问系列"
+      ],
+      "caveats": "域名挂在 cpolar.io 内网穿透隧道上，域名与稳定性可能随时变化，以导航页最新入口为准",
+      "online": true,
+      "latencyMs": 1374,
+      "checkedAt": "2026-11-07T21:19:30.392Z",
+      "models": [
+        "gpt-5.2",
+        "qwen3-small",
+        "gpt-5.6-luna:tool",
+        "deepseek-v4-pro",
+        "gpt-5.2:high",
+        "gpt-5.6-sol:tool",
+        "gpt-5.6-luna-pro",
+        "grok-4.3"
+      ],
+      "modelsCount": 19,
+      "modelsNote": null,
+      "announcement": {
+        "date": null,
+        "text": "**注意**\n6ae2e7e3e4使用本站模型进行色情创作，严重违反行为准则，永久封禁，如需申诉提供理由和证据联系lesboyspp43@outlook.com！"
+      },
+      "mirror": null,
+      "source": "wynx1123/ai-welfare-hub",
+      "sources": [
+        "wynx1123/ai-welfare-hub"
+      ],
+      "registerOpen": true,
+      "loginMethods": [
+        "邮箱 + 密码"
+      ],
+      "checkinEnabled": true
+    },
+    {
+      "id": "luna",
+      "name": "露娜",
+      "subtitle": "签到日随机 1–999 额度的聚合网关 · 邮箱白名单制",
+      "homeUrl": "https://freeapi.site/",
+      "signupUrl": "https://freeapi.site/register",
+      "docsUrl": null,
+      "recommended": false,
+      "bonus": null,
+      "tags": [
+        "公益站",
+        "每日签到",
+        "随机额度",
+        "聚合"
+      ],
+      "highlights": [
+        "每日签到随机 1–999 额度，没有公开的注册赠送数字",
+        "OpenAI / Anthropic / Gemini / 图像接口路径齐全，登录建 key 后可跑多协议"
+      ],
+      "caveats": "登录协议写明「不为中国大陆服务」，大陆网络访问需自备网络条件，介意勿用",
+      "online": true,
+      "latencyMs": 104,
+      "checkedAt": "2026-11-07T21:19:39.811Z",
+      "models": null,
+      "modelsCount": 0,
+      "modelsNote": null,
+      "announcement": null,
+      "mirror": null,
+      "source": "wynx1123/ai-welfare-hub",
+      "sources": [
+        "wynx1123/ai-welfare-hub"
+      ]
+    },
+    {
+      "id": "free-v36",
+      "name": "免费 ChatGPT API",
+      "subtitle": "free.v36.cm 公益站 · GitHub 开源项目同源，面板 FREE GPT API",
+      "homeUrl": "https://free.v36.cm/",
+      "signupUrl": "https://free.v36.cm/register",
+      "docsUrl": null,
+      "recommended": false,
+      "bonus": null,
+      "tags": [
+        "公益站",
+        "开源项目",
+        "免费额度",
+        "API 站点"
+      ],
+      "highlights": [
+        "GitHub 开源项目（v36 系）配套公益站，自建面板 system_name 为 FREE GPT API",
+        "状态与定价接口公开，支持程序化读取模型清单"
+      ],
+      "caveats": "公开接口未给出注册赠送的官方数字，以注册后控制台实际到账为准",
+      "online": true,
+      "latencyMs": 166,
+      "checkedAt": "2026-11-07T21:19:33.673Z",
+      "models": null,
+      "modelsCount": 0,
+      "modelsNote": null,
+      "announcement": null,
+      "mirror": null,
+      "source": "wynx1123/ai-welfare-hub",
+      "sources": [
+        "wynx1123/ai-welfare-hub"
+      ],
+      "loginMethods": [
+        "GitHub OAuth"
+      ]
+    },
+    {
+      "id": "makelove-nianhua",
+      "name": "年华 API",
+      "subtitle": "签到日补 $2 的稳态中转 · 综合倍率 0.05–1，支持生图",
+      "homeUrl": "https://newapi.makelove.cloud/",
+      "signupUrl": "https://newapi.makelove.cloud/register",
+      "docsUrl": null,
+      "recommended": false,
+      "bonus": "每日签到 $2",
+      "tags": [
+        "公益站",
+        "每日签到",
+        "超低倍率",
+        "生图"
+      ],
+      "highlights": [
+        "每天签到补 $2，综合倍率 0.05–1，便宜档很省",
+        "长期表现稳、可生图，适合闷声当主力备用"
+      ],
+      "caveats": "公益线路、上游共享，倍率与模型以站内定价页为准",
+      "online": true,
+      "latencyMs": 1086,
+      "checkedAt": "2026-11-07T21:19:35.329Z",
+      "models": [
+        "claude-sonnet-4-6",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "gpt-5.3-codex-spark",
+        "gemini-3-pro-high",
+        "GLM-5.3-Flash",
+        "gpt-5-5",
+        "gemini-3.7-flash"
+      ],
+      "modelsCount": 72,
+      "modelsNote": null,
+      "announcement": {
+        "date": null,
+        "text": "adobe4k image2更新\nk12 活动0.01(svip）gpt分组几乎免费可爽登"
+      },
+      "mirror": null,
+      "source": "wynx1123/ai-welfare-hub",
+      "sources": [
+        "wynx1123/ai-welfare-hub"
+      ],
+      "registerOpen": true,
+      "loginMethods": [
+        "邮箱验证",
+        "邮箱 + 密码"
+      ],
+      "checkinEnabled": true
+    },
+    {
+      "id": "chuan-api",
+      "name": "启源星",
+      "subtitle": "签到最高送 $50 · 每日 1 万美元共享额度池，用完即止",
+      "homeUrl": "https://chuan.sylu.cc/",
+      "signupUrl": "https://chuan.sylu.cc/register",
+      "docsUrl": null,
+      "recommended": false,
+      "bonus": "邀请得 $50 · 每日签到 $50",
+      "tags": [
+        "公益站",
+        "每日签到",
+        "共享额度池",
+        "Liminality 系"
+      ],
+      "highlights": [
+        "每日签到最高送 50 额度，邀请用户注册奖励 50 额度",
+        "站点每天开放 1 万共享额度，全站先到先得、用完即止"
+      ],
+      "caveats": "共享额度池用完当天即止，额度到账不稳定，别当主力用",
+      "online": true,
+      "latencyMs": 143,
+      "checkedAt": "2026-11-07T21:19:34.783Z",
+      "models": [
+        "claude-opus-5.5",
+        "gemini-3.8-flash",
+        "GLM-5.3",
+        "claude-opus-4.6",
+        "claude-sonnet-5",
+        "claude-sonnet-5.5",
+        "GLM-5.3-flash",
+        "claude-haiku-5.5"
+      ],
+      "modelsCount": 8,
+      "modelsNote": null,
+      "announcement": {
+        "date": null,
+        "text": "非常抱歉,由于最近用户数量激增,并且出现大量脚本账号（刷取大量github账号批量获取签到余额用于商业倒卖）,我们正在逐一排查,且由于公益性质,我们无力承担高昂成本,在此期间,部分模型价格将激增,请谅解😐"
+      },
+      "mirror": null,
+      "source": "wynx1123/ai-welfare-hub",
+      "sources": [
+        "wynx1123/ai-welfare-hub"
+      ],
+      "registerOpen": true,
+      "loginMethods": [
+        "GitHub OAuth",
         "邮箱 + 密码"
       ],
       "checkinEnabled": true
@@ -92,8 +841,8 @@
       ],
       "caveats": "福利、模型和倍率按运营方提交的 Issue #46 登记：https://github.com/panxunying/ai-coding-welfare/issues/46；公开设置与健康接口已核对…",
       "online": true,
-      "latencyMs": 803,
-      "checkedAt": "2026-11-07T13:05:03.929Z",
+      "latencyMs": 591,
+      "checkedAt": "2026-11-07T21:52:49.307Z",
       "models": null,
       "modelsCount": 0,
       "modelsNote": "模型列表需登录后查看",
@@ -129,23 +878,23 @@
       ],
       "caveats": "签到开关当前为关闭状态；历史上有过安全事件（7·23 投毒事件，官方公告已复盘），自行斟酌数据敏感性",
       "online": true,
-      "latencyMs": 60,
-      "checkedAt": "2026-11-05T05:27:01.738Z",
+      "latencyMs": 122,
+      "checkedAt": "2026-11-07T21:19:24.212Z",
       "models": [
-        "MiniMax-M3.1-Flash",
-        "claude-opus-4-5-20251101",
-        "claude-sonnet-5-5",
-        "gemini-3.5-flash",
-        "gemini-3.7-flash",
-        "gemini-3.8-flash-antigravity",
-        "gpt-5.5-openai-compact",
-        "auto-claude"
+        "claude-haiku-5-5",
+        "claude-sonnet-4-6",
+        "gemini-3.1-pro-request",
+        "gemini-4-argon",
+        "MiniMax-M3",
+        "gemini-3.1-flash-lite",
+        "auto-gemini",
+        "gpt-5.4-openai-compact"
       ],
       "modelsCount": 63,
       "modelsNote": null,
       "announcement": {
         "date": null,
-        "text": "📢 **【系统公告】数据库迁移圆满完成**\n\n好消息！本站的**底层数据库迁移工作已全部顺利完成**！🎉\n\n在此特别感谢大家在迁移期间的耐心等待与理解包容。❤️ 你们的支持与陪伴是我们不断优化的最大动力！\n\n✨ **体验升级**：\n全新的数据库架构将带来…"
+        "text": "🚨 **【紧急通知】关于 .cc 域名 SSL 证书报错的临时应对方案**\n\n各位用户：\n非常抱歉！当前 `vsllm.cc` 域名突发 SSL 证书版本报错，导致部分请求受阻。此为紧急突发事件，正在全力抢修恢复中！\n\n🛠️ **临时解决方案（请受影响用…"
       },
       "mirror": null,
       "source": "wynx1123/ai-welfare-hub",
@@ -158,6 +907,72 @@
         "邮箱验证"
       ],
       "checkinEnabled": true
+    },
+    {
+      "id": "xiaohuan",
+      "name": "小欢公益站",
+      "subtitle": "博主个人后院免费大模型 API · 登录即送 200 次，评论区留言补量",
+      "homeUrl": "https://free-llm.cups.moe",
+      "signupUrl": "https://free-llm.cups.moe",
+      "docsUrl": null,
+      "recommended": false,
+      "bonus": null,
+      "tags": [
+        "公益站",
+        "免费额度",
+        "LinuxDO",
+        "GitHub"
+      ],
+      "highlights": [
+        "Linux.do / GitHub 账号 OAuth 登录即送 200 次使用额度",
+        "额度见底可到博主《公益大模型API接口》博文评论区留言补充，一次固定加 200、可反复申请"
+      ],
+      "caveats": "公益试运营线路，作者原话是「随时跑路」",
+      "online": true,
+      "latencyMs": 531,
+      "checkedAt": "2026-11-07T21:19:35.641Z",
+      "models": null,
+      "modelsCount": 0,
+      "modelsNote": null,
+      "announcement": null,
+      "mirror": null,
+      "source": "wynx1123/ai-welfare-hub",
+      "sources": [
+        "wynx1123/ai-welfare-hub"
+      ]
+    },
+    {
+      "id": "fufu-mimo",
+      "name": "小米 MiMo 公益站",
+      "subtitle": "专供小米 MiMo 全套模型 · LinuxDo L1+ 授权，OpenAI + Anthropic 双端点",
+      "homeUrl": "https://fufu.iqach.top/",
+      "signupUrl": "https://fufu.iqach.top/",
+      "docsUrl": null,
+      "recommended": false,
+      "bonus": null,
+      "tags": [
+        "公益站",
+        "MiMo",
+        "小米",
+        "LinuxDO"
+      ],
+      "highlights": [
+        "专开小米自家 MiMo 全套模型的公益站",
+        "一个网关同时提供 OpenAI 兼容 /v1 与 Anthropic 兼容 /anthropic 端点，Claude Code 可直接接"
+      ],
+      "caveats": "公益线路，可调模型与额度以站内为准",
+      "online": true,
+      "latencyMs": 315,
+      "checkedAt": "2026-11-07T21:19:36.228Z",
+      "models": null,
+      "modelsCount": 0,
+      "modelsNote": null,
+      "announcement": null,
+      "mirror": null,
+      "source": "wynx1123/ai-welfare-hub",
+      "sources": [
+        "wynx1123/ai-welfare-hub"
+      ]
     },
     {
       "id": "supxh",
@@ -179,8 +994,8 @@
       ],
       "caveats": "baipiao.org 社区投票判「失效」（8✓/22✗，27% 好用率），注册前先浏览器确认服务状态",
       "online": true,
-      "latencyMs": 380,
-      "checkedAt": "2026-11-05T05:27:00.407Z",
+      "latencyMs": 522,
+      "checkedAt": "2026-11-07T21:19:23.373Z",
       "models": null,
       "modelsCount": 0,
       "modelsNote": null,
@@ -190,6 +1005,104 @@
       "sources": [
         "wynx1123/ai-welfare-hub"
       ]
+    },
+    {
+      "id": "xinjianya",
+      "name": "星见雅 API",
+      "subtitle": "银狮计价公益站 · 注册送 200 银狮（约 $20），签到随机爆送",
+      "homeUrl": "https://new.xinjianya.top/",
+      "signupUrl": "https://new.xinjianya.top/sign-up",
+      "docsUrl": null,
+      "recommended": false,
+      "bonus": "注册送 $20 左右",
+      "tags": [
+        "公益站",
+        "免费额度",
+        "每日签到",
+        "注册送额度"
+      ],
+      "highlights": [
+        "站内银狮计价，10 银狮 = 1 美元；注册送 200 银狮（约 $20）",
+        "每日签到随机发放，单次最高可到千位银狮级别"
+      ],
+      "caveats": "签到金额随机波动大，不作为稳定收入预期",
+      "online": true,
+      "latencyMs": 299,
+      "checkedAt": "2026-11-07T21:19:28.750Z",
+      "models": [
+        "glm-5.2",
+        "deepseek-v4-flash",
+        "gemini-9-dragon",
+        "grok-4.7",
+        "moonshotai/kimi-k2.6",
+        "grok-4.5",
+        "grok-4.6",
+        "gemini-3.6-flash"
+      ],
+      "modelsCount": 25,
+      "modelsNote": null,
+      "announcement": {
+        "date": null,
+        "text": "网站服务于11-2遭受DDoS攻击，爆破登录接口，现已将425个IP进行封禁，并基于cloudflare自定义规则实现自动黑名单拦截。另外有单个IP调用多个账号的Key的情况也已进行封禁处理"
+      },
+      "mirror": null,
+      "source": "wynx1123/ai-welfare-hub",
+      "sources": [
+        "wynx1123/ai-welfare-hub"
+      ],
+      "loginMethods": [
+        "GitHub OAuth",
+        "LinuxDO OAuth",
+        "邮箱验证"
+      ],
+      "checkinEnabled": true
+    },
+    {
+      "id": "panda-api",
+      "name": "熊猫API",
+      "subtitle": "注册送 200 额度（活动口径）的公益 API 站",
+      "homeUrl": "https://api520.pro/",
+      "signupUrl": "https://api520.pro/register",
+      "docsUrl": null,
+      "recommended": false,
+      "bonus": "注册送 $200 左右",
+      "tags": [
+        "公益站",
+        "注册送额度",
+        "邀请奖励"
+      ],
+      "highlights": [
+        "按活动口径新人注册赠送 200 额度、邀请双方各得 100（站内公告显示注册 100 / 邀请各 100，以实际到账为准）",
+        "面板深度定制（5555 合并构建），注册开放"
+      ],
+      "caveats": "活动赠送金额有 100 与 200 两种口径，以账户实际到账为准",
+      "online": true,
+      "latencyMs": 376,
+      "checkedAt": "2026-11-07T21:19:37.504Z",
+      "models": [
+        "熊猫-特供-X-22-gpt-5.6-sol",
+        "熊猫-按量-满血非量化-kimi-k3",
+        "熊猫-按量-顶级特供-官max-claude-fable-5-神话模型",
+        "熊猫特供-按量-SSS-gemini-3.1-pro-preview",
+        "熊猫-A-16-MiniMax-M3-highspeed-高速",
+        "熊猫-按量-特供顶级-官方正向满血-claude-opus-4.8",
+        "熊猫特供-按量-SSS-gemini-3.8-flash",
+        "熊猫-官逆-7-gemini-3.6-flash-thinking"
+      ],
+      "modelsCount": 80,
+      "modelsNote": null,
+      "announcement": null,
+      "mirror": null,
+      "source": "wynx1123/ai-welfare-hub",
+      "sources": [
+        "wynx1123/ai-welfare-hub"
+      ],
+      "registerOpen": true,
+      "loginMethods": [
+        "邮箱验证",
+        "邮箱 + 密码"
+      ],
+      "checkinEnabled": false
     },
     {
       "id": "agentrouter",
@@ -213,8 +1126,8 @@
       ],
       "caveats": "官方定位是公益站，不承诺 SLA、不支持充值；上游波动时可能临时停用某些模型",
       "online": true,
-      "latencyMs": 312,
-      "checkedAt": "2026-11-07T13:05:09.548Z",
+      "latencyMs": 314,
+      "checkedAt": "2026-11-07T21:52:55.102Z",
       "models": [
         "claude-opus-4-8",
         "claude-opus-5",
@@ -261,8 +1174,8 @@
       ],
       "caveats": "整站挂着 JS 人机挑战，连 robots.txt 与注册页都返回挑战页，本页的自动探测读不到它的 /api/status——所以上面「实时数据」一栏除了接口延迟基本是空的，站名、面板版本、模型数都…",
       "online": true,
-      "latencyMs": 201,
-      "checkedAt": "2026-11-07T13:05:10.182Z",
+      "latencyMs": 173,
+      "checkedAt": "2026-11-07T21:52:56.402Z",
       "models": null,
       "modelsCount": 0,
       "modelsNote": "模型列表需登录后查看",
@@ -272,6 +1185,57 @@
       "sources": [
         "panxunying/ai-coding-welfare"
       ]
+    },
+    {
+      "id": "api456",
+      "name": "api456 公益站",
+      "subtitle": "「硬币」计量的公益中转 · 注册送 20 硬币，签到日续",
+      "homeUrl": "https://api456.me/",
+      "signupUrl": "https://api456.me/register",
+      "docsUrl": null,
+      "recommended": false,
+      "bonus": "注册送 $20",
+      "tags": [
+        "公益站",
+        "积分制",
+        "每日签到",
+        "模型杂"
+      ],
+      "highlights": [
+        "注册到账 20 个「硬币」，之后每天签到随机加一点（实测单次 1 个上下）",
+        "模型覆盖较杂，挑对便宜款省着用能薅挺久"
+      ],
+      "caveats": "硬币是站内计量单位，具体折算与模型倍率以站内为准",
+      "online": true,
+      "latencyMs": 368,
+      "checkedAt": "2026-11-07T21:19:38.915Z",
+      "models": [
+        "glm-4.7",
+        "glm-5.2",
+        "gpt-5.4",
+        "kimi-k2.6",
+        "qwen/qwen3-next-80b-a3b-instruct",
+        "deepseek-v4.1-flash",
+        "glm-5.1",
+        "glm-5.3"
+      ],
+      "modelsCount": 37,
+      "modelsNote": null,
+      "announcement": {
+        "date": null,
+        "text": "**安全提醒**：我们对一批长期未使用的密钥做了安全更换，旧密钥已失效。如果你的程序提示密钥无效，登录控制台，到令牌页面复制新密钥替换即可，余额不受影响。"
+      },
+      "mirror": null,
+      "source": "wynx1123/ai-welfare-hub",
+      "sources": [
+        "wynx1123/ai-welfare-hub"
+      ],
+      "registerOpen": true,
+      "loginMethods": [
+        "邮箱验证",
+        "邮箱 + 密码"
+      ],
+      "checkinEnabled": true
     },
     {
       "id": "arena-hero",
@@ -294,8 +1258,8 @@
       ],
       "caveats": "兑换站商品库存有限且部分售罄(实测:随时跑路 / ArkHub / Lanln 注册码有货,余量以兑换站实时库存为准)",
       "online": true,
-      "latencyMs": 538,
-      "checkedAt": "2026-11-05T05:27:04.347Z",
+      "latencyMs": 506,
+      "checkedAt": "2026-11-07T21:19:26.818Z",
       "models": null,
       "modelsCount": 0,
       "modelsNote": null,
@@ -305,6 +1269,89 @@
       "sources": [
         "wynx1123/ai-welfare-hub"
       ]
+    },
+    {
+      "id": "bmapi",
+      "name": "bmapi 公益站",
+      "subtitle": "会员号池公益站 · Claude Max / ChatGPT Pro / Gemini 号池，签到日送 100 积分",
+      "homeUrl": "https://bmapi.020212.xyz/",
+      "signupUrl": "https://bmapi.020212.xyz/",
+      "docsUrl": null,
+      "recommended": false,
+      "bonus": "每日签到 $100",
+      "tags": [
+        "公益站",
+        "号池",
+        "Claude Max",
+        "ChatGPT Pro",
+        "Gemini",
+        "每日签到"
+      ],
+      "highlights": [
+        "号池聚合 Claude Max、ChatGPT Pro / Codex、Gemini 会员号，满血 opus-4-8 / gpt-5.5 / Gemini 3.1 Pro 在列",
+        "站内用「积分」计额度，每天签到送 100 积分"
+      ],
+      "caveats": "号池共享，可调模型与额度以站内当下为准",
+      "online": true,
+      "latencyMs": 208,
+      "checkedAt": "2026-11-07T21:19:34.029Z",
+      "models": null,
+      "modelsCount": 0,
+      "modelsNote": null,
+      "announcement": null,
+      "mirror": null,
+      "source": "wynx1123/ai-welfare-hub",
+      "sources": [
+        "wynx1123/ai-welfare-hub"
+      ]
+    },
+    {
+      "id": "budsin",
+      "name": "BudsAI",
+      "subtitle": "邀请注册送 $15 · 签到日领 $4+ 的公益站，免费档双限流",
+      "homeUrl": "https://apichat.budsin.dev/",
+      "signupUrl": "https://apichat.budsin.dev/register",
+      "docsUrl": null,
+      "recommended": false,
+      "bonus": "注册送 $15 左右 · 每日签到 $4",
+      "tags": [
+        "公益站",
+        "注册送额度",
+        "每日签到",
+        "免费档限流"
+      ],
+      "highlights": [
+        "走邀请码注册送 15（站内按美元计），每日签到实测 4 美元上下",
+        "另有聊天站 chat.budsin.dev 配套"
+      ],
+      "caveats": "邀请注册的 15 需走带码入口，裸注册以站内规则为准",
+      "online": true,
+      "latencyMs": 702,
+      "checkedAt": "2026-11-07T21:19:40.566Z",
+      "models": [
+        "kimi-k2-6",
+        "qwen3-8-2-4t-a95b",
+        "gemini-auto",
+        "openai/gpt-5.6-sol",
+        "qwen3-next-80b-a3b-instruct:free",
+        "grok-4.7-free",
+        "unorouter/minimax-m2.7:free",
+        "kovaksai/grok-4.5"
+      ],
+      "modelsCount": 80,
+      "modelsNote": null,
+      "announcement": null,
+      "mirror": null,
+      "source": "wynx1123/ai-welfare-hub",
+      "sources": [
+        "wynx1123/ai-welfare-hub"
+      ],
+      "registerOpen": true,
+      "loginMethods": [
+        "GitHub OAuth",
+        "邮箱 + 密码"
+      ],
+      "checkinEnabled": true
     },
     {
       "id": "chatanywhere",
@@ -328,8 +1375,8 @@
       ],
       "caveats": "官方 README 对每日免费请求限制存在 100 次与 200 次两种口径，不能在额度字段中登记为确定数值",
       "online": true,
-      "latencyMs": 671,
-      "checkedAt": "2026-11-05T05:27:02.867Z",
+      "latencyMs": 443,
+      "checkedAt": "2026-11-07T21:19:25.646Z",
       "models": null,
       "modelsCount": 0,
       "modelsNote": null,
@@ -337,6 +1384,42 @@
       "mirror": null,
       "source": "wynx1123/ai-welfare-hub",
       "sources": [
+        "wynx1123/ai-welfare-hub"
+      ]
+    },
+    {
+      "id": "cheapcodex",
+      "name": "CheapCodex",
+      "subtitle": "自研 AI 网关 · 本页邀请码送 $20，每日签到再 $20，OpenAI / Anthropic / Codex 三条协议一把 Key",
+      "homeUrl": "https://api.cheapcodex.online",
+      "signupUrl": "https://api.cheapcodex.online/register?aff=U7SSQZSDB36S",
+      "docsUrl": null,
+      "recommended": false,
+      "bonus": "邀请得 $20 · 每日签到 $20",
+      "tags": [
+        "免费额度",
+        "签到",
+        "Codex",
+        "Claude Code",
+        "OpenAI 兼容",
+        "Anthropic 兼容"
+      ],
+      "highlights": [
+        "从本页邀请链接注册送 $20，每日签到再领 $20，首日合计 $40",
+        "三条原生路由都开着：带无效 key 探 /v1/chat/completions、/v1/messages、/v1/responses 一律回 INVALID_API_KEY，而 /v1/bogus 回 404 —— Claude Code 与 Codex CLI 都能直连"
+      ],
+      "caveats": "额度数字（邀请 $20 / 签到 $20）与 GPT-5.6 Sol 都是站内公示口径，面板接口 robots 禁爬、本页无法自动核对，进后台自己确认一遍再算账",
+      "online": true,
+      "latencyMs": 395,
+      "checkedAt": "2026-11-07T21:19:40.114Z",
+      "models": null,
+      "modelsCount": 0,
+      "modelsNote": null,
+      "announcement": null,
+      "mirror": null,
+      "source": "panxunying/ai-coding-welfare",
+      "sources": [
+        "panxunying/ai-coding-welfare",
         "wynx1123/ai-welfare-hub"
       ]
     },
@@ -359,8 +1442,8 @@
       ],
       "caveats": null,
       "online": true,
-      "latencyMs": 743,
-      "checkedAt": "2026-11-07T13:05:03.709Z",
+      "latencyMs": 1155,
+      "checkedAt": "2026-11-07T21:52:49.805Z",
       "models": null,
       "modelsCount": 0,
       "modelsNote": "模型列表需登录后查看",
@@ -394,8 +1477,8 @@
       ],
       "caveats": "当前登录仪表盘显示免费计划可用余额 $500；这是面板实时余额，不代表所有账号都一定获得同额赠送",
       "online": true,
-      "latencyMs": 310,
-      "checkedAt": "2026-11-05T05:27:03.979Z",
+      "latencyMs": 1587,
+      "checkedAt": "2026-11-07T21:19:26.592Z",
       "models": null,
       "modelsCount": 0,
       "modelsNote": null,
@@ -405,6 +1488,106 @@
       "sources": [
         "wynx1123/ai-welfare-hub"
       ]
+    },
+    {
+      "id": "deadlysignal-api",
+      "name": "DeadlySignal API",
+      "subtitle": "每日签到补额度的公益 API 站 · New API 系面板",
+      "homeUrl": "https://myapi.creitingameplays.com/",
+      "signupUrl": "https://myapi.creitingameplays.com/register",
+      "docsUrl": null,
+      "recommended": false,
+      "bonus": null,
+      "tags": [
+        "公益站",
+        "每日签到",
+        "免费额度"
+      ],
+      "highlights": [
+        "站内已开启每日签到，通过签到补充额度（金额未公示，以控制台到账为准）",
+        "New API 系面板，注册开放，模型清单可从公开定价接口读取"
+      ],
+      "caveats": "注册赠送与签到金额均未在公开页面说明，以登录后控制台实际到账为准",
+      "online": true,
+      "latencyMs": 269,
+      "checkedAt": "2026-11-07T21:19:29.809Z",
+      "models": [
+        "gemini-3.1-pro-preview",
+        "gemini-embedding-001",
+        "gemini-3.1-flash-live-preview",
+        "glm-5.3-flash",
+        "qwen-mt-plus",
+        "qwen-plus-character",
+        "gemini-2.5-pro",
+        "gemini-3.1-flash-image"
+      ],
+      "modelsCount": 80,
+      "modelsNote": null,
+      "announcement": {
+        "date": null,
+        "text": "tool/function calling fixed on Qwen provider."
+      },
+      "mirror": null,
+      "source": "wynx1123/ai-welfare-hub",
+      "sources": [
+        "wynx1123/ai-welfare-hub"
+      ],
+      "registerOpen": true,
+      "loginMethods": [
+        "GitHub OAuth",
+        "邮箱 + 密码"
+      ],
+      "checkinEnabled": false
+    },
+    {
+      "id": "dgb",
+      "name": "DGB 公益站",
+      "subtitle": "注册随机送 $1–$50 · 支持临时邮箱，签到续额度",
+      "homeUrl": "https://freeapi.dgbmc.top/",
+      "signupUrl": "https://freeapi.dgbmc.top/register",
+      "docsUrl": null,
+      "recommended": false,
+      "bonus": null,
+      "tags": [
+        "公益站",
+        "注册送额度",
+        "每日签到",
+        "随机额度"
+      ],
+      "highlights": [
+        "注册随机送 $1–$50，支持临时邮箱注册、门槛极低",
+        "模型按量计费、便宜到接近免费，配随机余额能薅很久"
+      ],
+      "caveats": "随机注册额度波动大，以账户实际到账为准",
+      "online": true,
+      "latencyMs": 921,
+      "checkedAt": "2026-11-07T21:19:37.777Z",
+      "models": [
+        "grok-imagine-image",
+        "grok-chat-fast",
+        "grok-4.7",
+        "grok-imagine-video",
+        "grok-composer-2.5-fast",
+        "grok-imagine-image-quality"
+      ],
+      "modelsCount": 6,
+      "modelsNote": null,
+      "announcement": {
+        "date": null,
+        "text": "令牌分组不要选择default，建议auto"
+      },
+      "mirror": null,
+      "source": "wynx1123/ai-welfare-hub",
+      "sources": [
+        "wynx1123/ai-welfare-hub"
+      ],
+      "registerOpen": true,
+      "loginMethods": [
+        "LinuxDO OAuth",
+        "邮箱验证",
+        "邮箱 + 密码"
+      ],
+      "checkinEnabled": true
     },
     {
       "id": "docode",
@@ -429,8 +1612,8 @@
       ],
       "caveats": "站内的「刀」不是美元：面板公开的 price = 0.02 就是充值比例，1 元 = 50 站内刀（公告里说平时恢复 1:25），而本页其它站是 ¥7.3 ≈ $1。所以 300 站内刀对应的充值面…",
       "online": true,
-      "latencyMs": 667,
-      "checkedAt": "2026-11-07T13:05:03.638Z",
+      "latencyMs": 522,
+      "checkedAt": "2026-11-07T21:52:49.160Z",
       "models": null,
       "modelsCount": 0,
       "modelsNote": "模型列表需登录后查看",
@@ -449,6 +1632,125 @@
         "账号密码"
       ],
       "checkinEnabled": false
+    },
+    {
+      "id": "future-hub",
+      "name": "Future Hub",
+      "subtitle": "签到日发约 $20 的开源旗舰限免站 · GitHub / 教育邮箱 / LinuxDO 一键进门",
+      "homeUrl": "https://api.futureppo.top/",
+      "signupUrl": "https://api.futureppo.top/register",
+      "docsUrl": null,
+      "recommended": false,
+      "bonus": "每日签到 $20",
+      "tags": [
+        "公益站",
+        "开源模型",
+        "限免模型",
+        "每日签到",
+        "生图",
+        "教育邮箱"
+      ],
+      "highlights": [
+        "每天签到随机发一笔、单发约二十美元量级，综合倍率 1 不玩花活",
+        "大量开源旗舰模型挂限免，免费区直接调不烧额度，部分模型支持生图"
+      ],
+      "caveats": "站点带 Cloudflare 防护，命令行直接访问可能被质询，浏览器打开正常",
+      "online": true,
+      "latencyMs": 340,
+      "checkedAt": "2026-11-07T21:19:30.514Z",
+      "models": [
+        "glm-5.3-flash",
+        "grok-4.7",
+        "glm-4.7-flash",
+        "cerebras/qwen-3.8-27b",
+        "grok-4.5",
+        "grok-voice-latest",
+        "grok-imagine-image-lite",
+        "grok-imagine-video"
+      ],
+      "modelsCount": 24,
+      "modelsNote": null,
+      "announcement": {
+        "date": null,
+        "text": "国庆节开放一会注册"
+      },
+      "mirror": null,
+      "source": "wynx1123/ai-welfare-hub",
+      "sources": [
+        "wynx1123/ai-welfare-hub"
+      ],
+      "loginMethods": [
+        "GitHub OAuth",
+        "邮箱验证"
+      ],
+      "checkinEnabled": true
+    },
+    {
+      "id": "ggboom",
+      "name": "GGBOOM 公益站",
+      "subtitle": "Codex 系免费网关 · sign.qaq.al 过 PoW 签到领分发余额",
+      "homeUrl": "https://ai.qaq.al/",
+      "signupUrl": "https://ai.qaq.al/",
+      "docsUrl": null,
+      "recommended": false,
+      "bonus": null,
+      "tags": [
+        "公益站",
+        "Codex",
+        "GPT-5",
+        "PoW 签到",
+        "邮箱注册"
+      ],
+      "highlights": [
+        "专供 Codex 系模型的免费网关：gpt-5.3-codex、gpt-5.2-codex、gpt-5.1-codex-max 等在列，走 openai-responses 格式，Codex CLI 原生对接",
+        "纯邮箱即可注册，不需要邀请码、不需要验证码、不接受第三方一键登录"
+      ],
+      "caveats": "签到需过 WASM PoW 计算，手机 / 低性能设备可能吃力，可配合开源脚本",
+      "online": true,
+      "latencyMs": 227,
+      "checkedAt": "2026-11-07T21:19:41.070Z",
+      "models": null,
+      "modelsCount": 0,
+      "modelsNote": null,
+      "announcement": null,
+      "mirror": null,
+      "source": "wynx1123/ai-welfare-hub",
+      "sources": [
+        "wynx1123/ai-welfare-hub"
+      ]
+    },
+    {
+      "id": "grox",
+      "name": "Grox",
+      "subtitle": "TG 群绑定发 $100 日卡 · OpenAI 兼容公益站",
+      "homeUrl": "https://www.mcgrox.top/",
+      "signupUrl": "https://www.mcgrox.top/register",
+      "docsUrl": null,
+      "recommended": false,
+      "bonus": "注册送 $100 左右",
+      "tags": [
+        "公益站",
+        "Telegram",
+        "注册送额度",
+        "日卡"
+      ],
+      "highlights": [
+        "注册并加入 Telegram 群组绑定账号后，自动发放 $100 日卡额度",
+        "支持主流 AI 模型调用，OpenAI 兼容接口"
+      ],
+      "caveats": "日卡额度有效期 3 天，发放规则与使用限制以官方群组公告为准",
+      "online": true,
+      "latencyMs": 933,
+      "checkedAt": "2026-11-07T21:19:34.276Z",
+      "models": null,
+      "modelsCount": 0,
+      "modelsNote": null,
+      "announcement": null,
+      "mirror": null,
+      "source": "wynx1123/ai-welfare-hub",
+      "sources": [
+        "wynx1123/ai-welfare-hub"
+      ]
     },
     {
       "id": "happycode",
@@ -470,8 +1772,8 @@
       ],
       "caveats": null,
       "online": true,
-      "latencyMs": 852,
-      "checkedAt": "2026-11-07T13:05:03.999Z",
+      "latencyMs": 716,
+      "checkedAt": "2026-11-07T21:52:49.517Z",
       "models": null,
       "modelsCount": 0,
       "modelsNote": "模型列表需登录后查看",
@@ -486,6 +1788,182 @@
         "OIDC（NodeLoc）",
         "账号密码"
       ]
+    },
+    {
+      "id": "hlool",
+      "name": "HLOOL API",
+      "subtitle": "LDC 3 积分 = $1 充值兑换 · Codex 0.5x / Claude CC 2x 分组公益站",
+      "homeUrl": "https://api.hlool.top/",
+      "signupUrl": "https://api.hlool.top/register",
+      "docsUrl": null,
+      "recommended": false,
+      "bonus": null,
+      "tags": [
+        "公益站",
+        "LinuxDO",
+        "LDC 兑换",
+        "Codex",
+        "Claude"
+      ],
+      "highlights": [
+        "LDC 兑换比例固定 3 LDC = 1 美元，LinuxDo 用户可用积分补额度",
+        "Codex 分组倍率维持 0.5，Claude 分组（CC）2x，公告与定价接口互相印证"
+      ],
+      "caveats": "站方曾公告总额度 3000 美元、每用户最多充 100 美元的充值方案，额度与活动以站内公告为准",
+      "online": true,
+      "latencyMs": 150,
+      "checkedAt": "2026-11-07T21:19:40.140Z",
+      "models": [
+        "qwen3.8-2.4t-a95b",
+        "deepseek-flash",
+        "gpt-5.6-sol",
+        "qwen3.8-max",
+        "kimi-k3",
+        "glm-5.3",
+        "kimi-k2.7-code-highspeed",
+        "glm-5.3-flashx"
+      ],
+      "modelsCount": 23,
+      "modelsNote": null,
+      "announcement": {
+        "date": null,
+        "text": "兑换3LDC=1刀\n已经更新允许全站充值"
+      },
+      "mirror": null,
+      "source": "wynx1123/ai-welfare-hub",
+      "sources": [
+        "wynx1123/ai-welfare-hub"
+      ],
+      "registerOpen": true,
+      "loginMethods": [
+        "LinuxDO OAuth",
+        "邮箱验证",
+        "邮箱 + 密码"
+      ],
+      "checkinEnabled": true
+    },
+    {
+      "id": "huainova",
+      "name": "Huainova",
+      "subtitle": "注册送起步额度 · 签到 + 游戏玩法 + 深夜定点抽奖的公益站",
+      "homeUrl": "https://ai.huaibao.top/",
+      "signupUrl": "https://ai.huaibao.top/register",
+      "docsUrl": null,
+      "recommended": false,
+      "bonus": null,
+      "tags": [
+        "公益站",
+        "注册送额度",
+        "每日签到",
+        "游戏化",
+        "抽奖",
+        "public-benefit"
+      ],
+      "highlights": [
+        "新号注册送起步额度，每天能签到续一点",
+        "站内挂炸金花等小游戏拿余额练手气，巅峰期有每晚 23:50 定点抽奖（当天消费满 $1 且已签到参与，随机 100 人各 $10）"
+      ],
+      "caveats": "游戏与抽奖玩法是否全时段开放以站内当下为准",
+      "online": true,
+      "latencyMs": 553,
+      "checkedAt": "2026-11-07T21:19:40.454Z",
+      "models": null,
+      "modelsCount": 0,
+      "modelsNote": null,
+      "announcement": {
+        "date": null,
+        "text": "现在渠道几乎都死完了，等有新的渠道在开放"
+      },
+      "mirror": null,
+      "source": "wynx1123/ai-welfare-hub",
+      "sources": [
+        "wynx1123/ai-welfare-hub",
+        "1sh1ro/ai-api-zhongzhuan"
+      ],
+      "loginMethods": [
+        "LinuxDO OAuth"
+      ],
+      "checkinEnabled": true
+    },
+    {
+      "id": "iamhc",
+      "name": "iamhc 公益站",
+      "subtitle": "注册送 $2000 的免费 API 站 · 域名即接口，签到每日随机再加",
+      "homeUrl": "https://api.iamhc.cn/",
+      "signupUrl": "https://api.iamhc.cn/",
+      "docsUrl": null,
+      "recommended": false,
+      "bonus": "注册送 $2000 左右",
+      "tags": [
+        "公益站",
+        "注册送额度",
+        "每日签到",
+        "DeepSeek",
+        "GLM",
+        "Kimi"
+      ],
+      "highlights": [
+        "注册直接到账 $2000 高额起步，每日签到再随机补一笔（金额不固定）",
+        "模型覆盖 DeepSeek、GLM、Kimi、Qwen 与 Step 语音全家桶，OpenAI 兼容直连"
+      ],
+      "caveats": "额度口径为站方登记，公益线路、上游共享，可用模型与余额以站内当下为准",
+      "online": true,
+      "latencyMs": 3732,
+      "checkedAt": "2026-11-07T21:19:28.236Z",
+      "models": null,
+      "modelsCount": 0,
+      "modelsNote": null,
+      "announcement": null,
+      "mirror": null,
+      "source": "wynx1123/ai-welfare-hub",
+      "sources": [
+        "wynx1123/ai-welfare-hub"
+      ]
+    },
+    {
+      "id": "kiosapi",
+      "name": "KiosAPI",
+      "subtitle": "Free 分组倍率 0 直调 34+ 模型 · Telegram 机器人验证制",
+      "homeUrl": "https://kiosapi.com/",
+      "signupUrl": "https://kiosapi.com/sign-up",
+      "docsUrl": "https://kiosapi.mintlify.app",
+      "recommended": false,
+      "bonus": null,
+      "tags": [
+        "中转站",
+        "免费分组",
+        "无签到",
+        "国产模型",
+        "Kimi",
+        "GLM"
+      ],
+      "highlights": [
+        "Free 分组倍率 0，kimi-k3、glm-5.3、qwen3.8 系列、deepseek-v4-flash、gemini-2.0-flash 等可直接白嫖",
+        "注册不送额度、无签到，免费就是免费分组本身"
+      ],
+      "caveats": "官方对 Free 组明示「Request stability is not guaranteed」，不适合生产或关键任务",
+      "online": true,
+      "latencyMs": 659,
+      "checkedAt": "2026-11-07T21:19:32.405Z",
+      "models": null,
+      "modelsCount": 0,
+      "modelsNote": null,
+      "announcement": {
+        "date": null,
+        "text": "We have also just introduced a new group: **Claude-Cheap**, with a group rate of 0.025.\n\nIf you're looking for an affordable opti…"
+      },
+      "mirror": null,
+      "source": "wynx1123/ai-welfare-hub",
+      "sources": [
+        "wynx1123/ai-welfare-hub"
+      ],
+      "registerOpen": true,
+      "loginMethods": [
+        "GitHub OAuth",
+        "邮箱验证",
+        "邮箱 + 密码"
+      ],
+      "checkinEnabled": false
     },
     {
       "id": "kktoken",
@@ -510,8 +1988,8 @@
       ],
       "caveats": "额度数字（注册 $75 / 邀请 $25 / 签到 $20）站点公开接口没有暴露——它的 /api/status 里既没有 quota_for_new_user 也没有 quota_for_invi…",
       "online": true,
-      "latencyMs": 2453,
-      "checkedAt": "2026-11-07T13:05:05.424Z",
+      "latencyMs": 3149,
+      "checkedAt": "2026-11-07T21:52:51.802Z",
       "models": null,
       "modelsCount": 0,
       "modelsNote": "模型列表需登录后查看",
@@ -519,8 +1997,7 @@
       "mirror": null,
       "source": "panxunying/ai-coding-welfare",
       "sources": [
-        "panxunying/ai-coding-welfare",
-        "wynx1123/ai-welfare-hub"
+        "panxunying/ai-coding-welfare"
       ],
       "registerOpen": true,
       "loginMethods": [
@@ -528,6 +2005,91 @@
         "账号密码"
       ],
       "checkinEnabled": true
+    },
+    {
+      "id": "liminality",
+      "name": "Liminality",
+      "subtitle": "橘子积分签到站 · 单次签到最高 100 橘子，面板型网关",
+      "homeUrl": "https://beizhi.dedyn.io/",
+      "signupUrl": "https://beizhi.dedyn.io/register",
+      "docsUrl": null,
+      "recommended": false,
+      "bonus": "每日签到 $100",
+      "tags": [
+        "公益站",
+        "每日签到",
+        "积分制"
+      ],
+      "highlights": [
+        "每日签到随机获得橘子积分，单次最高 100 橘子",
+        "Liminality 自维护面板（v0.9.0），注册与签到均开放，状态与定价接口公开"
+      ],
+      "caveats": "橘子为站内积分，与美元折算以站内规则为准",
+      "online": true,
+      "latencyMs": 184,
+      "checkedAt": "2026-11-07T21:19:31.127Z",
+      "models": [
+        "[RP]claude-opus-5.5",
+        "[企量]claude-opus-5",
+        "[满血]GLM-5.2",
+        "gemini-3.1-flash",
+        "gemini-3.8-flash",
+        "glm-5.3-flash",
+        "[满血]Kimi3",
+        "[企量]claude-sonnet-5.5"
+      ],
+      "modelsCount": 31,
+      "modelsNote": null,
+      "announcement": {
+        "date": null,
+        "text": "支付网关手续费偏贵，建议使用使用卡网\nhttps://shop.86yfk.com/shop/9N7UJTSU\n或者不想承担手续费，联系管理手动充值"
+      },
+      "mirror": null,
+      "source": "wynx1123/ai-welfare-hub",
+      "sources": [
+        "wynx1123/ai-welfare-hub"
+      ],
+      "registerOpen": true,
+      "loginMethods": [
+        "邮箱验证",
+        "邮箱 + 密码"
+      ],
+      "checkinEnabled": true
+    },
+    {
+      "id": "livelove",
+      "name": "LiveLove AI",
+      "subtitle": "Antigravity / Claude 系分组公益站 · 分组倍率低至 0.05，注册送 $1",
+      "homeUrl": "https://livelove.dev/",
+      "signupUrl": "https://livelove.dev/register",
+      "docsUrl": null,
+      "recommended": false,
+      "bonus": "注册送 $1",
+      "tags": [
+        "公益站",
+        "注册送额度",
+        "Claude",
+        "Antigravity",
+        "Kiro",
+        "超低倍率"
+      ],
+      "highlights": [
+        "注册送 $1 起步额度，Argon 与 opus-4.6 分组倍率 0.05、正价 kiro 全模型 0.08，低价位在公益站里少见",
+        "OpenAI 与 Anthropic 双协议端点均有提供，另有 api.livelove.dev/v1 备用接口地址"
+      ],
+      "caveats": "Antigravity 分组只能按站内专用示例配置，不兼容 Chat Completions / Responses / Claude Code / Codex 客户端",
+      "online": true,
+      "latencyMs": 723,
+      "checkedAt": "2026-11-07T21:19:27.348Z",
+      "models": null,
+      "modelsCount": 0,
+      "modelsNote": null,
+      "announcement": null,
+      "mirror": null,
+      "source": "wynx1123/ai-welfare-hub",
+      "sources": [
+        "wynx1123/ai-welfare-hub"
+      ]
     },
     {
       "id": "long-ai",
@@ -552,8 +2114,8 @@
       ],
       "caveats": "GitHub 账号需满 120 天方可注册；未开放账密直接注册",
       "online": true,
-      "latencyMs": 51,
-      "checkedAt": "2026-11-05T05:27:03.887Z",
+      "latencyMs": 234,
+      "checkedAt": "2026-11-07T21:19:26.243Z",
       "models": null,
       "modelsCount": 0,
       "modelsNote": null,
@@ -572,6 +2134,39 @@
         "邮箱 + 密码"
       ],
       "checkinEnabled": false
+    },
+    {
+      "id": "lunora",
+      "name": "Lunora API",
+      "subtitle": "订阅制中转 · 进 QQ 群领约 $10 GPT Pro 订阅，每日签到领小额",
+      "homeUrl": "https://www.uselunora.com/",
+      "signupUrl": "https://www.uselunora.com/register",
+      "docsUrl": "https://help.uselunora.com",
+      "recommended": false,
+      "bonus": null,
+      "tags": [
+        "中转站",
+        "订阅制",
+        "每日签到",
+        "QQ 群"
+      ],
+      "highlights": [
+        "新人体验为一张约 $10 的 GPT Pro API 订阅（以订阅形式发放，不增加余额）",
+        "每日签到领小额（约 ¥0.1），连签有里程碑奖励"
+      ],
+      "caveats": "余额和订阅是两套独立权益，订阅只在对应分组和有效期内有效",
+      "online": true,
+      "latencyMs": 164,
+      "checkedAt": "2026-11-07T21:19:35.674Z",
+      "models": null,
+      "modelsCount": 0,
+      "modelsNote": null,
+      "announcement": null,
+      "mirror": null,
+      "source": "wynx1123/ai-welfare-hub",
+      "sources": [
+        "wynx1123/ai-welfare-hub"
+      ]
     },
     {
       "id": "matrix",
@@ -595,8 +2190,8 @@
       ],
       "caveats": "额度是站内积分，站方没有公开积分与美元的换算，本页按积分原样显示，不折算美元、也不并入跨站的美元合计",
       "online": true,
-      "latencyMs": 1653,
-      "checkedAt": "2026-11-07T13:05:04.621Z",
+      "latencyMs": 1842,
+      "checkedAt": "2026-11-07T21:52:50.492Z",
       "models": null,
       "modelsCount": 0,
       "modelsNote": "模型列表需登录后查看",
@@ -607,6 +2202,57 @@
         "panxunying/ai-coding-welfare",
         "wynx1123/ai-welfare-hub"
       ]
+    },
+    {
+      "id": "moyuu",
+      "name": "Moyuu AI 公益站",
+      "subtitle": "Moyuu 公益站 · 赠送以控制台实际为准，面板每日更新",
+      "homeUrl": "https://moyuu.cc/",
+      "signupUrl": "https://moyuu.cc/register",
+      "docsUrl": null,
+      "recommended": false,
+      "bonus": null,
+      "tags": [
+        "公益站",
+        "免费额度"
+      ],
+      "highlights": [
+        "面板每日滚动构建更新（latency-r1 等），注册开放",
+        "公开状态未列固定赠送额度，进入控制台后以账户余额、模型菜单和活动页为准"
+      ],
+      "caveats": "赠送与签到规则以站内活动页为准",
+      "online": true,
+      "latencyMs": 48,
+      "checkedAt": "2026-11-07T21:19:40.884Z",
+      "models": [
+        "glm-5.3",
+        "gemini-3-pro-image",
+        "claude-opus-4-6",
+        "deepseek-v4.1-flash",
+        "deepseek-flash",
+        "gpt-5.6-terra",
+        "gpt-5.6-sol",
+        "gemini-3.1-flash-image-preview"
+      ],
+      "modelsCount": 46,
+      "modelsNote": null,
+      "announcement": {
+        "date": null,
+        "text": "全站所有模型禁止蒸馏和破限，发现封号且不退款。"
+      },
+      "mirror": null,
+      "source": "wynx1123/ai-welfare-hub",
+      "sources": [
+        "wynx1123/ai-welfare-hub"
+      ],
+      "registerOpen": true,
+      "loginMethods": [
+        "GitHub OAuth",
+        "LinuxDO OAuth",
+        "邮箱验证",
+        "邮箱 + 密码"
+      ],
+      "checkinEnabled": false
     },
     {
       "id": "nofx",
@@ -631,8 +2277,8 @@
       ],
       "caveats": "额度是站内积分，站方没有公开积分与美元的换算，本页按积分原样显示，不折算美元、也不并入跨站的美元合计——站点界面写的「$5 积分」是它自己的单位，别当成 5 美元",
       "online": true,
-      "latencyMs": 2223,
-      "checkedAt": "2026-11-07T13:05:05.194Z",
+      "latencyMs": 3338,
+      "checkedAt": "2026-11-07T21:52:51.991Z",
       "models": null,
       "modelsCount": 0,
       "modelsNote": "模型列表需登录后查看",
@@ -665,8 +2311,8 @@
       ],
       "caveats": "首日 $20 与每日签到按维护者提供的信息登记；签到金额未提供，未计入首日合计",
       "online": true,
-      "latencyMs": 947,
-      "checkedAt": "2026-11-07T13:05:03.912Z",
+      "latencyMs": 951,
+      "checkedAt": "2026-11-07T21:52:49.599Z",
       "models": null,
       "modelsCount": 0,
       "modelsNote": "模型列表需登录后查看",
@@ -678,38 +2324,151 @@
       ]
     },
     {
-      "id": "rawchat",
-      "name": "RawChat 公益站",
-      "subtitle": "Codex 公益站 · 每日 $50 额度池，0 点自动重置",
-      "homeUrl": "https://new.sharedchat.cc/list/",
-      "signupUrl": "https://new.sharedchat.cc/list/#/register?i=MaVP1",
+      "id": "s3ai",
+      "name": "S3AI API",
+      "subtitle": "NIM 分组倍率 0 免费不限速 · free 分组 0.001 近乎白送",
+      "homeUrl": "https://ai.furry.vg/",
+      "signupUrl": "https://ai.furry.vg/register",
       "docsUrl": null,
       "recommended": false,
       "bonus": null,
       "tags": [
         "公益站",
-        "Codex",
-        "每日重置",
-        "免费额度"
+        "免费分组",
+        "NIM 免费模型",
+        "NVIDIA NIM"
       ],
       "highlights": [
-        "每日 $50 额度池，每天 0 点自动重置，不用签到、不用充值",
-        "专供 Codex：后台「使用教程」直接复制一键安装脚本，自动装依赖并写好环境变量"
+        "NIM 分组（NVIDIA NIM 渠道）倍率为 0、免费不限速，免费位长期挂着",
+        "free 分组倍率 0.001，几乎免费，不靠注册大额赠送的玩法"
       ],
-      "caveats": "$50 是每日重置的额度池，当天用不完会清零，不会累积到第二天",
+      "caveats": "免费位模型由站方随成本动态调整，以站内模型广场实挂为准",
       "online": true,
-      "latencyMs": 389,
-      "checkedAt": "2026-11-05T05:26:59.341Z",
+      "latencyMs": 676,
+      "checkedAt": "2026-11-07T21:19:33.613Z",
+      "models": [
+        "gemini-4-argon",
+        "selfdeploy/deepseek-v4.1-flash",
+        "grok-imagine-image",
+        "anti/gemini-3.1-flash-lite",
+        "go/deepseek-v4-flash-0731",
+        "gemini-3.1-flash-image",
+        "kimi-k2.8-preview",
+        "gemini-3.8-flash"
+      ],
+      "modelsCount": 80,
+      "modelsNote": null,
+      "announcement": {
+        "date": null,
+        "text": "如果出现stream disconnected before completion: Upstream access forbidden, please contact administrator错误，代表当前会话对应上游凭据已被封禁或无效，需要更换一个模型…"
+      },
+      "mirror": null,
+      "source": "wynx1123/ai-welfare-hub",
+      "sources": [
+        "wynx1123/ai-welfare-hub"
+      ],
+      "registerOpen": true,
+      "loginMethods": [
+        "GitHub OAuth",
+        "LinuxDO OAuth",
+        "Telegram",
+        "邮箱验证"
+      ],
+      "checkinEnabled": false
+    },
+    {
+      "id": "sharellm",
+      "name": "ShareLLM",
+      "subtitle": "注册送 120/5小时 + 600/周双档额度 · 双域名公益站",
+      "homeUrl": "https://sharellm.net/",
+      "signupUrl": "https://sharellm.net/register",
+      "docsUrl": null,
+      "recommended": false,
+      "bonus": "注册送 $120 左右",
+      "tags": [
+        "公益站",
+        "注册送额度",
+        "周期重置",
+        "OpenAI 兼容"
+      ],
+      "highlights": [
+        "注册可得 120/5 小时与 600/周两档额度，具体重置时间和扣费以账户页面为准",
+        "状态与定价接口公开，可程序化读取模型清单"
+      ],
+      "caveats": "站点带 Cloudflare 防护，命令行请求首页可能被拦（403），浏览器打开正常",
+      "online": true,
+      "latencyMs": 42,
+      "checkedAt": "2026-11-07T21:19:37.288Z",
       "models": null,
       "modelsCount": 0,
       "modelsNote": null,
       "announcement": null,
       "mirror": null,
-      "source": "panxunying/ai-coding-welfare",
+      "source": "wynx1123/ai-welfare-hub",
       "sources": [
-        "panxunying/ai-coding-welfare",
         "wynx1123/ai-welfare-hub"
-      ]
+      ],
+      "registerOpen": true,
+      "loginMethods": [
+        "LinuxDO OAuth",
+        "邮箱验证",
+        "邮箱 + 密码"
+      ],
+      "checkinEnabled": false
+    },
+    {
+      "id": "tokeness",
+      "name": "Tokeness",
+      "subtitle": "老牌中转新域迁移 · tokeness/free 分组有免费模型，每日签到 +$0.5",
+      "homeUrl": "https://tokeness.ai/",
+      "signupUrl": "https://tokeness.ai/sign-up",
+      "docsUrl": "https://docs.tokeness.ai/",
+      "recommended": false,
+      "bonus": "每日签到 $0.5",
+      "tags": [
+        "中转站",
+        "免费分组",
+        "每日签到",
+        "生图",
+        "视频生成",
+        "OpenAI 兼容"
+      ],
+      "highlights": [
+        "tokeness/free 分组内 deepseek-v4-flash 直接免费调用，综合倍率仅 0.1，每日签到再补 $0.5",
+        "2026-08 品牌升级迁移到新域名 tokeness.ai，老域 tokeness.io 仍 301 跳转"
+      ],
+      "caveats": "主站直连大陆网络不稳定，API 调用建议使用官方公布的大陆 Base URL",
+      "online": true,
+      "latencyMs": 1675,
+      "checkedAt": "2026-11-07T21:19:28.208Z",
+      "models": [
+        "grok-4.5",
+        "gemini-3.1-pro",
+        "deepseek-v4-pro",
+        "gpt-5.6-terra",
+        "kimi-k3.1-pro",
+        "deepseek-v4.1-flash-1017",
+        "grok-imagine-video-1.5",
+        "qwen3.8-max"
+      ],
+      "modelsCount": 47,
+      "modelsNote": null,
+      "announcement": {
+        "date": null,
+        "text": "<tnt l=\"zh\">11月5日23:22至6日11:28（CST），上游渠道故障导致部分请求失败。问题已修复，全渠道已复测正常。对受影响用户，我们已按当天同时段实际消耗等额补偿，额度自动到账。感谢理解，疑问请联系 contact@tokeness.ai<…"
+      },
+      "mirror": null,
+      "source": "wynx1123/ai-welfare-hub",
+      "sources": [
+        "wynx1123/ai-welfare-hub"
+      ],
+      "registerOpen": true,
+      "loginMethods": [
+        "GitHub OAuth",
+        "邮箱验证",
+        "邮箱 + 密码"
+      ],
+      "checkinEnabled": true
     },
     {
       "id": "true-sota",
@@ -732,8 +2491,8 @@
       ],
       "caveats": "面板数据不公开（401），额度与模型需注册后查看",
       "online": true,
-      "latencyMs": 209,
-      "checkedAt": "2026-11-05T05:27:02.101Z",
+      "latencyMs": 278,
+      "checkedAt": "2026-11-07T21:19:25.276Z",
       "models": null,
       "modelsCount": 0,
       "modelsNote": null,
@@ -743,6 +2502,172 @@
       "sources": [
         "wynx1123/ai-welfare-hub"
       ]
+    },
+    {
+      "id": "ultrarouter",
+      "name": "Ultra Router",
+      "subtitle": "艺の公益站 · 每日签到送 $28 额度",
+      "homeUrl": "https://ultrarouter.org/",
+      "signupUrl": "https://ultrarouter.org/register",
+      "docsUrl": null,
+      "recommended": false,
+      "bonus": "每日签到 $28",
+      "tags": [
+        "公益站",
+        "每日签到",
+        "注册送额度"
+      ],
+      "highlights": [
+        "每天签到赠送 $28 额度，实际到账与活动持续时间以站内页面为准",
+        "签到与注册均开放，状态与定价接口公开"
+      ],
+      "caveats": "注册页偶发 502（源站重启/防护波动），重试即可",
+      "online": true,
+      "latencyMs": 94,
+      "checkedAt": "2026-11-07T21:19:37.417Z",
+      "models": [
+        "gemini-3.8-flash-high",
+        "glm-5.3-flash",
+        "codex-auto-review",
+        "deepseek-v4.1-flash",
+        "gemini-3.5-flash-lite"
+      ],
+      "modelsCount": 5,
+      "modelsNote": null,
+      "announcement": null,
+      "mirror": null,
+      "source": "wynx1123/ai-welfare-hub",
+      "sources": [
+        "wynx1123/ai-welfare-hub"
+      ],
+      "registerOpen": true,
+      "loginMethods": [
+        "GitHub OAuth",
+        "LinuxDO OAuth",
+        "OIDC",
+        "邮箱 + 密码"
+      ],
+      "checkinEnabled": true
+    },
+    {
+      "id": "v-api",
+      "name": "V-API 公益站",
+      "subtitle": "每日随机签到额度 + LDC 积分兑换的公益站",
+      "homeUrl": "https://v-api.de5.net/",
+      "signupUrl": "https://v-api.de5.net/register",
+      "docsUrl": null,
+      "recommended": false,
+      "bonus": null,
+      "tags": [
+        "公益站",
+        "每日签到",
+        "LDC 兑换",
+        "LinuxDO"
+      ],
+      "highlights": [
+        "每日进控制台签到领随机额度，具体数额以站内当下为准",
+        "额度不够可用站长挂的 LinuxDo 官方 CDK 兑换入口，把 L 站积分换成站内额度"
+      ],
+      "caveats": "default 组 1 倍率、vip 组 10 倍率，vip 获取方式站方未写明",
+      "online": true,
+      "latencyMs": 167,
+      "checkedAt": "2026-11-07T21:19:38.176Z",
+      "models": null,
+      "modelsCount": 0,
+      "modelsNote": null,
+      "announcement": null,
+      "mirror": null,
+      "source": "wynx1123/ai-welfare-hub",
+      "sources": [
+        "wynx1123/ai-welfare-hub"
+      ],
+      "registerOpen": true,
+      "loginMethods": [
+        "邮箱 + 密码"
+      ],
+      "checkinEnabled": false
+    },
+    {
+      "id": "vyceai",
+      "name": "Vyce AI",
+      "subtitle": "AI API 代理 · 邀请注册双方各得 $10，Claude/GPT/Gemini/Grok 旗舰齐全",
+      "homeUrl": "https://vyceai.com",
+      "signupUrl": "https://vyceai.com/signup?ref=VYCE_HZ3N7M",
+      "docsUrl": null,
+      "recommended": false,
+      "bonus": "邀请得 $10",
+      "tags": [
+        "中转站",
+        "邀请奖励",
+        "Claude Code",
+        "GPT",
+        "Gemini",
+        "Grok"
+      ],
+      "highlights": [
+        "邀请注册双方账户立即各得 $10（面板官方口径）",
+        "一把 key 调 20+ 旗舰：claude-opus-5 / sonnet-5、gpt-5.6 全系（luna/terra/testing）、gemini-3.6-flash、grok-4.6、deepseek-v4、glm-5.2、qwen3.8-max、mimo-v2.5-pro"
+      ],
+      "caveats": "面板自称「经济实惠的 API 代理」而非公益站，定位偏付费中转 + 邀请奖励",
+      "online": true,
+      "latencyMs": 9977,
+      "checkedAt": "2026-11-07T21:19:25.605Z",
+      "models": null,
+      "modelsCount": 0,
+      "modelsNote": null,
+      "announcement": null,
+      "mirror": null,
+      "source": "wynx1123/ai-welfare-hub",
+      "sources": [
+        "wynx1123/ai-welfare-hub"
+      ]
+    },
+    {
+      "id": "xxzl",
+      "name": "xxzl 公益站",
+      "subtitle": "邀请注册送 50 额度 · 每日签到 +3 的 New API 站",
+      "homeUrl": "https://ai.1tim.com/",
+      "signupUrl": "https://ai.1tim.com/register",
+      "docsUrl": null,
+      "recommended": false,
+      "bonus": "每日签到 $3",
+      "tags": [
+        "公益站",
+        "每日签到",
+        "注册送额度"
+      ],
+      "highlights": [
+        "走邀请入口注册到账 50 额度，之后每日签到再领 3",
+        "额度按量扣，各家模型倍率不同，以站内定价页为准"
+      ],
+      "caveats": "邀请奖励需邀请码，具体活动规则以站内为准",
+      "online": true,
+      "latencyMs": 1048,
+      "checkedAt": "2026-11-07T21:19:36.649Z",
+      "models": [
+        "deepseek-v4.1-flash",
+        "glm-5.3",
+        "deepseek-flash",
+        "kimi-k3.1-pro",
+        "glm-5.3-flash"
+      ],
+      "modelsCount": 5,
+      "modelsNote": null,
+      "announcement": {
+        "date": null,
+        "text": "目前公益开放，限制并发，禁止外接中转站，禁止批量测活否则封号\n欢迎加群qq1054060337，领鸡蛋"
+      },
+      "mirror": null,
+      "source": "wynx1123/ai-welfare-hub",
+      "sources": [
+        "wynx1123/ai-welfare-hub"
+      ],
+      "registerOpen": true,
+      "loginMethods": [
+        "GitHub OAuth",
+        "邮箱 + 密码"
+      ],
+      "checkinEnabled": true
     },
     {
       "id": "4router",
@@ -916,38 +2841,6 @@
         "manual-check"
       ],
       "statusNote": "manual-verification-required",
-      "highlights": [],
-      "caveats": null,
-      "online": null,
-      "latencyMs": null,
-      "checkedAt": "2026-08-27",
-      "models": null,
-      "modelsCount": 0,
-      "modelsNote": null,
-      "announcement": null,
-      "mirror": null,
-      "source": "1sh1ro/ai-api-zhongzhuan",
-      "sources": [
-        "1sh1ro/ai-api-zhongzhuan"
-      ]
-    },
-    {
-      "id": "muyuan",
-      "name": "君の公益",
-      "subtitle": "本次未通过 Cloudflare 安全验证，倍率未确认；模型和客户端限制变化较快。",
-      "homeUrl": "https://muyuan.do/",
-      "signupUrl": "https://muyuan.do/register",
-      "docsUrl": null,
-      "recommended": false,
-      "bonus": null,
-      "tags": [
-        "public-benefit",
-        "claude",
-        "codex",
-        "new-api",
-        "linux-do"
-      ],
-      "statusNote": "automated-access-blocked",
       "highlights": [],
       "caveats": null,
       "online": null,
@@ -1382,41 +3275,6 @@
       ]
     },
     {
-      "id": "cheapcodex",
-      "name": "CheapCodex",
-      "subtitle": "自研 AI 网关 · 本页邀请码送 $20，每日签到再 $20，OpenAI / Anthropic / Codex 三条协议一把 Key",
-      "homeUrl": "https://api.cheapcodex.online",
-      "signupUrl": "https://api.cheapcodex.online/register?aff=U7SSQZSDB36S",
-      "docsUrl": null,
-      "recommended": false,
-      "bonus": "邀请得 $20 · 每日签到 $20",
-      "tags": [
-        "免费额度",
-        "签到",
-        "Codex",
-        "Claude Code",
-        "OpenAI 兼容",
-        "Anthropic 兼容"
-      ],
-      "highlights": [
-        "从本页邀请链接注册送 $20，每日签到再领 $20，首日合计 $40",
-        "三条原生路由都开着：带无效 key 探 /v1/chat/completions、/v1/messages、/v1/responses 一律回 INVALID_API_KEY，而 /v1/bogus 回 404 —— Claude Code 与 Codex CLI 都能直连"
-      ],
-      "caveats": "额度数字（邀请 $20 / 签到 $20）与 GPT-5.6 Sol 都是站内公示口径，面板接口 robots 禁爬、本页无法自动核对，进后台自己确认一遍再算账",
-      "online": null,
-      "latencyMs": null,
-      "checkedAt": null,
-      "models": null,
-      "modelsCount": 0,
-      "modelsNote": null,
-      "announcement": null,
-      "mirror": null,
-      "source": "panxunying/ai-coding-welfare",
-      "sources": [
-        "panxunying/ai-coding-welfare"
-      ]
-    },
-    {
       "id": "codebyai",
       "name": "Code By AI",
       "subtitle": "支持 OpenAI、Anthropic、Gemini 协议，官网列出 21 个模型（11 个 Claude、6 个 Codex/GPT、4 个 Gemini），按 token 计费、最低充值 US$3，较大额充值 3%–15% 折扣；官网标注约为官方价 1/6 起，模型来源自述为逆向渠道。首页可访问（2026-11-…",
@@ -1641,8 +3499,7 @@
       "mirror": null,
       "source": "panxunying/ai-coding-welfare",
       "sources": [
-        "panxunying/ai-coding-welfare",
-        "wynx1123/ai-welfare-hub"
+        "panxunying/ai-coding-welfare"
       ]
     },
     {
@@ -1696,37 +3553,6 @@
       "online": null,
       "latencyMs": null,
       "checkedAt": "2026-08-29",
-      "models": null,
-      "modelsCount": 0,
-      "modelsNote": null,
-      "announcement": null,
-      "mirror": null,
-      "source": "1sh1ro/ai-api-zhongzhuan",
-      "sources": [
-        "1sh1ro/ai-api-zhongzhuan"
-      ]
-    },
-    {
-      "id": "huainova",
-      "name": "Huainova 公益站",
-      "subtitle": "注册页可访问，但站点公告称渠道大多失效，等待新渠道开放。",
-      "homeUrl": "https://ai.huaibao.top/",
-      "signupUrl": "https://ai.huaibao.top/register",
-      "docsUrl": null,
-      "recommended": false,
-      "bonus": null,
-      "tags": [
-        "public-benefit",
-        "new-api",
-        "linux-do",
-        "maintenance"
-      ],
-      "statusNote": "degraded",
-      "highlights": [],
-      "caveats": null,
-      "online": null,
-      "latencyMs": null,
-      "checkedAt": "2026-08-27",
       "models": null,
       "modelsCount": 0,
       "modelsNote": null,
@@ -1797,8 +3623,7 @@
       "mirror": null,
       "source": "panxunying/ai-coding-welfare",
       "sources": [
-        "panxunying/ai-coding-welfare",
-        "wynx1123/ai-welfare-hub"
+        "panxunying/ai-coding-welfare"
       ]
     },
     {
@@ -2155,6 +3980,39 @@
       ]
     },
     {
+      "id": "rawchat",
+      "name": "RawChat 公益站",
+      "subtitle": "Codex 公益站 · 每日 $50 额度池，0 点自动重置",
+      "homeUrl": "https://new.sharedchat.cc/list/",
+      "signupUrl": "https://new.sharedchat.cc/list/#/register?i=MaVP1",
+      "docsUrl": null,
+      "recommended": false,
+      "bonus": null,
+      "tags": [
+        "公益站",
+        "Codex",
+        "每日重置",
+        "免费额度"
+      ],
+      "highlights": [
+        "每日 $50 额度池，每天 0 点自动重置，不用签到、不用充值",
+        "专供 Codex：后台「使用教程」直接复制一键安装脚本，自动装依赖并写好环境变量"
+      ],
+      "caveats": "$50 是每日重置的额度池，当天用不完会清零，不会累积到第二天",
+      "online": null,
+      "latencyMs": null,
+      "checkedAt": null,
+      "models": null,
+      "modelsCount": 0,
+      "modelsNote": null,
+      "announcement": null,
+      "mirror": null,
+      "source": "panxunying/ai-coding-welfare",
+      "sources": [
+        "panxunying/ai-coding-welfare"
+      ]
+    },
+    {
       "id": "relaycore",
       "name": "RelayCore",
       "subtitle": "OpenAI SDK 兼容的 AI API 网关，模型广场按分组列出最终价与基础价。当前分组覆盖 OpenAI 8 个、Anthropic 25 个、Grok 3 个、Gemini 56 个、国模 16 个、DeepSeek 7 个、智谱 GLM 4 个、Kimi 8 个、生图 19 个模型。注册页、模型广场和文档均…",
@@ -2207,7 +4065,7 @@
       "caveats": "公开接口全部有防护拦截，本页无法自动探活面板数据",
       "online": false,
       "latencyMs": null,
-      "checkedAt": "2026-11-05T05:27:01.248Z",
+      "checkedAt": "2026-11-07T21:19:23.373Z",
       "models": null,
       "modelsCount": 0,
       "modelsNote": null,
@@ -2249,8 +4107,7 @@
       "mirror": null,
       "source": "panxunying/ai-coding-welfare",
       "sources": [
-        "panxunying/ai-coding-welfare",
-        "wynx1123/ai-welfare-hub"
+        "panxunying/ai-coding-welfare"
       ]
     },
     {
@@ -2442,41 +4299,6 @@
       "source": "1sh1ro/ai-api-zhongzhuan",
       "sources": [
         "1sh1ro/ai-api-zhongzhuan"
-      ]
-    },
-    {
-      "id": "vyceai",
-      "name": "Vyce AI",
-      "subtitle": "AI API 代理 · 邀请注册双方各得 $10，Claude/GPT/Gemini/Grok 旗舰齐全",
-      "homeUrl": "https://vyceai.com",
-      "signupUrl": "https://vyceai.com/signup?ref=VYCE_HZ3N7M",
-      "docsUrl": null,
-      "recommended": false,
-      "bonus": "邀请得 $10",
-      "tags": [
-        "中转站",
-        "邀请奖励",
-        "Claude Code",
-        "GPT",
-        "Gemini",
-        "Grok"
-      ],
-      "highlights": [
-        "邀请注册双方账户立即各得 $10（面板官方口径）",
-        "一把 key 调 20+ 旗舰：claude-opus-5 / sonnet-5、gpt-5.6 全系（luna/terra/testing）、gemini-3.6-flash、grok-4.6、deepseek-v4、glm-5.2、qwen3.8-max、mimo-v2.5-pro"
-      ],
-      "caveats": "面板自称「经济实惠的 API 代理」而非公益站，定位偏付费中转 + 邀请奖励",
-      "online": false,
-      "latencyMs": null,
-      "checkedAt": "2026-11-05T05:27:02.382Z",
-      "models": null,
-      "modelsCount": 0,
-      "modelsNote": null,
-      "announcement": null,
-      "mirror": null,
-      "source": "wynx1123/ai-welfare-hub",
-      "sources": [
-        "wynx1123/ai-welfare-hub"
       ]
     },
     {
