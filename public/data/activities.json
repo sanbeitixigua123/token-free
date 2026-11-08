@@ -12,9 +12,9 @@
       "cnAccessible": true
     },
     "title": "DeepSeek Harness 6 元赠金再次开放 登录桌面版即送 到账后 7 天内有效 | AI 优惠雷达",
-    "hook": null,
-    "howToClaim": null,
-    "caveat": null,
+    "hook": "DeepSeek Harness 又送 6 元赠金，登录桌面版就能领，想白嫖试用的可以顺手拿一下。",
+    "howToClaim": "登录 DeepSeek Harness 桌面版即可领取，领取页见活动链接",
+    "caveat": "赠金到账后 7 天内有效，过期作废",
     "feedback": {
       "useful": 0,
       "dead": 0
@@ -53,15 +53,101 @@
     "daysLeft": null,
     "endingSoon": false,
     "isNew": true,
-    "createdAt": "2026-11-07 08:37:49",
-    "updatedAt": "2026-11-07 08:37:49",
-    "lastVerifiedAt": "2026-11-07 16:37:57",
+    "createdAt": "2026-11-08 08:53:00",
+    "updatedAt": "2026-11-08 08:53:00",
+    "lastVerifiedAt": "2026-11-08 16:53:40",
     "model": null,
     "endpoint": null
   },
   {
+    "id": 3,
+    "fingerprint": "df9da6d5f9c9679259322c71905fc4a4",
+    "provider": {
+      "slug": "zhipu",
+      "name": "智谱 AI",
+      "nameEn": "Zhipu AI",
+      "country": "CN",
+      "website": "https://www.z.ai",
+      "color": "#3B5BDB",
+      "cnAccessible": true
+    },
+    "title": "智谱ZCode新用户福利：1亿GLM-5.3 token免费领，体验顶级代码生成 - CSDN文库",
+    "hook": "智谱ZCode新用户可领1亿GLM-5.3 token，适合想试代码生成的开发者，值得一领。",
+    "howToClaim": "通过CSDN文库领取页（https://wenku.csdn.net/column/709nzhin46s）领取，原文未写截止时间。",
+    "caveat": "仅限新用户，原文未说明具体限制与计费方式。",
+    "feedback": {
+      "useful": 0,
+      "dead": 0
+    },
+    "summary": null,
+    "category": "student",
+    "categoryLabel": "学生优惠",
+    "benefit": {
+      "kind": "token",
+      "amount": 100000000,
+      "unit": "token",
+      "unitLabel": "tokens",
+      "text": "1亿GLM-5.3 token",
+      "display": "1 亿 tokens"
+    },
+    "audience": [
+      "new_user",
+      "student"
+    ],
+    "audienceLabels": [
+      "新用户",
+      "学生"
+    ],
+    "audienceNote": "新用户、学生",
+    "region": "CN",
+    "requiresCard": false,
+    "requiresVerification": "student_id",
+    "startDate": null,
+    "endDate": null,
+    "isRecurring": null,
+    "claimUrl": "https://wenku.csdn.net/column/709nzhin46s",
+    "sourceUrl": null,
+    "sourceExcerpt": null,
+    "confidence": 0.95,
+    "reviewStatus": "auto_ok",
+    "status": "active",
+    "statusLabel": "NEW",
+    "daysLeft": null,
+    "endingSoon": false,
+    "isNew": true,
+    "createdAt": "2026-11-08 08:53:00",
+    "updatedAt": "2026-11-08 08:53:00",
+    "lastVerifiedAt": "2026-11-08 16:53:15",
+    "model": {
+      "slug": "glm-5-3-flash",
+      "name": "GLM-5.3-Flash",
+      "capability": "code-generation",
+      "capabilityLabel": "代码生成",
+      "capabilities": [
+        "code-generation",
+        "text-generation"
+      ],
+      "contextWindow": 1000000
+    },
+    "endpoint": {
+      "slug": "zhipu--glm-5-3-flash",
+      "quotaKind": "credits",
+      "quotaKindLabel": "赠送额度",
+      "quotaRpm": null,
+      "quotaRpd": null,
+      "quotaText": "官方开放平台新用户赠送额度",
+      "apiBase": "https://open.bigmodel.cn/api/paas/v4",
+      "score": null,
+      "requiresCard": false,
+      "cnAccessible": true,
+      "openaiCompatible": true,
+      "claimUrl": "https://open.bigmodel.cn",
+      "docsUrl": "https://z.ai"
+    }
+  },
+  {
     "id": 8,
-    "fingerprint": "f40efe49242b1223e0e7d19b2aad69b7",
+    "fingerprint": "adec86232ec469924d27f49b8ed156a1",
     "provider": {
       "slug": "deepseek",
       "name": "DeepSeek",
@@ -71,9 +157,9 @@
       "color": "#4D6BFE",
       "cnAccessible": true
     },
-    "title": "登录就送6块钱：DeepSeek Harness这笔赠金怎么领、怎么花DeepSeek Harness 登录即送6元体验 - 掘金",
-    "hook": null,
-    "howToClaim": null,
+    "title": "DeepSeek Harness 桌面端来了：登录即领 6 元限时赠金 - MSN",
+    "hook": "DeepSeek Harness 桌面端上线，登录就送 6 元限时赠金，想尝鲜桌面客户端的可以顺手领一下。",
+    "howToClaim": "登录 DeepSeek Harness 桌面端即可领取，限时活动，具体截止时间原文未写明。",
     "caveat": null,
     "feedback": {
       "useful": 0,
@@ -87,40 +173,40 @@
       "amount": 6,
       "unit": "CNY",
       "unitLabel": "元",
-      "text": "6块钱",
+      "text": "6 元",
       "display": "¥6"
     },
     "audience": [
-      "new_user"
+      "all"
     ],
     "audienceLabels": [
-      "新用户"
+      "所有人"
     ],
-    "audienceNote": "新用户",
+    "audienceNote": null,
     "region": "CN",
     "requiresCard": false,
     "requiresVerification": null,
     "startDate": null,
     "endDate": null,
     "isRecurring": null,
-    "claimUrl": "https://juejin.cn/post/7699072089818939402",
+    "claimUrl": "https://www.msn.com/zh-cn/%e6%8a%80%e6%9c%af/%e4%ba%ba%e5%b7%a5%e6%99%ba%e8%83%bd/deepseek-harness-%e6%a1%8c%e9%9d%a2%e7%ab%af%e6%9d%a5%e4%ba%86-%e7%99%bb%e5%bd%95%e5%8d%b3%e9%a2%86-6-%e5%85%83%e9%99%90%e6%97%b6%e8%b5%a0%e9%87%91/ar-aa2dliec",
     "sourceUrl": null,
     "sourceExcerpt": null,
-    "confidence": 0.89,
+    "confidence": 0.83,
     "reviewStatus": "auto_ok",
     "status": "active",
     "statusLabel": "NEW",
     "daysLeft": null,
     "endingSoon": false,
     "isNew": true,
-    "createdAt": "2026-11-07 08:37:49",
-    "updatedAt": "2026-11-07 08:37:49",
-    "lastVerifiedAt": "2026-11-07 16:37:58",
+    "createdAt": "2026-11-08 08:53:00",
+    "updatedAt": "2026-11-08 08:53:00",
+    "lastVerifiedAt": "2026-11-08 16:53:40",
     "model": null,
     "endpoint": null
   },
   {
-    "id": 6,
+    "id": 5,
     "fingerprint": "52388eed4d58d119a1a79a936014e042",
     "provider": {
       "slug": "deepseek",
@@ -132,7 +218,7 @@
       "cnAccessible": true
     },
     "title": "DeepSeek Harness 桌面端发布：6 元赠金领取与上手指南",
-    "hook": "DeepSeek Harness 桌面端发布，送 6 元赠金，想尝鲜桌面 AI 工具的人可以顺手领一下。",
+    "hook": "DeepSeek Harness 桌面端上线，送 6 元赠金，想尝鲜桌面 AI 工具的人可以顺手领一下。",
     "howToClaim": "在领取页 https://www.denghy.cn/articles/deepseek-harness-desktop-launch 领取，原文未写截止时间。",
     "caveat": null,
     "feedback": {
@@ -173,14 +259,14 @@
     "daysLeft": null,
     "endingSoon": false,
     "isNew": true,
-    "createdAt": "2026-11-07 08:37:49",
-    "updatedAt": "2026-11-07 08:37:49",
-    "lastVerifiedAt": "2026-11-07 16:37:55",
+    "createdAt": "2026-11-08 08:53:00",
+    "updatedAt": "2026-11-08 08:53:00",
+    "lastVerifiedAt": "2026-11-08 16:53:22",
     "model": null,
     "endpoint": null
   },
   {
-    "id": 4,
+    "id": 2,
     "fingerprint": "804014c86b44b5962a0bcd4fd2092ec4",
     "provider": {
       "slug": "zhipu",
@@ -233,14 +319,14 @@
     "daysLeft": null,
     "endingSoon": false,
     "isNew": true,
-    "createdAt": "2026-11-07 08:37:49",
-    "updatedAt": "2026-11-07 08:37:49",
-    "lastVerifiedAt": "2026-11-07 16:37:52",
+    "createdAt": "2026-11-08 08:53:00",
+    "updatedAt": "2026-11-08 08:53:00",
+    "lastVerifiedAt": "2026-11-08 16:53:04",
     "model": null,
     "endpoint": null
   },
   {
-    "id": 25,
+    "id": 24,
     "fingerprint": "b50602368423573b5e434e125089bfeb",
     "provider": {
       "slug": "minimax",
@@ -252,9 +338,9 @@
       "cnAccessible": true
     },
     "title": "HD 系列模型赠送 10 个快速克隆音色",
-    "hook": "MiniMax HD 系列模型送快速克隆音色，做语音合成的开发者可以顺手领，额度按档位给。",
-    "howToClaim": "在 https://platform.minimaxi.com/document/price 领取页领取，原文未写截止时间。",
-    "caveat": "赠送数量按档位不同（10/30/300 个），RPM 也随档位为 60/200/500，具体资格与计费方式原文未说明。",
+    "hook": "MiniMax HD 系列模型送快速克隆音色，做语音合成的开发者可顺手领，额度按档位递增。",
+    "howToClaim": "在 https://platform.minimaxi.com/document/price 领取页获取，原文未写截止时间。",
+    "caveat": "赠送数量与 RPM 档位绑定（10/30/300 个对应 RPM 60/200/500），原文未说明资格例外与计费方式。",
     "feedback": {
       "useful": 0,
       "dead": 0
@@ -293,14 +379,14 @@
     "daysLeft": null,
     "endingSoon": false,
     "isNew": true,
-    "createdAt": "2026-11-07 08:37:49",
-    "updatedAt": "2026-11-07 08:37:49",
-    "lastVerifiedAt": "2026-11-07 16:39:14",
+    "createdAt": "2026-11-08 08:53:00",
+    "updatedAt": "2026-11-08 08:53:00",
+    "lastVerifiedAt": "2026-11-08 16:55:51",
     "model": null,
     "endpoint": null
   },
   {
-    "id": 24,
+    "id": 23,
     "fingerprint": "7c414ceb962a393efbd2d307408d055c",
     "provider": {
       "slug": "minimax",
@@ -314,7 +400,7 @@
     "title": "输入图片每张超出免费额度后",
     "hook": "MiniMax-H3 画质优先，适合高品质视频创作，输入图片超出免费额度后每张 ¥0.80，值不值得看用量。",
     "howToClaim": "在 https://platform.minimaxi.com/document/price 查看价格页，原文未写领取动作和截止时间。",
-    "caveat": "仅输入图片超出免费额度后按每张 ¥0.80 计费，原文未提其他限制。",
+    "caveat": "仅超出免费额度的输入图片按每张 ¥0.80 计费，原文未提其他限制。",
     "feedback": {
       "useful": 0,
       "dead": 0
@@ -353,14 +439,14 @@
     "daysLeft": null,
     "endingSoon": false,
     "isNew": true,
-    "createdAt": "2026-11-07 08:37:49",
-    "updatedAt": "2026-11-07 08:37:49",
-    "lastVerifiedAt": "2026-11-07 16:39:01",
+    "createdAt": "2026-11-08 08:53:00",
+    "updatedAt": "2026-11-08 08:53:00",
+    "lastVerifiedAt": "2026-11-08 16:54:28",
     "model": null,
     "endpoint": null
   },
   {
-    "id": 21,
+    "id": 20,
     "fingerprint": "de9e5266ebe169d92b10c6a1f299d7d7",
     "provider": {
       "slug": "vercel-ai-gateway",
@@ -372,9 +458,9 @@
       "cnAccessible": false
     },
     "title": "Free and paid tiers",
-    "hook": "Vercel 团队账号每月送 5 美元 AI Gateway 额度，用 AI 模型的开发者可以顺手领。",
-    "howToClaim": "Vercel 团队账号在 AI Gateway 领取页开通，每月自动含 $5 额度",
-    "caveat": "需有 Vercel 团队账号；付费层按 token 原价零加价计费，免费额度按月发放",
+    "hook": "Vercel 团队账号每月送 5 美元 AI Gateway 额度，想低成本试各家模型的人可以顺手领。",
+    "howToClaim": "在 Vercel 团队账号的 AI Gateway 中开通，免费层每月自动含 $5 额度，详见 https://vercel.com/docs/ai-gateway/pricing",
+    "caveat": "需有 Vercel 团队账号；免费额度按月发放，付费层按 token 计费（自带 key 也零加价）",
     "feedback": {
       "useful": 0,
       "dead": 0
@@ -413,9 +499,9 @@
     "daysLeft": null,
     "endingSoon": false,
     "isNew": true,
-    "createdAt": "2026-11-07 08:37:49",
-    "updatedAt": "2026-11-07 08:37:49",
-    "lastVerifiedAt": "2026-11-07 16:38:52",
+    "createdAt": "2026-11-08 08:53:00",
+    "updatedAt": "2026-11-08 08:53:00",
+    "lastVerifiedAt": "2026-11-08 16:54:16",
     "model": {
       "slug": "claude-sonnet-5",
       "name": "Claude Sonnet 5",
@@ -444,174 +530,8 @@
     }
   },
   {
-    "id": 11,
-    "fingerprint": "9706383018296726cac5850b2f6d434f",
-    "provider": {
-      "slug": "bytedance-doubao",
-      "name": "字节豆包",
-      "nameEn": "ByteDance Doubao",
-      "country": "CN",
-      "website": "https://www.volcengine.com/product/doubao",
-      "color": "#1664FF",
-      "cnAccessible": true
-    },
-    "title": "web_fetch：限时免费​",
-    "hook": "Seedance托管Agent调用搜索和视频合成工具限时免费，适合想低成本试AI视频生成的开发者。",
-    "howToClaim": "在火山引擎领取页 https://www.volcengine.com/docs/82379/1099320 查看并领取，限时活动，原文未写截止日期。",
-    "caveat": "免费仅限Agent调用搜索和视频合成工具产生的费用；按实际调用次数计费、按小时出账，general_search原价0.02元/次，免费范围外仍可能计费。",
-    "feedback": {
-      "useful": 0,
-      "dead": 0
-    },
-    "summary": "Seedance Managed Agent 调用搜索和视频合成工具产生的费用。​ 按 Agent 实际调用次数计费，按小时出账。​",
-    "category": "free_credit",
-    "categoryLabel": "免费额度",
-    "benefit": {
-      "kind": "credit_cny",
-      "amount": 0.02,
-      "unit": "CNY",
-      "unitLabel": "元",
-      "text": "0.02 元",
-      "display": "¥0.02"
-    },
-    "audience": [
-      "all"
-    ],
-    "audienceLabels": [
-      "所有人"
-    ],
-    "audienceNote": null,
-    "region": "CN",
-    "requiresCard": false,
-    "requiresVerification": null,
-    "startDate": null,
-    "endDate": null,
-    "isRecurring": null,
-    "claimUrl": "https://www.volcengine.com/docs/82379/1099320",
-    "sourceUrl": "https://www.volcengine.com/docs/82379/1099320",
-    "sourceExcerpt": "web_fetch：限时免费​\n​\nSeedance Managed Agent 调用搜索和视频合成工具产生的费用。​\n按 Agent 实际调用次数计费，按小时出账。​\ngeneral_search：0.02 元/次​",
-    "confidence": 0.69,
-    "reviewStatus": "auto_ok",
-    "status": "active",
-    "statusLabel": "NEW",
-    "daysLeft": null,
-    "endingSoon": false,
-    "isNew": true,
-    "createdAt": "2026-11-07 08:37:49",
-    "updatedAt": "2026-11-07 08:37:49",
-    "lastVerifiedAt": "2026-11-07 16:38:37",
-    "model": {
-      "slug": "seedance-2-5",
-      "name": "Seedance 2.5",
-      "capability": "video-generation",
-      "capabilityLabel": "视频生成",
-      "capabilities": [
-        "video-generation"
-      ],
-      "contextWindow": null
-    },
-    "endpoint": {
-      "slug": "bytedance-doubao--seedance-2-5",
-      "quotaKind": "free_tier",
-      "quotaKindLabel": "免费档位",
-      "quotaRpm": null,
-      "quotaRpd": null,
-      "quotaText": "新用户免费额度与限时活动",
-      "apiBase": null,
-      "score": null,
-      "requiresCard": false,
-      "cnAccessible": true,
-      "openaiCompatible": true,
-      "claimUrl": "https://console.volcengine.com",
-      "docsUrl": "https://www.volcengine.com/docs"
-    }
-  },
-  {
-    "id": 35,
-    "fingerprint": "025630a3b51e4ce940b9de040484c9b1",
-    "provider": {
-      "slug": "deepgram",
-      "name": "Deepgram",
-      "nameEn": "Deepgram",
-      "country": "US",
-      "website": "https://deepgram.com",
-      "color": "#13EF93",
-      "cnAccessible": false
-    },
-    "title": "$200 free credit",
-    "hook": "Deepgram 送 200 美元额度，约 700 小时 Nova-3 转写，不过期、免信用卡，做语音原型值得领。",
-    "howToClaim": "在 https://deepgram.com/pricing 领取，原文未写截止时间",
-    "caveat": "额度仅覆盖约 700 小时 Nova-3 转写，其他模型或服务是否适用原文未说明",
-    "feedback": {
-      "useful": 0,
-      "dead": 0
-    },
-    "summary": "Deepgram提供200美元免费额度，约合700小时Nova-3转写，不过期且无需信用卡即可开始。",
-    "category": "free_credit",
-    "categoryLabel": "免费额度",
-    "benefit": {
-      "kind": "credit_usd",
-      "amount": 200,
-      "unit": "USD",
-      "unitLabel": "美元",
-      "text": "$200 free credit",
-      "display": "$200"
-    },
-    "audience": [
-      "new_user"
-    ],
-    "audienceLabels": [
-      "新用户"
-    ],
-    "audienceNote": null,
-    "region": "GLOBAL",
-    "requiresCard": false,
-    "requiresVerification": null,
-    "startDate": null,
-    "endDate": null,
-    "isRecurring": null,
-    "claimUrl": "https://deepgram.com/pricing",
-    "sourceUrl": "https://deepgram.com/pricing",
-    "sourceExcerpt": "What does the $200 free credit cover? Roughly 43,000 minutes, over 700 hours, of Nova-3 transcription. It does not expire, so you can prototype without a clock running. No credit card is required to start.",
-    "confidence": 0.65,
-    "reviewStatus": "auto_ok",
-    "status": "active",
-    "statusLabel": "NEW",
-    "daysLeft": null,
-    "endingSoon": false,
-    "isNew": true,
-    "createdAt": "2026-11-07 08:37:49",
-    "updatedAt": "2026-11-07 08:37:49",
-    "lastVerifiedAt": "2026-11-07 16:40:08",
-    "model": {
-      "slug": "deepgram-nova-3",
-      "name": "Deepgram Nova 3",
-      "capability": "speech-to-text",
-      "capabilityLabel": "语音识别",
-      "capabilities": [
-        "speech-to-text"
-      ],
-      "contextWindow": null
-    },
-    "endpoint": {
-      "slug": "deepgram--deepgram-nova-3",
-      "quotaKind": "credits",
-      "quotaKindLabel": "赠送额度",
-      "quotaRpm": null,
-      "quotaRpd": null,
-      "quotaText": "新用户注册赠送 $200 额度",
-      "apiBase": null,
-      "score": null,
-      "requiresCard": true,
-      "cnAccessible": false,
-      "openaiCompatible": false,
-      "claimUrl": "https://deepgram.com",
-      "docsUrl": "https://developers.deepgram.com"
-    }
-  },
-  {
-    "id": 20,
-    "fingerprint": "2ee9c79c814f513b8ba5e1fff91e4915",
+    "id": 19,
+    "fingerprint": "0a575c8306155dcbd83bc50318efd546",
     "provider": {
       "slug": "cloudflare-workers-ai",
       "name": "Cloudflare Workers AI",
@@ -621,15 +541,15 @@
       "color": "#F38020",
       "cnAccessible": false
     },
-    "title": "Workers AI 免费额度：每日 10,000 Neurons",
-    "hook": "Cloudflare Workers AI 每天免费送 1 万 Neurons，适合想低成本试跑 AI 推理的开发者，值得动手。",
-    "howToClaim": "在 Cloudflare Workers AI 定价页查看并开通，免费额度每日 UTC 零点自动重置",
-    "caveat": "超出免费额度需 Workers Paid 计划并按量计费",
+    "title": "Free allocation: 10,000 Neurons per day",
+    "hook": "Cloudflare Workers AI 每天白送 1 万 Neurons，想低成本跑 AI 推理的开发者可以顺手用起来。",
+    "howToClaim": "无需单独领取，开通 Workers AI 即自动享有，详见 https://developers.cloudflare.com/workers-ai/platform/pricing",
+    "caveat": "免费额度每天 UTC 00:00 重置、不累积，超出 1 万 Neurons 后按量计费。",
     "feedback": {
       "useful": 0,
       "dead": 0
     },
-    "summary": "Cloudflare Workers AI 为所有用户提供每日 10,000 Neurons 的免费额度，超出部分需 Workers Paid 计划并按量计费，额度每日 UTC 零点重置。",
+    "summary": "Cloudflare Workers AI为所有用户提供每日10,000 Neurons的免费额度，超出后需付费，额度每日UTC 00:00重置。",
     "category": "refreshable",
     "categoryLabel": "周期刷新",
     "benefit": {
@@ -663,74 +583,14 @@
     "daysLeft": null,
     "endingSoon": false,
     "isNew": true,
-    "createdAt": "2026-11-07 08:37:49",
-    "updatedAt": "2026-11-07 08:37:49",
-    "lastVerifiedAt": "2026-11-07 16:38:50",
+    "createdAt": "2026-11-08 08:53:00",
+    "updatedAt": "2026-11-08 08:53:00",
+    "lastVerifiedAt": "2026-11-08 16:54:14",
     "model": null,
     "endpoint": null
   },
   {
-    "id": 15,
-    "fingerprint": "c77e5e703839db20686c9b3df8160d74",
-    "provider": {
-      "slug": "github-student",
-      "name": "GitHub 学生开发者包",
-      "nameEn": "GitHub Student Developer Pack",
-      "country": "US",
-      "website": "https://education.github.com/pack",
-      "color": "#181717",
-      "cnAccessible": true
-    },
-    "title": "DataCamp 三个月免费访问",
-    "hook": "GitHub 学生账号能白嫖 DataCamp 三个月，学数据技能的在校生值得顺手领一下。",
-    "howToClaim": "在 GitHub Education 礼包页（education.github.com/pack）用 GitHub 学生账号订阅 DataCamp 领取。",
-    "caveat": "仅限 GitHub 学生账号，且需订阅 DataCamp，原文未说明到期后是否自动续费。",
-    "feedback": {
-      "useful": 0,
-      "dead": 0
-    },
-    "summary": "DataCamp 与 GitHub Education 合作，GitHub 学生账号订阅 DataCamp 可获三个月免费访问。",
-    "category": "student",
-    "categoryLabel": "学生优惠",
-    "benefit": {
-      "kind": "duration",
-      "amount": 3,
-      "unit": "month",
-      "unitLabel": "个月",
-      "text": "three months of free access",
-      "display": "3 个月"
-    },
-    "audience": [
-      "student"
-    ],
-    "audienceLabels": [
-      "学生"
-    ],
-    "audienceNote": "需使用 GitHub 学生账号",
-    "region": "GLOBAL",
-    "requiresCard": false,
-    "requiresVerification": "student_id",
-    "startDate": null,
-    "endDate": null,
-    "isRecurring": null,
-    "claimUrl": "https://education.github.com/pack",
-    "sourceUrl": "https://education.github.com/pack",
-    "sourceExcerpt": "DataCamp has partnered with GitHub Education to offer three months of free access when you sign up for a DataCamp subscription with your GitHub student account.",
-    "confidence": 0.65,
-    "reviewStatus": "auto_ok",
-    "status": "active",
-    "statusLabel": "NEW",
-    "daysLeft": null,
-    "endingSoon": false,
-    "isNew": true,
-    "createdAt": "2026-11-07 08:37:49",
-    "updatedAt": "2026-11-07 08:37:49",
-    "lastVerifiedAt": "2026-11-07 16:38:40",
-    "model": null,
-    "endpoint": null
-  },
-  {
-    "id": 28,
+    "id": 27,
     "fingerprint": "7c38800a05076daf7fb454f64069193f",
     "provider": {
       "slug": "tencent-hunyuan",
@@ -783,9 +643,9 @@
     "daysLeft": null,
     "endingSoon": false,
     "isNew": true,
-    "createdAt": "2026-11-07 08:37:49",
-    "updatedAt": "2026-11-07 08:37:49",
-    "lastVerifiedAt": "2026-11-07 16:39:38",
+    "createdAt": "2026-11-08 08:53:00",
+    "updatedAt": "2026-11-08 08:53:00",
+    "lastVerifiedAt": "2026-11-08 16:56:20",
     "model": null,
     "endpoint": null
   },
@@ -840,12 +700,12 @@
     "reviewStatus": "auto_ok",
     "status": "ended",
     "statusLabel": "已结束",
-    "daysLeft": -47,
+    "daysLeft": -48,
     "endingSoon": false,
     "isNew": true,
-    "createdAt": "2026-11-07 08:37:49",
-    "updatedAt": "2026-11-07 08:37:49",
-    "lastVerifiedAt": "2026-11-07 08:37:49",
+    "createdAt": "2026-11-08 08:53:00",
+    "updatedAt": "2026-11-08 08:53:00",
+    "lastVerifiedAt": "2026-11-08 08:53:00",
     "model": {
       "slug": "glm-5-3-flash",
       "name": "GLM-5.3-Flash",
@@ -874,7 +734,7 @@
     }
   },
   {
-    "id": 5,
+    "id": 6,
     "fingerprint": "a27230c4dacd3dbd23a5a12f814834d0",
     "provider": {
       "slug": "deepseek",
@@ -924,17 +784,17 @@
     "reviewStatus": "auto_ok",
     "status": "ended",
     "statusLabel": "已结束",
-    "daysLeft": -35,
+    "daysLeft": -36,
     "endingSoon": false,
     "isNew": true,
-    "createdAt": "2026-11-07 08:37:49",
-    "updatedAt": "2026-11-07 08:37:49",
-    "lastVerifiedAt": "2026-11-07 08:37:49",
+    "createdAt": "2026-11-08 08:53:00",
+    "updatedAt": "2026-11-08 08:53:00",
+    "lastVerifiedAt": "2026-11-08 08:53:00",
     "model": null,
     "endpoint": null
   },
   {
-    "id": 2,
+    "id": 4,
     "fingerprint": "e304e897f37b50c5925f74665265ee29",
     "provider": {
       "slug": "zhipu",
@@ -946,8 +806,8 @@
       "cnAccessible": true
     },
     "title": "智谱AI（BigModel） 免费 Token 领取攻略（2026 最新） | iGetoken",
-    "hook": null,
-    "howToClaim": null,
+    "hook": "智谱AI送2000万Token，想低成本试大模型API的开发者可以看看，值得动手。",
+    "howToClaim": "通过领取页 https://igetoken.com/models/zhipu 领取，原文未写截止时间。",
     "caveat": null,
     "feedback": {
       "useful": 0,
@@ -984,17 +844,17 @@
     "reviewStatus": "auto_ok",
     "status": "ended",
     "statusLabel": "已结束",
-    "daysLeft": -5,
+    "daysLeft": -6,
     "endingSoon": false,
     "isNew": true,
-    "createdAt": "2026-11-07 08:37:49",
-    "updatedAt": "2026-11-07 08:37:49",
-    "lastVerifiedAt": "2026-11-07 08:37:49",
+    "createdAt": "2026-11-08 08:53:00",
+    "updatedAt": "2026-11-08 08:53:00",
+    "lastVerifiedAt": "2026-11-08 08:53:00",
     "model": null,
     "endpoint": null
   },
   {
-    "id": 26,
+    "id": 25,
     "fingerprint": "9d020a9f934ba9b7774f84dbe6eb9cd2",
     "provider": {
       "slug": "baidu-ernie",
@@ -1006,9 +866,9 @@
       "cnAccessible": true
     },
     "title": "当前新用户注册百度千帆·大模型服务及Agent开发平台 ，实名认证后即送20元代金券！",
-    "hook": "百度千帆新用户注册并实名认证就送20元代金券，全平台无门槛，想低成本试大模型开发的可以薅。",
+    "hook": "百度千帆新用户注册并实名认证就送20元代金券，全平台无门槛，想试大模型或Agent开发的可以顺手领。",
     "howToClaim": "在百度千帆平台注册新账号并完成实名认证，领取页：https://cloud.baidu.com/doc/qianfan/s/1mh4su5jg",
-    "caveat": "仅限新用户，代金券有效期一个月，过期作废。",
+    "caveat": "仅限新用户，需实名认证；代金券有效期一个月，过期作废。",
     "feedback": {
       "useful": 0,
       "dead": 0
@@ -1037,7 +897,7 @@
     "requiresCard": false,
     "requiresVerification": "identity",
     "startDate": null,
-    "endDate": "2026-11-07",
+    "endDate": "2026-11-08",
     "isRecurring": null,
     "claimUrl": "https://cloud.baidu.com/doc/qianfan/s/1mh4su5jg",
     "sourceUrl": "https://cloud.baidu.com/doc/WENXINWORKSHOP/index.html",
@@ -1049,15 +909,75 @@
     "daysLeft": 0,
     "endingSoon": true,
     "isNew": true,
-    "createdAt": "2026-11-07 08:37:49",
-    "updatedAt": "2026-11-07 08:37:49",
-    "lastVerifiedAt": "2026-11-07 16:39:23",
+    "createdAt": "2026-11-08 08:53:00",
+    "updatedAt": "2026-11-08 08:53:00",
+    "lastVerifiedAt": "2026-11-08 16:55:57",
     "model": null,
     "endpoint": null
   },
   {
-    "id": 27,
-    "fingerprint": "e8d7a1bd32f9fbb0b18dbb86d224064c",
+    "id": 12,
+    "fingerprint": "8f7462b1b0f1162bfc9cbfa62ccfde42",
+    "provider": {
+      "slug": "volcengine-ark",
+      "name": "火山引擎方舟",
+      "nameEn": "Volcengine Ark",
+      "country": "CN",
+      "website": "https://www.volcengine.com",
+      "color": "#1664FF",
+      "cnAccessible": true
+    },
+    "title": "web_fetch：限时免费​",
+    "hook": "Seedance托管Agent调用搜索和视频合成工具限时免费，适合想低成本试用的开发者。",
+    "howToClaim": "在领取页 https://www.volcengine.com/docs/82379/1099320 领取，限时活动，原文未写截止日期。",
+    "caveat": "按Agent实际调用次数计费、按小时出账；general_search原价0.02元/次，赠送额度仅0.02元，超出后需自付。",
+    "feedback": {
+      "useful": 0,
+      "dead": 0
+    },
+    "summary": "Seedance Managed Agent 调用搜索和视频合成工具产生的费用。​ 按 Agent 实际调用次数计费，按小时出账。​",
+    "category": "free_credit",
+    "categoryLabel": "免费额度",
+    "benefit": {
+      "kind": "credit_cny",
+      "amount": 0.02,
+      "unit": "CNY",
+      "unitLabel": "元",
+      "text": "0.02 元",
+      "display": "¥0.02"
+    },
+    "audience": [
+      "all"
+    ],
+    "audienceLabels": [
+      "所有人"
+    ],
+    "audienceNote": null,
+    "region": "CN",
+    "requiresCard": false,
+    "requiresVerification": null,
+    "startDate": null,
+    "endDate": "2026-11-08",
+    "isRecurring": null,
+    "claimUrl": "https://www.volcengine.com/docs/82379/1099320",
+    "sourceUrl": "https://www.volcengine.com/docs/82379/1099320",
+    "sourceExcerpt": "web_fetch：限时免费​\n​\nSeedance Managed Agent 调用搜索和视频合成工具产生的费用。​\n按 Agent 实际调用次数计费，按小时出账。​\ngeneral_search：0.02 元/次​",
+    "confidence": 0.69,
+    "reviewStatus": "auto_ok",
+    "status": "ended",
+    "statusLabel": "已结束",
+    "daysLeft": 0,
+    "endingSoon": true,
+    "isNew": true,
+    "createdAt": "2026-11-08 08:53:00",
+    "updatedAt": "2026-11-08 08:53:00",
+    "lastVerifiedAt": "2026-11-08 16:54:02",
+    "model": null,
+    "endpoint": null
+  },
+  {
+    "id": 26,
+    "fingerprint": "cfbe38cea5f44b3dcdd5ac4ecf0bb19d",
     "provider": {
       "slug": "baidu-ernie",
       "name": "百度文心",
@@ -1067,15 +987,15 @@
       "color": "#2932E1",
       "cnAccessible": true
     },
-    "title": "新用户注册百度千帆·大模型服务及Agent开发平台，实名认证后即送20元代金券",
-    "hook": "百度千帆新用户注册并实名认证就送20元无门槛代金券，想低成本试大模型和Agent开发的可以顺手领。",
-    "howToClaim": "在百度千帆平台注册新账号并完成实名认证，代金券自动发放，领取说明见 https://cloud.baidu.com/doc/wenxinworkshop/index.html",
-    "caveat": "仅限新用户，需完成实名认证；代金券有效期一个月，过期作废。",
+    "title": "新用户注册百度千帆送20元代金券",
+    "hook": "百度千帆新用户注册并实名认证就送20元无门槛代金券，想低成本试大模型API的可以顺手领。",
+    "howToClaim": "在百度千帆平台注册新账号并完成实名认证，代金券即到账，领取页：https://cloud.baidu.com/doc/wenxinworkshop/index.html",
+    "caveat": "仅限新用户，需实名认证；代金券有效期一个月，过期作废。",
     "feedback": {
       "useful": 0,
       "dead": 0
     },
-    "summary": "百度千帆新用户注册并实名认证后赠送20元无门槛代金券，全平台可用，有效期一个月。",
+    "summary": "百度千帆新用户注册并实名认证后赠送20元全平台无门槛代金券，有效期一个月。",
     "category": "free_credit",
     "categoryLabel": "免费额度",
     "benefit": {
@@ -1083,7 +1003,7 @@
       "amount": 20,
       "unit": "CNY",
       "unitLabel": "元",
-      "text": "20元代金券",
+      "text": "实名认证后即送20元代金券！全平台无门槛使用，有效期一个月",
       "display": "¥20"
     },
     "audience": [
@@ -1097,7 +1017,7 @@
     "requiresCard": false,
     "requiresVerification": "identity",
     "startDate": null,
-    "endDate": "2026-11-07",
+    "endDate": "2026-11-08",
     "isRecurring": null,
     "claimUrl": "https://cloud.baidu.com/doc/wenxinworkshop/index.html",
     "sourceUrl": "https://cloud.baidu.com/doc/WENXINWORKSHOP/index.html",
@@ -1109,9 +1029,9 @@
     "daysLeft": 0,
     "endingSoon": true,
     "isNew": true,
-    "createdAt": "2026-11-07 08:37:49",
-    "updatedAt": "2026-11-07 08:37:49",
-    "lastVerifiedAt": "2026-11-07 16:39:28",
+    "createdAt": "2026-11-08 08:53:00",
+    "updatedAt": "2026-11-08 08:53:00",
+    "lastVerifiedAt": "2026-11-08 16:55:59",
     "model": null,
     "endpoint": null
   }
