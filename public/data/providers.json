@@ -1,19 +1,5 @@
 [
   {
-    "slug": "deepseek",
-    "name": "DeepSeek",
-    "nameEn": "DeepSeek",
-    "country": "CN",
-    "website": "https://www.deepseek.com",
-    "pricingUrl": "https://api-docs.deepseek.com/quick_start/pricing",
-    "announcementUrl": "https://api-docs.deepseek.com/news",
-    "color": "#4D6BFE",
-    "cnAccessible": true,
-    "tier": 1,
-    "activityCount": 4,
-    "activeCount": 3
-  },
-  {
     "slug": "zhipu",
     "name": "智谱 AI",
     "nameEn": "Zhipu AI",
@@ -25,6 +11,20 @@
     "cnAccessible": true,
     "tier": 1,
     "activityCount": 4,
+    "activeCount": 2
+  },
+  {
+    "slug": "deepseek",
+    "name": "DeepSeek",
+    "nameEn": "DeepSeek",
+    "country": "CN",
+    "website": "https://www.deepseek.com",
+    "pricingUrl": "https://api-docs.deepseek.com/quick_start/pricing",
+    "announcementUrl": "https://api-docs.deepseek.com/news",
+    "color": "#4D6BFE",
+    "cnAccessible": true,
+    "tier": 1,
+    "activityCount": 3,
     "activeCount": 2
   },
   {
@@ -322,6 +322,20 @@
     "activeCount": 2
   },
   {
+    "slug": "deepgram",
+    "name": "Deepgram",
+    "nameEn": "Deepgram",
+    "country": "US",
+    "website": "https://deepgram.com",
+    "pricingUrl": "https://deepgram.com/pricing",
+    "announcementUrl": null,
+    "color": "#13EF93",
+    "cnAccessible": false,
+    "tier": 2,
+    "activityCount": 1,
+    "activeCount": 1
+  },
+  {
     "slug": "tencent-hunyuan",
     "name": "腾讯混元",
     "nameEn": "Tencent Hunyuan",
@@ -372,20 +386,6 @@
     "pricingUrl": "https://cursor.com/pricing",
     "announcementUrl": null,
     "color": "#000000",
-    "cnAccessible": false,
-    "tier": 2,
-    "activityCount": 0,
-    "activeCount": 1
-  },
-  {
-    "slug": "deepgram",
-    "name": "Deepgram",
-    "nameEn": "Deepgram",
-    "country": "US",
-    "website": "https://deepgram.com",
-    "pricingUrl": "https://deepgram.com/pricing",
-    "announcementUrl": null,
-    "color": "#13EF93",
     "cnAccessible": false,
     "tier": 2,
     "activityCount": 0,

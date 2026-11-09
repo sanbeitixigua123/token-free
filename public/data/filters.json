@@ -3,17 +3,12 @@
     {
       "value": "free_credit",
       "label": "免费额度",
-      "count": 11
+      "count": 13
     },
     {
       "value": "trial",
       "label": "免费试用",
-      "count": 3
-    },
-    {
-      "value": "student",
-      "label": "学生优惠",
-      "count": 1
+      "count": 2
     },
     {
       "value": "refreshable",
@@ -25,17 +20,12 @@
     {
       "value": "all",
       "label": "所有人",
-      "count": 10
+      "count": 11
     },
     {
       "value": "new_user",
       "label": "新用户",
-      "count": 5
-    },
-    {
-      "value": "student",
-      "label": "学生",
-      "count": 1
+      "count": 4
     },
     {
       "value": "open_source",
@@ -64,24 +54,24 @@
     {
       "value": "CN",
       "label": "国内",
-      "count": 14
+      "count": 13
     },
     {
       "value": "GLOBAL",
       "label": "海外",
-      "count": 2
+      "count": 3
     }
   ],
   "providers": [
     {
-      "value": "deepseek",
-      "label": "DeepSeek",
-      "count": 4
-    },
-    {
       "value": "zhipu",
       "label": "智谱 AI",
       "count": 4
+    },
+    {
+      "value": "deepseek",
+      "label": "DeepSeek",
+      "count": 3
     },
     {
       "value": "cloudflare-workers-ai",
@@ -107,6 +97,11 @@
       "value": "baidu-ernie",
       "label": "百度文心",
       "count": 2
+    },
+    {
+      "value": "deepgram",
+      "label": "Deepgram",
+      "count": 1
     },
     {
       "value": "tencent-hunyuan",
