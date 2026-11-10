@@ -11,6 +11,11 @@
       "count": 2
     },
     {
+      "value": "student",
+      "label": "学生优惠",
+      "count": 2
+    },
+    {
       "value": "refreshable",
       "label": "周期刷新",
       "count": 1
@@ -20,12 +25,17 @@
     {
       "value": "all",
       "label": "所有人",
-      "count": 11
+      "count": 10
     },
     {
       "value": "new_user",
       "label": "新用户",
-      "count": 4
+      "count": 6
+    },
+    {
+      "value": "student",
+      "label": "学生",
+      "count": 2
     },
     {
       "value": "open_source",
@@ -47,19 +57,19 @@
     {
       "value": "ended",
       "label": "已结束",
-      "count": 6
+      "count": 8
     }
   ],
   "regions": [
     {
       "value": "CN",
       "label": "国内",
-      "count": 13
+      "count": 14
     },
     {
       "value": "GLOBAL",
       "label": "海外",
-      "count": 3
+      "count": 4
     }
   ],
   "providers": [
@@ -79,8 +89,18 @@
       "count": 1
     },
     {
+      "value": "github-student",
+      "label": "GitHub 学生开发者包",
+      "count": 1
+    },
+    {
       "value": "vercel-ai-gateway",
       "label": "Vercel AI Gateway",
+      "count": 1
+    },
+    {
+      "value": "bytedance-doubao",
+      "label": "字节豆包",
       "count": 1
     },
     {
@@ -113,12 +133,22 @@
     {
       "value": "text-generation",
       "label": "文本生成",
-      "count": 3
+      "count": 4
     },
     {
       "value": "code-generation",
       "label": "代码生成",
-      "count": 3
+      "count": 4
+    },
+    {
+      "value": "video-generation",
+      "label": "视频生成",
+      "count": 1
+    },
+    {
+      "value": "speech-to-text",
+      "label": "语音识别",
+      "count": 1
     }
   ],
   "sorts": [

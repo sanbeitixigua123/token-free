@@ -1,22 +1,22 @@
 {
-  "total": 16,
+  "total": 18,
   "active": 10,
   "upcoming": 0,
-  "ended": 6,
+  "ended": 8,
   "endingSoon": 0,
-  "newToday": 16,
-  "providers": 9,
+  "newToday": 18,
+  "providers": 11,
   "providersTracked": 52,
   "byStatus": {
     "active": 10,
     "upcoming": 0,
-    "ended": 6
+    "ended": 8
   },
-  "providerCount": 9,
+  "providerCount": 11,
   "lastRun": {
-    "finished_at": "2026-11-09 09:39:14",
+    "finished_at": "2026-11-10 09:37:36",
     "status": "partial",
-    "items_new": 39,
+    "items_new": 43,
     "sources_ok": 104,
     "sources_total": 106
   }
