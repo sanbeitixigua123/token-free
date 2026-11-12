@@ -3,22 +3,17 @@
     {
       "value": "free_credit",
       "label": "免费额度",
-      "count": 58
+      "count": 56
     },
     {
       "value": "trial",
       "label": "免费试用",
-      "count": 26
+      "count": 33
     },
     {
       "value": "student",
       "label": "学生优惠",
-      "count": 13
-    },
-    {
-      "value": "discount",
-      "label": "折扣促销",
-      "count": 2
+      "count": 9
     },
     {
       "value": "refreshable",
@@ -30,37 +25,37 @@
     {
       "value": "all",
       "label": "所有人",
-      "count": 42
+      "count": 36
     },
     {
       "value": "new_user",
       "label": "新用户",
-      "count": 34
+      "count": 35
     },
     {
       "value": "student",
       "label": "学生",
-      "count": 13
+      "count": 9
     },
     {
       "value": "teacher",
       "label": "教师",
-      "count": 2
+      "count": 1
     },
     {
       "value": "open_source",
       "label": "开源项目",
-      "count": 4
+      "count": 2
     },
     {
       "value": "startup",
       "label": "初创团队",
-      "count": 2
+      "count": 3
     },
     {
       "value": "enterprise",
       "label": "企业",
-      "count": 10
+      "count": 13
     },
     {
       "value": "verified",
@@ -77,45 +72,40 @@
     {
       "value": "ended",
       "label": "已结束",
-      "count": 16
+      "count": 15
     }
   ],
   "regions": [
     {
       "value": "CN",
       "label": "国内",
-      "count": 69
+      "count": 71
     },
     {
       "value": "GLOBAL",
       "label": "海外",
-      "count": 31
+      "count": 28
     }
   ],
   "providers": [
-    {
-      "value": "bytedance-doubao",
-      "label": "字节豆包",
-      "count": 5
-    },
     {
       "value": "moonshot",
       "label": "月之暗面 Kimi",
       "count": 5
     },
     {
-      "value": "deepseek",
-      "label": "DeepSeek",
-      "count": 4
+      "value": "volcengine-ark",
+      "label": "火山引擎方舟",
+      "count": 5
+    },
+    {
+      "value": "alibaba-qwen",
+      "label": "阿里通义千问",
+      "count": 5
     },
     {
       "value": "vultr",
       "label": "Vultr",
-      "count": 4
-    },
-    {
-      "value": "volcengine-ark",
-      "label": "火山引擎方舟",
       "count": 4
     },
     {
@@ -124,13 +114,8 @@
       "count": 4
     },
     {
-      "value": "zhipu",
-      "label": "智谱 AI",
-      "count": 3
-    },
-    {
-      "value": "zhipu-zcode",
-      "label": "智谱 ZCode",
+      "value": "deepseek",
+      "label": "DeepSeek",
       "count": 3
     },
     {
@@ -139,14 +124,9 @@
       "count": 3
     },
     {
-      "value": "cloudflare-workers-ai",
-      "label": "Cloudflare Workers AI",
-      "count": 2
-    },
-    {
-      "value": "github-student",
-      "label": "GitHub 学生开发者包",
-      "count": 2
+      "value": "aliyun-lingma",
+      "label": "阿里通义灵码",
+      "count": 3
     },
     {
       "value": "vercel-ai-gateway",
@@ -159,23 +139,28 @@
       "count": 2
     },
     {
-      "value": "alibaba-qwen",
-      "label": "阿里通义千问",
+      "value": "bytedance-doubao",
+      "label": "字节豆包",
       "count": 2
     },
     {
-      "value": "aliyun-lingma",
-      "label": "阿里通义灵码",
+      "value": "zhipu",
+      "label": "智谱 AI",
       "count": 2
     },
     {
-      "value": "anthropic",
-      "label": "Anthropic",
+      "value": "zhipu-zcode",
+      "label": "智谱 ZCode",
+      "count": 2
+    },
+    {
+      "value": "cloudflare-workers-ai",
+      "label": "Cloudflare Workers AI",
       "count": 1
     },
     {
-      "value": "github-copilot",
-      "label": "GitHub Copilot",
+      "value": "nvidia-nim",
+      "label": "NVIDIA NIM",
       "count": 1
     },
     {
@@ -184,39 +169,44 @@
       "count": 1
     },
     {
-      "value": "minimax",
-      "label": "MiniMax 稀宇科技",
-      "count": 5
-    },
-    {
       "value": "baidu-ernie",
       "label": "百度文心",
-      "count": 5
+      "count": 7
     },
     {
-      "value": "tencent-hunyuan",
-      "label": "腾讯混元",
-      "count": 4
+      "value": "minimax",
+      "label": "MiniMax 稀宇科技",
+      "count": 6
     },
     {
       "value": "iflytek-spark",
       "label": "讯飞星火",
-      "count": 4
+      "count": 5
     },
     {
       "value": "qoder",
       "label": "阿里 Qoder",
-      "count": 4
+      "count": 5
     },
     {
-      "value": "deepgram",
-      "label": "Deepgram",
+      "value": "windsurf",
+      "label": "Windsurf",
       "count": 3
     },
     {
       "value": "tencent-codebuddy",
       "label": "腾讯 CodeBuddy",
       "count": 3
+    },
+    {
+      "value": "tencent-hunyuan",
+      "label": "腾讯混元",
+      "count": 3
+    },
+    {
+      "value": "deepgram",
+      "label": "Deepgram",
+      "count": 2
     },
     {
       "value": "gmi-cloud",
@@ -239,21 +229,6 @@
       "count": 2
     },
     {
-      "value": "amd-radeon-cloud",
-      "label": "AMD Radeon Cloud",
-      "count": 1
-    },
-    {
-      "value": "black-forest-labs",
-      "label": "Black Forest Labs",
-      "count": 1
-    },
-    {
-      "value": "gemini-code-assist",
-      "label": "Google Gemini Code Assist",
-      "count": 1
-    },
-    {
       "value": "mistral",
       "label": "Mistral AI",
       "count": 1
@@ -264,28 +239,28 @@
       "count": 1
     },
     {
-      "value": "baichuan",
-      "label": "百川智能",
-      "count": 4
+      "value": "together-ai",
+      "label": "Together AI",
+      "count": 3
     },
     {
-      "value": "amazon-q",
-      "label": "Amazon Q Developer",
-      "count": 2
+      "value": "baichuan",
+      "label": "百川智能",
+      "count": 3
     },
     {
       "value": "cline",
       "label": "Cline",
+      "count": 2
+    },
+    {
+      "value": "amazon-q",
+      "label": "Amazon Q Developer",
       "count": 1
     },
     {
-      "value": "higgsfield",
-      "label": "Higgsfield",
-      "count": 1
-    },
-    {
-      "value": "together-ai",
-      "label": "Together AI",
+      "value": "cerebras",
+      "label": "Cerebras",
       "count": 1
     }
   ],
@@ -293,17 +268,12 @@
     {
       "value": "text-generation",
       "label": "文本生成",
-      "count": 7
+      "count": 6
     },
     {
       "value": "code-generation",
       "label": "代码生成",
-      "count": 7
-    },
-    {
-      "value": "image-understanding",
-      "label": "图像理解",
-      "count": 1
+      "count": 6
     },
     {
       "value": "video-generation",
