@@ -3,21 +3,21 @@
     {
       "value": "free_credit",
       "label": "免费额度",
-      "count": 56
+      "count": 11
     },
     {
       "value": "trial",
       "label": "免费试用",
-      "count": 33
+      "count": 3
     },
     {
       "value": "student",
       "label": "学生优惠",
-      "count": 9
+      "count": 1
     },
     {
-      "value": "refreshable",
-      "label": "周期刷新",
+      "value": "discount",
+      "label": "折扣促销",
       "count": 1
     }
   ],
@@ -25,242 +25,87 @@
     {
       "value": "all",
       "label": "所有人",
-      "count": 36
+      "count": 9
     },
     {
       "value": "new_user",
       "label": "新用户",
-      "count": 35
+      "count": 7
     },
     {
       "value": "student",
       "label": "学生",
-      "count": 9
-    },
-    {
-      "value": "teacher",
-      "label": "教师",
       "count": 1
-    },
-    {
-      "value": "open_source",
-      "label": "开源项目",
-      "count": 2
-    },
-    {
-      "value": "startup",
-      "label": "初创团队",
-      "count": 3
-    },
-    {
-      "value": "enterprise",
-      "label": "企业",
-      "count": 13
     },
     {
       "value": "verified",
       "label": "需实名/绑卡",
-      "count": 10
+      "count": 2
     }
   ],
   "statuses": [
     {
       "value": "active",
       "label": "进行中",
-      "count": 84
+      "count": 13
     },
     {
       "value": "ended",
       "label": "已结束",
-      "count": 15
+      "count": 3
     }
   ],
   "regions": [
     {
       "value": "CN",
       "label": "国内",
-      "count": 71
+      "count": 14
     },
     {
       "value": "GLOBAL",
       "label": "海外",
-      "count": 28
+      "count": 2
     }
   ],
   "providers": [
     {
-      "value": "moonshot",
-      "label": "月之暗面 Kimi",
-      "count": 5
-    },
-    {
-      "value": "volcengine-ark",
-      "label": "火山引擎方舟",
-      "count": 5
-    },
-    {
-      "value": "alibaba-qwen",
-      "label": "阿里通义千问",
-      "count": 5
-    },
-    {
-      "value": "vultr",
-      "label": "Vultr",
-      "count": 4
-    },
-    {
-      "value": "aliyun-bailian",
-      "label": "阿里云百炼",
-      "count": 4
-    },
-    {
       "value": "deepseek",
       "label": "DeepSeek",
-      "count": 3
-    },
-    {
-      "value": "siliconflow",
-      "label": "硅基流动 SiliconFlow",
-      "count": 3
-    },
-    {
-      "value": "aliyun-lingma",
-      "label": "阿里通义灵码",
-      "count": 3
-    },
-    {
-      "value": "vercel-ai-gateway",
-      "label": "Vercel AI Gateway",
-      "count": 2
-    },
-    {
-      "value": "trae",
-      "label": "字节 Trae",
-      "count": 2
-    },
-    {
-      "value": "bytedance-doubao",
-      "label": "字节豆包",
-      "count": 2
+      "count": 4
     },
     {
       "value": "zhipu",
       "label": "智谱 AI",
+      "count": 4
+    },
+    {
+      "value": "alibaba-qwen",
+      "label": "阿里通义千问",
       "count": 2
     },
     {
-      "value": "zhipu-zcode",
-      "label": "智谱 ZCode",
+      "value": "vercel-ai-gateway",
+      "label": "Vercel AI Gateway",
+      "count": 1
+    },
+    {
+      "value": "minimax",
+      "label": "MiniMax 稀宇科技",
       "count": 2
     },
     {
-      "value": "cloudflare-workers-ai",
-      "label": "Cloudflare Workers AI",
-      "count": 1
-    },
-    {
-      "value": "nvidia-nim",
-      "label": "NVIDIA NIM",
-      "count": 1
-    },
-    {
-      "value": "openai",
-      "label": "OpenAI",
+      "value": "deepgram",
+      "label": "Deepgram",
       "count": 1
     },
     {
       "value": "baidu-ernie",
       "label": "百度文心",
-      "count": 7
-    },
-    {
-      "value": "minimax",
-      "label": "MiniMax 稀宇科技",
-      "count": 6
-    },
-    {
-      "value": "iflytek-spark",
-      "label": "讯飞星火",
-      "count": 5
-    },
-    {
-      "value": "qoder",
-      "label": "阿里 Qoder",
-      "count": 5
-    },
-    {
-      "value": "windsurf",
-      "label": "Windsurf",
-      "count": 3
-    },
-    {
-      "value": "tencent-codebuddy",
-      "label": "腾讯 CodeBuddy",
-      "count": 3
+      "count": 1
     },
     {
       "value": "tencent-hunyuan",
       "label": "腾讯混元",
-      "count": 3
-    },
-    {
-      "value": "deepgram",
-      "label": "Deepgram",
-      "count": 2
-    },
-    {
-      "value": "gmi-cloud",
-      "label": "GMI Cloud",
-      "count": 2
-    },
-    {
-      "value": "jetbrains-ai",
-      "label": "JetBrains AI",
-      "count": 2
-    },
-    {
-      "value": "xai",
-      "label": "xAI",
-      "count": 2
-    },
-    {
-      "value": "baidu-comate",
-      "label": "百度文心快码 Comate",
-      "count": 2
-    },
-    {
-      "value": "mistral",
-      "label": "Mistral AI",
-      "count": 1
-    },
-    {
-      "value": "stepfun",
-      "label": "阶跃星辰",
-      "count": 1
-    },
-    {
-      "value": "together-ai",
-      "label": "Together AI",
-      "count": 3
-    },
-    {
-      "value": "baichuan",
-      "label": "百川智能",
-      "count": 3
-    },
-    {
-      "value": "cline",
-      "label": "Cline",
-      "count": 2
-    },
-    {
-      "value": "amazon-q",
-      "label": "Amazon Q Developer",
-      "count": 1
-    },
-    {
-      "value": "cerebras",
-      "label": "Cerebras",
       "count": 1
     }
   ],
@@ -268,26 +113,16 @@
     {
       "value": "text-generation",
       "label": "文本生成",
-      "count": 6
+      "count": 2
     },
     {
       "value": "code-generation",
       "label": "代码生成",
-      "count": 6
+      "count": 2
     },
     {
       "value": "video-generation",
       "label": "视频生成",
-      "count": 1
-    },
-    {
-      "value": "speech-to-text",
-      "label": "语音识别",
-      "count": 1
-    },
-    {
-      "value": "text-to-speech",
-      "label": "语音合成",
       "count": 1
     }
   ],

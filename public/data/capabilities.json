@@ -5,7 +5,7 @@
     "count": 19,
     "endpointCount": 19,
     "modelCount": 30,
-    "activityCount": 6,
+    "activityCount": 2,
     "providerCount": 17
   },
   {
@@ -14,7 +14,7 @@
     "count": 11,
     "endpointCount": 11,
     "modelCount": 16,
-    "activityCount": 6,
+    "activityCount": 2,
     "providerCount": 11
   },
   {
@@ -50,7 +50,7 @@
     "count": 6,
     "endpointCount": 6,
     "modelCount": 7,
-    "activityCount": 1,
+    "activityCount": 0,
     "providerCount": 5
   },
   {
@@ -59,7 +59,7 @@
     "count": 5,
     "endpointCount": 5,
     "modelCount": 6,
-    "activityCount": 1,
+    "activityCount": 0,
     "providerCount": 4
   },
   {
