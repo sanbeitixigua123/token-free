@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-11-15T06:44:34.385Z",
+  "generatedAt": "2026-11-15T18:56:22.689Z",
   "meta": {
     "total": 118,
-    "online": 62,
+    "online": 61,
     "offline": 3,
     "recommended": 0,
     "sources": [
@@ -10,7 +10,7 @@
         "repo": "panxunying/ai-coding-welfare",
         "ok": true,
         "sites": 21,
-        "live": 11
+        "live": 9
       },
       {
         "repo": "wynx1123/ai-welfare-hub",
@@ -832,8 +832,8 @@
       ],
       "caveats": "新人福利和签到门槛按 2026-11-09 的规则更新；模型和倍率来源于运营方提交的 Issue #46：https://github.com/panxunying/ai-coding-welfar…",
       "online": true,
-      "latencyMs": 5220,
-      "checkedAt": "2026-11-15T06:36:10.365Z",
+      "latencyMs": 2242,
+      "checkedAt": "2026-11-15T18:52:58.512Z",
       "models": null,
       "modelsCount": 0,
       "modelsNote": "模型列表需登录后查看",
@@ -987,8 +987,8 @@
       ],
       "caveats": null,
       "online": true,
-      "latencyMs": 3399,
-      "checkedAt": "2026-11-15T06:36:08.396Z",
+      "latencyMs": 779,
+      "checkedAt": "2026-11-15T18:52:56.886Z",
       "models": null,
       "modelsCount": 0,
       "modelsNote": "模型列表需登录后查看",
@@ -1120,8 +1120,8 @@
       ],
       "caveats": "官方定位是公益站，不承诺 SLA、不支持充值；上游波动时可能临时停用某些模型",
       "online": true,
-      "latencyMs": 295,
-      "checkedAt": "2026-11-15T06:36:14.907Z",
+      "latencyMs": 304,
+      "checkedAt": "2026-11-15T18:53:02.884Z",
       "models": [
         "claude-opus-4-8",
         "claude-opus-5",
@@ -1168,8 +1168,8 @@
       ],
       "caveats": "整站挂着 JS 人机挑战，连 robots.txt 与注册页都返回挑战页，本页的自动探测读不到它的 /api/status——所以上面「实时数据」一栏除了接口延迟基本是空的，站名、面板版本、模型数都…",
       "online": true,
-      "latencyMs": 207,
-      "checkedAt": "2026-11-15T06:36:15.740Z",
+      "latencyMs": 204,
+      "checkedAt": "2026-11-15T18:53:03.089Z",
       "models": null,
       "modelsCount": 0,
       "modelsNote": "模型列表需登录后查看",
@@ -1436,8 +1436,8 @@
       ],
       "caveats": null,
       "online": true,
-      "latencyMs": 4921,
-      "checkedAt": "2026-11-15T06:36:09.929Z",
+      "latencyMs": 2047,
+      "checkedAt": "2026-11-15T18:52:58.161Z",
       "models": null,
       "modelsCount": 0,
       "modelsNote": "模型列表需登录后查看",
@@ -1571,8 +1571,8 @@
       ],
       "caveats": "站内的「刀」不是美元：面板公开的 price = 0.02 就是充值比例，1 元 = 50 站内刀（公告里说平时恢复 1:25），而本页其它站是 ¥7.3 ≈ $1。所以 300 站内刀对应的充值面…",
       "online": true,
-      "latencyMs": 4324,
-      "checkedAt": "2026-11-15T06:36:09.502Z",
+      "latencyMs": 1642,
+      "checkedAt": "2026-11-15T18:52:57.915Z",
       "models": null,
       "modelsCount": 0,
       "modelsNote": "模型列表需登录后查看",
@@ -1731,8 +1731,8 @@
       ],
       "caveats": null,
       "online": true,
-      "latencyMs": 4780,
-      "checkedAt": "2026-11-15T06:36:09.962Z",
+      "latencyMs": 1785,
+      "checkedAt": "2026-11-15T18:52:58.074Z",
       "models": null,
       "modelsCount": 0,
       "modelsNote": "模型列表需登录后查看",
@@ -1925,47 +1925,6 @@
       "checkinEnabled": false
     },
     {
-      "id": "kktoken",
-      "name": "KKtoken AI",
-      "subtitle": "New API 中转站 · 注册送 $75，本页邀请码再加 $25，按 token 计费输入输出各 $1/M",
-      "homeUrl": "https://kktoken.cc",
-      "signupUrl": "https://kktoken.cc/sign-up?aff=MzG9",
-      "docsUrl": "https://kktoken.cc/dashboard/overview",
-      "recommended": false,
-      "bonus": "注册送 $75 · 邀请得 $25 · 每日签到 $20",
-      "tags": [
-        "New API",
-        "免费额度",
-        "签到",
-        "按 token 计费",
-        "Anthropic 兼容",
-        "OpenAI 兼容"
-      ],
-      "highlights": [
-        "注册送 $75，从本页邀请链接进入再加 $25，每日签到再领 $20，首日合计 $120",
-        "按 token 计费：输入 $1 / 百万 tokens、输出 $1 / 百万 tokens，和本页那几个「每次 $0.3」的按次站不是一套口径，长对话更划算"
-      ],
-      "caveats": "额度数字（注册 $75 / 邀请 $25 / 签到 $20）站点公开接口没有暴露——它的 /api/status 里既没有 quota_for_new_user 也没有 quota_for_invi…",
-      "online": true,
-      "latencyMs": 5776,
-      "checkedAt": "2026-11-15T06:36:10.787Z",
-      "models": null,
-      "modelsCount": 0,
-      "modelsNote": "模型列表需登录后查看",
-      "announcement": null,
-      "mirror": null,
-      "source": "panxunying/ai-coding-welfare",
-      "sources": [
-        "panxunying/ai-coding-welfare"
-      ],
-      "registerOpen": true,
-      "loginMethods": [
-        "GitHub",
-        "账号密码"
-      ],
-      "checkinEnabled": true
-    },
-    {
       "id": "liminality",
       "name": "Liminality",
       "subtitle": "橘子积分签到站 · 单次签到最高 100 橘子，面板型网关",
@@ -2149,8 +2108,8 @@
       ],
       "caveats": "额度是站内积分，站方没有公开积分与美元的换算，本页按积分原样显示，不折算美元、也不并入跨站的美元合计",
       "online": true,
-      "latencyMs": 5658,
-      "checkedAt": "2026-11-15T06:36:10.667Z",
+      "latencyMs": 2772,
+      "checkedAt": "2026-11-15T18:52:58.887Z",
       "models": null,
       "modelsCount": 0,
       "modelsNote": "模型列表需登录后查看",
@@ -2236,11 +2195,11 @@
       ],
       "caveats": "额度是站内积分，站方没有公开积分与美元的换算，本页按积分原样显示，不折算美元、也不并入跨站的美元合计——站点界面写的「$5 积分」是它自己的单位，别当成 5 美元",
       "online": true,
-      "latencyMs": 5474,
-      "checkedAt": "2026-11-15T06:36:10.486Z",
+      "latencyMs": 952,
+      "checkedAt": "2026-11-14T21:53:29.427Z",
       "models": null,
       "modelsCount": 0,
-      "modelsNote": "模型列表需登录后查看",
+      "modelsNote": null,
       "announcement": null,
       "mirror": null,
       "source": "panxunying/ai-coding-welfare",
@@ -2270,8 +2229,8 @@
       ],
       "caveats": "首日 $20 与每日签到按维护者提供的信息登记；签到金额未提供，未计入首日合计",
       "online": true,
-      "latencyMs": 4859,
-      "checkedAt": "2026-11-15T06:36:09.866Z",
+      "latencyMs": 1837,
+      "checkedAt": "2026-11-15T18:52:57.951Z",
       "models": null,
       "modelsCount": 0,
       "modelsNote": "模型列表需登录后查看",
@@ -3690,6 +3649,41 @@
       "source": "1sh1ro/ai-api-zhongzhuan",
       "sources": [
         "1sh1ro/ai-api-zhongzhuan"
+      ]
+    },
+    {
+      "id": "kktoken",
+      "name": "KKtoken AI",
+      "subtitle": "New API 中转站 · 注册送 $75，本页邀请码再加 $25，按 token 计费输入输出各 $1/M",
+      "homeUrl": "https://kktoken.cc",
+      "signupUrl": "https://kktoken.cc/sign-up?aff=MzG9",
+      "docsUrl": "https://kktoken.cc/dashboard/overview",
+      "recommended": false,
+      "bonus": "注册送 $75 · 邀请得 $25 · 每日签到 $20",
+      "tags": [
+        "New API",
+        "免费额度",
+        "签到",
+        "按 token 计费",
+        "Anthropic 兼容",
+        "OpenAI 兼容"
+      ],
+      "highlights": [
+        "注册送 $75，从本页邀请链接进入再加 $25，每日签到再领 $20，首日合计 $120",
+        "按 token 计费：输入 $1 / 百万 tokens、输出 $1 / 百万 tokens，和本页那几个「每次 $0.3」的按次站不是一套口径，长对话更划算"
+      ],
+      "caveats": "额度数字（注册 $75 / 邀请 $25 / 签到 $20）站点公开接口没有暴露——它的 /api/status 里既没有 quota_for_new_user 也没有 quota_for_invi…",
+      "online": null,
+      "latencyMs": null,
+      "checkedAt": null,
+      "models": null,
+      "modelsCount": 0,
+      "modelsNote": null,
+      "announcement": null,
+      "mirror": null,
+      "source": "panxunying/ai-coding-welfare",
+      "sources": [
+        "panxunying/ai-coding-welfare"
       ]
     },
     {
