@@ -3,12 +3,12 @@
     {
       "value": "free_credit",
       "label": "免费额度",
-      "count": 14
+      "count": 11
     },
     {
       "value": "trial",
       "label": "免费试用",
-      "count": 5
+      "count": 4
     },
     {
       "value": "student",
@@ -20,12 +20,12 @@
     {
       "value": "all",
       "label": "所有人",
-      "count": 11
+      "count": 10
     },
     {
       "value": "new_user",
       "label": "新用户",
-      "count": 7
+      "count": 5
     },
     {
       "value": "student",
@@ -38,11 +38,6 @@
       "count": 1
     },
     {
-      "value": "enterprise",
-      "label": "企业",
-      "count": 2
-    },
-    {
       "value": "verified",
       "label": "需实名/绑卡",
       "count": 2
@@ -52,19 +47,19 @@
     {
       "value": "active",
       "label": "进行中",
-      "count": 15
+      "count": 14
     },
     {
       "value": "ended",
       "label": "已结束",
-      "count": 5
+      "count": 2
     }
   ],
   "regions": [
     {
       "value": "CN",
       "label": "国内",
-      "count": 18
+      "count": 14
     },
     {
       "value": "GLOBAL",
@@ -76,12 +71,12 @@
     {
       "value": "deepseek",
       "label": "DeepSeek",
-      "count": 5
+      "count": 3
     },
     {
       "value": "zhipu",
       "label": "智谱 AI",
-      "count": 5
+      "count": 3
     },
     {
       "value": "alibaba-qwen",
@@ -128,17 +123,17 @@
     {
       "value": "text-generation",
       "label": "文本生成",
-      "count": 4
+      "count": 3
     },
     {
       "value": "code-generation",
       "label": "代码生成",
-      "count": 4
+      "count": 3
     },
     {
       "value": "video-generation",
       "label": "视频生成",
-      "count": 1
+      "count": 2
     }
   ],
   "sorts": [
