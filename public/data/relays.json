@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-11-16T06:43:39.034Z",
+  "generatedAt": "2026-11-16T22:15:30.010Z",
   "meta": {
     "total": 118,
-    "online": 59,
+    "online": 60,
     "offline": 4,
     "recommended": 0,
     "sources": [
@@ -10,7 +10,7 @@
         "repo": "panxunying/ai-coding-welfare",
         "ok": true,
         "sites": 21,
-        "live": 8
+        "live": 9
       },
       {
         "repo": "wynx1123/ai-welfare-hub",
@@ -782,8 +782,8 @@
       ],
       "caveats": "新人福利和签到门槛按 2026-11-09 的规则更新；模型和倍率来源于运营方提交的 Issue #46：https://github.com/panxunying/ai-coding-welfar…",
       "online": true,
-      "latencyMs": 1530,
-      "checkedAt": "2026-11-16T06:33:09.279Z",
+      "latencyMs": 3276,
+      "checkedAt": "2026-11-16T22:05:31.466Z",
       "models": null,
       "modelsCount": 0,
       "modelsNote": "模型列表需登录后查看",
@@ -915,6 +915,42 @@
       ]
     },
     {
+      "id": "xingchi",
+      "name": "星驰管家",
+      "subtitle": "通过邀请链接注册可获得 $1000 额度 · 倍率 0.25，可用 GPT6a，额度充足",
+      "homeUrl": "https://t.me/xingchi66bot",
+      "signupUrl": "https://t.me/xingchi66bot?start=inv_8111640723",
+      "docsUrl": null,
+      "recommended": false,
+      "bonus": "注册送 $1000",
+      "tags": [
+        "免费额度",
+        "邀请注册 $1000",
+        "倍率 0.25",
+        "GPT6a",
+        "Telegram",
+        "注册 $500"
+      ],
+      "highlights": [
+        "通过本页完整邀请链接注册可获得 $1000 额度",
+        "倍率 0.25，可用 GPT6a，额度充足"
+      ],
+      "caveats": null,
+      "online": true,
+      "latencyMs": 1017,
+      "checkedAt": "2026-11-16T22:05:28.840Z",
+      "models": null,
+      "modelsCount": 0,
+      "modelsNote": "模型列表需登录后查看",
+      "announcement": null,
+      "mirror": null,
+      "source": "panxunying/ai-coding-welfare",
+      "sources": [
+        "panxunying/ai-coding-welfare",
+        "panxunying/ai-coding-welfare"
+      ]
+    },
+    {
       "id": "xinjianya",
       "name": "星见雅 API",
       "subtitle": "银狮计价公益站 · 注册送 200 银狮（约 $20），签到随机爆送",
@@ -1034,8 +1070,8 @@
       ],
       "caveats": "官方定位是公益站，不承诺 SLA、不支持充值；上游波动时可能临时停用某些模型",
       "online": true,
-      "latencyMs": 260,
-      "checkedAt": "2026-11-16T06:33:14.122Z",
+      "latencyMs": 297,
+      "checkedAt": "2026-11-16T22:05:34.903Z",
       "models": [
         "claude-opus-4-8",
         "claude-opus-5",
@@ -1082,8 +1118,8 @@
       ],
       "caveats": "整站挂着 JS 人机挑战，连 robots.txt 与注册页都返回挑战页，本页的自动探测读不到它的 /api/status——所以上面「实时数据」一栏除了接口延迟基本是空的，站名、面板版本、模型数都…",
       "online": true,
-      "latencyMs": 164,
-      "checkedAt": "2026-11-16T06:33:14.097Z",
+      "latencyMs": 200,
+      "checkedAt": "2026-11-16T22:05:35.550Z",
       "models": null,
       "modelsCount": 0,
       "modelsNote": "模型列表需登录后查看",
@@ -1302,8 +1338,8 @@
       ],
       "caveats": null,
       "online": true,
-      "latencyMs": 1765,
-      "checkedAt": "2026-11-16T06:33:09.502Z",
+      "latencyMs": 2612,
+      "checkedAt": "2026-11-16T22:05:30.445Z",
       "models": null,
       "modelsCount": 0,
       "modelsNote": "模型列表需登录后查看",
@@ -1472,8 +1508,8 @@
       ],
       "caveats": "站内的「刀」不是美元：面板公开的 price = 0.02 就是充值比例，1 元 = 50 站内刀（公告里说平时恢复 1:25），而本页其它站是 ¥7.3 ≈ $1。所以 300 站内刀对应的充值面…",
       "online": true,
-      "latencyMs": 1481,
-      "checkedAt": "2026-11-16T06:33:09.239Z",
+      "latencyMs": 2027,
+      "checkedAt": "2026-11-16T22:05:30.010Z",
       "models": null,
       "modelsCount": 0,
       "modelsNote": "模型列表需登录后查看",
@@ -1632,8 +1668,8 @@
       ],
       "caveats": null,
       "online": true,
-      "latencyMs": 1197,
-      "checkedAt": "2026-11-16T06:33:08.943Z",
+      "latencyMs": 3030,
+      "checkedAt": "2026-11-16T22:05:31.295Z",
       "models": null,
       "modelsCount": 0,
       "modelsNote": "模型列表需登录后查看",
@@ -2009,8 +2045,8 @@
       ],
       "caveats": "额度是站内积分，站方没有公开积分与美元的换算，本页按积分原样显示，不折算美元、也不并入跨站的美元合计",
       "online": true,
-      "latencyMs": 2072,
-      "checkedAt": "2026-11-16T06:33:09.811Z",
+      "latencyMs": 3206,
+      "checkedAt": "2026-11-16T22:05:31.040Z",
       "models": null,
       "modelsCount": 0,
       "modelsNote": "模型列表需登录后查看",
@@ -2130,8 +2166,8 @@
       ],
       "caveats": "首日 $20 与每日签到按维护者提供的信息登记；签到金额未提供，未计入首日合计",
       "online": true,
-      "latencyMs": 1751,
-      "checkedAt": "2026-11-16T06:33:09.487Z",
+      "latencyMs": 2600,
+      "checkedAt": "2026-11-16T22:05:30.432Z",
       "models": null,
       "modelsCount": 0,
       "modelsNote": "模型列表需登录后查看",
@@ -2831,42 +2867,6 @@
       "source": "wynx1123/ai-welfare-hub",
       "sources": [
         "wynx1123/ai-welfare-hub"
-      ]
-    },
-    {
-      "id": "xingchi",
-      "name": "星驰管家",
-      "subtitle": "通过邀请链接注册可获得 $1000 额度 · 倍率 0.25，可用 GPT6a，额度充足",
-      "homeUrl": "https://t.me/xingchi66bot",
-      "signupUrl": "https://t.me/xingchi66bot?start=inv_8111640723",
-      "docsUrl": null,
-      "recommended": false,
-      "bonus": "注册送 $1000",
-      "tags": [
-        "免费额度",
-        "邀请注册 $1000",
-        "倍率 0.25",
-        "GPT6a",
-        "Telegram",
-        "注册 $500"
-      ],
-      "highlights": [
-        "通过本页完整邀请链接注册可获得 $1000 额度",
-        "倍率 0.25，可用 GPT6a，额度充足"
-      ],
-      "caveats": null,
-      "online": null,
-      "latencyMs": null,
-      "checkedAt": null,
-      "models": null,
-      "modelsCount": 0,
-      "modelsNote": null,
-      "announcement": null,
-      "mirror": null,
-      "source": "panxunying/ai-coding-welfare",
-      "sources": [
-        "panxunying/ai-coding-welfare",
-        "panxunying/ai-coding-welfare"
       ]
     },
     {
