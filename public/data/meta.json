@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-11-18 17:56:16",
-  "generatedAtUtc": "2026-11-18T09:56:16.493Z",
+  "generatedAt": "2026-11-19 18:03:35",
+  "generatedAtUtc": "2026-11-19T10:03:35.236Z",
   "timezone": "Asia/Shanghai",
   "siteName": "Token Free",
   "schedule": "每日 10:00（北京时间）自动更新",
   "version": 1,
   "counts": {
-    "activities": 20,
+    "activities": 22,
     "providers": 52
   }
 }

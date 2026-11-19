@@ -1,5 +1,19 @@
 [
   {
+    "slug": "deepseek",
+    "name": "DeepSeek",
+    "nameEn": "DeepSeek",
+    "country": "CN",
+    "website": "https://www.deepseek.com",
+    "pricingUrl": "https://api-docs.deepseek.com/quick_start/pricing",
+    "announcementUrl": "https://api-docs.deepseek.com/news",
+    "color": "#4D6BFE",
+    "cnAccessible": true,
+    "tier": 1,
+    "activityCount": 5,
+    "activeCount": 3
+  },
+  {
     "slug": "zhipu",
     "name": "智谱 AI",
     "nameEn": "Zhipu AI",
@@ -11,20 +25,20 @@
     "cnAccessible": true,
     "tier": 1,
     "activityCount": 5,
-    "activeCount": 3
+    "activeCount": 2
   },
   {
-    "slug": "deepseek",
-    "name": "DeepSeek",
-    "nameEn": "DeepSeek",
+    "slug": "bytedance-doubao",
+    "name": "字节豆包",
+    "nameEn": "ByteDance Doubao",
     "country": "CN",
-    "website": "https://www.deepseek.com",
-    "pricingUrl": "https://api-docs.deepseek.com/quick_start/pricing",
-    "announcementUrl": "https://api-docs.deepseek.com/news",
-    "color": "#4D6BFE",
+    "website": "https://www.volcengine.com/product/doubao",
+    "pricingUrl": "https://www.volcengine.com/docs/82379/1099320",
+    "announcementUrl": null,
+    "color": "#1664FF",
     "cnAccessible": true,
     "tier": 1,
-    "activityCount": 4,
+    "activityCount": 3,
     "activeCount": 2
   },
   {
@@ -38,8 +52,8 @@
     "color": "#615CED",
     "cnAccessible": true,
     "tier": 1,
-    "activityCount": 3,
-    "activeCount": 3
+    "activityCount": 2,
+    "activeCount": 2
   },
   {
     "slug": "vercel-ai-gateway",
@@ -51,20 +65,6 @@
     "announcementUrl": null,
     "color": "#000000",
     "cnAccessible": false,
-    "tier": 1,
-    "activityCount": 1,
-    "activeCount": 1
-  },
-  {
-    "slug": "bytedance-doubao",
-    "name": "字节豆包",
-    "nameEn": "ByteDance Doubao",
-    "country": "CN",
-    "website": "https://www.volcengine.com/product/doubao",
-    "pricingUrl": "https://www.volcengine.com/docs/82379/1099320",
-    "announcementUrl": null,
-    "color": "#1664FF",
-    "cnAccessible": true,
     "tier": 1,
     "activityCount": 1,
     "activeCount": 1
