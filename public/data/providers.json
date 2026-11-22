@@ -1,5 +1,19 @@
 [
   {
+    "slug": "bytedance-doubao",
+    "name": "字节豆包",
+    "nameEn": "ByteDance Doubao",
+    "country": "CN",
+    "website": "https://www.volcengine.com/product/doubao",
+    "pricingUrl": "https://www.volcengine.com/docs/82379/1099320",
+    "announcementUrl": null,
+    "color": "#1664FF",
+    "cnAccessible": true,
+    "tier": 1,
+    "activityCount": 4,
+    "activeCount": 3
+  },
+  {
     "slug": "zhipu",
     "name": "智谱 AI",
     "nameEn": "Zhipu AI",
@@ -10,8 +24,8 @@
     "color": "#3B5BDB",
     "cnAccessible": true,
     "tier": 1,
-    "activityCount": 4,
-    "activeCount": 2
+    "activityCount": 3,
+    "activeCount": 3
   },
   {
     "slug": "deepseek",
@@ -24,7 +38,7 @@
     "color": "#4D6BFE",
     "cnAccessible": true,
     "tier": 1,
-    "activityCount": 3,
+    "activityCount": 2,
     "activeCount": 1
   },
   {
@@ -39,7 +53,7 @@
     "cnAccessible": true,
     "tier": 1,
     "activityCount": 2,
-    "activeCount": 2
+    "activeCount": 1
   },
   {
     "slug": "vercel-ai-gateway",
@@ -51,20 +65,6 @@
     "announcementUrl": null,
     "color": "#000000",
     "cnAccessible": false,
-    "tier": 1,
-    "activityCount": 1,
-    "activeCount": 1
-  },
-  {
-    "slug": "bytedance-doubao",
-    "name": "字节豆包",
-    "nameEn": "ByteDance Doubao",
-    "country": "CN",
-    "website": "https://www.volcengine.com/product/doubao",
-    "pricingUrl": "https://www.volcengine.com/docs/82379/1099320",
-    "announcementUrl": null,
-    "color": "#1664FF",
-    "cnAccessible": true,
     "tier": 1,
     "activityCount": 1,
     "activeCount": 1

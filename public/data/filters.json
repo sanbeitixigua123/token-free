@@ -3,12 +3,12 @@
     {
       "value": "free_credit",
       "label": "免费额度",
-      "count": 12
+      "count": 10
     },
     {
       "value": "trial",
       "label": "免费试用",
-      "count": 3
+      "count": 6
     },
     {
       "value": "student",
@@ -25,16 +25,11 @@
     {
       "value": "new_user",
       "label": "新用户",
-      "count": 5
+      "count": 6
     },
     {
       "value": "student",
       "label": "学生",
-      "count": 1
-    },
-    {
-      "value": "open_source",
-      "label": "开源项目",
       "count": 1
     },
     {
@@ -45,26 +40,26 @@
     {
       "value": "verified",
       "label": "需实名/绑卡",
-      "count": 1
+      "count": 2
     }
   ],
   "statuses": [
     {
       "value": "active",
       "label": "进行中",
-      "count": 12
+      "count": 14
     },
     {
       "value": "ended",
       "label": "已结束",
-      "count": 4
+      "count": 3
     }
   ],
   "regions": [
     {
       "value": "CN",
       "label": "国内",
-      "count": 14
+      "count": 15
     },
     {
       "value": "GLOBAL",
@@ -74,14 +69,19 @@
   ],
   "providers": [
     {
+      "value": "bytedance-doubao",
+      "label": "字节豆包",
+      "count": 4
+    },
+    {
       "value": "zhipu",
       "label": "智谱 AI",
-      "count": 4
+      "count": 3
     },
     {
       "value": "deepseek",
       "label": "DeepSeek",
-      "count": 3
+      "count": 2
     },
     {
       "value": "alibaba-qwen",
@@ -91,11 +91,6 @@
     {
       "value": "vercel-ai-gateway",
       "label": "Vercel AI Gateway",
-      "count": 1
-    },
-    {
-      "value": "bytedance-doubao",
-      "label": "字节豆包",
       "count": 1
     },
     {
@@ -123,17 +118,17 @@
     {
       "value": "text-generation",
       "label": "文本生成",
-      "count": 4
+      "count": 3
     },
     {
       "value": "code-generation",
       "label": "代码生成",
-      "count": 4
+      "count": 3
     },
     {
       "value": "video-generation",
       "label": "视频生成",
-      "count": 1
+      "count": 2
     }
   ],
   "sorts": [
