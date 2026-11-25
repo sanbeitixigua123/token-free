@@ -8,16 +8,11 @@
     {
       "value": "trial",
       "label": "免费试用",
-      "count": 7
+      "count": 2
     },
     {
       "value": "student",
       "label": "学生优惠",
-      "count": 1
-    },
-    {
-      "value": "discount",
-      "label": "折扣促销",
       "count": 1
     }
   ],
@@ -25,16 +20,21 @@
     {
       "value": "all",
       "label": "所有人",
-      "count": 13
+      "count": 10
     },
     {
       "value": "new_user",
       "label": "新用户",
-      "count": 7
+      "count": 5
     },
     {
       "value": "student",
       "label": "学生",
+      "count": 1
+    },
+    {
+      "value": "open_source",
+      "label": "开源项目",
       "count": 1
     },
     {
@@ -45,26 +45,26 @@
     {
       "value": "verified",
       "label": "需实名/绑卡",
-      "count": 3
+      "count": 1
     }
   ],
   "statuses": [
     {
       "value": "active",
       "label": "进行中",
-      "count": 18
+      "count": 14
     },
     {
       "value": "ended",
       "label": "已结束",
-      "count": 4
+      "count": 2
     }
   ],
   "regions": [
     {
       "value": "CN",
       "label": "国内",
-      "count": 20
+      "count": 14
     },
     {
       "value": "GLOBAL",
@@ -73,11 +73,6 @@
     }
   ],
   "providers": [
-    {
-      "value": "bytedance-doubao",
-      "label": "字节豆包",
-      "count": 5
-    },
     {
       "value": "deepseek",
       "label": "DeepSeek",
@@ -91,7 +86,7 @@
     {
       "value": "alibaba-qwen",
       "label": "阿里通义千问",
-      "count": 3
+      "count": 2
     },
     {
       "value": "vercel-ai-gateway",
@@ -128,17 +123,12 @@
     {
       "value": "text-generation",
       "label": "文本生成",
-      "count": 3
+      "count": 4
     },
     {
       "value": "code-generation",
       "label": "代码生成",
-      "count": 3
-    },
-    {
-      "value": "video-generation",
-      "label": "视频生成",
-      "count": 1
+      "count": 4
     }
   ],
   "sorts": [
