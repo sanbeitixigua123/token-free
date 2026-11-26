@@ -1,7 +1,7 @@
 [
   {
-    "id": 12,
-    "fingerprint": "21cf6be155f94f11c8a5de33965ecb06",
+    "id": 11,
+    "fingerprint": "2233ef6d5c326632f282fd95ff7bfc41",
     "provider": {
       "slug": "alibaba-qwen",
       "name": "阿里通义千问",
@@ -11,7 +11,7 @@
       "color": "#615CED",
       "cnAccessible": true
     },
-    "title": "阿里云AI大模型免费7000万Tokens开通就送（附模型大全）",
+    "title": "白嫖7000万Tokens!阿里云百炼新用户专享，零成本玩转通义千问等70+大模型-阿里云开发者社区",
     "hook": null,
     "howToClaim": null,
     "caveat": null,
@@ -20,8 +20,8 @@
       "dead": 0
     },
     "summary": null,
-    "category": "free_credit",
-    "categoryLabel": "免费额度",
+    "category": "trial",
+    "categoryLabel": "免费试用",
     "benefit": {
       "kind": "token",
       "amount": 70000000,
@@ -31,81 +31,19 @@
       "display": "7000 万 tokens"
     },
     "audience": [
-      "new_user",
-      "enterprise"
-    ],
-    "audienceLabels": [
-      "新用户",
-      "企业"
-    ],
-    "audienceNote": "新用户、企业",
-    "region": "CN",
-    "requiresCard": false,
-    "requiresVerification": null,
-    "startDate": null,
-    "endDate": null,
-    "isRecurring": null,
-    "claimUrl": "https://developer.aliyun.com/article/1698340",
-    "sourceUrl": null,
-    "sourceExcerpt": null,
-    "confidence": 0.95,
-    "reviewStatus": "auto_ok",
-    "status": "active",
-    "statusLabel": "NEW",
-    "daysLeft": null,
-    "endingSoon": false,
-    "isNew": true,
-    "createdAt": "2026-11-25 11:00:44",
-    "updatedAt": "2026-11-25 11:00:44",
-    "lastVerifiedAt": "2026-11-25 11:00:44",
-    "model": null,
-    "endpoint": null
-  },
-  {
-    "id": 8,
-    "fingerprint": "51fa2b8723af57f5c2dfc6077154d509",
-    "provider": {
-      "slug": "deepseek",
-      "name": "DeepSeek",
-      "nameEn": "DeepSeek",
-      "country": "CN",
-      "website": "https://www.deepseek.com",
-      "color": "#4D6BFE",
-      "cnAccessible": true
-    },
-    "title": "DeepSeek Harness 6 元赠金再次开放 登录桌面版即送 到账后 7 天内有效 | AI 优惠雷达",
-    "hook": null,
-    "howToClaim": null,
-    "caveat": null,
-    "feedback": {
-      "useful": 0,
-      "dead": 0
-    },
-    "summary": null,
-    "category": "free_credit",
-    "categoryLabel": "免费额度",
-    "benefit": {
-      "kind": "credit_cny",
-      "amount": 6,
-      "unit": "CNY",
-      "unitLabel": "元",
-      "text": "6 元",
-      "display": "¥6"
-    },
-    "audience": [
       "new_user"
     ],
     "audienceLabels": [
       "新用户"
     ],
-    "audienceNote": "新注册",
+    "audienceNote": "新用户",
     "region": "CN",
     "requiresCard": false,
     "requiresVerification": null,
     "startDate": null,
     "endDate": null,
     "isRecurring": null,
-    "claimUrl": "https://www.aipromonow.com/promos/deepseek-harness-6-rmb-credit-oct17-2026",
+    "claimUrl": "https://developer.aliyun.com/article/1728120",
     "sourceUrl": null,
     "sourceExcerpt": null,
     "confidence": 0.95,
@@ -115,14 +53,14 @@
     "daysLeft": null,
     "endingSoon": false,
     "isNew": true,
-    "createdAt": "2026-11-25 11:00:44",
-    "updatedAt": "2026-11-25 11:00:44",
-    "lastVerifiedAt": "2026-11-25 19:01:12",
+    "createdAt": "2026-11-26 10:37:55",
+    "updatedAt": "2026-11-26 10:37:55",
+    "lastVerifiedAt": "2026-11-26 18:38:18",
     "model": null,
     "endpoint": null
   },
   {
-    "id": 6,
+    "id": 8,
     "fingerprint": "c3fc97007520676741c2d3b2e56e2c9f",
     "provider": {
       "slug": "deepseek",
@@ -175,9 +113,9 @@
     "daysLeft": null,
     "endingSoon": false,
     "isNew": true,
-    "createdAt": "2026-11-25 11:00:44",
-    "updatedAt": "2026-11-25 11:00:44",
-    "lastVerifiedAt": "2026-11-25 11:00:44",
+    "createdAt": "2026-11-26 10:37:55",
+    "updatedAt": "2026-11-26 10:37:55",
+    "lastVerifiedAt": "2026-11-26 10:37:55",
     "model": null,
     "endpoint": null
   },
@@ -237,9 +175,9 @@
     "daysLeft": null,
     "endingSoon": false,
     "isNew": true,
-    "createdAt": "2026-11-25 11:00:44",
-    "updatedAt": "2026-11-25 11:00:44",
-    "lastVerifiedAt": "2026-11-25 19:00:56",
+    "createdAt": "2026-11-26 10:37:55",
+    "updatedAt": "2026-11-26 10:37:55",
+    "lastVerifiedAt": "2026-11-26 18:38:06",
     "model": {
       "slug": "glm-5-3-flash",
       "name": "GLM-5.3-Flash",
@@ -268,7 +206,7 @@
     }
   },
   {
-    "id": 24,
+    "id": 20,
     "fingerprint": "9d020a9f934ba9b7774f84dbe6eb9cd2",
     "provider": {
       "slug": "baidu-ernie",
@@ -323,14 +261,14 @@
     "daysLeft": null,
     "endingSoon": false,
     "isNew": true,
-    "createdAt": "2026-11-25 11:00:44",
-    "updatedAt": "2026-11-25 11:00:44",
-    "lastVerifiedAt": "2026-11-25 11:00:44",
+    "createdAt": "2026-11-26 10:37:55",
+    "updatedAt": "2026-11-26 10:37:55",
+    "lastVerifiedAt": "2026-11-26 10:37:55",
     "model": null,
     "endpoint": null
   },
   {
-    "id": 11,
+    "id": 9,
     "fingerprint": "3d3f05c87c03e16403ed70f2ea901bc6",
     "provider": {
       "slug": "alibaba-qwen",
@@ -376,14 +314,14 @@
     "daysLeft": null,
     "endingSoon": false,
     "isNew": true,
-    "createdAt": "2026-11-25 11:00:44",
-    "updatedAt": "2026-11-25 11:00:44",
-    "lastVerifiedAt": "2026-11-25 11:00:44",
+    "createdAt": "2026-11-26 10:37:55",
+    "updatedAt": "2026-11-26 10:37:55",
+    "lastVerifiedAt": "2026-11-26 10:37:55",
     "model": null,
     "endpoint": null
   },
   {
-    "id": 7,
+    "id": 6,
     "fingerprint": "928a6e5a2e56ddbfc616b3de2469ce25",
     "provider": {
       "slug": "deepseek",
@@ -436,14 +374,74 @@
     "daysLeft": null,
     "endingSoon": false,
     "isNew": true,
-    "createdAt": "2026-11-25 11:00:44",
-    "updatedAt": "2026-11-25 11:00:44",
-    "lastVerifiedAt": "2026-11-25 11:00:44",
+    "createdAt": "2026-11-26 10:37:55",
+    "updatedAt": "2026-11-26 10:37:55",
+    "lastVerifiedAt": "2026-11-26 10:37:55",
     "model": null,
     "endpoint": null
   },
   {
-    "id": 3,
+    "id": 5,
+    "fingerprint": "804014c86b44b5962a0bcd4fd2092ec4",
+    "provider": {
+      "slug": "zhipu",
+      "name": "智谱 AI",
+      "nameEn": "Zhipu AI",
+      "country": "CN",
+      "website": "https://www.z.ai",
+      "color": "#3B5BDB",
+      "cnAccessible": true
+    },
+    "title": "ZCode 免费额度：每日/周末 3 亿 Token 领取与规则",
+    "hook": null,
+    "howToClaim": null,
+    "caveat": null,
+    "feedback": {
+      "useful": 0,
+      "dead": 0
+    },
+    "summary": null,
+    "category": "free_credit",
+    "categoryLabel": "免费额度",
+    "benefit": {
+      "kind": "token",
+      "amount": 300000000,
+      "unit": "token",
+      "unitLabel": "tokens",
+      "text": "3 亿 Token",
+      "display": "3 亿 tokens"
+    },
+    "audience": [
+      "all"
+    ],
+    "audienceLabels": [
+      "所有人"
+    ],
+    "audienceNote": null,
+    "region": "CN",
+    "requiresCard": false,
+    "requiresVerification": null,
+    "startDate": null,
+    "endDate": null,
+    "isRecurring": "daily",
+    "claimUrl": "https://freeaiapi.org/zh-cn/articles/zcode-global-build-glm-5-3-flash",
+    "sourceUrl": null,
+    "sourceExcerpt": null,
+    "confidence": 0.83,
+    "reviewStatus": "auto_ok",
+    "status": "active",
+    "statusLabel": "NEW",
+    "daysLeft": null,
+    "endingSoon": false,
+    "isNew": true,
+    "createdAt": "2026-11-26 10:37:55",
+    "updatedAt": "2026-11-26 10:37:55",
+    "lastVerifiedAt": "2026-11-26 10:37:55",
+    "model": null,
+    "endpoint": null
+  },
+  {
+    "id": 4,
     "fingerprint": "cf3aa8a5f70d3b585dfee5b74af5ecde",
     "provider": {
       "slug": "zhipu",
@@ -496,9 +494,9 @@
     "daysLeft": null,
     "endingSoon": false,
     "isNew": true,
-    "createdAt": "2026-11-25 11:00:44",
-    "updatedAt": "2026-11-25 11:00:44",
-    "lastVerifiedAt": "2026-11-25 19:00:56",
+    "createdAt": "2026-11-26 10:37:55",
+    "updatedAt": "2026-11-26 10:37:55",
+    "lastVerifiedAt": "2026-11-26 18:38:06",
     "model": {
       "slug": "glm-5-3-flash",
       "name": "GLM-5.3-Flash",
@@ -527,7 +525,7 @@
     }
   },
   {
-    "id": 23,
+    "id": 19,
     "fingerprint": "b50602368423573b5e434e125089bfeb",
     "provider": {
       "slug": "minimax",
@@ -580,14 +578,14 @@
     "daysLeft": null,
     "endingSoon": false,
     "isNew": true,
-    "createdAt": "2026-11-25 11:00:44",
-    "updatedAt": "2026-11-25 11:00:44",
-    "lastVerifiedAt": "2026-11-25 11:00:44",
+    "createdAt": "2026-11-26 10:37:55",
+    "updatedAt": "2026-11-26 10:37:55",
+    "lastVerifiedAt": "2026-11-26 10:37:55",
     "model": null,
     "endpoint": null
   },
   {
-    "id": 33,
+    "id": 29,
     "fingerprint": "81e1489a01cb9b1cd4e93df16dc89c7e",
     "provider": {
       "slug": "deepgram",
@@ -640,14 +638,14 @@
     "daysLeft": null,
     "endingSoon": false,
     "isNew": true,
-    "createdAt": "2026-11-25 11:00:44",
-    "updatedAt": "2026-11-25 11:00:44",
-    "lastVerifiedAt": "2026-11-25 11:00:44",
+    "createdAt": "2026-11-26 10:37:55",
+    "updatedAt": "2026-11-26 10:37:55",
+    "lastVerifiedAt": "2026-11-26 10:37:55",
     "model": null,
     "endpoint": null
   },
   {
-    "id": 22,
+    "id": 18,
     "fingerprint": "7c414ceb962a393efbd2d307408d055c",
     "provider": {
       "slug": "minimax",
@@ -700,14 +698,14 @@
     "daysLeft": null,
     "endingSoon": false,
     "isNew": true,
-    "createdAt": "2026-11-25 11:00:44",
-    "updatedAt": "2026-11-25 11:00:44",
-    "lastVerifiedAt": "2026-11-25 11:00:44",
+    "createdAt": "2026-11-26 10:37:55",
+    "updatedAt": "2026-11-26 10:37:55",
+    "lastVerifiedAt": "2026-11-26 10:37:55",
     "model": null,
     "endpoint": null
   },
   {
-    "id": 19,
+    "id": 15,
     "fingerprint": "de9e5266ebe169d92b10c6a1f299d7d7",
     "provider": {
       "slug": "vercel-ai-gateway",
@@ -760,9 +758,9 @@
     "daysLeft": null,
     "endingSoon": false,
     "isNew": true,
-    "createdAt": "2026-11-25 11:00:44",
-    "updatedAt": "2026-11-25 11:00:44",
-    "lastVerifiedAt": "2026-11-25 11:00:44",
+    "createdAt": "2026-11-26 10:37:55",
+    "updatedAt": "2026-11-26 10:37:55",
+    "lastVerifiedAt": "2026-11-26 10:37:55",
     "model": {
       "slug": "claude-sonnet-5",
       "name": "Claude Sonnet 5",
@@ -791,67 +789,7 @@
     }
   },
   {
-    "id": 16,
-    "fingerprint": "8f7462b1b0f1162bfc9cbfa62ccfde42",
-    "provider": {
-      "slug": "volcengine-ark",
-      "name": "火山引擎方舟",
-      "nameEn": "Volcengine Ark",
-      "country": "CN",
-      "website": "https://www.volcengine.com",
-      "color": "#1664FF",
-      "cnAccessible": true
-    },
-    "title": "web_fetch：限时免费​",
-    "hook": null,
-    "howToClaim": null,
-    "caveat": null,
-    "feedback": {
-      "useful": 0,
-      "dead": 0
-    },
-    "summary": "Seedance Managed Agent 调用搜索和视频合成工具产生的费用。​ 按 Agent 实际调用次数计费，按小时出账。​",
-    "category": "free_credit",
-    "categoryLabel": "免费额度",
-    "benefit": {
-      "kind": "credit_cny",
-      "amount": 0.02,
-      "unit": "CNY",
-      "unitLabel": "元",
-      "text": "0.02 元",
-      "display": "¥0.02"
-    },
-    "audience": [
-      "all"
-    ],
-    "audienceLabels": [
-      "所有人"
-    ],
-    "audienceNote": null,
-    "region": "CN",
-    "requiresCard": false,
-    "requiresVerification": null,
-    "startDate": null,
-    "endDate": null,
-    "isRecurring": null,
-    "claimUrl": "https://www.volcengine.com/docs/82379/1099320",
-    "sourceUrl": "https://www.volcengine.com/docs/82379/1099320",
-    "sourceExcerpt": "web_fetch：限时免费​\n​\nSeedance Managed Agent 调用搜索和视频合成工具产生的费用。​\n按 Agent 实际调用次数计费，按小时出账。​\ngeneral_search：0.02 元/次​",
-    "confidence": 0.69,
-    "reviewStatus": "auto_ok",
-    "status": "active",
-    "statusLabel": "NEW",
-    "daysLeft": null,
-    "endingSoon": false,
-    "isNew": true,
-    "createdAt": "2026-11-25 11:00:44",
-    "updatedAt": "2026-11-25 11:00:44",
-    "lastVerifiedAt": "2026-11-25 11:00:44",
-    "model": null,
-    "endpoint": null
-  },
-  {
-    "id": 25,
+    "id": 21,
     "fingerprint": "7c38800a05076daf7fb454f64069193f",
     "provider": {
       "slug": "tencent-hunyuan",
@@ -904,14 +842,14 @@
     "daysLeft": null,
     "endingSoon": false,
     "isNew": true,
-    "createdAt": "2026-11-25 11:00:44",
-    "updatedAt": "2026-11-25 11:00:44",
-    "lastVerifiedAt": "2026-11-25 11:00:44",
+    "createdAt": "2026-11-26 10:37:55",
+    "updatedAt": "2026-11-26 10:37:55",
+    "lastVerifiedAt": "2026-11-26 10:37:55",
     "model": null,
     "endpoint": null
   },
   {
-    "id": 9,
+    "id": 7,
     "fingerprint": "a27230c4dacd3dbd23a5a12f814834d0",
     "provider": {
       "slug": "deepseek",
@@ -961,97 +899,13 @@
     "reviewStatus": "auto_ok",
     "status": "ended",
     "statusLabel": "已结束",
-    "daysLeft": -53,
+    "daysLeft": -54,
     "endingSoon": false,
     "isNew": true,
-    "createdAt": "2026-11-25 11:00:44",
-    "updatedAt": "2026-11-25 11:00:44",
-    "lastVerifiedAt": "2026-11-25 11:00:44",
+    "createdAt": "2026-11-26 10:37:55",
+    "updatedAt": "2026-11-26 10:37:55",
+    "lastVerifiedAt": "2026-11-26 10:37:55",
     "model": null,
     "endpoint": null
-  },
-  {
-    "id": 5,
-    "fingerprint": "bb89ea93cc65663f6f47c6d8b27eb9eb",
-    "provider": {
-      "slug": "zhipu",
-      "name": "智谱 AI",
-      "nameEn": "Zhipu AI",
-      "country": "CN",
-      "website": "https://www.z.ai",
-      "color": "#3B5BDB",
-      "cnAccessible": true
-    },
-    "title": "ZCode 周末免费领 5 亿 GLM-5.3-Flash Tokens：领取时间与方式 | AI 优惠雷达",
-    "hook": null,
-    "howToClaim": null,
-    "caveat": null,
-    "feedback": {
-      "useful": 0,
-      "dead": 0
-    },
-    "summary": null,
-    "category": "free_credit",
-    "categoryLabel": "免费额度",
-    "benefit": {
-      "kind": "token",
-      "amount": 500000000,
-      "unit": "token",
-      "unitLabel": "tokens",
-      "text": "5 亿 GLM-5.3-Flash Token",
-      "display": "5 亿 tokens"
-    },
-    "audience": [
-      "all"
-    ],
-    "audienceLabels": [
-      "所有人"
-    ],
-    "audienceNote": null,
-    "region": "CN",
-    "requiresCard": false,
-    "requiresVerification": null,
-    "startDate": null,
-    "endDate": "2026-11-09",
-    "isRecurring": null,
-    "claimUrl": "https://www.aipromonow.com/promos/zcode-weekend-build-glm53-flash-5e8-nov9-2026",
-    "sourceUrl": null,
-    "sourceExcerpt": null,
-    "confidence": 0.93,
-    "reviewStatus": "auto_ok",
-    "status": "ended",
-    "statusLabel": "已结束",
-    "daysLeft": -16,
-    "endingSoon": false,
-    "isNew": true,
-    "createdAt": "2026-11-25 11:00:44",
-    "updatedAt": "2026-11-25 11:00:44",
-    "lastVerifiedAt": "2026-11-25 11:00:44",
-    "model": {
-      "slug": "glm-5-3-flash",
-      "name": "GLM-5.3-Flash",
-      "capability": "code-generation",
-      "capabilityLabel": "代码生成",
-      "capabilities": [
-        "code-generation",
-        "text-generation"
-      ],
-      "contextWindow": 1000000
-    },
-    "endpoint": {
-      "slug": "zhipu--glm-5-3-flash",
-      "quotaKind": "credits",
-      "quotaKindLabel": "赠送额度",
-      "quotaRpm": null,
-      "quotaRpd": null,
-      "quotaText": "官方开放平台新用户赠送额度",
-      "apiBase": "https://open.bigmodel.cn/api/paas/v4",
-      "score": null,
-      "requiresCard": false,
-      "cnAccessible": true,
-      "openaiCompatible": true,
-      "claimUrl": "https://open.bigmodel.cn",
-      "docsUrl": "https://z.ai"
-    }
   }
 ]
