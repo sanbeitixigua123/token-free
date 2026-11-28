@@ -53,14 +53,99 @@
     "daysLeft": null,
     "endingSoon": false,
     "isNew": true,
-    "createdAt": "2026-11-27 10:40:23",
-    "updatedAt": "2026-11-27 10:40:23",
-    "lastVerifiedAt": "2026-11-27 10:40:23",
+    "createdAt": "2026-11-28 09:58:36",
+    "updatedAt": "2026-11-28 09:58:36",
+    "lastVerifiedAt": "2026-11-28 09:58:36",
     "model": null,
     "endpoint": null
   },
   {
-    "id": 2,
+    "id": 4,
+    "fingerprint": "6d533ee880afafd9ca9dafed4d99eed5",
+    "provider": {
+      "slug": "zhipu",
+      "name": "智谱 AI",
+      "nameEn": "Zhipu AI",
+      "country": "CN",
+      "website": "https://www.z.ai",
+      "color": "#3B5BDB",
+      "cnAccessible": true
+    },
+    "title": "上新活动 - 智谱ai开放文档",
+    "hook": null,
+    "howToClaim": null,
+    "caveat": null,
+    "feedback": {
+      "useful": 0,
+      "dead": 0
+    },
+    "summary": null,
+    "category": "free_credit",
+    "categoryLabel": "免费额度",
+    "benefit": {
+      "kind": "token",
+      "amount": 20000000,
+      "unit": "token",
+      "unitLabel": "tokens",
+      "text": "2000 万 GLM-4.5-Air Token",
+      "display": "2000 万 tokens"
+    },
+    "audience": [
+      "new_user",
+      "verified"
+    ],
+    "audienceLabels": [
+      "新用户",
+      "需实名/绑卡"
+    ],
+    "audienceNote": "新用户、实名",
+    "region": "CN",
+    "requiresCard": false,
+    "requiresVerification": "identity",
+    "startDate": null,
+    "endDate": null,
+    "isRecurring": null,
+    "claimUrl": "https://docs.bigmodel.cn/cn/update/promotion",
+    "sourceUrl": null,
+    "sourceExcerpt": null,
+    "confidence": 0.95,
+    "reviewStatus": "auto_ok",
+    "status": "active",
+    "statusLabel": "NEW",
+    "daysLeft": null,
+    "endingSoon": false,
+    "isNew": true,
+    "createdAt": "2026-11-28 09:58:36",
+    "updatedAt": "2026-11-28 09:58:36",
+    "lastVerifiedAt": "2026-11-28 09:58:36",
+    "model": {
+      "slug": "cogvideox-5",
+      "name": "CogVideoX 5",
+      "capability": "video-generation",
+      "capabilityLabel": "视频生成",
+      "capabilities": [
+        "video-generation"
+      ],
+      "contextWindow": null
+    },
+    "endpoint": {
+      "slug": "zhipu--cogvideox-5",
+      "quotaKind": "free_tier",
+      "quotaKindLabel": "免费档位",
+      "quotaRpm": null,
+      "quotaRpd": null,
+      "quotaText": "CogVideoX 开源模型可在智谱开放平台免费试用",
+      "apiBase": "https://open.bigmodel.cn/api/paas/v4",
+      "score": null,
+      "requiresCard": false,
+      "cnAccessible": true,
+      "openaiCompatible": true,
+      "claimUrl": "https://open.bigmodel.cn",
+      "docsUrl": "https://z.ai"
+    }
+  },
+  {
+    "id": 1,
     "fingerprint": "df9da6d5f9c9679259322c71905fc4a4",
     "provider": {
       "slug": "zhipu",
@@ -115,9 +200,9 @@
     "daysLeft": null,
     "endingSoon": false,
     "isNew": true,
-    "createdAt": "2026-11-27 10:40:23",
-    "updatedAt": "2026-11-27 10:40:23",
-    "lastVerifiedAt": "2026-11-27 18:40:34",
+    "createdAt": "2026-11-28 09:58:36",
+    "updatedAt": "2026-11-28 09:58:36",
+    "lastVerifiedAt": "2026-11-28 17:58:48",
     "model": {
       "slug": "glm-5-3-flash",
       "name": "GLM-5.3-Flash",
@@ -146,7 +231,7 @@
     }
   },
   {
-    "id": 26,
+    "id": 23,
     "fingerprint": "9d020a9f934ba9b7774f84dbe6eb9cd2",
     "provider": {
       "slug": "baidu-ernie",
@@ -201,14 +286,14 @@
     "daysLeft": null,
     "endingSoon": false,
     "isNew": true,
-    "createdAt": "2026-11-27 10:40:23",
-    "updatedAt": "2026-11-27 10:40:23",
-    "lastVerifiedAt": "2026-11-27 10:40:23",
+    "createdAt": "2026-11-28 09:58:36",
+    "updatedAt": "2026-11-28 09:58:36",
+    "lastVerifiedAt": "2026-11-28 09:58:36",
     "model": null,
     "endpoint": null
   },
   {
-    "id": 10,
+    "id": 9,
     "fingerprint": "3d3f05c87c03e16403ed70f2ea901bc6",
     "provider": {
       "slug": "alibaba-qwen",
@@ -254,9 +339,9 @@
     "daysLeft": null,
     "endingSoon": false,
     "isNew": true,
-    "createdAt": "2026-11-27 10:40:23",
-    "updatedAt": "2026-11-27 10:40:23",
-    "lastVerifiedAt": "2026-11-27 10:40:23",
+    "createdAt": "2026-11-28 09:58:36",
+    "updatedAt": "2026-11-28 09:58:36",
+    "lastVerifiedAt": "2026-11-28 09:58:36",
     "model": null,
     "endpoint": null
   },
@@ -314,14 +399,14 @@
     "daysLeft": null,
     "endingSoon": false,
     "isNew": true,
-    "createdAt": "2026-11-27 10:40:23",
-    "updatedAt": "2026-11-27 10:40:23",
-    "lastVerifiedAt": "2026-11-27 10:40:23",
+    "createdAt": "2026-11-28 09:58:36",
+    "updatedAt": "2026-11-28 09:58:36",
+    "lastVerifiedAt": "2026-11-28 09:58:36",
     "model": null,
     "endpoint": null
   },
   {
-    "id": 3,
+    "id": 5,
     "fingerprint": "cf3aa8a5f70d3b585dfee5b74af5ecde",
     "provider": {
       "slug": "zhipu",
@@ -374,9 +459,9 @@
     "daysLeft": null,
     "endingSoon": false,
     "isNew": true,
-    "createdAt": "2026-11-27 10:40:23",
-    "updatedAt": "2026-11-27 10:40:23",
-    "lastVerifiedAt": "2026-11-27 18:40:34",
+    "createdAt": "2026-11-28 09:58:36",
+    "updatedAt": "2026-11-28 09:58:36",
+    "lastVerifiedAt": "2026-11-28 17:58:57",
     "model": {
       "slug": "glm-5-3-flash",
       "name": "GLM-5.3-Flash",
@@ -405,7 +490,7 @@
     }
   },
   {
-    "id": 25,
+    "id": 22,
     "fingerprint": "b50602368423573b5e434e125089bfeb",
     "provider": {
       "slug": "minimax",
@@ -458,14 +543,14 @@
     "daysLeft": null,
     "endingSoon": false,
     "isNew": true,
-    "createdAt": "2026-11-27 10:40:23",
-    "updatedAt": "2026-11-27 10:40:23",
-    "lastVerifiedAt": "2026-11-27 10:40:23",
+    "createdAt": "2026-11-28 09:58:36",
+    "updatedAt": "2026-11-28 09:58:36",
+    "lastVerifiedAt": "2026-11-28 09:58:36",
     "model": null,
     "endpoint": null
   },
   {
-    "id": 35,
+    "id": 32,
     "fingerprint": "81e1489a01cb9b1cd4e93df16dc89c7e",
     "provider": {
       "slug": "deepgram",
@@ -518,14 +603,14 @@
     "daysLeft": null,
     "endingSoon": false,
     "isNew": true,
-    "createdAt": "2026-11-27 10:40:23",
-    "updatedAt": "2026-11-27 10:40:23",
-    "lastVerifiedAt": "2026-11-27 10:40:23",
+    "createdAt": "2026-11-28 09:58:36",
+    "updatedAt": "2026-11-28 09:58:36",
+    "lastVerifiedAt": "2026-11-28 09:58:36",
     "model": null,
     "endpoint": null
   },
   {
-    "id": 24,
+    "id": 21,
     "fingerprint": "7c414ceb962a393efbd2d307408d055c",
     "provider": {
       "slug": "minimax",
@@ -578,14 +663,14 @@
     "daysLeft": null,
     "endingSoon": false,
     "isNew": true,
-    "createdAt": "2026-11-27 10:40:23",
-    "updatedAt": "2026-11-27 10:40:23",
-    "lastVerifiedAt": "2026-11-27 10:40:23",
+    "createdAt": "2026-11-28 09:58:36",
+    "updatedAt": "2026-11-28 09:58:36",
+    "lastVerifiedAt": "2026-11-28 09:58:36",
     "model": null,
     "endpoint": null
   },
   {
-    "id": 21,
+    "id": 18,
     "fingerprint": "de9e5266ebe169d92b10c6a1f299d7d7",
     "provider": {
       "slug": "vercel-ai-gateway",
@@ -638,9 +723,9 @@
     "daysLeft": null,
     "endingSoon": false,
     "isNew": true,
-    "createdAt": "2026-11-27 10:40:23",
-    "updatedAt": "2026-11-27 10:40:23",
-    "lastVerifiedAt": "2026-11-27 10:40:23",
+    "createdAt": "2026-11-28 09:58:36",
+    "updatedAt": "2026-11-28 09:58:36",
+    "lastVerifiedAt": "2026-11-28 09:58:36",
     "model": {
       "slug": "claude-sonnet-5",
       "name": "Claude Sonnet 5",
@@ -669,7 +754,7 @@
     }
   },
   {
-    "id": 18,
+    "id": 15,
     "fingerprint": "8f7462b1b0f1162bfc9cbfa62ccfde42",
     "provider": {
       "slug": "volcengine-ark",
@@ -722,97 +807,14 @@
     "daysLeft": null,
     "endingSoon": false,
     "isNew": true,
-    "createdAt": "2026-11-27 10:40:23",
-    "updatedAt": "2026-11-27 10:40:23",
-    "lastVerifiedAt": "2026-11-27 10:40:23",
+    "createdAt": "2026-11-28 09:58:36",
+    "updatedAt": "2026-11-28 09:58:36",
+    "lastVerifiedAt": "2026-11-28 09:58:36",
     "model": null,
     "endpoint": null
   },
   {
-    "id": 14,
-    "fingerprint": "9706383018296726cac5850b2f6d434f",
-    "provider": {
-      "slug": "bytedance-doubao",
-      "name": "字节豆包",
-      "nameEn": "ByteDance Doubao",
-      "country": "CN",
-      "website": "https://www.volcengine.com/product/doubao",
-      "color": "#1664FF",
-      "cnAccessible": true
-    },
-    "title": "web_fetch：限时免费​",
-    "hook": null,
-    "howToClaim": null,
-    "caveat": null,
-    "feedback": {
-      "useful": 0,
-      "dead": 0
-    },
-    "summary": "Seedance Managed Agent 调用搜索和视频合成工具产生的费用。​ 按 Agent 实际调用次数计费，按小时出账。​",
-    "category": "free_credit",
-    "categoryLabel": "免费额度",
-    "benefit": {
-      "kind": "credit_cny",
-      "amount": 0.02,
-      "unit": "CNY",
-      "unitLabel": "元",
-      "text": "0.02 元",
-      "display": "¥0.02"
-    },
-    "audience": [
-      "all"
-    ],
-    "audienceLabels": [
-      "所有人"
-    ],
-    "audienceNote": null,
-    "region": "CN",
-    "requiresCard": false,
-    "requiresVerification": null,
-    "startDate": null,
-    "endDate": null,
-    "isRecurring": null,
-    "claimUrl": "https://www.volcengine.com/docs/82379/1099320",
-    "sourceUrl": "https://www.volcengine.com/docs/82379/1099320",
-    "sourceExcerpt": "web_fetch：限时免费​\n​\nSeedance Managed Agent 调用搜索和视频合成工具产生的费用。​\n按 Agent 实际调用次数计费，按小时出账。​\ngeneral_search：0.02 元/次​",
-    "confidence": 0.69,
-    "reviewStatus": "auto_ok",
-    "status": "active",
-    "statusLabel": "NEW",
-    "daysLeft": null,
-    "endingSoon": false,
-    "isNew": true,
-    "createdAt": "2026-11-27 10:40:23",
-    "updatedAt": "2026-11-27 10:40:23",
-    "lastVerifiedAt": "2026-11-27 10:40:23",
-    "model": {
-      "slug": "seedance-2-5",
-      "name": "Seedance 2.5",
-      "capability": "video-generation",
-      "capabilityLabel": "视频生成",
-      "capabilities": [
-        "video-generation"
-      ],
-      "contextWindow": null
-    },
-    "endpoint": {
-      "slug": "bytedance-doubao--seedance-2-5",
-      "quotaKind": "free_tier",
-      "quotaKindLabel": "免费档位",
-      "quotaRpm": null,
-      "quotaRpd": null,
-      "quotaText": "新用户免费额度与限时活动",
-      "apiBase": null,
-      "score": null,
-      "requiresCard": false,
-      "cnAccessible": true,
-      "openaiCompatible": true,
-      "claimUrl": "https://console.volcengine.com",
-      "docsUrl": "https://www.volcengine.com/docs"
-    }
-  },
-  {
-    "id": 27,
+    "id": 24,
     "fingerprint": "7c38800a05076daf7fb454f64069193f",
     "provider": {
       "slug": "tencent-hunyuan",
@@ -865,9 +867,9 @@
     "daysLeft": null,
     "endingSoon": false,
     "isNew": true,
-    "createdAt": "2026-11-27 10:40:23",
-    "updatedAt": "2026-11-27 10:40:23",
-    "lastVerifiedAt": "2026-11-27 10:40:23",
+    "createdAt": "2026-11-28 09:58:36",
+    "updatedAt": "2026-11-28 09:58:36",
+    "lastVerifiedAt": "2026-11-28 09:58:36",
     "model": null,
     "endpoint": null
   },
@@ -922,72 +924,12 @@
     "reviewStatus": "auto_ok",
     "status": "ended",
     "statusLabel": "已结束",
-    "daysLeft": -55,
+    "daysLeft": -56,
     "endingSoon": false,
     "isNew": true,
-    "createdAt": "2026-11-27 10:40:23",
-    "updatedAt": "2026-11-27 10:40:23",
-    "lastVerifiedAt": "2026-11-27 10:40:23",
-    "model": null,
-    "endpoint": null
-  },
-  {
-    "id": 5,
-    "fingerprint": "e304e897f37b50c5925f74665265ee29",
-    "provider": {
-      "slug": "zhipu",
-      "name": "智谱 AI",
-      "nameEn": "Zhipu AI",
-      "country": "CN",
-      "website": "https://www.z.ai",
-      "color": "#3B5BDB",
-      "cnAccessible": true
-    },
-    "title": "智谱AI（BigModel） 免费 Token 领取攻略（2026 最新） | iGetoken",
-    "hook": null,
-    "howToClaim": null,
-    "caveat": null,
-    "feedback": {
-      "useful": 0,
-      "dead": 0
-    },
-    "summary": null,
-    "category": "free_credit",
-    "categoryLabel": "免费额度",
-    "benefit": {
-      "kind": "token",
-      "amount": 20000000,
-      "unit": "token",
-      "unitLabel": "tokens",
-      "text": "2000 万 Token",
-      "display": "2000 万 tokens"
-    },
-    "audience": [
-      "new_user"
-    ],
-    "audienceLabels": [
-      "新用户"
-    ],
-    "audienceNote": "新用户",
-    "region": "CN",
-    "requiresCard": false,
-    "requiresVerification": null,
-    "startDate": "2026-10-30",
-    "endDate": "2026-11-02",
-    "isRecurring": "daily",
-    "claimUrl": "https://igetoken.com/models/zhipu",
-    "sourceUrl": null,
-    "sourceExcerpt": null,
-    "confidence": 1,
-    "reviewStatus": "auto_ok",
-    "status": "ended",
-    "statusLabel": "已结束",
-    "daysLeft": -25,
-    "endingSoon": false,
-    "isNew": true,
-    "createdAt": "2026-11-27 10:40:23",
-    "updatedAt": "2026-11-27 10:40:23",
-    "lastVerifiedAt": "2026-11-27 10:40:23",
+    "createdAt": "2026-11-28 09:58:36",
+    "updatedAt": "2026-11-28 09:58:36",
+    "lastVerifiedAt": "2026-11-28 09:58:36",
     "model": null,
     "endpoint": null
   }

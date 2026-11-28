@@ -3,7 +3,7 @@
     {
       "value": "free_credit",
       "label": "免费额度",
-      "count": 12
+      "count": 11
     },
     {
       "value": "trial",
@@ -20,7 +20,7 @@
     {
       "value": "all",
       "label": "所有人",
-      "count": 10
+      "count": 9
     },
     {
       "value": "new_user",
@@ -40,7 +40,7 @@
     {
       "value": "verified",
       "label": "需实名/绑卡",
-      "count": 1
+      "count": 2
     }
   ],
   "statuses": [
@@ -52,14 +52,14 @@
     {
       "value": "ended",
       "label": "已结束",
-      "count": 2
+      "count": 1
     }
   ],
   "regions": [
     {
       "value": "CN",
       "label": "国内",
-      "count": 13
+      "count": 12
     },
     {
       "value": "GLOBAL",
@@ -81,11 +81,6 @@
     {
       "value": "vercel-ai-gateway",
       "label": "Vercel AI Gateway",
-      "count": 1
-    },
-    {
-      "value": "bytedance-doubao",
-      "label": "字节豆包",
       "count": 1
     },
     {
